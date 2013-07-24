@@ -1,0 +1,2 @@
+serviceClass: com.sickle.medu.ms.client.GreetingService
+path: 97B539DBE9D0C357C246EB27C2421E6F.gwt.rpc
