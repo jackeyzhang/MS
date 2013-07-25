@@ -8,6 +8,8 @@ import com.smartgwt.client.widgets.Label;
 
 
 /**
+ * 主界面默认不可关闭的首页
+ * 
  * @author chenhao
  *
  */

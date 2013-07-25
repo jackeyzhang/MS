@@ -32,7 +32,7 @@ public class LoginDialog extends AbstractDialog
 
 	public LoginDialog( )
 	{
-		super( "max education welcome", false, false, false );
+		super( "medu welcome-打造中国最好的教育办公系统", false, false, false );
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class LoginDialog extends AbstractDialog
 		layout.setHeight( 270 );
 
 		// 登陆对话框的图片
-		Img img = new Img( "other/eyes.jpg", 90, 47 );
+		Img img = new Img( "other/eyes.jpg");
 		img.setWidth( 360 );
 		img.setHeight( 180 );
 		img.setPrompt( "360px by 188px<BR>25k<BR>JPEG high quality" );
