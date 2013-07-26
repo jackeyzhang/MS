@@ -16,21 +16,23 @@ import com.smartgwt.client.widgets.Window;
 public abstract class AbstractDialog extends Window
 {
 
-	public AbstractDialog( String title)
+	public AbstractDialog( String title )
 	{
-		this(title,false,true,true);
+		this( title, false, true, true );
 	}
-	
-	public AbstractDialog( String title, boolean isModal,
-			boolean closeable, boolean isMinable )
+
+	public AbstractDialog( String title, boolean isModal, boolean closeable,
+			boolean isMinable )
 	{
+		this.setHeaderIcon( "pieces/16/cube_frame.png", 16, 16 );
+		this.setKeepInParentRect( true );
 		this.setAutoSize( true );
 		this.setTitle( title );
 		this.setIsModal( isModal );
 		this.setShowCloseButton( closeable );
 		this.setShowMinimizeButton( isMinable );
 		this.addItem( getView( ) );
-		if( getTitleView( ) != null )
+		if ( getTitleView( ) != null )
 		{
 			this.addMember( getTitleView( ) );
 		}
@@ -41,6 +43,7 @@ public abstract class AbstractDialog extends Window
 	 * 获取到对话框的页面内容
 	 * 
 	 * 子类实现
+	 * 
 	 * @return
 	 */
 	public abstract Canvas getView( );
