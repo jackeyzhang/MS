@@ -58,4 +58,24 @@ public class OrgServiceImpl extends RemoteServiceServlet implements OrgService {
 		return orgs;
 	}
 
+
+
+	@Override
+	public Org addOrg( Org org ) throws Exception
+	{
+		return service.addOrg( org );
+	}
+
+
+
+	@Override
+	public Org deleteOrg( Org org ) throws Exception
+	{
+		if( service.removeOrgById( org.getId( ) ))
+		{
+			return org;
+		}
+		return null;
+	}
+
 }

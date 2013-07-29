@@ -7,12 +7,18 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.smartgwt.client.util.SC;
 
 /**
- * @author Administrator
+ * 带状态的异步返回
+ * 
+ * @author chenhao
  *
  */
 public abstract class AsyncCallbackWithStatus<T> implements AsyncCallback<T> {
 	
 	LoadingHint loadinghint;
+	
+	public AsyncCallbackWithStatus(){
+		this("操作中......");
+	}
 	
 	public AsyncCallbackWithStatus(String hint){
 		this.loadinghint = new LoadingHint(hint);
@@ -29,6 +35,7 @@ public abstract class AsyncCallbackWithStatus<T> implements AsyncCallback<T> {
 	public void onSuccess(T result) {
 		loadinghint.hide();
 		call(result);
+		SC.say( "操作成功" );
 	}
 	
 	public abstract void call(T result);

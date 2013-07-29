@@ -7,6 +7,7 @@ package com.sickle.medu.ms.client.datasource;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.gwtent.reflection.client.ClassType;
 import com.gwtent.reflection.client.Field;
 import com.gwtent.reflection.client.TypeOracle;
@@ -19,6 +20,7 @@ import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.types.DSDataFormat;
 import com.smartgwt.client.types.DSProtocol;
+import com.smartgwt.client.util.JSOHelper;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 /**
@@ -31,8 +33,8 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 {
 
 	@SuppressWarnings("rawtypes")
-	private static Map<Class,DataSource> cache = new HashMap<Class,DataSource>();
-	
+	private static Map<Class, DataSource> cache = new HashMap<Class, DataSource>( );
+
 	private DataSource datasource;
 
 	public GwtRpcDataSource( )
@@ -89,7 +91,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 	@Override
 	public <T> DataSource getDataSource( Class<T> cls )
 	{
-		if(cache.containsKey( cls ))
+		if ( cache.containsKey( cls ) )
 		{
 			return cache.get( cls );
 		}
@@ -98,43 +100,80 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		for ( Field f : fs )
 		{
 			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
-			if( field == null)
+			if ( field == null )
 			{
 				continue;
 			}
-			DataSourceField newfield = new DataSourceTextField(f.getName( ), field.title( ));
-			if( field.type( ).equalsIgnoreCase( "int" ))
+			DataSourceField newfield = new DataSourceTextField( f.getName( ),
+					field.title( ) );
+			if ( field.type( ).equalsIgnoreCase( "int" ) )
 			{
-				newfield = new DataSourceIntegerField(f.getName( ), field.title( ));
+				newfield = new DataSourceIntegerField( f.getName( ),
+						field.title( ) );
 			}
-			else if( field.type( ).equalsIgnoreCase( "String" ) )
+			else if ( field.type( ).equalsIgnoreCase( "String" ) )
 			{
-				newfield = new DataSourceTextField(f.getName( ), field.title( ));
+				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
 			}
-			if( field.isId( ) )
+			if ( field.isId( ) )
 			{
-				newfield.setPrimaryKey(true);
-				newfield.setHidden(true);
+				newfield.setPrimaryKey( true );
+				newfield.setHidden( true );
 			}
-		    datasource.addField(newfield);
+			datasource.addField( newfield );
 		}
 		cache.put( cls, datasource );
 		return datasource;
 	}
-	
-	protected <T> void copyValues(T from, ListGridRecord to) {
+
+	protected <T> void copyValues( T from, ListGridRecord to )
+	{
 		@SuppressWarnings("unchecked")
-		ClassType<T> classType = TypeOracle.Instance.getClassType( from.getClass( ).getName( ) );
+		ClassType<T> classType = TypeOracle.Instance.getClassType( from
+				.getClass( ).getName( ) );
 		Field[] fs = classType.getFields( );
 		for ( Field f : fs )
 		{
 			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
-			if( field == null)
+			if ( field == null )
 			{
 				continue;
 			}
 			to.setAttribute( f.getName( ), f.getFieldValue( from ) );
 		}
-    }
+	}
 
+	protected <T> void copyValues( ListGridRecord from, T to )
+	{
+		@SuppressWarnings("unchecked")
+		ClassType<T> classType = TypeOracle.Instance.getClassType( to
+				.getClass( ).getName( ) );
+		Field[] fs = classType.getFields( );
+		for ( Field f : fs )
+		{
+			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
+			if ( field == null )
+			{
+				continue;
+			}
+			String value = from.getAttributeAsString( f.getName( ) );
+			f.setFieldValue( to, value );
+		}
+	}
+
+	protected ListGridRecord getEditedRecord( DSRequest request )
+	{
+		// Retrieving values before edit
+		JavaScriptObject oldValues = request
+				.getAttributeAsJavaScriptObject( "oldValues" );
+		// Creating new record for combining old values with changes
+		ListGridRecord newRecord = new ListGridRecord( );
+		// Copying properties from old record
+		JSOHelper.apply( oldValues, newRecord.getJsObj( ) );
+		// Retrieving changed values
+		JavaScriptObject data = request.getData( );
+		// Apply changes
+		JSOHelper.apply( data, newRecord.getJsObj( ) );
+		return newRecord;
+	}
 }

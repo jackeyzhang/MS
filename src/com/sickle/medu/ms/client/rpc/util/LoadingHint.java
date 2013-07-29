@@ -1,25 +1,20 @@
 package com.sickle.medu.ms.client.rpc.util;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.Window;
 
 /**
  * 提示
- * @author Administrator
+ * 
+ * @author chenhao
  *
  */
-public class LoadingHint implements ResizeHandler{
+public class LoadingHint{
 	
 	private Window pop;
 	
 	public LoadingHint(String hint){
 		pop = new Window();
 		pop.addMember( new Label(hint) );
-	}
-
-	@Override
-	public void onResize(ResizeEvent event) {
 	}
 
 	public void show(){

@@ -1,7 +1,9 @@
+
 package com.sickle.medu.ms.client.datasource;
 
 import java.util.List;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.rpc.RpcHelper;
@@ -11,85 +13,130 @@ import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
-
 /**
  * 消息datasource
  * 
  * @author chenhao
- *
+ * 
  */
 public class OrgDataSource extends GwtRpcDataSource
 {
-	
-	private static OrgDataSource instance = null;
-	
-    public static OrgDataSource getInstance() {
-        if (instance == null) {
-            instance = new OrgDataSource("OrgDataSource");
-        }
-        return instance;
-    }
 
-	public OrgDataSource(String id)
+	private static OrgDataSource instance = null;
+
+	public static OrgDataSource getInstance( )
+	{
+		if ( instance == null )
+		{
+			instance = new OrgDataSource( "OrgDataSource" );
+		}
+		return instance;
+	}
+
+	public OrgDataSource( String id )
 	{
 		getDataSource( Org.class ).setID( id );
 	}
 
 	@Override
-	protected void executeFetch(final String requestId, DSRequest request,
+	protected void executeFetch( final String requestId, DSRequest request,
 			final DSResponse response )
 	{
-		 final int startIndex = (request.getStartRow() < 0) ? 0 : request.getStartRow();
-		 final int endIndex = (request.getEndRow() == null) ? -1 : request.getEndRow();
+		final int startIndex = ( request.getStartRow( ) < 0 ) ? 0 : request
+				.getStartRow( );
+		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
+				.getEndRow( );
 		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
-		service.listAllOrg( startIndex, new AsyncCallbackWithStatus<List<Org>>( "loading"  ) {
-			@Override
-			public void call( List<Org> result )
+		service.listAllOrg( startIndex,
+				new AsyncCallbackWithStatus<List<Org>>( ) {
+
+					@Override
+					public void call( List<Org> result )
+					{
+						int size = result.size( );
+						if ( endIndex >= 0 )
+						{
+							if ( endIndex < startIndex )
+							{
+								size = 0;
+							}
+							else
+							{
+								size = endIndex - startIndex + 1;
+							}
+						}
+						ListGridRecord[] list = new ListGridRecord[size];
+						if ( size > 0 )
+						{
+							for ( int i = 0; i < result.size( ); i++ )
+							{
+								if ( i >= startIndex && i <= endIndex )
+								{
+									ListGridRecord record = new ListGridRecord( );
+									copyValues( result.get( i ), record );
+									list[i - startIndex] = record;
+								}
+							}
+						}
+						response.setData( list );
+						response.setTotalRows( result.size( ) );
+						getDataSource( Org.class ).processResponse( requestId,
+								response );
+					}
+				} );
+	}
+
+	@Override
+	protected void executeAdd( final String requestId, final DSRequest request,
+			final DSResponse response )
+	{
+		JavaScriptObject data = request.getData( );
+		ListGridRecord rec = new ListGridRecord( data );
+		Org userRec = new Org( );
+		copyValues( rec, userRec );
+		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		service.addOrg( userRec, new AsyncCallbackWithStatus<Org>( ) {
+
+			public void call( Org result )
 			{
-			    int size = result.size();
-                if (endIndex >= 0) {
-                    if (endIndex < startIndex) {
-                        size = 0;
-                    } else {
-                        size = endIndex - startIndex + 1;
-                    }
-                }
-                ListGridRecord[] list = new ListGridRecord[size];
-                if (size > 0) {
-                    for (int i = 0; i < result.size(); i++) {
-                        if (i >= startIndex && i <= endIndex) {
-                            ListGridRecord record = new ListGridRecord();
-                            copyValues(result.get(i), record);
-                            list[i - startIndex] = record;
-                        }
-                    }
-                }
-				response.setData(list);
-				response.setTotalRows(result.size());
-				getDataSource(Org.class).processResponse(requestId, response);
+				ListGridRecord[] list = new ListGridRecord[1];
+				ListGridRecord newRec = new ListGridRecord( );
+				copyValues( (Org) result, newRec );
+				list[0] = newRec;
+				response.setData( list );
+				getDataSource( Org.class )
+						.processResponse( requestId, response );
 			}
 		} );
 	}
 
 	@Override
-	protected void executeAdd( String requestId, DSRequest request,
-			DSResponse response )
+	protected void executeUpdate( final String requestId, DSRequest request,
+			final DSResponse response )
 	{
-
+		executeAdd( requestId, request, response );
 	}
 
 	@Override
-	protected void executeUpdate( String requestId, DSRequest request,
-			DSResponse response )
+	protected void executeRemove( final String requestId, DSRequest request,
+			final DSResponse response )
 	{
+		JavaScriptObject data = request.getData( );
+		final ListGridRecord rec = new ListGridRecord( data );
+		Org userRec = new Org( );
+		copyValues( rec, userRec );
+		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		service.deleteOrg( userRec, new AsyncCallbackWithStatus<Org>( ) {
 
-	}
-
-	@Override
-	protected void executeRemove( String requestId, DSRequest request,
-			DSResponse response )
-	{
-
+			public void call( Org result )
+			{
+				ListGridRecord[] list = new ListGridRecord[1];
+				list[0] = rec;
+				response.setData( list );
+				getDataSource( Org.class )
+						.processResponse( requestId, response );
+			}
+		} );
 	}
 
 }
