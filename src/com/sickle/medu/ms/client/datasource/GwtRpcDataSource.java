@@ -4,11 +4,22 @@
 
 package com.sickle.medu.ms.client.datasource;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.gwtent.reflection.client.ClassType;
+import com.gwtent.reflection.client.Field;
+import com.gwtent.reflection.client.TypeOracle;
+import com.sickle.uireflect.Reflect_Field;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.DataSourceField;
+import com.smartgwt.client.data.fields.DataSourceIntegerField;
+import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.types.DSDataFormat;
 import com.smartgwt.client.types.DSProtocol;
+import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 /**
  * GWt异步返回datasource
@@ -19,57 +30,111 @@ import com.smartgwt.client.types.DSProtocol;
 public abstract class GwtRpcDataSource extends AbstractDataSource
 {
 
+	@SuppressWarnings("rawtypes")
+	private static Map<Class,DataSource> cache = new HashMap<Class,DataSource>();
+	
 	private DataSource datasource;
 
 	public GwtRpcDataSource( )
 	{
-		datasource = new DataSource( ){
+		datasource = new DataSource( ) {
+
 			@Override
 			protected Object transformRequest( DSRequest request )
 			{
-			    String requestId = request.getRequestId();
-		        DSResponse response = new DSResponse();
-		        response.setAttribute("clientContext", request.getAttributeAsObject("clientContext"));
-		        // Asume success
-		        response.setStatus(0);
-		        switch (request.getOperationType())
-		        {
-		        case FETCH:
-		            executeFetch(requestId, request, response);
-		            break;
-		        case ADD:
-		            executeAdd(requestId, request, response);
-		            break;
-		        case UPDATE:
-		            executeUpdate(requestId, request, response);
-		            break;
-		        case REMOVE:
-		            executeRemove(requestId, request, response);
-		            break;
-		        default:
-		            break;
-		        }
-		        return request.getData();
+				String requestId = request.getRequestId( );
+				DSResponse response = new DSResponse( );
+				response.setAttribute( "clientContext",
+						request.getAttributeAsObject( "clientContext" ) );
+				// Asume success
+				response.setStatus( 0 );
+				switch ( request.getOperationType( ) )
+				{
+					case FETCH :
+						executeFetch( requestId, request, response );
+						break;
+					case ADD :
+						executeAdd( requestId, request, response );
+						break;
+					case UPDATE :
+						executeUpdate( requestId, request, response );
+						break;
+					case REMOVE :
+						executeRemove( requestId, request, response );
+						break;
+					default :
+						break;
+				}
+				return request.getData( );
 			}
-			
+
 		};
 		datasource.setDataProtocol( DSProtocol.CLIENTCUSTOM );
 		datasource.setDataFormat( DSDataFormat.CUSTOM );
 		datasource.setClientOnly( false );
 	}
-	
-	protected abstract void executeFetch(String requestId, DSRequest request, DSResponse response);
-	protected abstract void executeAdd(String requestId, DSRequest request, DSResponse response);
-	protected abstract void executeUpdate(String requestId, DSRequest request, DSResponse response);
-	protected abstract void executeRemove(String requestId, DSRequest request, DSResponse response);
 
+	protected abstract void executeFetch( String requestId, DSRequest request,
+			DSResponse response );
+
+	protected abstract void executeAdd( String requestId, DSRequest request,
+			DSResponse response );
+
+	protected abstract void executeUpdate( String requestId, DSRequest request,
+			DSResponse response );
+
+	protected abstract void executeRemove( String requestId, DSRequest request,
+			DSResponse response );
 
 	@Override
-	public DataSource getDataSource( )
+	public <T> DataSource getDataSource( Class<T> cls )
 	{
+		if(cache.containsKey( cls ))
+		{
+			return cache.get( cls );
+		}
+		ClassType<T> classType = TypeOracle.Instance.getClassType( cls );
+		Field[] fs = classType.getFields( );
+		for ( Field f : fs )
+		{
+			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
+			if( field == null)
+			{
+				continue;
+			}
+			DataSourceField newfield = new DataSourceTextField(f.getName( ), field.title( ));
+			if( field.type( ).equalsIgnoreCase( "int" ))
+			{
+				newfield = new DataSourceIntegerField(f.getName( ), field.title( ));
+			}
+			else if( field.type( ).equalsIgnoreCase( "String" ) )
+			{
+				newfield = new DataSourceTextField(f.getName( ), field.title( ));
+			}
+			if( field.isId( ) )
+			{
+				newfield.setPrimaryKey(true);
+				newfield.setHidden(true);
+			}
+		    datasource.addField(newfield);
+		}
+		cache.put( cls, datasource );
 		return datasource;
 	}
 	
-	
+	protected <T> void copyValues(T from, ListGridRecord to) {
+		@SuppressWarnings("unchecked")
+		ClassType<T> classType = TypeOracle.Instance.getClassType( from.getClass( ).getName( ) );
+		Field[] fs = classType.getFields( );
+		for ( Field f : fs )
+		{
+			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
+			if( field == null)
+			{
+				continue;
+			}
+			to.setAttribute( f.getName( ), f.getFieldValue( from ) );
+		}
+    }
 
 }

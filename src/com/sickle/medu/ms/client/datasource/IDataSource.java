@@ -13,5 +13,5 @@ import com.smartgwt.client.data.DataSource;
 public interface IDataSource
 {
 	
-	DataSource getDataSource();
+	<T> DataSource getDataSource(Class<T> cls);
 }

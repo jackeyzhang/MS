@@ -9,9 +9,6 @@ import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
-import com.smartgwt.client.data.DataSourceField;
-import com.smartgwt.client.data.fields.DataSourceIntegerField;
-import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 
@@ -35,24 +32,7 @@ public class OrgDataSource extends GwtRpcDataSource
 
 	public OrgDataSource(String id)
 	{
-		getDataSource( ).setID( id );
-		
-		DataSourceField fieldID = new DataSourceIntegerField("ID", "ID");
-        fieldID.setPrimaryKey(true);
-        fieldID.setHidden(true);
-        getDataSource( ).addField(fieldID);
-        
-        DataSourceField loginame = new DataSourceTextField("LOGINNAME", "登录名");
-        getDataSource( ).addField(loginame);
-        
-        DataSourceField manager = new DataSourceTextField("MANAGER", "管理者");
-        getDataSource( ).addField(manager);
-        
-        DataSourceField name = new DataSourceTextField("NAME", "姓名");
-        getDataSource( ).addField(name);
-        
-        DataSourceField telephone = new DataSourceTextField("TELEPHONE", "电话");
-        getDataSource( ).addField(telephone);
+		getDataSource( Org.class ).setID( id );
 	}
 
 	@Override
@@ -85,8 +65,8 @@ public class OrgDataSource extends GwtRpcDataSource
                     }
                 }
 				response.setData(list);
-				 response.setTotalRows(result.size());
-				getDataSource().processResponse(requestId, response);
+				response.setTotalRows(result.size());
+				getDataSource(Org.class).processResponse(requestId, response);
 			}
 		} );
 	}
@@ -111,13 +91,5 @@ public class OrgDataSource extends GwtRpcDataSource
 	{
 
 	}
-	
-   private static void copyValues(Org from, ListGridRecord to) {
-        to.setAttribute("ID", from.getId( ));
-        to.setAttribute("LOGINNAME", from.getLoginName( ));
-        to.setAttribute("MANAGER", from.getManager( ));
-        to.setAttribute("NAME", from.getName( ));
-        to.setAttribute("TELEPHONE", from.getTelephone( ));
-    }
 
 }

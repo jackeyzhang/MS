@@ -4,6 +4,7 @@
 package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.datasource.OrgDataSource;
+import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.widgets.grid.ListGrid;
 
 
@@ -19,6 +20,6 @@ public class OrgDForm extends ListGrid
 		setWidth100( );
 		setHeight100( );
 		setAutoFetchData(true);
-		setDataSource( OrgDataSource.getInstance( ).getDataSource( ) );
+		setDataSource( OrgDataSource.getInstance( ).getDataSource( Org.class ) );
 	}
 }
