@@ -10,7 +10,6 @@ import com.sickle.medu.ms.client.ui.MainPagePanel;
 import com.sickle.medu.ms.client.ui.tabpanel.MainPageTab;
 import com.sickle.medu.ms.client.ui.tabpanel.WebSiteEditTab;
 import com.smartgwt.client.types.Alignment;
-import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Img;
@@ -86,8 +85,10 @@ public class LoginDialog extends AbstractDialog
 	 */
 	private void commitform( )
 	{
-		Object username = loginform.getUsername( ).getValue( );
-		Object password = loginform.getPassword( ).getValue( );
+//		Object username = 
+				loginform.getUsername( ).getValue( );
+//		Object password = 
+				loginform.getPassword( ).getValue( );
 		initMainPage();
 	}
 	

@@ -11,12 +11,15 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.gwtent.reflection.client.ClassType;
 import com.gwtent.reflection.client.Field;
 import com.gwtent.reflection.client.TypeOracle;
+import com.sickle.uireflect.FieldType;
 import com.sickle.uireflect.Reflect_Field;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.DataSourceField;
+import com.smartgwt.client.data.fields.DataSourceDateField;
 import com.smartgwt.client.data.fields.DataSourceIntegerField;
+import com.smartgwt.client.data.fields.DataSourcePasswordField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.types.DSDataFormat;
 import com.smartgwt.client.types.DSProtocol;
@@ -106,15 +109,25 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			DataSourceField newfield = new DataSourceTextField( f.getName( ),
 					field.title( ) );
-			if ( field.type( ).equalsIgnoreCase( "int" ) )
+			
+			if ( field.type( ).equals( FieldType.Integer ) )
 			{
 				newfield = new DataSourceIntegerField( f.getName( ),
 						field.title( ) );
 			}
-			else if ( field.type( ).equalsIgnoreCase( "String" ) )
+			else if ( field.type( ).equals( FieldType.Password ) )
+			{
+				newfield = new DataSourcePasswordField( f.getName( ), field.title( ) );
+			}
+			else if ( field.type( ).equals( FieldType.Date ) )
+			{
+				newfield = new DataSourceDateField( f.getName( ), field.title( ) );
+			}
+			else
 			{
 				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
 			}
+			
 			if ( field.isId( ) )
 			{
 				newfield.setPrimaryKey( true );
