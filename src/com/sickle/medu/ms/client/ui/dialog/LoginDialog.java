@@ -88,7 +88,6 @@ public class LoginDialog extends AbstractDialog
 	{
 		Object username = loginform.getUsername( ).getValue( );
 		Object password = loginform.getPassword( ).getValue( );
-		SC.say( username + ":" + password );
 		initMainPage();
 	}
 	

@@ -1,10 +1,10 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.rpc;
+package com.sickle.medu.ms.client.rpc.util;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.smartgwt.client.util.SC;
 
 /**
  * @author Administrator
@@ -22,7 +22,7 @@ public abstract class AsyncCallbackWithStatus<T> implements AsyncCallback<T> {
 	@Override
 	public void onFailure(Throwable caught) {
 		loadinghint.hide();
-		Window.alert("系统出了个小问题:"+caught.getMessage());
+		SC.say("系统出了个小问题:"+caught.getMessage());
 	}
 
 	@Override

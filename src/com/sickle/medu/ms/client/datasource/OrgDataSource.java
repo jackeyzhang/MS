@@ -2,10 +2,10 @@ package com.sickle.medu.ms.client.datasource;
 
 import java.util.List;
 
-import com.sickle.medu.ms.client.rpc.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.rpc.RpcHelper;
+import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
