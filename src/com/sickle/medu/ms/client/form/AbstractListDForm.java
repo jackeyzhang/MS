@@ -239,10 +239,12 @@ public abstract class AbstractListDForm extends ListGrid
 			public Canvas getView( )
 			{
 				VLayout layout = new VLayout( );
+				_addNewForm = new DynamicForm( );
 				_addNewForm.setNumCols( 2 );
 				_addNewForm.setPadding( 10 );
-				_addNewForm.setDataSource( getDataSource( ) );
+				_addNewForm.setColWidths( new Integer[]{100,200} );
 				_addNewForm.setAutoFetchData( false );
+				_addNewForm.setDataSource( getDataSource( ) );
 				if( op == 1)
 				{
 					_addNewForm.editNewRecord( );
