@@ -27,11 +27,11 @@ public class LoginDform extends DynamicForm
 		username = new TextItem();
 		username.setTitle("username");
 		username.setRequired(true);
-		username.setDefaultValue("zhangsan@XXX.com");
+		username.setDefaultValue("yourname@company.com");
 
 		password = new PasswordItem();
 		password.setTitle("password");
-		password.setRequired(true);	
+//		password.setRequired(true);	
 		
 		setFields(new FormItem[] {username, password});
 	}

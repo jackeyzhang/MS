@@ -35,7 +35,6 @@ public abstract class AsyncCallbackWithStatus<T> implements AsyncCallback<T> {
 	public void onSuccess(T result) {
 		loadinghint.hide();
 		call(result);
-		SC.say( "操作成功" );
 	}
 	
 	public abstract void call(T result);

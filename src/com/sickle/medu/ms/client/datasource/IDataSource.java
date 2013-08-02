@@ -7,6 +7,8 @@ import com.smartgwt.client.data.DataSource;
 
 
 /**
+ * 支持根据Class反射来配置field的datasource
+ * 
  * @author chenhao
  *
  */

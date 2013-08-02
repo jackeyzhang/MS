@@ -40,12 +40,12 @@ public class MainPageTab extends AbstractTab
 				VLayout layout = new VLayout( );
 				layout.setWidth100( );
 				layout.setHeight( 500 );
-				layout.addMember( new OrgDForm( ) );
+				layout.addMember( new OrgDForm( ).getDefaultLayout( ) );
 				return layout;
 			}
 			
 		};
-		orglistwindow.setWidth( "60%" );
+		orglistwindow.setWidth( "80%" );
 		orglistwindow.setHeight( 500 );
 		return orglistwindow;
 	}

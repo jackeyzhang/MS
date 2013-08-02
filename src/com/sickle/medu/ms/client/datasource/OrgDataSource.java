@@ -1,6 +1,7 @@
 
 package com.sickle.medu.ms.client.datasource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -39,13 +40,14 @@ public class OrgDataSource extends GwtRpcDataSource
 	}
 
 	@Override
-	protected void executeFetch( final String requestId, DSRequest request,
+	protected void executeFetch( final String requestId,final DSRequest request,
 			final DSResponse response )
 	{
 		final int startIndex = ( request.getStartRow( ) < 0 ) ? 0 : request
 				.getStartRow( );
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
 				.getEndRow( );
+		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
 		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
 		service.listAllOrg( startIndex,
 				new AsyncCallbackWithStatus<List<Org>>( ) {
@@ -65,20 +67,33 @@ public class OrgDataSource extends GwtRpcDataSource
 								size = endIndex - startIndex + 1;
 							}
 						}
-						ListGridRecord[] list = new ListGridRecord[size];
+						List<ListGridRecord> list = new ArrayList<ListGridRecord>();
 						if ( size > 0 )
 						{
+							
 							for ( int i = 0; i < result.size( ); i++ )
 							{
 								if ( i >= startIndex && i <= endIndex )
 								{
 									ListGridRecord record = new ListGridRecord( );
-									copyValues( result.get( i ), record );
-									list[i - startIndex] = record;
+									if( null != namequery && !namequery.isEmpty( ))
+									{
+										if(result.get( i ).getName( ).contains( namequery  ))
+										{
+											copyValues( result.get( i ), record );
+											list.add(record);
+										}
+									}
+									else
+									{
+										copyValues( result.get( i ), record );
+										list.add(record);
+									}
+									
 								}
 							}
 						}
-						response.setData( list );
+						response.setData( list.toArray( new ListGridRecord[list.size( )] ) );
 						response.setTotalRows( result.size( ) );
 						getDataSource( Org.class ).processResponse( requestId,
 								response );
@@ -137,6 +152,10 @@ public class OrgDataSource extends GwtRpcDataSource
 						.processResponse( requestId, response );
 			}
 		} );
+	}
+	
+	public String getQueryName(){
+		return "name";
 	}
 
 }

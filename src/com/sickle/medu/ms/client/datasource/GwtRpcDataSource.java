@@ -170,7 +170,23 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 				continue;
 			}
 			String value = from.getAttributeAsString( f.getName( ) );
-			f.setFieldValue( to, value );
+			if ( field.type( ).equals( FieldType.Integer ) )
+			{
+				f.setFieldValue( to, Integer.decode( value ) );
+			}
+			else if ( field.type( ).equals( FieldType.Password ) )
+			{
+				f.setFieldValue( to, value );
+			}
+			else if ( field.type( ).equals( FieldType.Date ) )
+			{
+				f.setFieldValue( to, value );
+			}
+			else
+			{
+				f.setFieldValue( to, value );
+			}
+			
 		}
 	}
 
