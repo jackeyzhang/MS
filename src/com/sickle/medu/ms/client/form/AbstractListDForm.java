@@ -6,6 +6,9 @@ package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.smartgwt.client.data.Criteria;
+import com.smartgwt.client.data.DSCallback;
+import com.smartgwt.client.data.DSRequest;
+import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
@@ -233,16 +236,18 @@ public abstract class AbstractListDForm extends ListGrid
 			title = "修改";
 			op = 2;
 		}
+		final String ti = title;
 		Window opdialog = new AbstractDialog( title ) {
 
 			@Override
 			public Canvas getView( )
 			{
+				
 				VLayout layout = new VLayout( );
+				layout.setWidth100( );
 				_addNewForm = new DynamicForm( );
-				_addNewForm.setNumCols( 2 );
-				_addNewForm.setPadding( 10 );
-				_addNewForm.setColWidths( new Integer[]{100,200} );
+				_addNewForm.setColWidths( 200,200 );
+				_addNewForm.setPadding( 2 );
 				_addNewForm.setAutoFetchData( false );
 				_addNewForm.setDataSource( getDataSource( ) );
 				if( op == 1)
@@ -250,7 +255,6 @@ public abstract class AbstractListDForm extends ListGrid
 					_addNewForm.editNewRecord( );
 				}else
 				{
-//					_addNewForm.editSelectedData( AbstractListDForm.this );
 					_addNewForm.editRecord( record );
 				}
 				IButton okbutton = new IButton("确认");
@@ -259,7 +263,20 @@ public abstract class AbstractListDForm extends ListGrid
 					public void onClick( ClickEvent event )
 					{
 						_addNewForm.validate( );
-						_addNewForm.submit( );
+						_addNewForm.submit( new DSCallback(){
+							@Override
+							public void execute( DSResponse dsResponse,
+									Object data, DSRequest dsRequest )
+							{
+								if( dsResponse.getErrors( )== null || dsResponse.getErrors( ).isEmpty( )){
+									SC.say( ti + "成功！" );
+								}else{
+									SC.say( ti + "失败！" );
+								}
+								hide( );
+							}
+						} );
+						
 					}
 				} );
 				
@@ -269,7 +286,7 @@ public abstract class AbstractListDForm extends ListGrid
 			}
 
 		};
-		opdialog.setWidth( 600 );
+		opdialog.setWidth( 400 );
 		opdialog.setAutoHeight( );
 		return opdialog;
 	}

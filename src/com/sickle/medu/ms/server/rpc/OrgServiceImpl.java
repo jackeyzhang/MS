@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sickle.dao.DaoServiceFactory;
+import com.sickle.dto.OrgDTO;
 import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.pojo.edu.Org;
@@ -52,10 +53,7 @@ public class OrgServiceImpl extends RemoteServiceServlet implements OrgService {
 	public List<Org> listAllOrg(int startIndex)
 	{
 		List<Org> orgs = service.listAllOrg( );
-		for(Org org : orgs){
-			org.setSchools( null );
-		}
-		return orgs;
+		return new OrgDTO().to( orgs );
 	}
 
 
@@ -63,7 +61,8 @@ public class OrgServiceImpl extends RemoteServiceServlet implements OrgService {
 	@Override
 	public Org addOrg( Org org ) throws Exception
 	{
-		return service.addOrg( org );
+		Org oorg = service.addOrg( org );
+		return new OrgDTO().to( oorg );
 	}
 
 
@@ -73,7 +72,7 @@ public class OrgServiceImpl extends RemoteServiceServlet implements OrgService {
 	{
 		if( service.removeOrgById( org.getId( ) ))
 		{
-			return org;
+			return new OrgDTO().to( org );
 		}
 		return null;
 	}

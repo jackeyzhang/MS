@@ -103,7 +103,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		for ( Field f : fs )
 		{
 			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
-			if ( field == null )
+			if ( field == null || field.isshow( ) == false)
 			{
 				continue;
 			}
@@ -171,7 +171,14 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			String value = from.getAttributeAsString( f.getName( ) );
 			if( field.isId( )){
-				f.setFieldValue( to, 12345 );
+				if( value == null || value.isEmpty( ))
+				{
+					f.setFieldValue( to, 12345 );
+				}
+				else
+				{
+					f.setFieldValue( to, Integer.decode( value ) );
+				}
 			}
 			else if ( field.type( ).equals( FieldType.Integer ) )
 			{
