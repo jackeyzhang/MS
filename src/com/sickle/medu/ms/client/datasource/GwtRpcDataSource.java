@@ -12,6 +12,7 @@ import com.gwtent.reflection.client.ClassType;
 import com.gwtent.reflection.client.Field;
 import com.gwtent.reflection.client.TypeOracle;
 import com.sickle.uireflect.FieldType;
+import com.sickle.uireflect.Mask;
 import com.sickle.uireflect.Reflect_Field;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
@@ -123,20 +124,40 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			{
 				newfield = new DataSourceDateField( f.getName( ), field.title( ) );
 			}
-			else
+			else if ( field.type( ).equals( FieldType.Email ) )
 			{
 				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
+				newfield.setValidators( emailValidator );
 			}
+			
+			formatField(newfield,field.mask( ));
 			
 			if ( field.isId( ) )
 			{
 				newfield.setPrimaryKey( true );
 				newfield.setHidden( true );
 			}
+			
+			if( field.reqiured( ))
+			{
+				newfield.setRequired( true );
+			}
+			
 			datasource.addField( newfield );
 		}
 		cache.put( cls, datasource );
 		return datasource;
+	}
+	
+	private void formatField(DataSourceField field,Integer mask){
+		if( (mask.byteValue( ) & Mask.showInAdd.getValue( ).byteValue( )) == 0)
+		{
+			field.setCanEdit( true );
+		}else{
+			field.setCanEdit( false );
+		}
+		
+	
 	}
 
 	protected <T> void copyValues( T from, ListGridRecord to )
@@ -191,6 +212,10 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			else if ( field.type( ).equals( FieldType.Date ) )
 			{
 				f.setFieldValue( to, value );
+			}
+			else if ( field.type( ).equals( FieldType.Float ) )
+			{
+				f.setFieldValue( to, Float.parseFloat( value ) );
 			}
 			else
 			{

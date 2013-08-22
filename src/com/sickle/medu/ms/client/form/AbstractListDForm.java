@@ -63,7 +63,7 @@ public abstract class AbstractListDForm extends ListGrid
 	 * 获取datasource
 	 * 
 	 */
-	public abstract DataSource getDataSource( );
+	public abstract DataSource getDataSource();
 
 	/**
 	 * 获取默认提供的界面

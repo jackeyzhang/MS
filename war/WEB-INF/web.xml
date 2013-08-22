@@ -28,5 +28,14 @@
   	<servlet-name>OrgService</servlet-name>
   	<url-pattern>/ms/OrgService</url-pattern>
   </servlet-mapping>
+    <servlet>
+  	<servlet-name>TeacherService</servlet-name>
+  	<servlet-class>com.sickle.medu.ms.server.rpc.TeacherServiceImpl</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TeacherService</servlet-name>
+  	<url-pattern>/ms/TeacherService</url-pattern>
+  </servlet-mapping>
 
 </web-app>

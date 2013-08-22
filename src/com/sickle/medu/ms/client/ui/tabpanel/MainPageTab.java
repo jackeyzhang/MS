@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.tabpanel;
 
-import com.sickle.medu.ms.client.form.OrgDForm;
+import com.sickle.medu.ms.client.form.TeacherDForm;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Window;
@@ -40,7 +40,7 @@ public class MainPageTab extends AbstractTab
 				VLayout layout = new VLayout( );
 				layout.setWidth100( );
 				layout.setHeight( 500 );
-				layout.addMember( new OrgDForm( ).getDefaultLayout( ) );
+				layout.addMember( new TeacherDForm( ).getDefaultLayout( ) );
 				return layout;
 			}
 			
