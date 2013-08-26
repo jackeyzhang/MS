@@ -32,3 +32,8 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+body{
+	background-image:url(./images/backgroundtexture.png);
+	background-color:#f9f9f9;
+}
