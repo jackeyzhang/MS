@@ -36,5 +36,9 @@ public interface MessageService extends RemoteService {
 		}
 	}
 	
-	public List<Message> listAllMessages();
+	public List<Message> listMessages(Integer userid);
+	
+	public Message addMessage(Message message)throws Exception;
+	
+	public Message deleteMessage(Message message)throws Exception;
 }

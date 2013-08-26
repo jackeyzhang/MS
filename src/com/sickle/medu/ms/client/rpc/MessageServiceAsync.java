@@ -16,6 +16,10 @@ import com.sickle.pojo.website.Message;
 public interface MessageServiceAsync
 {
 
-	void listAllMessages( AsyncCallback<List<Message>> callback );
+	void listMessages( Integer userid, AsyncCallback<List<Message>> callback );
+
+	void addMessage( Message message, AsyncCallback<Message> callback );
+
+	void deleteMessage( Message message, AsyncCallback<Message> callback );
 
 }

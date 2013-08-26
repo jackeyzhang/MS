@@ -16,17 +16,52 @@ package com.sickle.medu.ms.server.rpc;
 
 import java.util.List;
 
+import javax.servlet.ServletException;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.sickle.dao.DaoServiceFactory;
+import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.MessageService;
 import com.sickle.pojo.website.Message;
+import com.sickle.service.itf.IMessageService;
 
 public class MessageServiceImpl extends RemoteServiceServlet implements MessageService {
 
 	private static final long serialVersionUID = -1967904900496749968L;
+	
+	private static IMessageService service = null;
+	
 
 	@Override
-	public List<Message> listAllMessages( )
+	public void init( ) throws ServletException
 	{
-		return null;
+		super.init( );
+		try
+		{
+			service = DaoServiceFactory.getService( IMessageService.class );
+		}
+		catch ( CodeException e )
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<Message> listMessages( Integer userid )
+	{
+		return service.getMessageByUserId( userid );
+	}
+
+	@Override
+	public Message addMessage( Message message ) throws Exception
+	{
+		return service.addMessage( message );
+	}
+
+	@Override
+	public Message deleteMessage( Message message ) throws Exception
+	{
+		 service.removeMessageById( message.getId( ) );
+		 return message;
 	}
 }
