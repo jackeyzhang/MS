@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.client.Timer;
+import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.AnimationEffect;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.layout.HLayout;
-import com.smartgwt.client.widgets.layout.VLayout;
 
 
 /**
@@ -22,14 +22,14 @@ import com.smartgwt.client.widgets.layout.VLayout;
  *
  */
 
-public class AdvertImgPanel extends VLayout
+public class AdvertImgPanel extends HLayout
 {
 	
 	public  AdvertImgPanel()
 	{
-        setWidth( "100%" );
+        setWidth100( );
         setHeight( "320px" );
-        setMargin( 10 );
+        
         loadPanel();
 	}
 	
@@ -40,9 +40,12 @@ public class AdvertImgPanel extends VLayout
 		imagePanel.setHeight( "320px" );
 		imagePanel.setAlign( Alignment.CENTER );
 		
-		Img img1 = new Img("slideshow/sliderimage1.jpg",1000,300);
-		Img img2 = new Img("slideshow/sliderimage2.jpg",1000,300);
-		Img img3 = new Img("slideshow/sliderimage3.jpg",1000,300);
+		Img img1 = new Img("slideshow/sliderimage1.jpg",1200,300);
+		img1.setWidth( ScreenUtil.getWidth( 0.98 ) );
+		Img img2 = new Img("slideshow/sliderimage2.jpg",1200,300);
+		img2.setWidth( ScreenUtil.getWidth( 0.98 ) );
+		Img img3 = new Img("slideshow/sliderimage3.jpg",1200,300);
+		img3.setWidth( ScreenUtil.getWidth( 0.98 ) );
 		
 		final List<Img> imgs = new ArrayList<Img>();
 		imgs.add( img1 );
@@ -66,10 +69,10 @@ public class AdvertImgPanel extends VLayout
 				}
 				imagePanel.addMember( imgs.get( count ) );
 				imagePanel.redraw( );
-				imagePanel.animateShow( AnimationEffect.WIPE );
+				imagePanel.animateShow( AnimationEffect.WIPE, null, 500 );
 				count ++ ;
 			}
-		}.scheduleRepeating( 3000 );
+		}.scheduleRepeating( 5000 );
 	}
 
 }
