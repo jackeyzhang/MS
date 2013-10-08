@@ -49,7 +49,7 @@ public class TeacherDataSource extends GwtRpcDataSource
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
 		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
-		service.listAllTeacher( startIndex,
+		service.listAllTeacher( startIndex,endIndex,
 				new AsyncCallbackWithStatus<List<Teacher>>( ) {
 
 					@Override

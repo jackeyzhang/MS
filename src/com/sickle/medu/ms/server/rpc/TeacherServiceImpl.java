@@ -51,7 +51,7 @@ public class TeacherServiceImpl extends RemoteServiceServlet implements TeacherS
 
 
 	@Override
-	public List<Teacher> listAllTeacher(int startIndex)
+	public List<Teacher> listAllTeacher(int startIndex,int length )
 	{
 		List<Teacher> teachers = null;
 		try

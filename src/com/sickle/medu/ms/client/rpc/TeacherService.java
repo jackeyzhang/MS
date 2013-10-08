@@ -36,7 +36,7 @@ public interface TeacherService extends RemoteService {
 		}
 	}
 	
-	public List<Teacher> listAllTeacher(int startIndex);
+	public List<Teacher> listAllTeacher(int startIndex,int length );
 	
 	public Teacher addTeacher(Teacher Teacher) throws Exception;
 	

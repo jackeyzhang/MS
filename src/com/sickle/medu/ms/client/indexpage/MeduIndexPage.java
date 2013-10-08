@@ -88,40 +88,41 @@ public class MeduIndexPage extends VLayout
 	
 	private void loadingPersonCardPanel()
 	{
-		HLayout cardPanel = new HLayout();
+		final VLayout cardPanel = new VLayout();
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
-		cardPanel.setHeight100( );
 		cardPanel.setAlign( Alignment.CENTER );
 		
-		final HLayout onecardpanel = new HLayout();
-		
-		onecardpanel.setHeight100( );
-		
-		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
-		
-		
-		cardPanel.addMember( onecardpanel );
 		
 		HLayout panel = new HLayout();
 		panel.setWidth100( );
 		panel.setAlign( Alignment.CENTER );
 		panel.addMember( cardPanel );
-		
 		addMember(panel);
 		
+		
+		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
+		final int columnnum = (int) ( (width/IPageConst.CARD_WIDTH) - 1 );
+		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
+		
 		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
-		service.listAllTeacher( 0 ,new AsyncCallbackWithStatus<List<Teacher>>( "加载教师名片" ) {
+		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载教师名片" ) {
 			@Override
 			public void call( List<Teacher> result )
 			{
-				for(int i = 0; i < (width/IPageConst.CARD_WIDTH)-1 ;i ++)
+				for( int r = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
 				{
-					if( i >= result.size()){
-						break;
+					HLayout onecardpanel = new HLayout();
+					for(int i = 0; i < columnnum ;i ++)
+					{
+						if( i >= result.size()){
+							break;
+						}
+						PersonalCard p = new PersonalCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						onecardpanel.addMember( p );
 					}
-					PersonalCard p = new PersonalCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
-					onecardpanel.addMember( p );
+					cardPanel.addMember( onecardpanel );
 				}
+				
 			}
 		});
 		

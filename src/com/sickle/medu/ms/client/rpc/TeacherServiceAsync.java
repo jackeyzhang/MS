@@ -13,6 +13,6 @@ public interface TeacherServiceAsync
 
 	void deleteTeacher( Teacher Teacher, AsyncCallback<Teacher> callback );
 
-	void listAllTeacher( int startIndex, AsyncCallback<List<Teacher>> callback );
+	void listAllTeacher( int startIndex,int length , AsyncCallback<List<Teacher>> callback );
 
 }

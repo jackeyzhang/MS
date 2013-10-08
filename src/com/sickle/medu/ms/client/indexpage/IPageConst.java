@@ -15,4 +15,7 @@ public interface IPageConst
 	
 	//页面宽度百分比
 	public static final String PAGE_WIDTH_PER = "98%";
+	
+	//名片显示最多行数
+	public static final int CARD_ROW_MAX_NUM = 2;
 }
