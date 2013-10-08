@@ -44,7 +44,7 @@ public class MainPageTopBar extends RibbonBar
 	        addMember(sgwtHomeButton);
 	        addSpacer(6);
 
-	        Label title = new Label("Max Education Manage System");
+	        Label title = new Label("爱师网");
 	        title.setStyleName("sgwtTitle");
 	        title.setWidth(300);
 	        addMember(title);
@@ -52,7 +52,7 @@ public class MainPageTopBar extends RibbonBar
 	        addFill();
 
 	        ToolStripButton devConsoleButton = new ToolStripButton();
-	        devConsoleButton.setTitle("编辑资料");
+	        devConsoleButton.setTitle("修改信息");
 	        devConsoleButton.setIcon("silk/bug.png");
 	        devConsoleButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {

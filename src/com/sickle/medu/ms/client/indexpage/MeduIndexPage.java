@@ -4,6 +4,12 @@
 
 package com.sickle.medu.ms.client.indexpage;
 
+import java.util.List;
+
+import com.sickle.medu.ms.client.rpc.RpcHelper;
+import com.sickle.medu.ms.client.rpc.TeacherService;
+import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
+import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Teacher;
@@ -25,7 +31,7 @@ public class MeduIndexPage extends VLayout
 	{
 		setWidth100( );
 		setHeight100( );
-		setAlign( Alignment.CENTER );
+		
 		//#1 add topbar
 		addTopBar();
 		//#2 添加大广告图片
@@ -33,7 +39,7 @@ public class MeduIndexPage extends VLayout
 		//#3 添加网站介绍
 		addProductpanel();
 		//#4 添加老师名片区域
-		addPersonCardPanel();
+		loadingPersonCardPanel();
 		//#5 添加学校介绍区域
 		
 		//#6 添加课程推荐区域
@@ -55,8 +61,8 @@ public class MeduIndexPage extends VLayout
 	private void addProductpanel()
 	{
 		HLayout productPanel = new HLayout();
-		productPanel.setWidth("98%");
-		productPanel.setHeight( "10%" );
+		productPanel.setBorder( "2px solid gold" );
+		productPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		productPanel.setAlign( Alignment.CENTER );
 		
 		Label school = new Label("机构进入" );
@@ -68,37 +74,58 @@ public class MeduIndexPage extends VLayout
 		Label student = new Label("学生进入" );
 		productPanel.addMember( student );
 		
-		addMember(productPanel);
+		Label register = new Label("新用户注册" );
+		productPanel.addMember( register );
+		
+		HLayout thispanel = new HLayout();
+		thispanel.setWidth100( );
+		thispanel.setHeight( "60px" );
+		thispanel.setAlign( Alignment.CENTER );
+		thispanel.addMember( productPanel );
+		
+		addMember(thispanel);
 	}
 	
-	private void addPersonCardPanel()
+	private void loadingPersonCardPanel()
 	{
-		Teacher teacher = new Teacher();
-		teacher.setName( "王老师" );
-		teacher.setGrade( 0.56f );
-		teacher.setContact( "浦东南路1271号" );
-		
-		
 		HLayout cardPanel = new HLayout();
-		cardPanel.setWidth100( );
+		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
 		cardPanel.setHeight100( );
 		cardPanel.setAlign( Alignment.CENTER );
 		
-		HLayout onecardpanel = new HLayout();
-		onecardpanel.setWidth( ScreenUtil.getWidth( 0.98 )  );
+		final HLayout onecardpanel = new HLayout();
+		
 		onecardpanel.setHeight100( );
 		
-		double width = ScreenUtil.getWidthNum( 0.98 );
+		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
 		
-		for(int i = 0; i < (width/IPageConst.CARD_WIDTH)-1 ;i ++)
-		{
-			PersonalCard p = new PersonalCard(teacher,IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
-			onecardpanel.addMember( p );
-		}
 		
-		cardPanel.addMember( onecardpanel 	);
+		cardPanel.addMember( onecardpanel );
 		
-		addMember(cardPanel);
+		HLayout panel = new HLayout();
+		panel.setWidth100( );
+		panel.setAlign( Alignment.CENTER );
+		panel.addMember( cardPanel );
+		
+		addMember(panel);
+		
+		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		service.listAllTeacher( 0 ,new AsyncCallbackWithStatus<List<Teacher>>( "加载教师名片" ) {
+			@Override
+			public void call( List<Teacher> result )
+			{
+				for(int i = 0; i < (width/IPageConst.CARD_WIDTH)-1 ;i ++)
+				{
+					if( i >= result.size()){
+						break;
+					}
+					PersonalCard p = new PersonalCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+					onecardpanel.addMember( p );
+				}
+			}
+		});
+		
+		
 	}
 
 }

@@ -1,2 +1,0 @@
-serviceClass: com.sickle.medu.ms.client.rpc.OrgService
-path: 50E4618FF69D293E8AF31B86313F0B5E.gwt.rpc

@@ -13,6 +13,7 @@ import com.smartgwt.client.types.AnimationEffect;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 
 /**
@@ -22,30 +23,31 @@ import com.smartgwt.client.widgets.layout.HLayout;
  *
  */
 
-public class AdvertImgPanel extends HLayout
+public class AdvertImgPanel extends VLayout
 {
 	
 	public  AdvertImgPanel()
 	{
         setWidth100( );
         setHeight( "320px" );
-        
         loadPanel();
 	}
 	
 	private void loadPanel()
 	{
+		HLayout spacePanel = new HLayout( );
+		spacePanel.setHeight( "20px" );
+		addMember( spacePanel );
+		
 		final HLayout imagePanel = new HLayout( );
-		imagePanel.setWidth( "100%" );
-		imagePanel.setHeight( "320px" );
 		imagePanel.setAlign( Alignment.CENTER );
 		
 		Img img1 = new Img("slideshow/sliderimage1.jpg",1200,300);
-		img1.setWidth( ScreenUtil.getWidth( 0.98 ) );
+		img1.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		Img img2 = new Img("slideshow/sliderimage2.jpg",1200,300);
-		img2.setWidth( ScreenUtil.getWidth( 0.98 ) );
+		img2.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		Img img3 = new Img("slideshow/sliderimage3.jpg",1200,300);
-		img3.setWidth( ScreenUtil.getWidth( 0.98 ) );
+		img3.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		
 		final List<Img> imgs = new ArrayList<Img>();
 		imgs.add( img1 );

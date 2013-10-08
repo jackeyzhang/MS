@@ -5,7 +5,6 @@ package com.sickle.medu.ms.client.indexpage;
 
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.types.Alignment;
-import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -46,8 +45,8 @@ public class PersonalCard extends VLayout
 	
 	private void initLayout()
 	{
-		this.setBorder( "2px solid gold" );
 		this.setMargin( 2 );
+		this.setStyleName( "cardborder" );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 		operate.setHeight( "10%" );
@@ -84,7 +83,8 @@ public class PersonalCard extends VLayout
 	
 	private void initOperate()
 	{
-		Button detailbutton = new Button("detail");
-		operate.addMember( detailbutton );
+//		Label detail = new Label("detail");
+//		detail.setStyleName( "PersonalCardop" );
+//		operate.addMember( detail );
 	}
 }
