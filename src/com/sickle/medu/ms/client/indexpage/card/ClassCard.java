@@ -46,7 +46,7 @@ public class ClassCard extends VLayout
 	private void initLayout()
 	{
 		this.setMargin( 2 );
-		this.setStyleName( "cardborder" );
+		this.setStyleName( "classcardborder" );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 		operate.setHeight( "10%" );

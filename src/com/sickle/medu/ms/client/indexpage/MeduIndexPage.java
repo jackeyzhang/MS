@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.indexpage.card.TeacherCard;
+import com.sickle.medu.ms.client.indexpage.introduce.IntroducePage;
 import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.TeacherService;
 import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
@@ -41,10 +42,13 @@ public class MeduIndexPage extends VLayout
 		//#3 添加网站介绍
 		addProductpanel();
 		//#4 添加老师名片区域
+		insertSpiter("名师推荐");
 		loadingTeacherCardPanel();
 		//#5 添加学校介绍区域
+		insertSpiter("学校展示");
 		loadingSchoolCardPanel();
 		//#6 添加课程推荐区域
+		insertSpiter("推荐课程");
 		loadingClassesCardPanel();
 		//#7 添加footer
 		loadingSupportPanel();
@@ -68,16 +72,16 @@ public class MeduIndexPage extends VLayout
 		productPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		productPanel.setAlign( Alignment.CENTER );
 		
-		Label school = new Label("机构进入" );
+		IntroducePage school = new IntroducePage("机构进入" );
 		productPanel.addMember( school );
 		
-		Label teacher = new Label("老师进入" );
+		IntroducePage teacher = new IntroducePage("老师进入" );
 		productPanel.addMember( teacher );
 		
-		Label student = new Label("学生进入" );
+		IntroducePage student = new IntroducePage("学生进入" );
 		productPanel.addMember( student );
 		
-		Label register = new Label("新用户注册" );
+		IntroducePage register = new IntroducePage("用户注册" );
 		productPanel.addMember( register );
 		
 		HLayout thispanel = new HLayout();
@@ -164,7 +168,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.SCHOOL_CARD_WIDTH + "px",IPageConst.SCHOOL_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
@@ -206,7 +210,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CLASS_CARD_WIDTH + "px",IPageConst.CLASS_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
@@ -219,10 +223,27 @@ public class MeduIndexPage extends VLayout
 	private void loadingSupportPanel()
 	{
 		HLayout panel = new HLayout();
+		panel.setStyleName( "footer" );
 		panel.setWidth100( );
-		panel.setHeight( "200px" );
 		panel.setAlign( Alignment.LEFT );
 		panel.addMember( new Anchor( "汲原堂语言发展中心","http://www.jiyuantown.com/" , "_blank") );
+		addMember(panel);
+	}
+	
+	private void insertSpiter(String spiterwords)
+	{
+		VLayout cardPanel = new VLayout();
+		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
+		cardPanel.setStyleName( "spiter" );
+		cardPanel.setAlign( Alignment.CENTER );
+		Label label = new Label( spiterwords );
+		label.setHeight( "30px" );
+		cardPanel.addMember( label );
+		
+		HLayout panel = new HLayout();
+		panel.setWidth100( );
+		panel.setAlign( Alignment.CENTER );
+		panel.addMember( cardPanel );
 		addMember(panel);
 	}
 

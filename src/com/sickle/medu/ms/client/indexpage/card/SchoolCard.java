@@ -46,7 +46,7 @@ public class SchoolCard extends VLayout
 	private void initLayout()
 	{
 		this.setMargin( 2 );
-		this.setStyleName( "cardborder" );
+		this.setStyleName( "schoolcardborder" );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 		operate.setHeight( "10%" );

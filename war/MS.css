@@ -38,12 +38,28 @@ body{
 	background-color:#f9f9f9;
 }
 
-.cardborder{
+.teachercardborder{
 	border-style: solid;
 	border-width: thin;
 	border-color: gold;
 	border-radius: 5px 5px 5px 5px;
 	background-color: blue;
+}
+
+.schoolcardborder{
+	border-style: solid;
+	border-width: thin;
+	border-color: gold;
+	border-radius: 5px 5px 5px 5px;
+	background-color: green;
+}
+
+.classcardborder{
+	border-style: solid;
+	border-width: thin;
+	border-color: gold;
+	border-radius: 5px 5px 5px 5px;
+	background-color: yellow;
 }
 
 .PersonalCardMenuPage{
@@ -59,3 +75,20 @@ body{
 	height : 15px;
 	color : blue;
 } */
+
+.Introducepage{
+	 width: 300px;
+	 font-size: 2em;
+	 font-weight: bold;
+	 color: #777777;
+}
+
+.spiter{
+	margin: 5px 0px 10px 0px;
+	background-image:url(./images/gauze.png);
+}
+
+.footer{
+	height: 150px;
+	background-color:  #777777;
+}
