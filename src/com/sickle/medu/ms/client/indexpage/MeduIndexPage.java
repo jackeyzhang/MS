@@ -6,6 +6,8 @@ package com.sickle.medu.ms.client.indexpage;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.Anchor;
+import com.sickle.medu.ms.client.indexpage.card.TeacherCard;
 import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.TeacherService;
 import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
@@ -39,12 +41,13 @@ public class MeduIndexPage extends VLayout
 		//#3 添加网站介绍
 		addProductpanel();
 		//#4 添加老师名片区域
-		loadingPersonCardPanel();
+		loadingTeacherCardPanel();
 		//#5 添加学校介绍区域
-		
+		loadingSchoolCardPanel();
 		//#6 添加课程推荐区域
-		
+		loadingClassesCardPanel();
 		//#7 添加footer
+		loadingSupportPanel();
 	}
 	
 	private void addTopBar()
@@ -86,10 +89,11 @@ public class MeduIndexPage extends VLayout
 		addMember(thispanel);
 	}
 	
-	private void loadingPersonCardPanel()
+	private void loadingTeacherCardPanel()
 	{
 		final VLayout cardPanel = new VLayout();
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
+		cardPanel.setHeight( IPageConst.CARD_HEIGHT + "px" );
 		cardPanel.setAlign( Alignment.CENTER );
 		
 		
@@ -109,15 +113,15 @@ public class MeduIndexPage extends VLayout
 			@Override
 			public void call( List<Teacher> result )
 			{
-				for( int r = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
+				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
 				{
 					HLayout onecardpanel = new HLayout();
-					for(int i = 0; i < columnnum ;i ++)
+					for(; i < columnnum ;i ++)
 					{
 						if( i >= result.size()){
 							break;
 						}
-						PersonalCard p = new PersonalCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
@@ -126,7 +130,100 @@ public class MeduIndexPage extends VLayout
 			}
 		});
 		
+	}
+	
+	private void loadingSchoolCardPanel()
+	{
+		final VLayout cardPanel = new VLayout();
+		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
+		cardPanel.setHeight( IPageConst.SCHOOL_CARD_HEIGHT + "px" );
+		cardPanel.setAlign( Alignment.CENTER );
 		
+		
+		HLayout panel = new HLayout();
+		panel.setWidth100( );
+		panel.setAlign( Alignment.CENTER );
+		panel.addMember( cardPanel );
+		addMember(panel);
+		
+		
+		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
+		final int columnnum = (int) ( (width/IPageConst.SCHOOL_CARD_WIDTH) - 1 );
+		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
+		
+		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载学校名片" ) {
+			@Override
+			public void call( List<Teacher> result )
+			{
+				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
+				{
+					HLayout onecardpanel = new HLayout();
+					for(; i < columnnum ;i ++)
+					{
+						if( i >= result.size()){
+							break;
+						}
+						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						onecardpanel.addMember( p );
+					}
+					cardPanel.addMember( onecardpanel );
+				}
+				
+			}
+		});
+	}
+	
+	private void loadingClassesCardPanel()
+	{
+		final VLayout cardPanel = new VLayout();
+		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
+		cardPanel.setHeight( IPageConst.CLASS_CARD_HEIGHT + "px" );
+		cardPanel.setAlign( Alignment.CENTER );
+		
+		
+		HLayout panel = new HLayout();
+		panel.setWidth100( );
+		panel.setAlign( Alignment.CENTER );
+		panel.addMember( cardPanel );
+		addMember(panel);
+		
+		
+		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
+		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) - 1 );
+		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
+		
+		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载班级名片" ) {
+			@Override
+			public void call( List<Teacher> result )
+			{
+				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
+				{
+					HLayout onecardpanel = new HLayout();
+					for(; i < columnnum ;i ++)
+					{
+						if( i >= result.size()){
+							break;
+						}
+						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						onecardpanel.addMember( p );
+					}
+					cardPanel.addMember( onecardpanel );
+				}
+				
+			}
+		});
+	}
+	
+	private void loadingSupportPanel()
+	{
+		HLayout panel = new HLayout();
+		panel.setWidth100( );
+		panel.setHeight( "200px" );
+		panel.setAlign( Alignment.LEFT );
+		panel.addMember( new Anchor( "汲原堂语言发展中心","http://www.jiyuantown.com/" , "_blank") );
+		addMember(panel);
 	}
 
 }
