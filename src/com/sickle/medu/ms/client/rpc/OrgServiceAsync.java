@@ -17,7 +17,7 @@ public interface OrgServiceAsync
 {
 
 
-	void listAllOrg( int s, AsyncCallback<List<Org>> callback );
+	void listAllOrg( int s,int length, AsyncCallback<List<Org>> callback );
 
 	void addOrg( Org org, AsyncCallback<Org> callback );
 

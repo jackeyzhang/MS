@@ -49,7 +49,7 @@ public class OrgDataSource extends GwtRpcDataSource
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
 		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
-		service.listAllOrg( startIndex,
+		service.listAllOrg( startIndex,endIndex,
 				new AsyncCallbackWithStatus<List<Org>>( ) {
 
 					@Override

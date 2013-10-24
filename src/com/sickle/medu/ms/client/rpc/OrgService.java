@@ -36,7 +36,7 @@ public interface OrgService extends RemoteService {
 		}
 	}
 	
-	public List<Org> listAllOrg(int startIndex);
+	public List<Org> listAllOrg(int startIndex,int length);
 	
 	public Org addOrg(Org org) throws Exception;
 	

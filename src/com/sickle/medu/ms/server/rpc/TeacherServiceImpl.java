@@ -56,7 +56,7 @@ public class TeacherServiceImpl extends RemoteServiceServlet implements TeacherS
 		List<Teacher> teachers = null;
 		try
 		{
-			teachers = service.listAllTeachers( );
+			teachers = service.listTeachers(startIndex, length );
 		}
 		catch ( Exception e )
 		{

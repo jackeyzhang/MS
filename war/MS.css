@@ -1,52 +1,68 @@
 /** Add css rules here for your application. */
-
-
 /** Example rules used by the template application (remove for your app) */
 h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+	color: #777777;
+	margin: 40px 0px 70px;
+	text-align: center;
 }
 
 .sendButton {
-  display: block;
-  font-size: 16pt;
+	display: block;
+	font-size: 16pt;
 }
 
 /** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
-  width: 400px;
+	width: 400px;
 }
 
 .dialogVPanel {
-  margin: 5px;
+	margin: 5px;
 }
 
 .serverResponseLabelError {
-  color: red;
+	color: red;
 }
 
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
-  margin: 15px 6px 6px;
+	margin: 15px 6px 6px;
 }
 
-body{
-	background-image:url(./images/backgroundtexture.png);
-	background-color:#f9f9f9;
+body {
+	background-image: url(./images/backgroundtexture.png);
+	background-color: #f9f9f9;
 }
 
-.teachercardborder{
+/* teacher card style*/
+.teachercardborder {
 	border-style: solid;
 	border-width: thin;
 	border-color: gold;
-	border-radius: 5px 5px 5px 5px;
-	background-color: blue;
+	/*border-radius: 5px 5px 5px 5px;*/
+	background-color: #fedcbd;
 }
 
-.schoolcardborder{
+.teachercardname {
+	font-size: 1.5em;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+.teachercarddescription {
+	font-size: 1em;
+	padding-left: 8px;
+}
+
+.teachercardresume{
+	font-size: 1em;
+	padding-left: 8px;
+}
+
+/* school card style */
+.schoolcardborder {
 	border-style: solid;
 	border-width: thin;
 	border-color: gold;
@@ -54,7 +70,8 @@ body{
 	background-color: green;
 }
 
-.classcardborder{
+/* class card style*/
+.classcardborder {
 	border-style: solid;
 	border-width: thin;
 	border-color: gold;
@@ -62,33 +79,32 @@ body{
 	background-color: yellow;
 }
 
-.PersonalCardMenuPage{
-	background-color: blue;
+.PersonalCardMenuPage {
+	background-color: #777777;
 }
 
-.PersonalCardMenuPageLabel{
-	height : 15px;
-	color : white;
+.PersonalCardMenuPageLabel {
+	height: 15px;
+	color: white;
 }
 
 /* .PersonalCardop{
 	height : 15px;
 	color : blue;
 } */
-
-.Introducepage{
-	 width: 300px;
-	 font-size: 2em;
-	 font-weight: bold;
-	 color: #777777;
+.Introducepage {
+	width: 300px;
+	font-size: 2em;
+	font-weight: bold;
+	color: #777777;
 }
 
-.spiter{
+.spiter {
 	margin: 5px 0px 10px 0px;
-	background-image:url(./images/gauze.png);
+	background-image: url(./images/gauze.png);
 }
 
-.footer{
+.footer {
 	height: 150px;
-	background-color:  #777777;
+	background-color: #777777;
 }

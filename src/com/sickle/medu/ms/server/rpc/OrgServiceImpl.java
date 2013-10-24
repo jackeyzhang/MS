@@ -50,7 +50,7 @@ public class OrgServiceImpl extends RemoteServiceServlet implements OrgService {
 
 
 	@Override
-	public List<Org> listAllOrg(int startIndex)
+	public List<Org> listAllOrg(int startIndex, int length)
 	{
 		List<Org> orgs = service.listAllOrg( );
 		return new OrgDTO().to( orgs );

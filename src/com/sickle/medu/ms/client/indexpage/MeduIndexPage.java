@@ -109,7 +109,7 @@ public class MeduIndexPage extends VLayout
 		
 		
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
-		final int columnnum = (int) ( (width/IPageConst.CARD_WIDTH) - 1 );
+		final int columnnum = (int) ( (width/IPageConst.CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
 		
 		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
@@ -120,7 +120,7 @@ public class MeduIndexPage extends VLayout
 				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
 				{
 					HLayout onecardpanel = new HLayout();
-					for(; i < columnnum ;i ++)
+					for(; i < columnnum * (r + 1) ;i ++)
 					{
 						if( i >= result.size()){
 							break;
@@ -152,18 +152,18 @@ public class MeduIndexPage extends VLayout
 		
 		
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
-		final int columnnum = (int) ( (width/IPageConst.SCHOOL_CARD_WIDTH) - 1 );
-		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
+		final int columnnum = (int) ( (width/IPageConst.SCHOOL_CARD_WIDTH) );
+		final int num = columnnum * IPageConst.SCHOOL_CARD_ROW_MAX_NUM;
 		
 		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
 		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载学校名片" ) {
 			@Override
 			public void call( List<Teacher> result )
 			{
-				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
+				for( int r = 0,i = 0; r < IPageConst.SCHOOL_CARD_ROW_MAX_NUM; r++ )
 				{
 					HLayout onecardpanel = new HLayout();
-					for(; i < columnnum ;i ++)
+					for(; i < columnnum * ( r + 1);i ++)
 					{
 						if( i >= result.size()){
 							break;
@@ -194,18 +194,18 @@ public class MeduIndexPage extends VLayout
 		
 		
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
-		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) - 1 );
-		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
+		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) );
+		final int num = columnnum * IPageConst.CLASS_CARD_ROW_MAX_NUM;
 		
 		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
 		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载班级名片" ) {
 			@Override
 			public void call( List<Teacher> result )
 			{
-				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
+				for( int r = 0,i = 0; r < IPageConst.CLASS_CARD_ROW_MAX_NUM; r++ )
 				{
 					HLayout onecardpanel = new HLayout();
-					for(; i < columnnum ;i ++)
+					for(; i < columnnum * ( r + 1) ;i ++)
 					{
 						if( i >= result.size()){
 							break;

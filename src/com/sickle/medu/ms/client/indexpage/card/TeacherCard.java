@@ -62,22 +62,29 @@ public class TeacherCard extends VLayout
 		baseinformation.setAlign( Alignment.CENTER );
 		
 		Label name = new Label(teacher.getName( ));
-		name.setHeight( "15px" );
-		Label description = new Label( "" + teacher.getGrade( ));
-		description.setHeight( "15px" );
+		name.setHeight( 15 );
+		name.setStyleName( "teachercardname" );
+		Label description = new Label( teacher.getGrade( ) == null ? "新老师": teacher.getGrade( ) + "级");
+		description.setHeight( 15 );
+		description.setStyleName( "teachercarddescription" );
+		
 		baseinformation.addMember( name );
 		baseinformation.addMember( description );
 		
-		information.addMember( baseinformation );
 		
 		VLayout extendinformation = new VLayout( );
 		extendinformation.setWidth( "65%" );
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
 		
-		Label contact = new Label(teacher.getContact( ));
-		extendinformation.addMember( contact );
+		Label resume = new Label(teacher.getResume( ));
+		resume.setHeight( 15 );
+		resume.setStyleName( "teachercardresume" );
 		
+		extendinformation.addMember( resume );
+		
+		//分base和extends左右两部分
+		information.addMember( baseinformation );
 		information.addMember( extendinformation );
 	}
 	
