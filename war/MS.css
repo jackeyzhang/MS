@@ -45,6 +45,12 @@ body {
 	background-color: #fedcbd;
 }
 
+.teachercardborder-mousein{
+	border-width: medium;
+	border-color: #bed742;
+	background-color: #deab8a;
+}
+
 .teachercardname {
 	font-size: 1.5em;
 	font-weight: bold;
