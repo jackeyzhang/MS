@@ -5,7 +5,11 @@ package com.sickle.medu.ms.client.indexpage.card;
 
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.Cursor;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.events.MouseOutEvent;
 import com.smartgwt.client.widgets.events.MouseOutHandler;
 import com.smartgwt.client.widgets.events.MouseOverEvent;
@@ -56,6 +60,7 @@ public class TeacherCard extends VLayout
 			public void onMouseOver( MouseOverEvent event )
 			{
 				setStyleName( "teachercardborder-mousein" );
+				setCursor( Cursor.HAND );
 			}
 		} );
 		this.addMouseOutHandler( new MouseOutHandler( ) {
@@ -63,6 +68,15 @@ public class TeacherCard extends VLayout
 			public void onMouseOut( MouseOutEvent event )
 			{
 				setStyleName( "teachercardborder" );
+				setCursor( Cursor.DEFAULT );
+			}
+		} );
+		this.addClickHandler( new ClickHandler( ) {
+			
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				SC.say( "say sth." );
 			}
 		} );
 		information.setHeight( "90%" );

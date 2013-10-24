@@ -69,6 +69,7 @@ public class MeduIndexPage extends VLayout
 	{
 		HLayout productPanel = new HLayout();
 		productPanel.setBorder( "2px solid gold" );
+		productPanel.setStyleName( "introducepanel" );
 		productPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		productPanel.setAlign( Alignment.CENTER );
 		
@@ -236,6 +237,7 @@ public class MeduIndexPage extends VLayout
 		cardPanel.setStyleName( "spiter" );
 		cardPanel.setAlign( Alignment.CENTER );
 		Label label = new Label( spiterwords );
+		label.setStyleName( "spiterlabel" );
 		label.setHeight( "30px" );
 		cardPanel.addMember( label );
 		
