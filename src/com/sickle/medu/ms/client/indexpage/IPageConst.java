@@ -5,10 +5,10 @@ public interface IPageConst
 {
 
 	// 名片宽度
-	public static final int CARD_WIDTH = 300;
+	public static final int CARD_WIDTH = 360;
 
 	// 名片高度
-	public static final int CARD_HEIGHT = 100;
+	public static final int CARD_HEIGHT = 150;
 
 	// 学校名片宽度
 	public static final int SCHOOL_CARD_WIDTH = 600;
@@ -29,10 +29,10 @@ public interface IPageConst
 	public static final String PAGE_WIDTH_PER = "98%";
 
 	// 名片显示最多行数
-	public static final int CARD_ROW_MAX_NUM = 4;
+	public static final int CARD_ROW_MAX_NUM = 3;
 	
 	// 学校名片显示最多行数
-	public static final int SCHOOL_CARD_ROW_MAX_NUM = 2;
+	public static final int SCHOOL_CARD_ROW_MAX_NUM = 4;
 	
 	// 课程名片显示最多行数
 	public static final int CLASS_CARD_ROW_MAX_NUM = 8;

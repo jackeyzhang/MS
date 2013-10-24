@@ -64,12 +64,22 @@ public class TeacherCard extends VLayout
 		Label name = new Label(teacher.getName( ));
 		name.setHeight( 15 );
 		name.setStyleName( "teachercardname" );
-		Label description = new Label( teacher.getGrade( ) == null ? "新老师": teacher.getGrade( ) + "级");
+		
+		Label orgname = new Label(teacher.getOrgname( ));
+		orgname.setHeight( 15 );
+		orgname.setStyleName( "teachercardorgname" );
+		
+		Label title = new Label( teacher.getTitle( ));
+		title.setHeight( 15 );
+		title.setStyleName( "teachercardtitle" );
+		
+		/*Label description = new Label( teacher.getGrade( ) == null ? "新老师": teacher.getGrade( ) + "级");
 		description.setHeight( 15 );
-		description.setStyleName( "teachercarddescription" );
+		description.setStyleName( "teachercarddescription" );*/
 		
 		baseinformation.addMember( name );
-		baseinformation.addMember( description );
+		baseinformation.addMember( orgname );
+		baseinformation.addMember( title );
 		
 		
 		VLayout extendinformation = new VLayout( );

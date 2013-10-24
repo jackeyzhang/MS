@@ -86,7 +86,7 @@ public class MeduIndexPage extends VLayout
 		
 		HLayout thispanel = new HLayout();
 		thispanel.setWidth100( );
-		thispanel.setHeight( "60px" );
+		thispanel.setHeight( "30px" );
 		thispanel.setAlign( Alignment.CENTER );
 		thispanel.addMember( productPanel );
 		
@@ -99,7 +99,6 @@ public class MeduIndexPage extends VLayout
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
 		cardPanel.setHeight( IPageConst.CARD_HEIGHT + "px" );
 		cardPanel.setAlign( Alignment.CENTER );
-		
 		
 		HLayout panel = new HLayout();
 		panel.setWidth100( );

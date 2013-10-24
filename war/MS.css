@@ -56,6 +56,16 @@ body {
 	padding-left: 8px;
 }
 
+.teachercardorgname{
+	font-size: 1em;
+	padding-left: 8px;
+}
+
+.teachercardtitle{
+	font-size: 1em;
+	padding-left: 8px;
+}
+
 .teachercardresume{
 	font-size: 1em;
 	padding-left: 8px;
@@ -93,7 +103,6 @@ body {
 	color : blue;
 } */
 .Introducepage {
-	width: 300px;
 	font-size: 2em;
 	font-weight: bold;
 	color: #777777;
