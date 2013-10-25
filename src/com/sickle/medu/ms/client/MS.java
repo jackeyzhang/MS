@@ -17,6 +17,6 @@ public class MS implements EntryPoint
 	public void onModuleLoad( )
 	{
 //		new LoginDialog().show( );
-		new MeduIndexPage().draw( );
+		MeduIndexPage.getInstance( ).draw( );
 	}
 }

@@ -37,7 +37,14 @@ import com.smartgwt.client.widgets.layout.VLayout;
 public class MeduIndexPage extends VLayout
 {
 
-	public MeduIndexPage( )
+	private static MeduIndexPage instance = new MeduIndexPage();
+	
+	public static MeduIndexPage getInstance()
+	{
+		return instance;
+	}
+	
+	private MeduIndexPage( )
 	{
 		setWidth100( );
 		setHeight100( );
@@ -51,12 +58,12 @@ public class MeduIndexPage extends VLayout
 		//#4 添加老师名片区域
 		insertSpiter("名师推荐");
 		loadingTeacherCardPanel();
-		//#5 添加学校介绍区域
-		insertSpiter("学校展示");
-		loadingSchoolCardPanel();
-		//#6 添加课程推荐区域
+		//#5 添加课程推荐区域
 		insertSpiter("推荐课程");
 		loadingClassesCardPanel();
+		//#6 添加学校介绍区域
+		insertSpiter("学校展示");
+		loadingSchoolCardPanel();
 		//#7 添加footer
 		loadingSupportPanel();
 	}
@@ -242,10 +249,10 @@ public class MeduIndexPage extends VLayout
 	{
 		VLayout cardPanel = new VLayout();
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
-		cardPanel.setStyleName( "spiter" );
+		cardPanel.setStyleName( "splitter" );
 		cardPanel.setAlign( Alignment.CENTER );
 		Label label = new Label( spiterwords );
-		label.setStyleName( "spiterlabel" );
+		label.setStyleName( "splitterlabel" );
 		label.setHeight( "30px" );
 		cardPanel.addMember( label );
 		
