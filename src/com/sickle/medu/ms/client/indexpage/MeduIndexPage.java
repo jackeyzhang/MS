@@ -126,6 +126,8 @@ public class MeduIndexPage extends VLayout
 		final int columnnum = (int) ( (width/IPageConst.CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
 		
+		final double increment = (width - columnnum * IPageConst.CARD_WIDTH)/columnnum;
+		
 		TeacherServiceAsync service = TeacherService.Util.getInstance( );
 		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载教师名片" ) {
 			@Override
@@ -139,7 +141,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
+						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH+ increment + "px",IPageConst.CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
@@ -168,7 +170,7 @@ public class MeduIndexPage extends VLayout
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
 		final int columnnum = (int) ( (width/IPageConst.SCHOOL_CARD_WIDTH) );
 		final int num = columnnum * IPageConst.SCHOOL_CARD_ROW_MAX_NUM;
-		
+		final double increment = (width - columnnum * IPageConst.SCHOOL_CARD_WIDTH)/columnnum;
 		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.listAllOrg( 0, num ,new AsyncCallbackWithStatus<List<Org>>( "加载学校名片" ) {
 			@Override
@@ -182,7 +184,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						OrgCard p = new OrgCard(result.get( i ),IPageConst.SCHOOL_CARD_WIDTH + "px",IPageConst.SCHOOL_CARD_HEIGHT + "px");
+						OrgCard p = new OrgCard(result.get( i ),IPageConst.SCHOOL_CARD_WIDTH + increment + "px",IPageConst.SCHOOL_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
@@ -210,6 +212,7 @@ public class MeduIndexPage extends VLayout
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
 		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CLASS_CARD_ROW_MAX_NUM;
+		final double increment = (width - columnnum * IPageConst.CLASS_CARD_WIDTH)/columnnum;
 		
 		ClassesServiceAsync service = ClassesService.Util.getInstance( );
 		service.listAllClasses( 0, num ,new AsyncCallbackWithStatus<List<Classes>>( "加载班级名片" ) {
@@ -224,7 +227,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						ClassCard p = new ClassCard(result.get( i ),IPageConst.CLASS_CARD_WIDTH + "px",IPageConst.CLASS_CARD_HEIGHT + "px");
+						ClassCard p = new ClassCard(result.get( i ),IPageConst.CLASS_CARD_WIDTH + increment + "px",IPageConst.CLASS_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
