@@ -7,14 +7,22 @@ package com.sickle.medu.ms.client.indexpage;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Anchor;
+import com.sickle.medu.ms.client.indexpage.card.ClassCard;
+import com.sickle.medu.ms.client.indexpage.card.OrgCard;
 import com.sickle.medu.ms.client.indexpage.card.TeacherCard;
 import com.sickle.medu.ms.client.indexpage.introduce.IntroducePage;
+import com.sickle.medu.ms.client.rpc.ClassesService;
+import com.sickle.medu.ms.client.rpc.ClassesServiceAsync;
+import com.sickle.medu.ms.client.rpc.OrgService;
+import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.TeacherService;
 import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
 import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.util.ScreenUtil;
+import com.sickle.pojo.edu.Classes;
+import com.sickle.pojo.edu.Org;
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
@@ -155,10 +163,10 @@ public class MeduIndexPage extends VLayout
 		final int columnnum = (int) ( (width/IPageConst.SCHOOL_CARD_WIDTH) );
 		final int num = columnnum * IPageConst.SCHOOL_CARD_ROW_MAX_NUM;
 		
-		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
-		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载学校名片" ) {
+		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		service.listAllOrg( 0, num ,new AsyncCallbackWithStatus<List<Org>>( "加载学校名片" ) {
 			@Override
-			public void call( List<Teacher> result )
+			public void call( List<Org> result )
 			{
 				for( int r = 0,i = 0; r < IPageConst.SCHOOL_CARD_ROW_MAX_NUM; r++ )
 				{
@@ -168,7 +176,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.SCHOOL_CARD_WIDTH + "px",IPageConst.SCHOOL_CARD_HEIGHT + "px");
+						OrgCard p = new OrgCard(result.get( i ),IPageConst.SCHOOL_CARD_WIDTH + "px",IPageConst.SCHOOL_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
@@ -197,10 +205,10 @@ public class MeduIndexPage extends VLayout
 		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CLASS_CARD_ROW_MAX_NUM;
 		
-		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
-		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载班级名片" ) {
+		ClassesServiceAsync service = RpcHelper.getService( ClassesService.class );
+		service.listAllClasses( 0, num ,new AsyncCallbackWithStatus<List<Classes>>( "加载班级名片" ) {
 			@Override
-			public void call( List<Teacher> result )
+			public void call( List<Classes> result )
 			{
 				for( int r = 0,i = 0; r < IPageConst.CLASS_CARD_ROW_MAX_NUM; r++ )
 				{
@@ -210,7 +218,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CLASS_CARD_WIDTH + "px",IPageConst.CLASS_CARD_HEIGHT + "px");
+						ClassCard p = new ClassCard(result.get( i ),IPageConst.CLASS_CARD_WIDTH + "px",IPageConst.CLASS_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );

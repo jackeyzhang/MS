@@ -5,7 +5,14 @@ package com.sickle.medu.ms.client.indexpage.card;
 
 import com.sickle.pojo.edu.Classes;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.events.MouseOutEvent;
+import com.smartgwt.client.widgets.events.MouseOutHandler;
+import com.smartgwt.client.widgets.events.MouseOverEvent;
+import com.smartgwt.client.widgets.events.MouseOverHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -52,6 +59,28 @@ public class ClassCard extends VLayout
 		operate.setHeight( "10%" );
 		operate.setWidth100( );
 		operate.setAlign( Alignment.RIGHT );
+		this.addMouseOverHandler( new MouseOverHandler( ) {
+			@Override
+			public void onMouseOver( MouseOverEvent event )
+			{
+				setStyleName( "classcardborder-mousein" );
+			}
+		} );
+		this.addMouseOutHandler( new MouseOutHandler( ) {
+			@Override
+			public void onMouseOut( MouseOutEvent event )
+			{
+				setStyleName( "classcardborder" );
+			}
+		} );
+		this.addClickHandler( new ClickHandler( ) {
+			
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				SC.say( "say sth." );
+			}
+		} );
 	}
 	
 	private void initInformation()
@@ -75,16 +104,11 @@ public class ClassCard extends VLayout
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
 		
-		Label contact = new Label(classes.getSchool( ).getName( ));
-		extendinformation.addMember( contact );
-		
 		information.addMember( extendinformation );
 	}
 	
 	private void initOperate()
 	{
-//		Label detail = new Label("detail");
-//		detail.setStyleName( "PersonalCardop" );
-//		operate.addMember( detail );
+		
 	}
 }

@@ -3,9 +3,16 @@
  */
 package com.sickle.medu.ms.client.indexpage.card;
 
-import com.sickle.pojo.edu.School;
+import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.events.MouseOutEvent;
+import com.smartgwt.client.widgets.events.MouseOutHandler;
+import com.smartgwt.client.widgets.events.MouseOverEvent;
+import com.smartgwt.client.widgets.events.MouseOverHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -16,19 +23,19 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  *
  */
-public class SchoolCard extends VLayout
+public class OrgCard extends VLayout
 {
 
 	private HLayout information = new HLayout();
 	
 	private HLayout operate = new HLayout();
 	
-	private School school;
+	private Org org;
 	
 	
-	public SchoolCard(School school,String width,String height)
+	public OrgCard(Org org,String width,String height)
 	{
-		this.school = school;
+		this.org = org;
 		this.setWidth( width );
 		this.setHeight( height );
 		init();
@@ -40,18 +47,39 @@ public class SchoolCard extends VLayout
 	{
 		initLayout();
 		initInformation();
-		initOperate();
 	}
 	
 	private void initLayout()
 	{
 		this.setMargin( 2 );
-		this.setStyleName( "schoolcardborder" );
+		this.setStyleName( "orgcardborder" );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 		operate.setHeight( "10%" );
 		operate.setWidth100( );
 		operate.setAlign( Alignment.RIGHT );
+		this.addMouseOverHandler( new MouseOverHandler( ) {
+			@Override
+			public void onMouseOver( MouseOverEvent event )
+			{
+				setStyleName( "orgcardborder-mousein" );
+			}
+		} );
+		this.addMouseOutHandler( new MouseOutHandler( ) {
+			@Override
+			public void onMouseOut( MouseOutEvent event )
+			{
+				setStyleName( "orgcardborder" );
+			}
+		} );
+		this.addClickHandler( new ClickHandler( ) {
+			
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				SC.say( "say sth." );
+			}
+		} );
 	}
 	
 	private void initInformation()
@@ -61,9 +89,9 @@ public class SchoolCard extends VLayout
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
 		
-		Label name = new Label(school.getName( ));
+		Label name = new Label(org.getName( ));
 		name.setHeight( "15px" );
-		Label description = new Label( "" + school.getName( ));
+		Label description = new Label( "" + org.getAddress( ));
 		description.setHeight( "15px" );
 		baseinformation.addMember( name );
 		baseinformation.addMember( description );
@@ -75,16 +103,9 @@ public class SchoolCard extends VLayout
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
 		
-		Label contact = new Label(school.getOrg( ).getName( ));
+		Label contact = new Label(org.getTelephone( ));
 		extendinformation.addMember( contact );
 		
 		information.addMember( extendinformation );
-	}
-	
-	private void initOperate()
-	{
-//		Label detail = new Label("detail");
-//		detail.setStyleName( "PersonalCardop" );
-//		operate.addMember( detail );
 	}
 }

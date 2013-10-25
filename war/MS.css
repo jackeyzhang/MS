@@ -78,22 +78,34 @@ body {
 }
 
 /* school card style */
-.schoolcardborder {
+.orgcardborder {
 	border-style: solid;
 	border-width: thin;
+	background-color: #b7ba6b;
+}
+
+.orgcardborder-mousein{
+	border-style: solid;
+	border-width: medium;
 	border-color: gold;
-	border-radius: 5px 5px 5px 5px;
-	background-color: green;
+	background-color: #b2d235;
 }
 
 /* class card style*/
 .classcardborder {
 	border-style: solid;
 	border-width: thin;
-	border-color: gold;
-	border-radius: 5px 5px 5px 5px;
-	background-color: yellow;
+	background-color: #ffce7b;
 }
+
+
+.classcardborder-mousein{
+	border-style: solid;
+	border-width: medium;
+	border-color: gold;
+	background-color: #e0861a;
+}
+
 
 .PersonalCardMenuPage {
 	background-color: #777777;
