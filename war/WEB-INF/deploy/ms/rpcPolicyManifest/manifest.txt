@@ -1,5 +1,2 @@
 # Module ms
 # RPC service class, partial path of RPC policy file
-com.sickle.medu.ms.client.rpc.OrgService, F6117CBD4E4B79822AAFB7EA59F0CAEA.gwt.rpc
-com.sickle.medu.ms.client.rpc.ClassesService, B989FD82562468C65C5486749B1F37C8.gwt.rpc
-com.sickle.medu.ms.client.rpc.TeacherService, 4CE421E79C9469F7E17965F717BDB76F.gwt.rpc
