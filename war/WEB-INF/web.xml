@@ -11,6 +11,8 @@
   <welcome-file-list>
     <welcome-file>MS.html</welcome-file>
   </welcome-file-list>
+  
+  
   <servlet>
   	<servlet-name>MessageService</servlet-name>
   	<servlet-class>com.sickle.medu.ms.server.rpc.MessageServiceImpl</servlet-class>
@@ -19,6 +21,7 @@
   	<servlet-name>MessageService</servlet-name>
   	<url-pattern>/ms/MessageService</url-pattern>
   </servlet-mapping>
+  
   <servlet>
   	<servlet-name>OrgService</servlet-name>
   	<servlet-class>com.sickle.medu.ms.server.rpc.OrgServiceImpl</servlet-class>
@@ -28,6 +31,7 @@
   	<servlet-name>OrgService</servlet-name>
   	<url-pattern>/ms/OrgService</url-pattern>
   </servlet-mapping>
+  
   <servlet>
   	<servlet-name>TeacherService</servlet-name>
   	<servlet-class>com.sickle.medu.ms.server.rpc.TeacherServiceImpl</servlet-class>
@@ -46,6 +50,16 @@
   <servlet-mapping>
   	<servlet-name>ClassesService</servlet-name>
   	<url-pattern>/ms/ClassesService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UserManageService</servlet-name>
+  	<servlet-class>com.sickle.medu.ms.server.rpc.UserManageServiceImpl</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserManageService</servlet-name>
+  	<url-pattern>/ms/UserManageService</url-pattern>
   </servlet-mapping>
 
 </web-app>

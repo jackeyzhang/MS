@@ -51,16 +51,24 @@ public class MainPageTopBar extends RibbonBar
 
 	        addFill();
 
-	        ToolStripButton devConsoleButton = new ToolStripButton();
-	        devConsoleButton.setTitle("修改信息");
-	        devConsoleButton.setIcon("silk/bug.png");
-	        devConsoleButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
+	        ToolStripButton loginButton = new ToolStripButton();
+	        loginButton.setTitle("登录");
+	        loginButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	                SC.showConsole();
+	                SC.say("todo:login dialog");
 	            }
 	        });
 
-	        addButton(devConsoleButton);
+	        ToolStripButton logoutButton = new ToolStripButton();
+	        logoutButton.setTitle("退出");
+	        logoutButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
+	            public void onClick(ClickEvent event) {
+	                SC.say("todo:logout");
+	            }
+	        });
+
+	        addButton(loginButton);
+	        addButton(logoutButton);
 
 	        addSeparator();
 

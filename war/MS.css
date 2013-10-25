@@ -106,20 +106,6 @@ body {
 	background-color: #e0861a;
 }
 
-
-.PersonalCardMenuPage {
-	background-color: #777777;
-}
-
-.PersonalCardMenuPageLabel {
-	height: 15px;
-	color: white;
-}
-
-/* .PersonalCardop{
-	height : 15px;
-	color : blue;
-} */
 .Introducepage {
 	font-size: 2em;
 	font-weight: bold;
@@ -130,18 +116,19 @@ body {
 	background-color: #fedcbd;
 }
 
-.spiter {
+.splitter {
 	margin: 5px 0px 10px 0px;
 	background-image: url(./images/gauze.png);
 }
 
-.spiterlabel{
+.splitterlabel{
 	font-size: 1.5em;
 	font-weight: bold;
 	color: #7f7522;
 }
 
 .footer {
+	padding-top:20px;
 	height: 150px;
 	background-color: #d9d6c3;
 }
