@@ -15,7 +15,6 @@ import com.sickle.medu.ms.client.rpc.ClassesService;
 import com.sickle.medu.ms.client.rpc.ClassesServiceAsync;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
-import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.TeacherService;
 import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
 import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
@@ -120,7 +119,7 @@ public class MeduIndexPage extends VLayout
 		final int columnnum = (int) ( (width/IPageConst.CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
 		
-		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		TeacherServiceAsync service = TeacherService.Util.getInstance( );
 		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载教师名片" ) {
 			@Override
 			public void call( List<Teacher> result )
@@ -163,7 +162,7 @@ public class MeduIndexPage extends VLayout
 		final int columnnum = (int) ( (width/IPageConst.SCHOOL_CARD_WIDTH) );
 		final int num = columnnum * IPageConst.SCHOOL_CARD_ROW_MAX_NUM;
 		
-		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.listAllOrg( 0, num ,new AsyncCallbackWithStatus<List<Org>>( "加载学校名片" ) {
 			@Override
 			public void call( List<Org> result )
@@ -205,7 +204,7 @@ public class MeduIndexPage extends VLayout
 		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CLASS_CARD_ROW_MAX_NUM;
 		
-		ClassesServiceAsync service = RpcHelper.getService( ClassesService.class );
+		ClassesServiceAsync service = ClassesService.Util.getInstance( );
 		service.listAllClasses( 0, num ,new AsyncCallbackWithStatus<List<Classes>>( "加载班级名片" ) {
 			@Override
 			public void call( List<Classes> result )
@@ -233,6 +232,7 @@ public class MeduIndexPage extends VLayout
 		HLayout panel = new HLayout();
 		panel.setStyleName( "footer" );
 		panel.setWidth100( );
+		panel.setHeight( 100 );
 		panel.setAlign( Alignment.LEFT );
 		panel.addMember( new Anchor( "汲原堂语言发展中心","http://www.jiyuantown.com/" , "_blank") );
 		addMember(panel);

@@ -7,7 +7,6 @@ import java.util.List;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
-import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.data.DSRequest;
@@ -48,7 +47,7 @@ public class OrgDataSource extends GwtRpcDataSource
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
-		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.listAllOrg( startIndex,endIndex,
 				new AsyncCallbackWithStatus<List<Org>>( ) {
 
@@ -109,7 +108,7 @@ public class OrgDataSource extends GwtRpcDataSource
 		ListGridRecord rec = new ListGridRecord( data );
 		Org userRec = new Org( );
 		copyValues( rec, userRec );
-		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.addOrg( userRec, new AsyncCallbackWithStatus<Org>( ) {
 
 			public void call( Org result )
@@ -140,7 +139,7 @@ public class OrgDataSource extends GwtRpcDataSource
 		final ListGridRecord rec = new ListGridRecord( data );
 		Org userRec = new Org( );
 		copyValues( rec, userRec );
-		OrgServiceAsync service = RpcHelper.getService( OrgService.class );
+		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.deleteOrg( userRec, new AsyncCallbackWithStatus<Org>( ) {
 
 			public void call( Org result )

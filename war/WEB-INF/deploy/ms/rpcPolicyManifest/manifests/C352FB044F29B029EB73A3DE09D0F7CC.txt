@@ -1,2 +1,0 @@
-serviceClass: com.sickle.medu.ms.client.rpc.TeacherService
-path: 94FB6439C26C1264EC5C223C081F8C2B.gwt.rpc

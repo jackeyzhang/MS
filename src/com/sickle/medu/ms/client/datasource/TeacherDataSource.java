@@ -7,7 +7,6 @@ import java.util.List;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.sickle.medu.ms.client.rpc.TeacherService;
 import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
-import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.data.DSRequest;
@@ -48,7 +47,7 @@ public class TeacherDataSource extends GwtRpcDataSource
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
-		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		TeacherServiceAsync service = TeacherService.Util.getInstance( );
 		service.listAllTeacher( startIndex,endIndex,
 				new AsyncCallbackWithStatus<List<Teacher>>( ) {
 
@@ -109,7 +108,7 @@ public class TeacherDataSource extends GwtRpcDataSource
 		ListGridRecord rec = new ListGridRecord( data );
 		Teacher userRec = new Teacher( );
 		copyValues( rec, userRec );
-		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		TeacherServiceAsync service = TeacherService.Util.getInstance( );
 		service.addTeacher( userRec, new AsyncCallbackWithStatus<Teacher>( ) {
 
 			public void call( Teacher result )
@@ -140,7 +139,7 @@ public class TeacherDataSource extends GwtRpcDataSource
 		final ListGridRecord rec = new ListGridRecord( data );
 		Teacher userRec = new Teacher( );
 		copyValues( rec, userRec );
-		TeacherServiceAsync service = RpcHelper.getService( TeacherService.class );
+		TeacherServiceAsync service = TeacherService.Util.getInstance( );
 		service.deleteTeacher( userRec, new AsyncCallbackWithStatus<Teacher>( ) {
 
 			public void call( Teacher result )

@@ -7,7 +7,6 @@ import java.util.List;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.sickle.medu.ms.client.rpc.MessageService;
 import com.sickle.medu.ms.client.rpc.MessageServiceAsync;
-import com.sickle.medu.ms.client.rpc.RpcHelper;
 import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.website.Message;
 import com.smartgwt.client.data.DSRequest;
@@ -48,7 +47,7 @@ public class MessageDataSource extends GwtRpcDataSource
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
-		MessageServiceAsync service = RpcHelper.getService( MessageService.class );
+		MessageServiceAsync service = MessageService.Util.getInstance( );
 		service.listMessages( startIndex,
 				new AsyncCallbackWithStatus<List<Message>>( ) {
 
@@ -109,7 +108,7 @@ public class MessageDataSource extends GwtRpcDataSource
 		ListGridRecord rec = new ListGridRecord( data );
 		Message userRec = new Message( );
 		copyValues( rec, userRec );
-		MessageServiceAsync service = RpcHelper.getService( MessageService.class );
+		MessageServiceAsync service = MessageService.Util.getInstance( );
 		service.addMessage( userRec, new AsyncCallbackWithStatus<Message>( ) {
 
 			public void call( Message result )
@@ -140,7 +139,7 @@ public class MessageDataSource extends GwtRpcDataSource
 		final ListGridRecord rec = new ListGridRecord( data );
 		Message userRec = new Message( );
 		copyValues( rec, userRec );
-		MessageServiceAsync service = RpcHelper.getService( MessageService.class );
+		MessageServiceAsync service = MessageService.Util.getInstance( );
 		service.deleteMessage( userRec, new AsyncCallbackWithStatus<Message>( ) {
 
 			public void call( Message result )
