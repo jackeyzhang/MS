@@ -3,6 +3,8 @@
  */
 package com.sickle.medu.ms.client.ui;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.sickle.medu.ms.client.indexpage.LoginDialog;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.ImgButton;
@@ -72,9 +74,18 @@ public class MainPageTopBar extends RibbonBar
 	                SC.say("todo:logout");
 	            }
 	        });
+	        
+	        ToolStripButton indexButton = new ToolStripButton();
+	        indexButton.setTitle("首页");
+	        indexButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
+	            public void onClick(ClickEvent event) {
+	            	Window.open( GWT.getHostPageBaseURL( ), "_self", "" );
+	            }
+	        });
 
 	        addButton(loginButton);
 	        addButton(logoutButton);
+	        addButton(indexButton);
 
 	        addSeparator();
 
