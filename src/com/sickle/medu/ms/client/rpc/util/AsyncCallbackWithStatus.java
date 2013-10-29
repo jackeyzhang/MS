@@ -22,7 +22,8 @@ public abstract class AsyncCallbackWithStatus<T> implements AsyncCallback<T> {
 	}
 	
 	public AsyncCallbackWithStatus(String hint){
-		this.loadinghint = new LoadingHintDialog(hint);
+		this.loadinghint = new LoadingHintDialog();
+		loadinghint.getHintlabel( ).setContents( hint );
 		loadinghint.show();
 	}
 
