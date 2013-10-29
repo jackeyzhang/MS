@@ -4,6 +4,7 @@
 package com.sickle.medu.ms.client.rpc.util;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.sickle.medu.ms.client.ui.dialog.LoadingHintDialog;
 import com.smartgwt.client.util.SC;
 
 /**
@@ -14,14 +15,14 @@ import com.smartgwt.client.util.SC;
  */
 public abstract class AsyncCallbackWithStatus<T> implements AsyncCallback<T> {
 	
-	LoadingHint loadinghint;
+	LoadingHintDialog loadinghint;
 	
 	public AsyncCallbackWithStatus(){
 		this("操作中......");
 	}
 	
 	public AsyncCallbackWithStatus(String hint){
-		this.loadinghint = new LoadingHint(hint);
+		this.loadinghint = new LoadingHintDialog(hint);
 		loadinghint.show();
 	}
 

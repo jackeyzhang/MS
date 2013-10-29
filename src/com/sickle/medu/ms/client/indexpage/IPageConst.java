@@ -36,4 +36,6 @@ public interface IPageConst
 	
 	// 课程名片显示最多行数
 	public static final int CLASS_CARD_ROW_MAX_NUM = 8;
+	
+	public static final String SITE_NAME = "师我网";
 }

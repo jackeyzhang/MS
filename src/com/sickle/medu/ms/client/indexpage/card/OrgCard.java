@@ -23,7 +23,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  *
  */
-public class OrgCard extends VLayout
+public class OrgCard extends AbstractCard
 {
 
 	private HLayout information = new HLayout();

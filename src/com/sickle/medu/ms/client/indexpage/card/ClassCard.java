@@ -23,7 +23,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  *
  */
-public class ClassCard extends VLayout
+public class ClassCard extends AbstractCard
 {
 
 	private HLayout information = new HLayout();

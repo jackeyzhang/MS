@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui;
 
-import com.sickle.medu.ms.client.ui.dialog.LoginDialog;
+import com.sickle.medu.ms.client.ui.dialog.UILoginDialog;
 import com.sickle.medu.ms.client.ui.help.AboutAuthorDialog;
 import com.sickle.medu.ms.client.ui.help.VersionDialog;
 import com.smartgwt.client.types.Alignment;
@@ -73,7 +73,7 @@ public class MainPageToolBar extends ToolStrip
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				new LoginDialog( ).show( );
+				UILoginDialog.getInstance( ).show( );
 			}
 		} );
         insertGroup.addControl(b);  

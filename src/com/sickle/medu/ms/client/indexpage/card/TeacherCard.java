@@ -24,7 +24,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  *
  */
-public class TeacherCard extends VLayout
+public class TeacherCard extends AbstractCard
 {
 
 	private HLayout information = new HLayout();
@@ -76,7 +76,11 @@ public class TeacherCard extends VLayout
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				SC.say( "say sth." );
+				boolean validok = valid();
+				if( validok )
+				{
+					SC.say( "do smth" );
+				}
 			}
 		} );
 		information.setHeight( "90%" );

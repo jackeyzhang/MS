@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui;
 
+import com.sickle.medu.ms.client.indexpage.LoginDialog;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
@@ -20,6 +21,8 @@ import com.smartgwt.client.widgets.toolbar.ToolStripButton;
 public class MainPageTopBar extends RibbonBar
 {
 
+	private Label welcome = new Label("未登录");
+	
 	public MainPageTopBar()
 	{
 	        setHeight(33);
@@ -50,12 +53,15 @@ public class MainPageTopBar extends RibbonBar
 	        addMember(title);
 
 	        addFill();
+	        
+	        welcome.setWidth(100);
+	        addMember(welcome);
 
 	        ToolStripButton loginButton = new ToolStripButton();
 	        loginButton.setTitle("登录");
 	        loginButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	                SC.say("todo:login dialog");
+	                new LoginDialog( ).show( );
 	            }
 	        });
 
@@ -92,4 +98,23 @@ public class MainPageTopBar extends RibbonBar
 
 	        addSpacer(6);
 	}
+
+	
+	/**
+	 * @return the welcome
+	 */
+	public Label getWelcome( )
+	{
+		return welcome;
+	}
+
+	
+	/**
+	 * @param welcome the welcome to set
+	 */
+	public void setWelcome( Label welcome )
+	{
+		this.welcome = welcome;
+	}
+	
 }

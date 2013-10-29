@@ -39,6 +39,8 @@ public class MeduIndexPage extends VLayout
 
 	private static MeduIndexPage instance = new MeduIndexPage();
 	
+	private MainPageTopBar topbar;
+	
 	public static MeduIndexPage getInstance()
 	{
 		return instance;
@@ -54,23 +56,27 @@ public class MeduIndexPage extends VLayout
 		//#2 添加大广告图片
 		addAdvertpanel();
 		//#3 添加网站介绍
-		addProductpanel();
+		addIntroducepanel();
+		
 		//#4 添加老师名片区域
 		insertSpiter("名师推荐");
 		loadingTeacherCardPanel();
+		
 		//#5 添加课程推荐区域
 		insertSpiter("推荐课程");
 		loadingClassesCardPanel();
+		
 		//#6 添加学校介绍区域
 		insertSpiter("学校展示");
 		loadingSchoolCardPanel();
+		
 		//#7 添加footer
 		loadingSupportPanel();
 	}
 	
 	private void addTopBar()
 	{
-		MainPageTopBar topbar = new MainPageTopBar( );
+		topbar = new MainPageTopBar( );
 		addMember( topbar );
 	}
 	
@@ -79,7 +85,7 @@ public class MeduIndexPage extends VLayout
 		addMember(new AdvertImgPanel());
 	}
 	
-	private void addProductpanel()
+	private void addIntroducepanel()
 	{
 		HLayout productPanel = new HLayout();
 		productPanel.setBorder( "2px solid gold" );
@@ -266,4 +272,21 @@ public class MeduIndexPage extends VLayout
 		addMember(panel);
 	}
 
+	
+	/**
+	 * @return the topbar
+	 */
+	public MainPageTopBar getTopbar( )
+	{
+		return topbar;
+	}
+
+	
+	/**
+	 * @param topbar the topbar to set
+	 */
+	public void setTopbar( MainPageTopBar topbar )
+	{
+		this.topbar = topbar;
+	}
 }
