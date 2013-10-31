@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.rpc.util;
+package com.sickle.medu.ms.client.util;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sickle.medu.ms.client.ui.dialog.LoadingHintDialog;

@@ -7,7 +7,7 @@ import java.util.List;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.sickle.medu.ms.client.rpc.TeacherService;
 import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
-import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
+import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
