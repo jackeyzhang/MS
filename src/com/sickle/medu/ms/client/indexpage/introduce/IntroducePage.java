@@ -21,7 +21,7 @@ public class IntroducePage extends Anchor
 	public IntroducePage(String introduce)
 	{
 		super(introduce);
-		this.setStyleName( "Introducepage" );
+		this.setStyleName( "introducepage" );
 		this.addClickHandler( new ClickHandler( ) {
 			@Override
 			public void onClick( ClickEvent event )

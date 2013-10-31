@@ -7,12 +7,12 @@ package com.sickle.medu.ms.client.indexpage;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Anchor;
-import com.sickle.medu.ms.client.indexpage.card.ClassCard;
+import com.sickle.medu.ms.client.indexpage.card.NoticeCard;
 import com.sickle.medu.ms.client.indexpage.card.OrgCard;
 import com.sickle.medu.ms.client.indexpage.card.TeacherCard;
 import com.sickle.medu.ms.client.indexpage.introduce.IntroducePage;
-import com.sickle.medu.ms.client.rpc.ClassesService;
-import com.sickle.medu.ms.client.rpc.ClassesServiceAsync;
+import com.sickle.medu.ms.client.rpc.NoticeService;
+import com.sickle.medu.ms.client.rpc.NoticeServiceAsync;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.rpc.TeacherService;
@@ -20,7 +20,7 @@ import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
 import com.sickle.medu.ms.client.rpc.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.util.ScreenUtil;
-import com.sickle.pojo.edu.Classes;
+import com.sickle.pojo.edu.Notice;
 import com.sickle.pojo.edu.Org;
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.types.Alignment;
@@ -64,7 +64,7 @@ public class MeduIndexPage extends VLayout
 		
 		//#5 添加课程推荐区域
 		insertSpiter("推荐课程");
-		loadingClassesCardPanel();
+		loadingNoticeCardPanel();
 		
 		//#6 添加学校介绍区域
 		insertSpiter("学校展示");
@@ -200,11 +200,11 @@ public class MeduIndexPage extends VLayout
 		});
 	}
 	
-	private void loadingClassesCardPanel()
+	private void loadingNoticeCardPanel()
 	{
 		final VLayout cardPanel = new VLayout();
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
-		cardPanel.setHeight( IPageConst.CLASS_CARD_HEIGHT + "px" );
+		cardPanel.setHeight( IPageConst.NOTICE_CARD_HEIGHT + "px" );
 		cardPanel.setAlign( Alignment.CENTER );
 		
 		
@@ -216,16 +216,16 @@ public class MeduIndexPage extends VLayout
 		
 		
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
-		final int columnnum = (int) ( (width/IPageConst.CLASS_CARD_WIDTH) );
-		final int num = columnnum * IPageConst.CLASS_CARD_ROW_MAX_NUM;
-		final double increment = (width - columnnum * IPageConst.CLASS_CARD_WIDTH)/columnnum;
+		final int columnnum = (int) ( (width/IPageConst.NOTICE_CARD_WIDTH) );
+		final int num = columnnum * IPageConst.NOTICE_CARD_ROW_MAX_NUM;
+		final double increment = (width - columnnum * IPageConst.NOTICE_CARD_WIDTH)/columnnum;
 		
-		ClassesServiceAsync service = ClassesService.Util.getInstance( );
-		service.listAllClasses( 0, num ,new AsyncCallbackWithStatus<List<Classes>>( "加载班级名片" ) {
+		NoticeServiceAsync service = NoticeService.Util.getInstance( );
+		service.listAllNotice( 0, num ,new AsyncCallbackWithStatus<List<Notice>>( "加载通知信息" ) {
 			@Override
-			public void call( List<Classes> result )
+			public void call( List<Notice> result )
 			{
-				for( int r = 0,i = 0; r < IPageConst.CLASS_CARD_ROW_MAX_NUM; r++ )
+				for( int r = 0,i = 0; r < IPageConst.NOTICE_CARD_ROW_MAX_NUM; r++ )
 				{
 					HLayout onecardpanel = new HLayout();
 					for(; i < columnnum * ( r + 1) ;i ++)
@@ -233,7 +233,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						ClassCard p = new ClassCard(result.get( i ),IPageConst.CLASS_CARD_WIDTH + increment + "px",IPageConst.CLASS_CARD_HEIGHT + "px");
+						NoticeCard p = new NoticeCard(result.get( i ),IPageConst.NOTICE_CARD_WIDTH + increment + "px",IPageConst.NOTICE_CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );

@@ -61,5 +61,15 @@
   	<servlet-name>UserManageService</servlet-name>
   	<url-pattern>/ms/UserManageService</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>NoticeService</servlet-name>
+  	<servlet-class>com.sickle.medu.ms.server.rpc.NoticeServiceImpl</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>NoticeService</servlet-name>
+  	<url-pattern>/ms/NoticeService</url-pattern>
+  </servlet-mapping>
 
 </web-app>

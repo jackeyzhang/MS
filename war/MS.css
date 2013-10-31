@@ -38,75 +38,66 @@ body {
 
 /* teacher card style*/
 .teachercardborder {
-	border-style: solid;
 	border-width: thin;
-	border-color: gold;
-	/*border-radius: 5px 5px 5px 5px;*/
 	background-color: #fedcbd;
 }
 
 .teachercardborder-mousein{
-	border-width: medium;
-	border-color: #bed742;
+	border-width: thin;
+	border-style: solid;
 	background-color: #deab8a;
 }
 
 .teachercardname {
 	font-size: 1.5em;
 	font-weight: bold;
-	padding-left: 5px;
+	padding-left: 15px;
 }
 
-.teachercarddescription {
-	font-size: 1em;
-	padding-left: 8px;
+.teachercardtitle,.teachercardresume,.teachercardorgname,.teachercarddescription{
+	font-size: 1.2em;
+	padding-left: 18px;
 }
 
-.teachercardorgname{
-	font-size: 1em;
-	padding-left: 8px;
-}
-
-.teachercardtitle{
-	font-size: 1em;
-	padding-left: 8px;
-}
-
-.teachercardresume{
-	font-size: 1em;
-	padding-left: 8px;
-}
 
 /* school card style */
 .orgcardborder {
-	border-style: solid;
 	border-width: thin;
 	background-color: #b7ba6b;
 }
 
 .orgcardborder-mousein{
 	border-style: solid;
-	border-width: medium;
-	border-color: gold;
+	border-width: thin;
 	background-color: #b2d235;
 }
 
 /* class card style*/
-.classcardborder {
-	border-style: solid;
+.noticecardborder {
 	border-width: thin;
 	background-color: #ffce7b;
 }
 
 
-.classcardborder-mousein{
+.noticecardborder-mousein{
 	border-style: solid;
-	border-width: medium;
-	border-color: gold;
+	border-width: thin;
 	background-color: #e0861a;
 }
 
-.Introducepage {
+.noticecardborder-datedesc,.noticecardborder-address,.noticecardborder-content{
+	font-size: 1.3em;
+	padding-left: 8px;
+}
+
+.noticecardborder-orgname{
+	font-size: 1.6em;
+	font-weight: bold;
+	padding-left: 8px;
+}
+
+/* introduce page style */
+.introducepage {
 	font-size: 2em;
 	font-weight: bold;
 	color: #777777;
@@ -116,6 +107,7 @@ body {
 	background-color: #fedcbd;
 }
 
+/* splitter style */
 .splitter {
 	margin: 5px 0px 10px 0px;
 	background-image: url(./images/gauze.png);
@@ -127,6 +119,7 @@ body {
 	color: #7f7522;
 }
 
+/* footer style  */
 .footer {
 	padding-top:20px;
 	height: 150px;

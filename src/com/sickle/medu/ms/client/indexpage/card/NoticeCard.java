@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.indexpage.card;
 
-import com.sickle.pojo.edu.Classes;
+import com.sickle.pojo.edu.Notice;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Label;
@@ -23,19 +23,19 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  *
  */
-public class ClassCard extends AbstractCard
+public class NoticeCard extends AbstractCard
 {
 
 	private HLayout information = new HLayout();
 	
 	private HLayout operate = new HLayout();
 	
-	private Classes classes;
+	private Notice notice;
 	
 	
-	public ClassCard(Classes classes,String width,String height)
+	public NoticeCard(Notice notice,String width,String height)
 	{
-		this.classes = classes;
+		this.notice = notice;
 		this.setWidth( width );
 		this.setHeight( height );
 		init();
@@ -53,7 +53,7 @@ public class ClassCard extends AbstractCard
 	private void initLayout()
 	{
 		this.setMargin( 2 );
-		this.setStyleName( "classcardborder" );
+		this.setStyleName( "noticecardborder" );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 		operate.setHeight( "10%" );
@@ -63,14 +63,14 @@ public class ClassCard extends AbstractCard
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
-				setStyleName( "classcardborder-mousein" );
+				setStyleName( "noticecardborder-mousein" );
 			}
 		} );
 		this.addMouseOutHandler( new MouseOutHandler( ) {
 			@Override
 			public void onMouseOut( MouseOutEvent event )
 			{
-				setStyleName( "classcardborder" );
+				setStyleName( "noticecardborder" );
 			}
 		} );
 		this.addClickHandler( new ClickHandler( ) {
@@ -90,12 +90,22 @@ public class ClassCard extends AbstractCard
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
 		
-		Label name = new Label(classes.getName( ));
-		name.setHeight( "15px" );
-		Label description = new Label( "" + classes.getName( ));
-		description.setHeight( "15px" );
-		baseinformation.addMember( name );
-		baseinformation.addMember( description );
+		
+		Label content = new Label( "" + notice.getContent( ));
+		content.setStyleName( "noticecardborder-content" );
+		content.setHeight( "15px" );
+		
+		Label datadesc = new Label( "时间:" + notice.getDatedesc( ));
+		datadesc.setStyleName( "noticecardborder-datedesc" );
+		datadesc.setHeight( "15px" );
+		
+		Label address = new Label( "地址:" + notice.getAddress( ));
+		address.setStyleName( "noticecardborder-address" );
+		address.setHeight( "15px" );
+		
+		baseinformation.addMember( content );
+		baseinformation.addMember( datadesc );
+		baseinformation.addMember( address );
 		
 		information.addMember( baseinformation );
 		
@@ -103,6 +113,11 @@ public class ClassCard extends AbstractCard
 		extendinformation.setWidth( "65%" );
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
+		
+		Label orgname = new Label( notice.getOrgname( ));
+		orgname.setStyleName( "noticecardborder-orgname" );
+		orgname.setHeight( "15px" );
+		extendinformation.addMember( orgname );
 		
 		information.addMember( extendinformation );
 	}

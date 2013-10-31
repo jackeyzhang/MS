@@ -24,8 +24,6 @@ public class LoadingHintDialog extends AbstractDialog{
 	public Canvas getView( )
 	{
 		HLayout v = new HLayout( );
-		v.setWidth( 300 );
-		v.setHeight100( );
 		hintlabel = new Label();
 		v.addMember( new Img("waiting.gif") );
 		v.addMember( hintlabel );
