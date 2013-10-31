@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.indexpage.card;
 
+import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
@@ -61,6 +62,7 @@ public class TeacherCard extends AbstractCard
 			{
 				setStyleName( "teachercardborder-mousein" );
 				setCursor( Cursor.HAND );
+				operate.setVisible( true );
 			}
 		} );
 		this.addMouseOutHandler( new MouseOutHandler( ) {
@@ -69,6 +71,7 @@ public class TeacherCard extends AbstractCard
 			{
 				setStyleName( "teachercardborder" );
 				setCursor( Cursor.DEFAULT );
+				operate.setVisible( false );
 			}
 		} );
 		this.addClickHandler( new ClickHandler( ) {
@@ -85,13 +88,11 @@ public class TeacherCard extends AbstractCard
 		} );
 		information.setHeight( "90%" );
 		information.setWidth100( );
-		operate.setHeight( "10%" );
-		operate.setWidth100( );
-		operate.setAlign( Alignment.RIGHT );
 	}
 	
 	private void initInformation()
 	{
+		//个人信息
 		VLayout baseinformation = new VLayout();
 		baseinformation.setWidth( "35%" );
 		baseinformation.setHeight( "100%" );
@@ -117,7 +118,7 @@ public class TeacherCard extends AbstractCard
 		baseinformation.addMember( orgname );
 		baseinformation.addMember( title );
 		
-		
+		//简历
 		VLayout extendinformation = new VLayout( );
 		extendinformation.setWidth( "65%" );
 		extendinformation.setHeight( "100%" );
@@ -128,6 +129,7 @@ public class TeacherCard extends AbstractCard
 		resume.setStyleName( "teachercardresume" );
 		
 		extendinformation.addMember( resume );
+
 		
 		//分base和extends左右两部分
 		information.addMember( baseinformation );
@@ -136,8 +138,13 @@ public class TeacherCard extends AbstractCard
 	
 	private void initOperate()
 	{
-//		Label detail = new Label("detail");
-//		detail.setStyleName( "PersonalCardop" );
-//		operate.addMember( detail );
+		//操作
+		operate.setAlign( Alignment.RIGHT );
+		operate.setHeight( 15 );
+		operate.setStyleName( "teachercardoppanel" );
+		operate.setVisible( false );
+		operate.addMember( new Anchor("发消息") );
+		operate.addMember( new Anchor("查看联系方式") );
+		operate.addMember( new Anchor("查看开设课程") );
 	}
 }
