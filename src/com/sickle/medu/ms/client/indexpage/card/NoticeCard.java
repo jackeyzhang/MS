@@ -87,7 +87,7 @@ public class NoticeCard extends AbstractCard
 	{
 		//机构名字版面
 		VLayout extendinformation = new VLayout( );
-		extendinformation.setWidth( "35%" );
+		extendinformation.setWidth( "45%" );
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
 		
@@ -100,7 +100,7 @@ public class NoticeCard extends AbstractCard
 		
 		//通知信息版面
 		VLayout baseinformation = new VLayout();
-		baseinformation.setWidth( "65%" );
+		baseinformation.setWidth( "55%" );
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
 		
