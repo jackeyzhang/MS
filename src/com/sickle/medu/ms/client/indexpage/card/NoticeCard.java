@@ -85,11 +85,24 @@ public class NoticeCard extends AbstractCard
 	
 	private void initInformation()
 	{
+		//机构名字版面
+		VLayout extendinformation = new VLayout( );
+		extendinformation.setWidth( "35%" );
+		extendinformation.setHeight( "100%" );
+		extendinformation.setAlign( Alignment.CENTER );
+		
+		Label orgname = new Label( notice.getOrgname( ));
+		orgname.setStyleName( "noticecardborder-orgname" );
+		orgname.setHeight( "15px" );
+		extendinformation.addMember( orgname );
+		
+		information.addMember( extendinformation );
+		
+		//通知信息版面
 		VLayout baseinformation = new VLayout();
-		baseinformation.setWidth( "35%" );
+		baseinformation.setWidth( "65%" );
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
-		
 		
 		Label content = new Label( "" + notice.getContent( ));
 		content.setStyleName( "noticecardborder-content" );
@@ -109,17 +122,7 @@ public class NoticeCard extends AbstractCard
 		
 		information.addMember( baseinformation );
 		
-		VLayout extendinformation = new VLayout( );
-		extendinformation.setWidth( "65%" );
-		extendinformation.setHeight( "100%" );
-		extendinformation.setAlign( Alignment.CENTER );
-		
-		Label orgname = new Label( notice.getOrgname( ));
-		orgname.setStyleName( "noticecardborder-orgname" );
-		orgname.setHeight( "15px" );
-		extendinformation.addMember( orgname );
-		
-		information.addMember( extendinformation );
+
 	}
 	
 	private void initOperate()

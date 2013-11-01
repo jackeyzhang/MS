@@ -3,11 +3,11 @@
  */
 package com.sickle.medu.ms.client.indexpage.card;
 
-import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.pojo.edu.Teacher;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.util.SC;
+import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
@@ -110,10 +110,6 @@ public class TeacherCard extends AbstractCard
 		title.setHeight( 15 );
 		title.setStyleName( "teachercardtitle" );
 		
-		/*Label description = new Label( teacher.getGrade( ) == null ? "新老师": teacher.getGrade( ) + "级");
-		description.setHeight( 15 );
-		description.setStyleName( "teachercarddescription" );*/
-		
 		baseinformation.addMember( name );
 		baseinformation.addMember( orgname );
 		baseinformation.addMember( title );
@@ -140,11 +136,27 @@ public class TeacherCard extends AbstractCard
 	{
 		//操作
 		operate.setAlign( Alignment.RIGHT );
-		operate.setHeight( 15 );
+		operate.setWidth100( );
+		operate.setHeight( 16 );
 		operate.setStyleName( "teachercardoppanel" );
 		operate.setVisible( false );
-		operate.addMember( new Anchor("发消息") );
-		operate.addMember( new Anchor("查看联系方式") );
-		operate.addMember( new Anchor("查看开设课程") );
+		
+		Img message = new Img("icons/16/message.png");
+		message.setPadding( 5 );
+		message.setSize( "16px", "16px" );
+		message.setTooltip( "留言" );
+		operate.addMember( message );
+		
+		Img telephone = new Img("crystal/16/actions/irc_online.png");
+		telephone.setPadding( 5 );
+		telephone.setSize( "16px", "16px" );
+		telephone.setTooltip( "查看联系方式" );
+		operate.addMember( telephone );
+		
+		Img kecheng = new Img("demoApp/icon_view.png");
+		kecheng.setPadding( 5 );
+		kecheng.setSize( "16px", "16px" );
+		kecheng.setTooltip( "查看开设课程" );
+		operate.addMember( kecheng );
 	}
 }

@@ -60,7 +60,7 @@ body {
 }
 
 .teachercardoppanel{
-	background-color: #fedcbd;
+	
 }
 
 /* school card style */
@@ -90,7 +90,7 @@ body {
 
 .noticecardborder-datedesc,.noticecardborder-address,.noticecardborder-content{
 	font-size: 1.3em;
-	padding-left: 8px;
+	padding-left: 0px;
 }
 
 .noticecardborder-orgname{
