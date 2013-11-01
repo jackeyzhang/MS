@@ -33,13 +33,13 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>TeacherService</servlet-name>
-  	<servlet-class>com.sickle.medu.ms.server.rpc.TeacherServiceImpl</servlet-class>
+  	<servlet-name>MemberService</servlet-name>
+  	<servlet-class>com.sickle.medu.ms.server.rpc.MemberServiceImpl</servlet-class>
   	<load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>TeacherService</servlet-name>
-  	<url-pattern>/ms/TeacherService</url-pattern>
+  	<servlet-name>MemberService</servlet-name>
+  	<url-pattern>/ms/MemberService</url-pattern>
   </servlet-mapping>
   
   <servlet>

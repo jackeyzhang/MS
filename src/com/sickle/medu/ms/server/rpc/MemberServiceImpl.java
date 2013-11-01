@@ -4,7 +4,7 @@
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.Teacher/legal/epl-v10.html
+ * http://www.eclipse.Member/legal/epl-v10.html
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,17 +21,17 @@ import javax.servlet.ServletException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sickle.dao.DaoServiceFactory;
-import com.sickle.dto.TeacherDTO;
+import com.sickle.dto.MemberDTO;
 import com.sickle.exception.CodeException;
-import com.sickle.medu.ms.client.rpc.TeacherService;
-import com.sickle.pojo.edu.Teacher;
-import com.sickle.service.itf.ITeacherService;
+import com.sickle.medu.ms.client.rpc.MemberService;
+import com.sickle.pojo.edu.Member;
+import com.sickle.service.itf.IMemberService;
 
-public class TeacherServiceImpl extends RemoteServiceServlet implements TeacherService {
+public class MemberServiceImpl extends RemoteServiceServlet implements MemberService {
 
 	private static final long serialVersionUID = -3779445533342577760L;
 	
-	private static ITeacherService service = null;
+	private static IMemberService service = null;
 	
 
 	@Override
@@ -40,7 +40,7 @@ public class TeacherServiceImpl extends RemoteServiceServlet implements TeacherS
 		super.init( );
 		try
 		{
-			service = DaoServiceFactory.getService( ITeacherService.class );
+			service = DaoServiceFactory.getService( IMemberService.class );
 		}
 		catch ( CodeException e )
 		{
@@ -51,41 +51,41 @@ public class TeacherServiceImpl extends RemoteServiceServlet implements TeacherS
 
 
 	@Override
-	public List<Teacher> listAllTeacher(int startIndex,int length )
+	public List<Member> listAllMember(int startIndex,int length )
 	{
-		List<Teacher> teachers = null;
+		List<Member> members = null;
 		try
 		{
-			teachers = service.listTeachers(startIndex, length );
+			members = service.listMembers(startIndex, length );
 		}
 		catch ( Exception e )
 		{
 			e.printStackTrace();
 		}
-		if( teachers == null )
+		if( members == null )
 		{
-			teachers = new ArrayList<Teacher>();
+			members = new ArrayList<Member>();
 		}
-		return new TeacherDTO().to( teachers );
+		return new MemberDTO().to( members );
 	}
 
 
 
 	@Override
-	public Teacher addTeacher( Teacher Teacher ) throws Exception
+	public Member addMember( Member Member ) throws Exception
 	{
-		Teacher oTeacher = service.addTeacher( Teacher );
-		return new TeacherDTO().to( oTeacher );
+		Member oMember = service.addMember( Member );
+		return new MemberDTO().to( oMember );
 	}
 
 
 
 	@Override
-	public Teacher deleteTeacher( Teacher Teacher ) throws Exception
+	public Member deleteMember( Member Member ) throws Exception
 	{
-		if( service.removeTeacherById( Teacher.getId( ) ))
+		if( service.removeMemberById( Member.getId( ) ))
 		{
-			return new TeacherDTO().to( Teacher );
+			return new MemberDTO().to( Member );
 		}
 		return null;
 	}

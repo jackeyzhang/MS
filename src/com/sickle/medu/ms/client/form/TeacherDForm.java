@@ -3,8 +3,8 @@
  */
 package com.sickle.medu.ms.client.form;
 
-import com.sickle.medu.ms.client.datasource.TeacherDataSource;
-import com.sickle.pojo.edu.Teacher;
+import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DataSource;
 
 
@@ -31,13 +31,13 @@ public class TeacherDForm extends AbstractListDForm
 	@Override
 	public DataSource getDataSource( )
 	{
-		return TeacherDataSource.getInstance( ).getDataSource( Teacher.class );
+		return MemberDataSource.getInstance( ).getDataSource( Member.class );
 	}
 
 	@Override
 	public String getQueryName( )
 	{
-		return TeacherDataSource.getInstance( ).getQueryName( );
+		return MemberDataSource.getInstance( ).getQueryName( );
 	}
 
 	@Override

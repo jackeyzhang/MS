@@ -36,30 +36,30 @@ body {
 	background-color: #f9f9f9;
 }
 
-/* teacher card style*/
-.teachercardborder {
+/* member card style*/
+.membercardborder {
 	border-width: thin;
 	background-color: #fedcbd;
 }
 
-.teachercardborder-mousein{
+.membercardborder-mousein{
 	border-width: thin;
 	border-style: solid;
 	background-color: #deab8a;
 }
 
-.teachercardname {
+.membercardname {
 	font-size: 1.5em;
 	font-weight: bold;
 	padding-left: 15px;
 }
 
-.teachercardtitle,.teachercardresume,.teachercardorgname,.teachercarddescription{
+.membercardtitle,.membercardresume,.membercardorgname,.membercarddescription{
 	font-size: 1.2em;
 	padding-left: 18px;
 }
 
-.teachercardoppanel{
+.membercardoppanel{
 	
 }
 

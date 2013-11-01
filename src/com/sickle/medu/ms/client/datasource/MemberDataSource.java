@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.sickle.medu.ms.client.rpc.TeacherService;
-import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
+import com.sickle.medu.ms.client.rpc.MemberService;
+import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
-import com.sickle.pojo.edu.Teacher;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
@@ -19,23 +19,23 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
  * @author chenhao
  * 
  */
-public class TeacherDataSource extends GwtRpcDataSource
+public class MemberDataSource extends GwtRpcDataSource
 {
 
-	private static TeacherDataSource instance = null;
+	private static MemberDataSource instance = null;
 
-	public static TeacherDataSource getInstance( )
+	public static MemberDataSource getInstance( )
 	{
 		if ( instance == null )
 		{
-			instance = new TeacherDataSource( "TeacherDataSource" );
+			instance = new MemberDataSource( "MemberDataSource" );
 		}
 		return instance;
 	}
 
-	public TeacherDataSource( String id )
+	public MemberDataSource( String id )
 	{
-		getDataSource( Teacher.class ).setID( id );
+		getDataSource( Member.class ).setID( id );
 	}
 
 	@Override
@@ -47,12 +47,12 @@ public class TeacherDataSource extends GwtRpcDataSource
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
-		TeacherServiceAsync service = TeacherService.Util.getInstance( );
-		service.listAllTeacher( startIndex,endIndex,
-				new AsyncCallbackWithStatus<List<Teacher>>( ) {
+		MemberServiceAsync service = MemberService.Util.getInstance( );
+		service.listAllMember( startIndex,endIndex,
+				new AsyncCallbackWithStatus<List<Member>>( ) {
 
 					@Override
-					public void call( List<Teacher> result )
+					public void call( List<Member> result )
 					{
 						int size = result.size( );
 						if ( endIndex >= 0 )
@@ -94,7 +94,7 @@ public class TeacherDataSource extends GwtRpcDataSource
 						}
 						response.setData( list.toArray( new ListGridRecord[list.size( )] ) );
 						response.setTotalRows( result.size( ) );
-						getDataSource( Teacher.class ).processResponse( requestId,
+						getDataSource( Member.class ).processResponse( requestId,
 								response );
 					}
 				} );
@@ -106,19 +106,19 @@ public class TeacherDataSource extends GwtRpcDataSource
 	{
 		JavaScriptObject data = request.getData( );
 		ListGridRecord rec = new ListGridRecord( data );
-		Teacher userRec = new Teacher( );
+		Member userRec = new Member( );
 		copyValues( rec, userRec );
-		TeacherServiceAsync service = TeacherService.Util.getInstance( );
-		service.addTeacher( userRec, new AsyncCallbackWithStatus<Teacher>( ) {
+		MemberServiceAsync service = MemberService.Util.getInstance( );
+		service.addMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
 
-			public void call( Teacher result )
+			public void call( Member result )
 			{
 				ListGridRecord[] list = new ListGridRecord[1];
 				ListGridRecord newRec = new ListGridRecord( );
-				copyValues( (Teacher) result, newRec );
+				copyValues( (Member) result, newRec );
 				list[0] = newRec;
 				response.setData( list );
-				getDataSource( Teacher.class )
+				getDataSource( Member.class )
 						.processResponse( requestId, response );
 			}
 		} );
@@ -137,17 +137,17 @@ public class TeacherDataSource extends GwtRpcDataSource
 	{
 		JavaScriptObject data = request.getData( );
 		final ListGridRecord rec = new ListGridRecord( data );
-		Teacher userRec = new Teacher( );
+		Member userRec = new Member( );
 		copyValues( rec, userRec );
-		TeacherServiceAsync service = TeacherService.Util.getInstance( );
-		service.deleteTeacher( userRec, new AsyncCallbackWithStatus<Teacher>( ) {
+		MemberServiceAsync service = MemberService.Util.getInstance( );
+		service.deleteMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
 
-			public void call( Teacher result )
+			public void call( Member result )
 			{
 				ListGridRecord[] list = new ListGridRecord[1];
 				list[0] = rec;
 				response.setData( list );
-				getDataSource( Teacher.class )
+				getDataSource( Member.class )
 						.processResponse( requestId, response );
 			}
 		} );

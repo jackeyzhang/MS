@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.indexpage.card;
 
-import com.sickle.pojo.edu.Teacher;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.util.SC;
@@ -25,19 +25,19 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  *
  */
-public class TeacherCard extends AbstractCard
+public class MemberCard extends AbstractCard
 {
 
 	private HLayout information = new HLayout();
 	
 	private HLayout operate = new HLayout();
 	
-	private Teacher teacher;
+	private Member member;
 	
 	
-	public TeacherCard(Teacher teacher,String width,String height)
+	public MemberCard(Member member,String width,String height)
 	{
-		this.teacher = teacher;
+		this.member = member;
 		this.setWidth( width );
 		this.setHeight( height );
 		init();
@@ -55,12 +55,12 @@ public class TeacherCard extends AbstractCard
 	private void initLayout()
 	{
 		this.setMargin( 2 );
-		this.setStyleName( "teachercardborder" );
+		this.setStyleName( "membercardborder" );
 		this.addMouseOverHandler( new MouseOverHandler( ) {
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
-				setStyleName( "teachercardborder-mousein" );
+				setStyleName( "membercardborder-mousein" );
 				setCursor( Cursor.HAND );
 				operate.setVisible( true );
 			}
@@ -69,7 +69,7 @@ public class TeacherCard extends AbstractCard
 			@Override
 			public void onMouseOut( MouseOutEvent event )
 			{
-				setStyleName( "teachercardborder" );
+				setStyleName( "membercardborder" );
 				setCursor( Cursor.DEFAULT );
 				operate.setVisible( false );
 			}
@@ -98,17 +98,17 @@ public class TeacherCard extends AbstractCard
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
 		
-		Label name = new Label(teacher.getName( ));
+		Label name = new Label(member.getName( ));
 		name.setHeight( 15 );
-		name.setStyleName( "teachercardname" );
+		name.setStyleName( "membercardname" );
 		
-		Label orgname = new Label(teacher.getOrgname( ));
+		Label orgname = new Label(member.getOrgname( ));
 		orgname.setHeight( 15 );
-		orgname.setStyleName( "teachercardorgname" );
+		orgname.setStyleName( "membercardorgname" );
 		
-		Label title = new Label( teacher.getTitle( ));
+		Label title = new Label( member.getTitle( ));
 		title.setHeight( 15 );
-		title.setStyleName( "teachercardtitle" );
+		title.setStyleName( "membercardtitle" );
 		
 		baseinformation.addMember( name );
 		baseinformation.addMember( orgname );
@@ -120,9 +120,9 @@ public class TeacherCard extends AbstractCard
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
 		
-		Label resume = new Label(teacher.getResume( ));
+		Label resume = new Label(member.getResume( ));
 		resume.setHeight( 15 );
-		resume.setStyleName( "teachercardresume" );
+		resume.setStyleName( "membercardresume" );
 		
 		extendinformation.addMember( resume );
 
@@ -138,7 +138,7 @@ public class TeacherCard extends AbstractCard
 		operate.setAlign( Alignment.RIGHT );
 		operate.setWidth100( );
 		operate.setHeight( 16 );
-		operate.setStyleName( "teachercardoppanel" );
+		operate.setStyleName( "membercardoppanel" );
 		operate.setVisible( false );
 		
 		Img message = new Img("icons/16/message.png");

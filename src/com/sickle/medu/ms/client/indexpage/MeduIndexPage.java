@@ -9,20 +9,20 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.indexpage.card.NoticeCard;
 import com.sickle.medu.ms.client.indexpage.card.OrgCard;
-import com.sickle.medu.ms.client.indexpage.card.TeacherCard;
+import com.sickle.medu.ms.client.indexpage.card.MemberCard;
 import com.sickle.medu.ms.client.indexpage.introduce.IntroducePage;
 import com.sickle.medu.ms.client.rpc.NoticeService;
 import com.sickle.medu.ms.client.rpc.NoticeServiceAsync;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
-import com.sickle.medu.ms.client.rpc.TeacherService;
-import com.sickle.medu.ms.client.rpc.TeacherServiceAsync;
+import com.sickle.medu.ms.client.rpc.MemberService;
+import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Notice;
 import com.sickle.pojo.edu.Org;
-import com.sickle.pojo.edu.Teacher;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -60,7 +60,7 @@ public class MeduIndexPage extends VLayout
 		
 		//#4 添加老师名片区域
 		insertSpiter("名师推荐");
-		loadingTeacherCardPanel();
+		loadingMemberCardPanel();
 		
 		//#5 添加课程推荐区域
 		insertSpiter("推荐课程");
@@ -114,7 +114,7 @@ public class MeduIndexPage extends VLayout
 		addMember(thispanel);
 	}
 	
-	private void loadingTeacherCardPanel()
+	private void loadingMemberCardPanel()
 	{
 		final VLayout cardPanel = new VLayout();
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
@@ -134,10 +134,10 @@ public class MeduIndexPage extends VLayout
 		
 		final double increment = (width - columnnum * IPageConst.CARD_WIDTH)/columnnum;
 		
-		TeacherServiceAsync service = TeacherService.Util.getInstance( );
-		service.listAllTeacher( 0, num ,new AsyncCallbackWithStatus<List<Teacher>>( "加载教师名片" ) {
+		MemberServiceAsync service = MemberService.Util.getInstance( );
+		service.listAllMember( 0, num ,new AsyncCallbackWithStatus<List<Member>>( "加载教师名片" ) {
 			@Override
-			public void call( List<Teacher> result )
+			public void call( List<Member> result )
 			{
 				for( int r = 0,i = 0; r < IPageConst.CARD_ROW_MAX_NUM; r++ )
 				{
@@ -147,7 +147,7 @@ public class MeduIndexPage extends VLayout
 						if( i >= result.size()){
 							break;
 						}
-						TeacherCard p = new TeacherCard(result.get( i ),IPageConst.CARD_WIDTH+ increment + "px",IPageConst.CARD_HEIGHT + "px");
+						MemberCard p = new MemberCard(result.get( i ),IPageConst.CARD_WIDTH+ increment + "px",IPageConst.CARD_HEIGHT + "px");
 						onecardpanel.addMember( p );
 					}
 					cardPanel.addMember( onecardpanel );
