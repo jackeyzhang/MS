@@ -35,7 +35,7 @@ public class RegisterDform extends DynamicForm
 	public RegisterDform()
 	{
 		this.setWidth( 300 );
-		this.setTitleWidth( "30%" );
+		this.setTitleWidth( "20%" );
 		this.setPadding( 20 );
 		
 		username = new TextItem("name");
@@ -67,6 +67,7 @@ public class RegisterDform extends DynamicForm
 		
 		sex = new ComboBoxItem( "sex" );
 		sex.setValueMap( "男","女" );
+		sex.setValue( "男" );
 		sex.setTitleStyle( "h1" );
 		sex.setTitle("性别");
 		sex.setRequired(true);
