@@ -8,6 +8,12 @@ h1 {
 	text-align: center;
 }
 
+.sgwtTitle{
+	font-size: 2em;
+	font-weight: bold;
+	color: #7fb80e;
+}
+
 .sendButton {
 	display: block;
 	font-size: 16pt;
@@ -112,7 +118,7 @@ body {
 
 /* splitter style */
 .splitter {
-	margin: 5px 0px 10px 0px;
+	margin: 5px 0px 5px 0px;
 	background-image: url(./images/gauze.png);
 }
 

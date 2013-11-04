@@ -27,23 +27,29 @@ public class RegisterDform extends DynamicForm
 	
 	public RegisterDform()
 	{
-		this.setWidth100( );
+		this.setWidth( 300 );
+		this.setTitleWidth( "30%" );
+		this.setPadding( 20 );
 		
 		username = new TextItem("name");
-		username.setTitle("username");
+		username.setTitleStyle( "h1" );
+		username.setTitle("用户名");
 		username.setRequired(true);
 		
         emailItem = new TextItem("email");
-        emailItem.setTitle("email");
+        emailItem.setTitleStyle( "h1" );
+        emailItem.setTitle("邮箱");
         emailItem.setRequired(true);
         emailItem.setDefaultValue("zhangsan@XXX.com");
 
 		password = new PasswordItem("password");
-		password.setTitle("password");
+		password.setTitleStyle( "h1" );
+		password.setTitle("密码");
 		password.setRequired(true);	
 		
 		confirmpassword = new PasswordItem();
-		confirmpassword.setTitle("password again");
+		confirmpassword.setTitleStyle( "h1" );
+		confirmpassword.setTitle("确认密码");
 		confirmpassword.setRequired(true);
 		confirmpassword.setType("password");
 		

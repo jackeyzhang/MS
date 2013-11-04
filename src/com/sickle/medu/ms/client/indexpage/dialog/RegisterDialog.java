@@ -3,11 +3,10 @@
  */
 package com.sickle.medu.ms.client.indexpage.dialog;
 
-import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.medu.ms.client.form.RegisterDform;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
-import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -29,7 +28,7 @@ public class RegisterDialog extends AbstractDialog
 
 	public RegisterDialog()
 	{
-		super( TITLE );
+		super( TITLE, true,true,true );
 	}
 
 	@Override
@@ -37,13 +36,14 @@ public class RegisterDialog extends AbstractDialog
 	{
 		VLayout mainpanel = new VLayout();
 		mainpanel.setWidth100( );
-		mainpanel.setHeight100( );
 		final RegisterDform registerform = new RegisterDform();
 		mainpanel.addMember( registerform );
 		
 		HLayout buttonpanel = new HLayout();
+		buttonpanel.setPadding( 10 );
+		buttonpanel.setWidth( 300 );
+		buttonpanel.setMembersMargin( 10 );
 		buttonpanel.setAlign( Alignment.CENTER );
-		buttonpanel.setWidth100( );
 		
 		Button okbutton = new Button("注册");
 		okbutton.setWidth( 50 );
@@ -52,9 +52,11 @@ public class RegisterDialog extends AbstractDialog
 			public void onClick( ClickEvent event )
 			{
 				registerform.submit( );
+				SC.say( "注册成功" );
 				hide();
 			}
 		} );
+		
 		Button cancelbutton = new Button("取消");
 		cancelbutton.setWidth( 50 );
 		cancelbutton.addClickHandler( new ClickHandler( ) {
@@ -68,6 +70,7 @@ public class RegisterDialog extends AbstractDialog
 		
 		buttonpanel.addMember( okbutton );
 		buttonpanel.addMember( cancelbutton );
+		
 		mainpanel.addMember( buttonpanel );
 		return mainpanel;
 	}
