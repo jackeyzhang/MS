@@ -124,6 +124,8 @@ public class LoginDialog extends AbstractDialog
 	private void freshpage()
 	{
 		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( ).setContents( loginform.getUsername( ).getValue( ).toString( ) );
+		callback();
 	}
 
+	protected void callback(){}
 }

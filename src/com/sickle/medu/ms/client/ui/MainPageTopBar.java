@@ -6,12 +6,12 @@ package com.sickle.medu.ms.client.ui;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.sickle.medu.ms.client.indexpage.LoginDialog;
+import com.sickle.medu.ms.client.ui.widget.LinkLabel;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
-import com.smartgwt.client.widgets.toolbar.ToolStripButton;
 
 
 /**
@@ -23,7 +23,7 @@ import com.smartgwt.client.widgets.toolbar.ToolStripButton;
 public class MainPageTopBar extends RibbonBar
 {
 
-	private Label welcome = new Label("未登录");
+	private LinkLabel welcome = new LinkLabel("请先登录",false);
 	
 	public MainPageTopBar()
 	{
@@ -56,26 +56,23 @@ public class MainPageTopBar extends RibbonBar
 
 	        addFill();
 	        
-	        welcome.setWidth(100);
 	        addMember(welcome);
 
-	        ToolStripButton loginButton = new ToolStripButton();
-	        loginButton.setTitle("登录");
+	        LinkLabel loginButton = new LinkLabel("登录");
 	        loginButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
 	                new LoginDialog( ).show( );
 	            }
 	        });
 
-	        ToolStripButton logoutButton = new ToolStripButton();
-	        logoutButton.setTitle("退出");
+	        LinkLabel logoutButton = new LinkLabel("退出");
 	        logoutButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
 	                SC.say("todo:logout");
 	            }
 	        });
 	        
-	        ToolStripButton indexButton = new ToolStripButton();
+	        LinkLabel indexButton = new LinkLabel("首页");
 	        indexButton.setTitle("首页");
 	        indexButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
@@ -83,9 +80,9 @@ public class MainPageTopBar extends RibbonBar
 	            }
 	        });
 
-	        addButton(loginButton);
-	        addButton(logoutButton);
-	        addButton(indexButton);
+	        addMember(loginButton);
+	        addMember(logoutButton);
+	        addMember(indexButton);
 
 	        addSeparator();
 
@@ -123,7 +120,7 @@ public class MainPageTopBar extends RibbonBar
 	/**
 	 * @param welcome the welcome to set
 	 */
-	public void setWelcome( Label welcome )
+	public void setWelcome( LinkLabel welcome )
 	{
 		this.welcome = welcome;
 	}

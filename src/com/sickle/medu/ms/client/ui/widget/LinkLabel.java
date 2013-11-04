@@ -16,16 +16,21 @@ import com.smartgwt.client.widgets.events.MouseOverHandler;
  */
 public class LinkLabel extends Label
 {
-
-	public LinkLabel( String title )
+	private boolean changeui = true;
+	public LinkLabel( String title ,boolean _changeui)
 	{
 		super( title );
+		this.changeui = _changeui;
 		setStyleName( "linklabel" );
 		this.addMouseOverHandler( new MouseOverHandler( ) {
 
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
+				if( changeui == false)
+				{
+					return;
+				}
 				setStyleName( "linklabel-mousein" );
 			}
 		} );
@@ -35,8 +40,17 @@ public class LinkLabel extends Label
 			@Override
 			public void onMouseOut( MouseOutEvent event )
 			{
+				if( changeui == false)
+				{
+					return;
+				}
 				setStyleName( "linklabel" );
 			}
 		} );
+	}
+	
+	public LinkLabel( String title )
+	{
+		this( title, true);
 	}
 }
