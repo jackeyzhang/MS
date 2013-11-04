@@ -51,6 +51,11 @@ public class RegisterDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
+				boolean isValidate = registerform.validate( );
+				if( isValidate == false)
+				{
+					return;
+				}
 				registerform.submit( );
 				SC.say( "注册成功" );
 				hide();

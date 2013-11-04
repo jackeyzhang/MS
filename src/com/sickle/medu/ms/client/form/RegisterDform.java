@@ -6,9 +6,9 @@ package com.sickle.medu.ms.client.form;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.form.fields.ComboBoxItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
-import com.smartgwt.client.widgets.form.fields.RadioGroupItem;
 import com.smartgwt.client.widgets.form.fields.TextAreaItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 
@@ -27,7 +27,7 @@ public class RegisterDform extends DynamicForm
 	private PasswordItem password;
 	private PasswordItem confirmpassword;
 	private TextItem telephone;
-	private RadioGroupItem sex;
+	private ComboBoxItem sex;
 	private TextAreaItem resume;
 	private TextItem orgname;
 	private TextItem title;
@@ -65,7 +65,8 @@ public class RegisterDform extends DynamicForm
 		telephone.setTitle("电话");
 		telephone.setRequired(true);
 		
-		sex = new RadioGroupItem( "sex" );
+		sex = new ComboBoxItem( "sex" );
+		sex.setValueMap( "男","女" );
 		sex.setTitleStyle( "h1" );
 		sex.setTitle("性别");
 		sex.setRequired(true);
