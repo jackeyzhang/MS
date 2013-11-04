@@ -3,6 +3,8 @@
  */
 package com.sickle.medu.ms.client.form;
 
+import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
@@ -26,16 +28,17 @@ public class RegisterDform extends DynamicForm
 	public RegisterDform()
 	{
 		this.setWidth100( );
-		username = new TextItem();
+		
+		username = new TextItem("name");
 		username.setTitle("username");
 		username.setRequired(true);
 		
-        emailItem = new TextItem();
+        emailItem = new TextItem("email");
         emailItem.setTitle("email");
         emailItem.setRequired(true);
         emailItem.setDefaultValue("zhangsan@XXX.com");
 
-		password = new PasswordItem();
+		password = new PasswordItem("password");
 		password.setTitle("password");
 		password.setRequired(true);	
 		
@@ -45,6 +48,7 @@ public class RegisterDform extends DynamicForm
 		confirmpassword.setType("password");
 		
 		setFields(new FormItem[] {username, emailItem, password,confirmpassword});
+		setDataSource( MemberDataSource.getInstance( ).getDataSource( Member.class ) );
 	}
 
 	

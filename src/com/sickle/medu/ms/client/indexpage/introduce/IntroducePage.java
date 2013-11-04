@@ -26,10 +26,15 @@ public class IntroducePage extends Anchor
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				MeduIndexPage.getInstance( ).clear( );
-				UILoginDialog.getInstance( ).show( );
+				onClickHandler();
 			}
 		} );
+	}
+	
+	protected void onClickHandler()
+	{
+		MeduIndexPage.getInstance( ).clear( );
+		UILoginDialog.getInstance( ).show( );
 	}
 	
 }

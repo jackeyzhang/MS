@@ -203,23 +203,23 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			else if ( field.type( ).equals( FieldType.Integer ) )
 			{
-				f.setFieldValue( to, Integer.decode( value ) );
+				f.setFieldValue( to, Integer.decode( value == null ? "-1" : value ) );
 			}
 			else if ( field.type( ).equals( FieldType.Password ) )
 			{
-				f.setFieldValue( to, value );
+				f.setFieldValue( to, value == null ? "-1" : value );
 			}
 			else if ( field.type( ).equals( FieldType.Date ) )
 			{
-				f.setFieldValue( to, value );
+				f.setFieldValue( to, value == null ? "-1" : value );
 			}
 			else if ( field.type( ).equals( FieldType.Float ) )
 			{
-				f.setFieldValue( to, Float.parseFloat( value ) );
+				f.setFieldValue( to, Float.parseFloat( value == null ? "-1" : value ) );
 			}
 			else
 			{
-				f.setFieldValue( to, value );
+				f.setFieldValue( to, value == null ? "null" : value );
 			}
 			
 		}

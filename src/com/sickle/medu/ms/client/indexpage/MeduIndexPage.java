@@ -7,22 +7,23 @@ package com.sickle.medu.ms.client.indexpage;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Anchor;
+import com.sickle.medu.ms.client.indexpage.card.MemberCard;
 import com.sickle.medu.ms.client.indexpage.card.NoticeCard;
 import com.sickle.medu.ms.client.indexpage.card.OrgCard;
-import com.sickle.medu.ms.client.indexpage.card.MemberCard;
+import com.sickle.medu.ms.client.indexpage.dialog.RegisterDialog;
 import com.sickle.medu.ms.client.indexpage.introduce.IntroducePage;
+import com.sickle.medu.ms.client.rpc.MemberService;
+import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.rpc.NoticeService;
 import com.sickle.medu.ms.client.rpc.NoticeServiceAsync;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
-import com.sickle.medu.ms.client.rpc.MemberService;
-import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
+import com.sickle.pojo.edu.Member;
 import com.sickle.pojo.edu.Notice;
 import com.sickle.pojo.edu.Org;
-import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -102,7 +103,13 @@ public class MeduIndexPage extends VLayout
 		IntroducePage student = new IntroducePage("学生进入" );
 		productPanel.addMember( student );
 		
-		IntroducePage register = new IntroducePage("用户注册" );
+		IntroducePage register = new IntroducePage("用户注册" ){
+			@Override
+			protected void onClickHandler( )
+			{
+				new RegisterDialog().show( );
+			}
+		};
 		productPanel.addMember( register );
 		
 		HLayout thispanel = new HLayout();
