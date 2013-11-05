@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.iportal;
 
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.form.LoginDform;
 import com.sickle.medu.ms.client.iportal.banner.AdvertBanner;
@@ -152,6 +153,7 @@ public class LoginPage extends AbstractPage
 	
 	private void freshpage()
 	{
+		History.newItem( IPageConst.PAGE_MEDU );
 		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( ).setContents( loginform.getUsername( ).getValue( ).toString( ) );
 		callback();
 	}
