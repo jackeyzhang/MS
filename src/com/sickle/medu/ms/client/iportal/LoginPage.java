@@ -1,70 +1,99 @@
 /**
  * 
  */
+package com.sickle.medu.ms.client.iportal;
 
-package com.sickle.medu.ms.client.indexpage;
-
+import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.form.LoginDform;
+import com.sickle.medu.ms.client.iportal.banner.AdvertBanner;
 import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
-import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
+import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
+import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
-import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.IButton;
-import com.smartgwt.client.widgets.Img;
+import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
+
 /**
- * 登陆对话框
- * 
  * @author chenhao
- * 
+ *
  */
-public class LoginDialog extends AbstractDialog
+public class LoginPage extends AbstractPage
 {
 
+	private static LoginPage instance = new LoginPage();
+	
 	private LoginDform loginform;
 	
-
-	public LoginDialog( )
+	public static LoginPage getInstance()
 	{
-		super( IPageConst.SITE_NAME, false, false, false );
+		return instance;
+	}
+	
+	private LoginPage()
+	{
+		super( IPageConst.PAGE_LOGIN );
+		init();
+	}
+	
+	public void clear()
+	{
+		if( this.isCreated( ))
+		{
+			super.clear( );
+		}
 	}
 
-	@Override
-	public Canvas getView( )
+	private void init( )
 	{
-		VLayout layout = new VLayout( );
-		layout.setWidth( 360 );
-		layout.setHeight( 270 );
+		this.setWidth100(  );
+		this.setHeight100( );
 
-		// 登陆对话框的图片
-		Img img = new Img( "other/eyes.jpg");
-		img.setWidth( 360 );
-		img.setHeight( 180 );
-		img.setHoverWidth( 120 );
-		img.setHoverOpacity( 75 );
-		img.setHoverStyle( "interactImageHover" );
-		layout.addMember( img );
-
+		//上部分
+		HLayout toppanel = new HLayout();
+		toppanel.setWidth100( );
+		toppanel.setHeight( 100 );
+		addMember( toppanel );
+		
+		//中间部分
+		HLayout middlepanel = new HLayout();
+		middlepanel.setStyleName( "loginpage_middlepanel" );
+		middlepanel.setWidth100( );
+		middlepanel.setHeight( 400 );
+		addMember( middlepanel );
+		
+		//banner
+		VLayout banner = new VLayout();
+		banner.setWidth100( );
+		banner.setHeight100(  );
+		banner.addMember( new AdvertBanner(0.7,0.3) );
+		middlepanel.addMember( banner );
+		
+		//登陆panel
+		VLayout loginpanel = new VLayout();
+		loginpanel.setPadding( 15 );
+		loginpanel.setWidth( ScreenUtil.getWidth( 0.3 ) );
+		loginpanel.setHeight( ScreenUtil.getHeight( 0.3 ) );
+		middlepanel.addMember( loginpanel );
+		
 		// 登陆对话框的表单
 		loginform = new LoginDform( );
-		layout.addMember( loginform );
+		loginpanel.addMember( loginform );
 
 		// 登陆对话框的登陆按钮
 		HLayout formlayout = new HLayout( );
-		formlayout.setPadding( 20 );
-		formlayout.setWidth100( );
-		formlayout.setHeight100( );
+		formlayout.setWidth( ScreenUtil.getWidth( 0.3 ) );
+		formlayout.setHeight( ScreenUtil.getHeight( 0.3 ) );
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
-		IButton loginButton = new IButton( "登录" );
+		Button loginButton = new Button( "登录" );
 		loginButton.addClickHandler( new ClickHandler( ) {
 
 			@Override
@@ -74,25 +103,24 @@ public class LoginDialog extends AbstractDialog
 				if ( validate )
 				{
 					commitform( );
-					hide( );
 				}
 			}
 		} );
-		IButton cancelButton = new IButton( "取消" );
-		cancelButton.addClickHandler( new ClickHandler( ) {
-
+		
+		Anchor register = new Anchor( "新用户注册" );
+		register.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
+			
 			@Override
-			public void onClick( ClickEvent event )
+			public void onClick( com.google.gwt.event.dom.client.ClickEvent event )
 			{
-					hide( );
+				SC.say( "注册界面" );
 			}
 		} );
-		formlayout.addMember( loginButton );
-		formlayout.addMember( cancelButton );
 		
-		layout.addMember( formlayout );
-
-		return layout;
+		formlayout.addMember( loginButton );
+		formlayout.addMember( register );
+		loginpanel.addMember( formlayout );
+		
 	}
 
 	/**

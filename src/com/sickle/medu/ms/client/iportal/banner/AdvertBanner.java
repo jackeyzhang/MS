@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.indexpage;
+package com.sickle.medu.ms.client.iportal.banner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +24,24 @@ import com.smartgwt.client.widgets.layout.VLayout;
  *
  */
 
-public class AdvertImgPanel extends VLayout
+public class AdvertBanner extends VLayout
 {
 	
-	public  AdvertImgPanel()
+	public  AdvertBanner(double width,double height)
+	{
+        setWidth100( );
+        setHeight( ScreenUtil.getHeight( height ) );
+        loadPanel(width);
+	}
+	
+	public  AdvertBanner()
 	{
         setWidth100( );
         setHeight( "320px" );
-        loadPanel();
+        loadPanel(IPageConst.PAGE_WIDTH);
 	}
 	
-	private void loadPanel()
+	private void loadPanel(double width)
 	{
 		HLayout spacePanel = new HLayout( );
 		spacePanel.setHeight( "20px" );
@@ -44,11 +51,11 @@ public class AdvertImgPanel extends VLayout
 		imagePanel.setAlign( Alignment.CENTER );
 		
 		Img img1 = new Img("slideshow/sliderimage1.jpg",1200,300);
-		img1.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
+		img1.setWidth( ScreenUtil.getWidth( width ) );
 		Img img2 = new Img("slideshow/sliderimage2.jpg",1200,300);
-		img2.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
+		img2.setWidth( ScreenUtil.getWidth( width ) );
 		Img img3 = new Img("slideshow/sliderimage3.jpg",1200,300);
-		img3.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
+		img3.setWidth( ScreenUtil.getWidth( width ) );
 		
 		final List<Img> imgs = new ArrayList<Img>();
 		imgs.add( img1 );

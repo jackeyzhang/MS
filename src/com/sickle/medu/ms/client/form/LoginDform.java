@@ -24,12 +24,16 @@ public class LoginDform extends DynamicForm
 	public LoginDform()
 	{
 		this.setWidth100( );
+		this.setPadding( 20 );
+		
 		username = new TextItem();
+		username.setTitleStyle( "h1" );
 		username.setTitle("用户名");
 		username.setRequired(true);
 		username.setDefaultValue("yourname@163.com");
 
 		password = new PasswordItem();
+		password.setTitleStyle( "h1" );
 		password.setTitle("密码");
 		password.setRequired(true);	
 		

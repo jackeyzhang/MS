@@ -2,17 +2,18 @@
  * 
  */
 
-package com.sickle.medu.ms.client.indexpage;
+package com.sickle.medu.ms.client.iportal;
 
 import java.util.List;
 
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
-import com.sickle.medu.ms.client.indexpage.card.MemberCard;
-import com.sickle.medu.ms.client.indexpage.card.NoticeCard;
-import com.sickle.medu.ms.client.indexpage.card.OrgCard;
-import com.sickle.medu.ms.client.indexpage.dialog.RegisterDialog;
-import com.sickle.medu.ms.client.indexpage.introduce.IntroducePage;
+import com.sickle.medu.ms.client.iportal.banner.AdvertBanner;
+import com.sickle.medu.ms.client.iportal.banner.IntroduceBanner;
+import com.sickle.medu.ms.client.iportal.card.MemberCard;
+import com.sickle.medu.ms.client.iportal.card.NoticeCard;
+import com.sickle.medu.ms.client.iportal.card.OrgCard;
+import com.sickle.medu.ms.client.iportal.dialog.RegisterDialog;
 import com.sickle.medu.ms.client.rpc.MemberService;
 import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.rpc.NoticeService;
@@ -93,7 +94,7 @@ public class MeduIndexPage extends AbstractPage
 	
 	private void addAdvertpanel()
 	{
-		addMember(new AdvertImgPanel());
+		addMember(new AdvertBanner());
 	}
 	
 	private void addIntroducepanel()
@@ -104,12 +105,12 @@ public class MeduIndexPage extends AbstractPage
 		productPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		productPanel.setAlign( Alignment.CENTER );
 		
-		IntroducePage school = new IntroducePage("机构进入" ){
+		IntroduceBanner school = new IntroduceBanner("机构进入" ){
 			
 		};
 		productPanel.addMember( school );
 		
-		IntroducePage teacher = new IntroducePage("老师进入" ){
+		IntroduceBanner teacher = new IntroduceBanner("老师进入" ){
 			@Override
 			protected void onClickHandler( )
 			{
@@ -118,10 +119,10 @@ public class MeduIndexPage extends AbstractPage
 		};
 		productPanel.addMember( teacher );
 		
-		IntroducePage student = new IntroducePage("学生进入" );
+		IntroduceBanner student = new IntroduceBanner("学生进入" );
 		productPanel.addMember( student );
 		
-		IntroducePage register = new IntroducePage("用户注册" ){
+		IntroduceBanner register = new IntroduceBanner("用户注册" ){
 			@Override
 			protected void onClickHandler( )
 			{

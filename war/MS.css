@@ -42,6 +42,11 @@ body {
 	background-color: #f9f9f9;
 }
 
+.loginpage_middlepanel{
+	background-image: url(./images/backgrounds/bg-x.png);
+	background-color: #f9f9f9;
+}
+
 /* member card style*/
 .membercardborder {
 	border-width: thin;

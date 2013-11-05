@@ -4,8 +4,8 @@
 package com.sickle.medu.ms.client.ui;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
-import com.sickle.medu.ms.client.indexpage.LoginDialog;
 import com.sickle.medu.ms.client.ui.widget.LinkLabel;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.ImgButton;
@@ -61,7 +61,7 @@ public class MainPageTopBar extends RibbonBar
 	        LinkLabel loginButton = new LinkLabel("登录");
 	        loginButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	                new LoginDialog( ).show( );
+	                History.newItem( IPageConst.PAGE_LOGIN );
 	            }
 	        });
 

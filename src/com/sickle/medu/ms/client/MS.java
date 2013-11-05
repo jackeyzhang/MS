@@ -5,8 +5,8 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.indexpage.MeduIndexPage;
-import com.sickle.medu.ms.client.loginpage.LoginPage;
+import com.sickle.medu.ms.client.iportal.LoginPage;
+import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.smartgwt.client.util.SC;
 

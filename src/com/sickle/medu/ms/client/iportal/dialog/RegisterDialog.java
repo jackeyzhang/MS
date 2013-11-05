@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.indexpage.dialog;
+package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.sickle.medu.ms.client.form.RegisterDform;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;

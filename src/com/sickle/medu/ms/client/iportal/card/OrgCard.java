@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.indexpage.card;
+package com.sickle.medu.ms.client.iportal.card;
 
-import com.sickle.pojo.edu.Notice;
+import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Label;
@@ -18,24 +18,24 @@ import com.smartgwt.client.widgets.layout.VLayout;
 
 
 /**
- * 课程名片
+ * 学校名片
  * 
  * @author chenhao
  *
  */
-public class NoticeCard extends AbstractCard
+public class OrgCard extends AbstractCard
 {
 
 	private HLayout information = new HLayout();
 	
 	private HLayout operate = new HLayout();
 	
-	private Notice notice;
+	private Org org;
 	
 	
-	public NoticeCard(Notice notice,String width,String height)
+	public OrgCard(Org org,String width,String height)
 	{
-		this.notice = notice;
+		this.org = org;
 		this.setWidth( width );
 		this.setHeight( height );
 		init();
@@ -47,13 +47,12 @@ public class NoticeCard extends AbstractCard
 	{
 		initLayout();
 		initInformation();
-		initOperate();
 	}
 	
 	private void initLayout()
 	{
 		this.setMargin( 2 );
-		this.setStyleName( "noticecardborder" );
+		this.setStyleName( "orgcardborder" );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 		operate.setHeight( "10%" );
@@ -63,14 +62,14 @@ public class NoticeCard extends AbstractCard
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
-				setStyleName( "noticecardborder-mousein" );
+				setStyleName( "orgcardborder-mousein" );
 			}
 		} );
 		this.addMouseOutHandler( new MouseOutHandler( ) {
 			@Override
 			public void onMouseOut( MouseOutEvent event )
 			{
-				setStyleName( "noticecardborder" );
+				setStyleName( "orgcardborder" );
 			}
 		} );
 		this.addClickHandler( new ClickHandler( ) {
@@ -85,48 +84,28 @@ public class NoticeCard extends AbstractCard
 	
 	private void initInformation()
 	{
-		//机构名字版面
-		VLayout extendinformation = new VLayout( );
-		extendinformation.setWidth( "45%" );
-		extendinformation.setHeight( "100%" );
-		extendinformation.setAlign( Alignment.CENTER );
-		
-		Label orgname = new Label( notice.getOrgname( ));
-		orgname.setStyleName( "noticecardborder-orgname" );
-		orgname.setHeight( "15px" );
-		extendinformation.addMember( orgname );
-		
-		information.addMember( extendinformation );
-		
-		//通知信息版面
 		VLayout baseinformation = new VLayout();
-		baseinformation.setWidth( "55%" );
+		baseinformation.setWidth( "35%" );
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
 		
-		Label content = new Label( "" + notice.getContent( ));
-		content.setStyleName( "noticecardborder-content" );
-		content.setHeight( "15px" );
-		
-		Label datadesc = new Label( "时间:" + notice.getDatedesc( ));
-		datadesc.setStyleName( "noticecardborder-datedesc" );
-		datadesc.setHeight( "15px" );
-		
-		Label address = new Label( "地址:" + notice.getAddress( ));
-		address.setStyleName( "noticecardborder-address" );
-		address.setHeight( "15px" );
-		
-		baseinformation.addMember( content );
-		baseinformation.addMember( datadesc );
-		baseinformation.addMember( address );
+		Label name = new Label(org.getName( ));
+		name.setHeight( "15px" );
+		Label description = new Label( "" + org.getAddress( ));
+		description.setHeight( "15px" );
+		baseinformation.addMember( name );
+		baseinformation.addMember( description );
 		
 		information.addMember( baseinformation );
 		
-
-	}
-	
-	private void initOperate()
-	{
+		VLayout extendinformation = new VLayout( );
+		extendinformation.setWidth( "65%" );
+		extendinformation.setHeight( "100%" );
+		extendinformation.setAlign( Alignment.CENTER );
 		
+		Label contact = new Label(org.getTelephone( ));
+		extendinformation.addMember( contact );
+		
+		information.addMember( extendinformation );
 	}
 }

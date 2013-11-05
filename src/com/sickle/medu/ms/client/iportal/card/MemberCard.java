@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.indexpage.card;
+package com.sickle.medu.ms.client.iportal.card;
 
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
