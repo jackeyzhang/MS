@@ -1,5 +1,5 @@
 
-package com.sickle.medu.ms.client.indexpage;
+package com.sickle.medu.ms.client.ui;
 
 public interface IPageConst
 {
@@ -38,4 +38,11 @@ public interface IPageConst
 	public static final int NOTICE_CARD_ROW_MAX_NUM = 8;
 	
 	public static final String SITE_NAME = "师我网";
+	
+	
+	//history manage
+	public static final String PAGE_MEDU = "medu";
+	public static final String PAGE_LOGIN = "login";
+	public static final String PAGE_REGISTER = "register";
+	public static final String PAGE_MEMBER = "mid";
 }

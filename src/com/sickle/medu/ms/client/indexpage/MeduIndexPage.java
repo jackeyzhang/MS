@@ -6,6 +6,7 @@ package com.sickle.medu.ms.client.indexpage;
 
 import java.util.List;
 
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.indexpage.card.MemberCard;
 import com.sickle.medu.ms.client.indexpage.card.NoticeCard;
@@ -18,7 +19,9 @@ import com.sickle.medu.ms.client.rpc.NoticeService;
 import com.sickle.medu.ms.client.rpc.NoticeServiceAsync;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
+import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
+import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.widget.LinkLabel;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
@@ -38,7 +41,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  * 
  */
-public class MeduIndexPage extends VLayout
+public class MeduIndexPage extends AbstractPage
 {
 
 	private static MeduIndexPage instance = new MeduIndexPage();
@@ -54,6 +57,8 @@ public class MeduIndexPage extends VLayout
 	
 	private MeduIndexPage( )
 	{
+		super(IPageConst.PAGE_MEDU);
+		
 		setWidth100( );
 		setHeight100( );
 		
@@ -99,10 +104,18 @@ public class MeduIndexPage extends VLayout
 		productPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		productPanel.setAlign( Alignment.CENTER );
 		
-		IntroducePage school = new IntroducePage("机构进入" );
+		IntroducePage school = new IntroducePage("机构进入" ){
+			
+		};
 		productPanel.addMember( school );
 		
-		IntroducePage teacher = new IntroducePage("老师进入" );
+		IntroducePage teacher = new IntroducePage("老师进入" ){
+			@Override
+			protected void onClickHandler( )
+			{
+				History.newItem( IPageConst.PAGE_LOGIN, true );
+			}
+		};
 		productPanel.addMember( teacher );
 		
 		IntroducePage student = new IntroducePage("学生进入" );
