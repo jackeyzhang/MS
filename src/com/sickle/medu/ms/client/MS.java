@@ -7,6 +7,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.LoginPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.smartgwt.client.util.SC;
 
@@ -35,16 +36,20 @@ public class MS implements EntryPoint
 				if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_MEDU ))
 				{
 					LoginPage.getInstance( ).clear( );
+					RegisterPage.getInstance( ).clear( );
 					MeduIndexPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_LOGIN ))
 				{
 					MeduIndexPage.getInstance( ).clear( );
+					RegisterPage.getInstance( ).clear( );
 					LoginPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_REGISTER ))
 				{
-					MeduIndexPage.getInstance( ).draw( );
+					MeduIndexPage.getInstance( ).clear( );
+					LoginPage.getInstance( ).clear( );
+					RegisterPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_MEMBER ))
 				{

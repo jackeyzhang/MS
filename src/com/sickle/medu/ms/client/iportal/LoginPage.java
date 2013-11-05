@@ -44,13 +44,6 @@ public class LoginPage extends AbstractPage
 		init();
 	}
 	
-	public void clear()
-	{
-		if( this.isCreated( ))
-		{
-			super.clear( );
-		}
-	}
 
 	private void init( )
 	{

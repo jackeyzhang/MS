@@ -13,7 +13,6 @@ import com.sickle.medu.ms.client.iportal.banner.IntroduceBanner;
 import com.sickle.medu.ms.client.iportal.card.MemberCard;
 import com.sickle.medu.ms.client.iportal.card.NoticeCard;
 import com.sickle.medu.ms.client.iportal.card.OrgCard;
-import com.sickle.medu.ms.client.iportal.dialog.RegisterDialog;
 import com.sickle.medu.ms.client.rpc.MemberService;
 import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.rpc.NoticeService;
@@ -114,7 +113,7 @@ public class MeduIndexPage extends AbstractPage
 			@Override
 			protected void onClickHandler( )
 			{
-				History.newItem( IPageConst.PAGE_LOGIN, true );
+				History.newItem( IPageConst.PAGE_LOGIN );
 			}
 		};
 		productPanel.addMember( teacher );
@@ -126,7 +125,7 @@ public class MeduIndexPage extends AbstractPage
 			@Override
 			protected void onClickHandler( )
 			{
-				new RegisterDialog().show( );
+				History.newItem( IPageConst.PAGE_REGISTER );
 			}
 		};
 		productPanel.addMember( register );

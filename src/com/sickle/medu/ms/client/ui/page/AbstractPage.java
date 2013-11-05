@@ -39,4 +39,11 @@ public abstract class AbstractPage extends VLayout
 		return this;
 	}
 	
+	public void clear()
+	{
+		if( this.isCreated( ))
+		{
+			super.clear( );
+		}
+	}
 }

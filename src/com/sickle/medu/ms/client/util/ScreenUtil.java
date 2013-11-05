@@ -20,6 +20,14 @@ public class ScreenUtil {
 		return Window.getClientHeight() * percent;
 	}
 	
+	public static int getWidthInt(double percent){
+		return (int) ( Window.getClientWidth() * percent );	
+	}
+	
+	public static int getHeightInt(double percent){
+		return (int) ( Window.getClientHeight() * percent );
+	}
+	
 	public static String getWidth(double percent){
 		return (Window.getClientWidth() * percent) + "px";	
 	}
