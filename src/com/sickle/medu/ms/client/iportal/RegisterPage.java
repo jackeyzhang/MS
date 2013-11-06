@@ -14,6 +14,7 @@ import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 
 /**
@@ -42,12 +43,23 @@ public class RegisterPage extends AbstractPage
 	private void init( )
 	{
 		this.setWidth100( );
-		final RegisterDform registerform = new RegisterDform();
-		this.addMember( registerform );
+		this.setHeight100( );
+		
+		HLayout registerpage = new HLayout();
+		registerpage.setWidth100( );
+		registerpage.setHeight( 400 );
+		registerpage.setAlign( Alignment.CENTER );
+		registerpage.setStyleName( "registerpage" );
+		
+		VLayout contentpage = new VLayout();
+		contentpage.setWidth( 600 );
+		contentpage.setHeight( 400 );
+		contentpage.setStyleName( "registerpage-content" );
+		final RegisterDform registerform = new RegisterDform( );
+		contentpage.addMember( registerform );
 		
 		HLayout buttonpanel = new HLayout();
 		buttonpanel.setPadding( 10 );
-		buttonpanel.setWidth( 300 );
 		buttonpanel.setMembersMargin( 10 );
 		buttonpanel.setAlign( Alignment.CENTER );
 		
@@ -87,7 +99,12 @@ public class RegisterPage extends AbstractPage
 		
 		buttonpanel.addMember( okbutton );
 		buttonpanel.addMember( cancelbutton );
-		this.addMember( buttonpanel );
+		contentpage.addMember( buttonpanel );
+		
+		registerpage.addMember( contentpage );
+		
+		this.addMember( getDefaultTopPanel() );
+		this.addMember( registerpage );
 	}
 
 }

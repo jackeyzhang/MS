@@ -32,10 +32,17 @@ public class RegisterDform extends DynamicForm
 	private TextItem orgname;
 	private TextItem title;
 	
+	
 	public RegisterDform()
 	{
-		this.setWidth( 300 );
-		this.setTitleWidth( "20%" );
+		this( 300, "20%" );
+	}
+	
+	public RegisterDform(int width,String titlewidth)
+	{
+		this.setWidth( width );
+		this.setTitleWidth( titlewidth );
+		this.setFixedColWidths( true );
 		this.setPadding( 20 );
 		
 		username = new TextItem("name");
@@ -89,7 +96,9 @@ public class RegisterDform extends DynamicForm
 		
 		setFields(new FormItem[] {username, emailItem, password,confirmpassword,telephone,sex,resume,orgname,title});
 		setDataSource( MemberDataSource.getInstance( ).getDataSource( Member.class ) );
+	
 	}
+
 
 	
 	/**

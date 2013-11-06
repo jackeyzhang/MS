@@ -47,6 +47,19 @@ body {
 	background-color: #f9f9f9;
 }
 
+.loginpage_bannerpanel{
+	padding-left: 20px;	
+}
+
+.registerpage{
+	background-color: #fedcbd;
+}
+
+.registerpage-content{
+	background-image: url(./images/backgroundtexture.png);
+	border-radius:5px;
+}
+
 /* member card style*/
 .membercardborder {
 	border-width: thin;
@@ -68,10 +81,6 @@ body {
 .membercardtitle,.membercardresume,.membercardorgname,.membercarddescription{
 	font-size: 1.2em;
 	padding-left: 18px;
-}
-
-.membercardoppanel{
-	
 }
 
 /* school card style */

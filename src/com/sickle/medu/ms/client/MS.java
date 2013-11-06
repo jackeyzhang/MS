@@ -24,7 +24,7 @@ public class MS implements EntryPoint
 	public void onModuleLoad( )
 	{
 		initHistoryMange();
-		History.newItem( IPageConst.PAGE_MEDU );
+		History.newItem( IPageConst.PAGE_LOGIN );
 	}
 	
 	public void initHistoryMange()
@@ -51,9 +51,13 @@ public class MS implements EntryPoint
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).draw( );
 				}
-				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_MEMBER ))
+				else if(event.getValue( ).startsWith( IPageConst.PAGE_MEMBER ))
 				{
-					MeduIndexPage.getInstance( ).draw( );
+					MeduIndexPage.getInstance( ).clear( );
+					LoginPage.getInstance( ).clear( );
+					RegisterPage.getInstance( ).clear( );
+					//TODO 提供memberid 显示对应member界面或提示先注册或登录
+					
 				}
 				else
 				{

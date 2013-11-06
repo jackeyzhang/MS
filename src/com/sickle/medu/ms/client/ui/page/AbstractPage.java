@@ -3,6 +3,10 @@
  */
 package com.sickle.medu.ms.client.ui.page;
 
+import com.smartgwt.client.widgets.ImgButton;
+import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -45,5 +49,38 @@ public abstract class AbstractPage extends VLayout
 		{
 			super.clear( );
 		}
+	}
+	
+	public Layout getDefaultTopPanel()
+	{
+		HLayout toppanel = new HLayout( );
+		toppanel.setWidth100( );
+		toppanel.setHeight( 100 );
+		ImgButton sgwtHomeButton = new ImgButton( );
+		sgwtHomeButton.setSrc( "pieces/24/cube_green.png" );
+		sgwtHomeButton.setWidth( 24 );
+		sgwtHomeButton.setHeight( 24 );
+		sgwtHomeButton.setPrompt( "MS" );
+		sgwtHomeButton.setHoverStyle( "interactImageHover" );
+		sgwtHomeButton.setShowRollOver( false );
+		sgwtHomeButton.setShowDownIcon( false );
+		sgwtHomeButton.setShowDown( false );
+		sgwtHomeButton
+				.addClickHandler( new com.smartgwt.client.widgets.events.ClickHandler( ) {
+
+					public void onClick( ClickEvent event )
+					{
+						com.google.gwt.user.client.Window.open(
+								"http://code.google.com/p/smartgwt/", "sgwt",
+								null );
+					}
+				} );
+		toppanel.addMember( sgwtHomeButton );
+		Label title = new Label( "爱师网" );
+		title.setStyleName( "sgwtTitle" );
+		title.setWidth( 300 );
+		title.setHeight( 20 );
+		toppanel.addMember( title );
+		return toppanel;
 	}
 }

@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package com.sickle.medu.ms.client.iportal;
 
 import com.google.gwt.user.client.History;
@@ -16,67 +17,73 @@ import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
+import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-
 /**
  * @author chenhao
- *
+ * 
  */
 public class LoginPage extends AbstractPage
 {
 
-	private static LoginPage instance = new LoginPage();
-	
+	private static LoginPage instance = new LoginPage( );
+
 	private LoginDform loginform;
-	
-	public static LoginPage getInstance()
+
+	public static LoginPage getInstance( )
 	{
 		return instance;
 	}
-	
-	private LoginPage()
+
+	private LoginPage( )
 	{
 		super( IPageConst.PAGE_LOGIN );
-		init();
+		init( );
 	}
-	
 
 	private void init( )
 	{
-		this.setWidth100(  );
+		this.setWidth100( );
 		this.setHeight100( );
 
-		//上部分
-		HLayout toppanel = new HLayout();
-		toppanel.setWidth100( );
-		toppanel.setHeight( 100 );
-		addMember( toppanel );
-		
-		//中间部分
-		HLayout middlepanel = new HLayout();
+		// 上部分
+		addMember( getDefaultTopPanel() );
+
+		// 中间部分
+		HLayout middlepanel = new HLayout( );
 		middlepanel.setStyleName( "loginpage_middlepanel" );
 		middlepanel.setWidth100( );
 		middlepanel.setHeight( 400 );
 		addMember( middlepanel );
-		
-		//banner
-		VLayout banner = new VLayout();
+
+		// banner
+		VLayout banner = new VLayout( );
+		banner.setStyleName( "loginpage_bannerpanel" );
 		banner.setWidth100( );
-		banner.setHeight100(  );
-		banner.addMember( new AdvertBanner(0.7,0.3) );
+		banner.setHeight100( );
+		banner.addMember( new AdvertBanner( 0.7, 0.3 ) );
 		middlepanel.addMember( banner );
 		
-		//登陆panel
-		VLayout loginpanel = new VLayout();
-		loginpanel.setPadding( 15 );
+		// 登陆panel
+		VLayout loginpanel = new VLayout( );
 		loginpanel.setWidth( ScreenUtil.getWidth( 0.3 ) );
 		loginpanel.setHeight( ScreenUtil.getHeight( 0.3 ) );
 		middlepanel.addMember( loginpanel );
-		
+
+		// 欢迎词
+		HLayout welcomepanel = new HLayout();
+		Label welcome = new Label( "欢迎登录爱师网" );
+		welcome.setStyleName( "sgwtTitle" );
+		welcome.setWidth( 200 );
+		welcomepanel.setWidth100( );
+		welcomepanel.setPadding( 20 );
+		welcomepanel.setAlign( Alignment.CENTER );
+		welcomepanel.addMember( welcome );
+		loginpanel.addMember( welcomepanel );
 		// 登陆对话框的表单
 		loginform = new LoginDform( );
 		loginpanel.addMember( loginform );
@@ -84,7 +91,6 @@ public class LoginPage extends AbstractPage
 		// 登陆对话框的登陆按钮
 		HLayout formlayout = new HLayout( );
 		formlayout.setWidth( ScreenUtil.getWidth( 0.3 ) );
-		formlayout.setHeight( ScreenUtil.getHeight( 0.3 ) );
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
 		Button loginButton = new Button( "登录" );
@@ -100,21 +106,22 @@ public class LoginPage extends AbstractPage
 				}
 			}
 		} );
-		
+
 		Anchor register = new Anchor( "新用户注册" );
 		register.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
-			
+
 			@Override
-			public void onClick( com.google.gwt.event.dom.client.ClickEvent event )
+			public void onClick(
+					com.google.gwt.event.dom.client.ClickEvent event )
 			{
-				SC.say( "注册界面" );
+				History.newItem( IPageConst.PAGE_REGISTER );
 			}
 		} );
-		
+
 		formlayout.addMember( loginButton );
 		formlayout.addMember( register );
 		loginpanel.addMember( formlayout );
-		
+
 	}
 
 	/**
@@ -124,32 +131,39 @@ public class LoginPage extends AbstractPage
 	{
 		String username = loginform.getUsername( ).getValue( ).toString( );
 		String password = loginform.getPassword( ).getValue( ).toString( );
-		UserManageServiceAsync service = (UserManageServiceAsync)UserManageService.Util.getInstance( );
-		service.login( username, password, new AsyncCallbackWithStatus<Boolean>( "登录中..." ) {
-			@Override
-			public void call( Boolean result )
-			{
-				if( result )
-				{
-					freshpage();
-				}
-				else
-				{
-					SC.say( "用户名或密码错误!" );
-				}
-			}
-			
-		} );
-		
-	}
-	
-	
-	private void freshpage()
-	{
-		History.newItem( IPageConst.PAGE_MEDU );
-		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( ).setContents( loginform.getUsername( ).getValue( ).toString( ) );
-		callback();
+		UserManageServiceAsync service = (UserManageServiceAsync) UserManageService.Util
+				.getInstance( );
+		service.login( username, password,
+				new AsyncCallbackWithStatus<Boolean>( "登录中..." ) {
+					@Override
+					public void call( Boolean result )
+					{
+						if ( result )
+						{
+							freshpage( );
+							//登录完毕 清空密码
+							loginform.getUsername( ).clearValue( );
+							loginform.getPassword( ).clearValue( );
+						}
+						else
+						{
+							SC.say( "用户名或密码错误!" );
+						}
+					}
+
+				} );
+
 	}
 
-	protected void callback(){}
+	private void freshpage( )
+	{
+		History.newItem( IPageConst.PAGE_MEDU );
+		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( )
+				.setContents( loginform.getUsername( ).getValue( ).toString( ) );
+		callback( );
+	}
+
+	protected void callback( )
+	{
+	}
 }
