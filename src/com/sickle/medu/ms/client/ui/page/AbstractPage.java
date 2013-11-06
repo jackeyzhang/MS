@@ -3,6 +3,9 @@
  */
 package com.sickle.medu.ms.client.ui.page;
 
+import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.ui.IPageConst;
+import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -70,9 +73,7 @@ public abstract class AbstractPage extends VLayout
 
 					public void onClick( ClickEvent event )
 					{
-						com.google.gwt.user.client.Window.open(
-								"http://code.google.com/p/smartgwt/", "sgwt",
-								null );
+						History.newItem( IPageConst.PAGE_MEDU );
 					}
 				} );
 		toppanel.addMember( sgwtHomeButton );
@@ -82,5 +83,19 @@ public abstract class AbstractPage extends VLayout
 		title.setHeight( 20 );
 		toppanel.addMember( title );
 		return toppanel;
+	}
+	
+	public Layout getDefaultVersionPanel()
+	{
+		HLayout versionpanel = new HLayout( );
+		versionpanel.setWidth100( );
+		versionpanel.setHeight( 50 );
+		versionpanel.setAlign( Alignment.CENTER );
+		
+		Label version = new Label("Copyright ©2013 sickle");
+		version.setWidth( 200 );
+
+		versionpanel.addMember( version );
+		return versionpanel;
 	}
 }

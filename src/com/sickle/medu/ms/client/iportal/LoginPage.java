@@ -24,6 +24,8 @@ import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
+ * 登录页面
+ * 
  * @author chenhao
  * 
  */
@@ -121,7 +123,9 @@ public class LoginPage extends AbstractPage
 		formlayout.addMember( loginButton );
 		formlayout.addMember( register );
 		loginpanel.addMember( formlayout );
-
+		
+		//下部分
+		addMember( getDefaultVersionPanel() ) ;
 	}
 
 	/**
@@ -159,7 +163,7 @@ public class LoginPage extends AbstractPage
 	{
 		History.newItem( IPageConst.PAGE_MEDU );
 		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( )
-				.setContents( loginform.getUsername( ).getValue( ).toString( ) );
+				.setContents( "用户:" + loginform.getUsername( ).getValue( ).toString( ) );
 		callback( );
 	}
 

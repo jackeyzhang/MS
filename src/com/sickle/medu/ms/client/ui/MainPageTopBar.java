@@ -73,28 +73,6 @@ public class MainPageTopBar extends RibbonBar
 
 	        addMember(logoutButton);
 	        addMember(indexButton);
-
-	        addSeparator();
-
-	        ImgButton imgButton = new ImgButton();
-	        imgButton.setWidth(18);
-	        imgButton.setHeight(18);
-	        imgButton.setSrc("silk/emoticon.png");
-	        imgButton.setShowFocused(false);
-	        imgButton.setShowFocusedIcon(false);
-	        imgButton.setPrompt("I'm feeling lucky");
-	        imgButton.setHoverWidth(110);
-	        imgButton.setHoverStyle("interactImageHover");
-
-	        imgButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
-	            public void onClick(ClickEvent event) {
-	            	
-	            }
-	        });
-
-	        addMember(imgButton);
-
-	        addSpacer(6);
 	}
 
 	

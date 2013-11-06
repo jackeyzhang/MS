@@ -9,7 +9,6 @@ import com.sickle.medu.ms.client.iportal.LoginPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
-import com.smartgwt.client.util.SC;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -61,7 +60,7 @@ public class MS implements EntryPoint
 				}
 				else
 				{
-					SC.say( "链接无效：" + event.getValue( ));
+					History.newItem( IPageConst.PAGE_LOGIN );
 				}
 			}
 		} );

@@ -105,6 +105,8 @@ public class RegisterPage extends AbstractPage
 		
 		this.addMember( getDefaultTopPanel() );
 		this.addMember( registerpage );
+		//下部分
+		this.addMember( getDefaultVersionPanel() ) ;
 	}
 
 }
