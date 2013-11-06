@@ -3,11 +3,8 @@
  */
 package com.sickle.medu.ms.client.ui;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.Window;
 import com.sickle.medu.ms.client.ui.widget.LinkLabel;
-import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -49,7 +46,7 @@ public class MainPageTopBar extends RibbonBar
 	        addMember(sgwtHomeButton);
 	        addSpacer(6);
 
-	        Label title = new Label("爱师网");
+	        Label title = new Label(IPageConst.SITE_NAME);
 	        title.setStyleName("sgwtTitle");
 	        title.setWidth(300);
 	        addMember(title);
@@ -58,17 +55,10 @@ public class MainPageTopBar extends RibbonBar
 	        
 	        addMember(welcome);
 
-	        LinkLabel loginButton = new LinkLabel("登录");
-	        loginButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
-	            public void onClick(ClickEvent event) {
-	                History.newItem( IPageConst.PAGE_LOGIN );
-	            }
-	        });
-
 	        LinkLabel logoutButton = new LinkLabel("退出");
 	        logoutButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	                SC.say("todo:logout");
+	                History.newItem( IPageConst.PAGE_LOGIN );
 	            }
 	        });
 	        
@@ -76,11 +66,11 @@ public class MainPageTopBar extends RibbonBar
 	        indexButton.setTitle("首页");
 	        indexButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	            	Window.open( GWT.getHostPageBaseURL( ), "_self", "" );
+	            	//Window.open( GWT.getHostPageBaseURL( ), "_self", "" );
+	            	History.newItem( IPageConst.PAGE_MEDU );
 	            }
 	        });
 
-	        addMember(loginButton);
 	        addMember(logoutButton);
 	        addMember(indexButton);
 
