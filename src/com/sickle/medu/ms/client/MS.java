@@ -7,6 +7,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.LoginPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.MemberPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
 
@@ -38,6 +39,7 @@ public class MS implements EntryPoint
 					isFirstVisit = false;
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
+					MemberPage.getInstance( ).clear( );
 					MeduIndexPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_LOGIN ))
@@ -46,6 +48,7 @@ public class MS implements EntryPoint
 					{
 						MeduIndexPage.getInstance( ).clear( );
 						RegisterPage.getInstance( ).clear( );
+						MemberPage.getInstance( ).clear( );
 					}
 					LoginPage.getInstance( ).draw( );
 				}
@@ -55,15 +58,20 @@ public class MS implements EntryPoint
 					{
 						MeduIndexPage.getInstance( ).clear( );
 						LoginPage.getInstance( ).clear( );
+						MemberPage.getInstance( ).clear( );
 					}
 					RegisterPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).startsWith( IPageConst.PAGE_MEMBER ))
 				{
+					//TODO 提供memberid 显示对应member界面或提示先注册或登录
 					MeduIndexPage.getInstance( ).clear( );
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
-					//TODO 提供memberid 显示对应member界面或提示先注册或登录
+					
+					MemberPage.getInstance( ).draw( );
+					int id = Integer.parseInt( event.getValue( ).substring( 4 ) ) ;
+					MemberPage.getInstance( ).loadingMember( id );
 					
 				}
 				else

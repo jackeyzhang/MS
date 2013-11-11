@@ -26,7 +26,7 @@ public class AbstractCard extends VLayout
 	
 	private boolean validLogin()
 	{
-		return false;
+		return true;
 	}
 
 }

@@ -3,10 +3,11 @@
  */
 package com.sickle.medu.ms.client.iportal.card;
 
+import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
-import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -82,7 +83,7 @@ public class MemberCard extends AbstractCard
 				boolean validok = valid();
 				if( validok )
 				{
-					SC.say( "do smth" );
+					History.newItem( IPageConst.PAGE_MEMBER + IPageConst.PAGE_EQ + member.getId( ) );
 				}
 			}
 		} );

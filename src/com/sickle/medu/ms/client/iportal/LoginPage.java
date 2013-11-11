@@ -16,6 +16,7 @@ import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Button;
+import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
@@ -56,11 +57,19 @@ public class LoginPage extends AbstractPage
 		// 上部分
 		addMember( getDefaultTopPanel() );
 
+		//中间部分
+		addMember( getMiddlePanel() );
+		
+		//下部分
+		addMember( getDefaultVersionPanel() ) ;
+	}
+	
+	private Canvas getMiddlePanel()
+	{
 		// 中间部分
 		HLayout middlepanel = new HLayout( );
 		middlepanel.setStyleName( "loginpage_middlepanel" );
 		middlepanel.setHeight( 400 );
-		addMember( middlepanel );
 
 		// banner
 		VLayout banner = new VLayout( );
@@ -138,9 +147,8 @@ public class LoginPage extends AbstractPage
 		
 		
 		loginpanel.addMember( loginresultpanel );
-		
-		//下部分
-		addMember( getDefaultVersionPanel() ) ;
+				
+		return middlepanel;
 	}
 
 	/**

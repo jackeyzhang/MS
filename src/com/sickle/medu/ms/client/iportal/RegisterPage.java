@@ -12,6 +12,7 @@ import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.BooleanCallback;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
+import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -46,7 +47,17 @@ public class RegisterPage extends AbstractPage
 	{
 		this.setWidth100( );
 		this.setHeight100( );
-		
+
+		//上部分
+		this.addMember( getDefaultTopPanel() );
+		//中间部分
+		this.addMember( getRegisterPanel() );
+		//下部分
+		this.addMember( getDefaultVersionPanel() ) ;
+	}
+	
+	private Canvas getRegisterPanel()
+	{
 		HLayout registerpage = new HLayout();
 		registerpage.setWidth100( );
 		registerpage.setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER ) );
@@ -105,10 +116,7 @@ public class RegisterPage extends AbstractPage
 		
 		registerpage.addMember( contentpage );
 		
-		this.addMember( getDefaultTopPanel() );
-		this.addMember( registerpage );
-		//下部分
-		this.addMember( getDefaultVersionPanel() ) ;
+		return registerpage;
 	}
 
 }
