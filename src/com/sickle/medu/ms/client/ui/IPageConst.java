@@ -39,6 +39,10 @@ public interface IPageConst
 	
 	public static final String SITE_NAME = "爱师网";
 	
+	//注册界面高度百分比
+	public static final double REGISTER_HEIGHT_PER = 0.5;
+	public static final double REGISTER_WIDTH_PER = 0.4;
+	
 	
 	//history manage
 	public static final String PAGE_MEDU = "medu";

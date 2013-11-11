@@ -50,12 +50,9 @@ public class AdvertBanner extends VLayout
 		final HLayout imagePanel = new HLayout( );
 		imagePanel.setAlign( Alignment.CENTER );
 		
-		Img img1 = new Img("slideshow/sliderimage1.jpg",1200,ScreenUtil.getHeightInt( 0.35 ));
-		img1.setWidth( ScreenUtil.getWidth( width ) );
-		Img img2 = new Img("slideshow/sliderimage2.jpg",1200,ScreenUtil.getHeightInt( 0.35 ));
-		img2.setWidth( ScreenUtil.getWidth( width ) );
-		Img img3 = new Img("slideshow/sliderimage3.jpg",1200,ScreenUtil.getHeightInt( 0.35 ));
-		img3.setWidth( ScreenUtil.getWidth( width ) );
+		Img img1 = new Img("slideshow/sliderimage1.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.35 ));
+		Img img2 = new Img("slideshow/sliderimage2.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.35 ));
+		Img img3 = new Img("slideshow/sliderimage3.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.35 ));
 		
 		final List<Img> imgs = new ArrayList<Img>();
 		imgs.add( img1 );

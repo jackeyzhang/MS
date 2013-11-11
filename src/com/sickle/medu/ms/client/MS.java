@@ -16,6 +16,7 @@ import com.sickle.medu.ms.client.ui.IPageConst;
 public class MS implements EntryPoint
 {
 
+	private static boolean isFirstVisit = true;
 
 	/**
 	 * This is the entry point method.
@@ -34,20 +35,27 @@ public class MS implements EntryPoint
 			{
 				if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_MEDU ))
 				{
+					isFirstVisit = false;
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
 					MeduIndexPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_LOGIN ))
 				{
-					MeduIndexPage.getInstance( ).clear( );
-					RegisterPage.getInstance( ).clear( );
+					if( isFirstVisit == false)
+					{
+						MeduIndexPage.getInstance( ).clear( );
+						RegisterPage.getInstance( ).clear( );
+					}
 					LoginPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_REGISTER ))
 				{
-					MeduIndexPage.getInstance( ).clear( );
-					LoginPage.getInstance( ).clear( );
+					if( isFirstVisit == false)
+					{
+						MeduIndexPage.getInstance( ).clear( );
+						LoginPage.getInstance( ).clear( );
+					}
 					RegisterPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).startsWith( IPageConst.PAGE_MEMBER ))
@@ -62,6 +70,7 @@ public class MS implements EntryPoint
 				{
 					History.newItem( IPageConst.PAGE_LOGIN );
 				}
+				
 			}
 		} );
 	}

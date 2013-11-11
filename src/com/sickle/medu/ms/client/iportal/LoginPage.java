@@ -15,7 +15,6 @@ import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
-import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -35,6 +34,8 @@ public class LoginPage extends AbstractPage
 	private static LoginPage instance = new LoginPage( );
 
 	private LoginDform loginform;
+	
+	private Label loginResult;
 
 	public static LoginPage getInstance( )
 	{
@@ -50,7 +51,7 @@ public class LoginPage extends AbstractPage
 	private void init( )
 	{
 		this.setWidth100( );
-		this.setHeight100( );
+		/*this.setHeight100( );*/
 
 		// 上部分
 		addMember( getDefaultTopPanel() );
@@ -58,21 +59,19 @@ public class LoginPage extends AbstractPage
 		// 中间部分
 		HLayout middlepanel = new HLayout( );
 		middlepanel.setStyleName( "loginpage_middlepanel" );
-		middlepanel.setWidth100( );
 		middlepanel.setHeight( 400 );
 		addMember( middlepanel );
 
 		// banner
 		VLayout banner = new VLayout( );
 		banner.setStyleName( "loginpage_bannerpanel" );
-		banner.setWidth100( );
 		banner.setHeight100( );
 		banner.addMember( new AdvertBanner( 0.7, 0.3 ) );
 		middlepanel.addMember( banner );
 		
 		// 登陆panel
 		VLayout loginpanel = new VLayout( );
-		loginpanel.setWidth( ScreenUtil.getWidth( 0.3 ) );
+		loginpanel.setWidth( ScreenUtil.getWidth( 0.29 ) );
 		loginpanel.setHeight( ScreenUtil.getHeight( 0.3 ) );
 		middlepanel.addMember( loginpanel );
 
@@ -80,9 +79,9 @@ public class LoginPage extends AbstractPage
 		HLayout welcomepanel = new HLayout();
 		Label welcome = new Label( "欢迎登录爱师网" );
 		welcome.setStyleName( "sgwtTitle" );
-		welcome.setWidth( 200 );
-		welcomepanel.setWidth100( );
+		welcome.setWidth(  ScreenUtil.getWidth( 0.1 ) );
 		welcomepanel.setPadding( 20 );
+		welcomepanel.setWidth(  ScreenUtil.getWidth( 0.29 ) );
 		welcomepanel.setAlign( Alignment.CENTER );
 		welcomepanel.addMember( welcome );
 		loginpanel.addMember( welcomepanel );
@@ -92,10 +91,12 @@ public class LoginPage extends AbstractPage
 
 		// 登陆对话框的登陆按钮
 		HLayout formlayout = new HLayout( );
-		formlayout.setWidth( ScreenUtil.getWidth( 0.3 ) );
+		formlayout.setWidth( ScreenUtil.getWidth( 0.29 ) );
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
 		Button loginButton = new Button( "登录" );
+		loginButton.setShowRollOver(true);  
+		loginButton.setShowDown(true);  
 		loginButton.addClickHandler( new ClickHandler( ) {
 
 			@Override
@@ -123,6 +124,20 @@ public class LoginPage extends AbstractPage
 		formlayout.addMember( loginButton );
 		formlayout.addMember( register );
 		loginpanel.addMember( formlayout );
+
+		
+		loginResult = new Label("");
+		loginResult.setWidth( 200 );
+		
+		loginpanel.addMember( formlayout );
+		
+		HLayout loginresultpanel = new HLayout();
+		loginresultpanel.setWidth100( );
+		loginresultpanel.setAlign( Alignment.CENTER );
+		loginresultpanel.addMember( loginResult );
+		
+		
+		loginpanel.addMember( loginresultpanel );
 		
 		//下部分
 		addMember( getDefaultVersionPanel() ) ;
@@ -138,7 +153,15 @@ public class LoginPage extends AbstractPage
 		UserManageServiceAsync service = (UserManageServiceAsync) UserManageService.Util
 				.getInstance( );
 		service.login( username, password,
-				new AsyncCallbackWithStatus<Boolean>( "登录中..." ) {
+				new AsyncCallbackWithStatus<Boolean>( loginResult ) {
+			
+					@Override
+					protected void callingshow( )
+					{
+						loginResult.setStyleName( "loginpage_logininglabel" );
+						loginResult.setContents( "登录中..." );
+					}
+
 					@Override
 					public void call( Boolean result )
 					{
@@ -148,10 +171,12 @@ public class LoginPage extends AbstractPage
 							//登录完毕 清空密码
 							loginform.getUsername( ).clearValue( );
 							loginform.getPassword( ).clearValue( );
+							loginResult.setContents( "" );
 						}
 						else
 						{
-							SC.say( "用户名或密码错误!" );
+							loginResult.setStyleName( "loginpage_loginfailedlabel" );
+							loginResult.setContents( "用户名或密码错误!" );
 						}
 					}
 

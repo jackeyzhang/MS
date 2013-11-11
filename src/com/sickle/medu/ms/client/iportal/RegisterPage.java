@@ -7,6 +7,7 @@ import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.form.RegisterDform;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
+import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.BooleanCallback;
 import com.smartgwt.client.util.SC;
@@ -28,6 +29,7 @@ public class RegisterPage extends AbstractPage
 
 	private static RegisterPage instance = new RegisterPage();
 	
+	
 	public static RegisterPage getInstance()
 	{
 		return instance;
@@ -47,15 +49,15 @@ public class RegisterPage extends AbstractPage
 		
 		HLayout registerpage = new HLayout();
 		registerpage.setWidth100( );
-		registerpage.setHeight( 400 );
+		registerpage.setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER ) );
 		registerpage.setAlign( Alignment.CENTER );
 		registerpage.setStyleName( "registerpage" );
 		
 		VLayout contentpage = new VLayout();
-		contentpage.setWidth( 600 );
-		contentpage.setHeight( 400 );
+		contentpage.setWidth( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
+		contentpage.setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER )  );
 		contentpage.setStyleName( "registerpage-content" );
-		final RegisterDform registerform = new RegisterDform( );
+		final RegisterDform registerform = new RegisterDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
 		contentpage.addMember( registerform );
 		
 		HLayout buttonpanel = new HLayout();

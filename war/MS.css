@@ -1,5 +1,13 @@
 /** Add css rules here for your application. */
 /** Example rules used by the template application (remove for your app) */
+
+h2 {
+	font-size: 3.5em;
+	font-weight: bold;
+	color: #444693;
+	text-align: center;
+}
+
 h1 {
 	font-size: 2em;
 	font-weight: bold;
@@ -49,6 +57,20 @@ body {
 
 .loginpage_bannerpanel{
 	padding-left: 20px;	
+}
+
+.loginpage_logininglabel{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #181d4b;
+	text-align: center;
+}
+
+.loginpage_loginfailedlabel{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #d71345;
+	text-align: center;
 }
 
 .registerpage{
