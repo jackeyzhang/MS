@@ -5,6 +5,7 @@ package com.sickle.medu.ms.client.ui.page;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
@@ -63,7 +64,7 @@ public abstract class AbstractPage extends VLayout
 	{
 		HLayout toppanel = new HLayout( );
 		toppanel.setWidth100( );
-		toppanel.setHeight( 100 );
+		toppanel.setHeight( ScreenUtil.getHeight( 0.1 ) );
 		ImgButton sgwtHomeButton = new ImgButton( );
 		sgwtHomeButton.setSrc( "pieces/24/cube_green.png" );
 		sgwtHomeButton.setWidth( 24 );

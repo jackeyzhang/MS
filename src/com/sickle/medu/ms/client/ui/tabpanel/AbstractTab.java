@@ -16,6 +16,16 @@ import com.smartgwt.client.widgets.tab.Tab;
 public abstract class AbstractTab extends Tab
 {
 
+	/**
+	 * 构造器
+	 * @param title
+	 * @param icon
+	 */
+	public AbstractTab( )
+	{
+		super( );
+	}
+	
 	
 	/**
 	 * 构造器

@@ -15,15 +15,15 @@ import com.smartgwt.client.widgets.events.MouseOverHandler;
  * @author chenhao
  * 
  */
-public class LinkLabel extends Label
+public class BluelittleLabel extends Label
 {
 	private boolean changeui = true;
-	public LinkLabel( String title ,boolean _changeui)
+	public BluelittleLabel( String title ,boolean _changeui)
 	{
 		super( title );
 		this.changeui = _changeui;
-		setStyleName( "linklabel" );
-		setCursor( Cursor.POINTER );
+		this.setCursor( Cursor.HAND );
+		setStyleName( "greenlittlelabel" );
 		this.addMouseOverHandler( new MouseOverHandler( ) {
 
 			@Override
@@ -33,7 +33,7 @@ public class LinkLabel extends Label
 				{
 					return;
 				}
-				setStyleName( "linklabel-mousein" );
+				setStyleName( "greenlittlelabel-mousein" );
 			}
 		} );
 
@@ -46,12 +46,12 @@ public class LinkLabel extends Label
 				{
 					return;
 				}
-				setStyleName( "linklabel" );
+				setStyleName( "greenlittlelabel" );
 			}
 		} );
 	}
 	
-	public LinkLabel( String title )
+	public BluelittleLabel( String title )
 	{
 		this( title, true);
 	}

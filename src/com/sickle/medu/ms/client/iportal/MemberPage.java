@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.iportal;
 
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.iportal.card.MemberCard;
+import com.sickle.medu.ms.client.iportal.card.BigMemberCard;
 import com.sickle.medu.ms.client.rpc.MemberService;
 import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
@@ -12,6 +12,7 @@ import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
 import com.sickle.medu.ms.client.ui.widget.LinkLabel;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
+import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Side;
 import com.smartgwt.client.widgets.Canvas;
@@ -68,10 +69,10 @@ public class MemberPage extends AbstractPage
 		final MemberServiceAsync service = MemberService.Util.getInstance( );
 		service.findMember( memberid ,new AsyncCallbackWithStatus<Member>( "加载教师名片" ) {
 			@Override
-			public void call( Member result )
+			public void call( Member member )
 			{
-				MemberCard p = new MemberCard(result ,IPageConst.CARD_WIDTH + "px",IPageConst.CARD_HEIGHT + "px");
-				memberpanel.setPane( p );
+				memberpanel.setTitle( member.getName( ) + "的资料" );
+				memberpanel.fillpanel( member );
 			}
 		});
 	}
@@ -79,10 +80,10 @@ public class MemberPage extends AbstractPage
 	private Canvas getMemberPanel()
 	{
 		VLayout memberpage = new VLayout();
-		memberpage.setStyleName( "registerpage" );
+		memberpage.setStyleName( "memberpage" );
 		
 		LinkLabel returnpage = new LinkLabel(">>返回首页");
-		returnpage.setHeight( 30 );
+		returnpage.setHeight( ScreenUtil.getHeight( 0.05 ) );
 		returnpage.addClickHandler( new ClickHandler( ) {
 			@Override
 			public void onClick( ClickEvent event )
@@ -93,9 +94,10 @@ public class MemberPage extends AbstractPage
 		memberpage.addMember( returnpage );
 		
 		TabSet ts = new TabSet();
+		ts.setUseSimpleTabs( true );
 		ts.setSmoothFade( true );
 		ts.setTabBarPosition( Side.LEFT );
-		ts.setTabBarThickness( 100 );
+		ts.setTabBarThickness( ScreenUtil.getWidthInt( 0.1 ) );
 		
 		memberpanel = new MemberPanel();
 		messagepanel = new MessagePanel();
@@ -109,6 +111,8 @@ public class MemberPage extends AbstractPage
 	
 	class MemberPanel extends AbstractTab
 	{
+		private VLayout wholepanel ;
+		
 		public MemberPanel()
 		{
 			super("个人信息","",false);
@@ -117,7 +121,19 @@ public class MemberPage extends AbstractPage
 		@Override
 		public Canvas getPanel( )
 		{
-			return new Label("member page");
+			wholepanel = new VLayout();
+			return wholepanel;
+		}
+		
+		public void fillpanel(Member member)
+		{
+			wholepanel.setWidth100( );
+			wholepanel.setHeight100( );
+			for( Canvas mem : wholepanel.getMembers( ))
+			{
+				wholepanel.removeMember( mem );
+			}
+			wholepanel.addMember( new BigMemberCard( member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) );
 		}
 		
 	}
@@ -126,13 +142,13 @@ public class MemberPage extends AbstractPage
 	{
 		public MessagePanel()
 		{
-			super("消息管理","",false);
+			super("已发布课程","",false);
 		}
 		
 		@Override
 		public Canvas getPanel( )
 		{
-			return new Label("message page");
+			return new Label("message page" + this.getTitleStyle( ));
 		}
 		
 	}

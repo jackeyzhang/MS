@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.ui;
 
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.ui.widget.LinkLabel;
+import com.sickle.medu.ms.client.ui.widget.BluelittleLabel;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -20,7 +20,7 @@ import com.smartgwt.client.widgets.toolbar.RibbonBar;
 public class MainPageTopBar extends RibbonBar
 {
 
-	private LinkLabel welcome = new LinkLabel("请先登录",false);
+	private BluelittleLabel welcome = new BluelittleLabel("请先登录",false);
 	
 	public MainPageTopBar()
 	{
@@ -55,18 +55,17 @@ public class MainPageTopBar extends RibbonBar
 	        
 	        addMember(welcome);
 
-	        LinkLabel logoutButton = new LinkLabel("退出");
+	        BluelittleLabel logoutButton = new BluelittleLabel("退出");
 	        logoutButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
 	                History.newItem( IPageConst.PAGE_LOGIN );
 	            }
 	        });
 	        
-	        LinkLabel indexButton = new LinkLabel("首页");
+	        BluelittleLabel indexButton = new BluelittleLabel("首页");
 	        indexButton.setTitle("首页");
 	        indexButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	            	//Window.open( GWT.getHostPageBaseURL( ), "_self", "" );
 	            	History.newItem( IPageConst.PAGE_MEDU );
 	            }
 	        });
@@ -88,7 +87,7 @@ public class MainPageTopBar extends RibbonBar
 	/**
 	 * @param welcome the welcome to set
 	 */
-	public void setWelcome( LinkLabel welcome )
+	public void setWelcome( BluelittleLabel welcome )
 	{
 		this.welcome = welcome;
 	}

@@ -88,6 +88,11 @@ body {
 	border-radius:5px;
 }
 
+/* member page style */
+.memberpage{
+	background-color: #deab8a;
+}
+
 /* member card style*/
 .membercardborder {
 	border-width: thin;
@@ -110,6 +115,25 @@ body {
 	font-size: 1.2em;
 	padding-left: 18px;
 }
+
+/* bigmembercardborder card style */
+.bigmembercardborder {
+	border-width: thin;
+	background-color: #deab8a;
+}
+
+.bigmembercardname {
+	font-size: 1.5em;
+	padding-left: 15px;
+	color: #fffffb;
+}
+
+.bigmembercardtitle,.bigmembercardresume,.bigmembercardorgname,.bigmembercarddescription{
+	font-size: 1.2em;
+	padding-left: 18px;
+	color: #fffffb;
+}
+
 
 /* school card style */
 .orgcardborder {
@@ -187,5 +211,16 @@ body {
 	font-size: 1.7em;
 	font-weight: bold;
 	color: #817936;
-	text-decoration:underline
+	text-decoration:underline;
+}
+
+.greenlittlelabel{
+	font-size: 1.3em;
+	color: #2a5caa;
+}
+
+.greenlittlelabel-mousein{
+	font-size: 1.3em;
+	color: #d71345;
+	text-decoration:underline;
 }
