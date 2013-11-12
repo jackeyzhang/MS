@@ -25,17 +25,21 @@ public class LoginDform extends DynamicForm
 	{
 		this.setWidth100( );
 		this.setPadding( 10 );
+		this.setColWidths( 100,200 );
 		
 		username = new TextItem();
 		username.setTitleStyle( "h2" );
 		username.setTitle("用户名");
 		username.setRequired(true);
-		username.setDefaultValue("yourname@163.com");
+		username.setDefaultValue("jackey");
+		username.setWidth( 200 );
 
 		password = new PasswordItem();
 		password.setTitleStyle( "h2" );
 		password.setTitle("密码");
 		password.setRequired(true);	
+		password.setDefaultValue( "123" );
+		password.setWidth( 200 );
 		
 		setFields(new FormItem[] {username, password});
 	}

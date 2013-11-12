@@ -42,4 +42,6 @@ public interface MemberService extends RemoteService {
 	
 	public Member deleteMember(Member Member)throws Exception;
 	
+	public Member findMember(int id)throws Exception;
+	
 }

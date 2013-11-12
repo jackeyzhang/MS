@@ -90,4 +90,13 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 		return null;
 	}
 
+
+
+	@Override
+	public Member findMember( int id ) throws Exception
+	{
+		Member oMember = service.getMemberById( id );
+		return new MemberDTO().to( oMember );
+	}
+
 }

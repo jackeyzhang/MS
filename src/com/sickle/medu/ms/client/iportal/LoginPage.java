@@ -15,8 +15,8 @@ import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
-import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
@@ -103,7 +103,8 @@ public class LoginPage extends AbstractPage
 		formlayout.setWidth( ScreenUtil.getWidth( 0.29 ) );
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
-		Button loginButton = new Button( "登录" );
+		IButton loginButton = new IButton( "登录" );
+		loginButton.setWidth( 60 );
 		loginButton.setShowRollOver(true);  
 		loginButton.setShowDown(true);  
 		loginButton.addClickHandler( new ClickHandler( ) {

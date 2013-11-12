@@ -18,7 +18,13 @@ h1 {
 
 .sgwtTitle{
 	font-size: 2em;
+	color: #7fb80e;
+}
+
+.sgwtTitle-in{
+	font-size: 2em;
 	font-weight: bold;
+	text-decoration:underline;
 	color: #7fb80e;
 }
 

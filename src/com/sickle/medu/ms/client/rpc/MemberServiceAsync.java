@@ -15,4 +15,6 @@ public interface MemberServiceAsync
 
 	void listAllMember( int startIndex,int length , AsyncCallback<List<Member>> callback );
 
+	void findMember( int id, AsyncCallback<Member> callback );
+
 }
