@@ -68,6 +68,7 @@ public class RegisterPage extends AbstractPage
 		contentpage.setWidth( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
 		contentpage.setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER )  );
 		contentpage.setStyleName( "registerpage-content" );
+		
 		final RegisterDform registerform = new RegisterDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
 		contentpage.addMember( registerform );
 		

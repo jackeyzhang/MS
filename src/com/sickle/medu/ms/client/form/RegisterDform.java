@@ -6,11 +6,14 @@ package com.sickle.medu.ms.client.form;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.form.fields.CheckboxItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.RadioGroupItem;
 import com.smartgwt.client.widgets.form.fields.TextAreaItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import com.smartgwt.client.widgets.form.fields.events.ChangedEvent;
+import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
 
 
 /**
@@ -26,11 +29,16 @@ public class RegisterDform extends DynamicForm
 	private TextItem emailItem;
 	private PasswordItem password;
 	private PasswordItem confirmpassword;
+	private CheckboxItem isteacher;
+	private TextItem chart;
+	
 	private TextItem telephone;
 	private RadioGroupItem sex;
 	private TextAreaItem resume;
 	private TextItem orgname;
 	private TextItem title;
+	private TextItem city;
+	private TextItem area;
 	
 	
 	public RegisterDform( int width)
@@ -76,12 +84,6 @@ public class RegisterDform extends DynamicForm
 		confirmpassword.setRequired(true);
 		confirmpassword.setType("password");
 		
-		telephone = new TextItem("contact");
-		telephone.setWidth( columnwidth[1] );
-		telephone.setTitleStyle( "h2" );
-		telephone.setTitle("电话");
-		telephone.setRequired(true);
-		
 		sex = new RadioGroupItem( "sex" );
 		sex.setVertical( false );
 		sex.setValueMap( "男","女" );
@@ -90,25 +92,88 @@ public class RegisterDform extends DynamicForm
 		sex.setTitle("性别");
 		sex.setRequired(true);
 		
+		isteacher = new CheckboxItem( "forhelp" );
+		isteacher.setTitleStyle( "h2" );
+		isteacher.setTitle("填写老师信息？");
+		isteacher.setRequired(true);
+		
+		chart = new TextItem( "character" );
+		chart.setRequired(true);
+		chart.setVisible( false );
+		
+		telephone = new TextItem("contact");
+		telephone.setWidth( columnwidth[1] );
+		telephone.setTitleStyle( "h2" );
+		telephone.setTitle("电话");
+		telephone.setRequired(true);
+		telephone.setVisible( false );
+		
 		resume = new TextAreaItem("resume");
 		resume.setWidth( columnwidth[1] );
 		resume.setTitleStyle( "h2" );
 		resume.setTitle("简介");
 		resume.setRequired(true);
+		resume.setVisible( false );
 		
 		orgname = new TextItem("orgname");
 		orgname.setWidth( columnwidth[1] );
 		orgname.setTitleStyle( "h2" );
 		orgname.setTitle("工作单位");
 		orgname.setRequired(true);
+		orgname.setVisible( false );
 		
 		title = new TextItem("title");
 		title.setWidth( columnwidth[1] );
 		title.setTitleStyle( "h2" );
 		title.setTitle("职位");
 		title.setRequired(true);
+		title.setVisible( false );
 		
-		setFields(new FormItem[] {username, emailItem, password,confirmpassword,telephone,sex,resume,orgname,title});
+		
+		city = new TextItem("city");
+		city.setWidth( columnwidth[1] );
+		city.setTitleStyle( "h2" );
+		city.setTitle("城市");
+		city.setRequired(true);
+		city.setVisible( false );
+		
+		
+		area = new TextItem("area");
+		area.setWidth( columnwidth[1] );
+		area.setTitleStyle( "h2" );
+		area.setTitle("区县");
+		area.setRequired(true);
+		area.setVisible( false );
+		
+		
+		isteacher.addChangedHandler( new ChangedHandler( ) {
+			@Override
+			public void onChanged( ChangedEvent event )
+			{
+				if(isteacher.getValueAsBoolean( ) )
+				{
+					telephone.show( );
+					resume.show(  );
+					orgname.show(  );
+					title.show(  );
+					city.show( );
+					area.show( );
+					chart.setValue( "teacher" );
+				}
+				else
+				{
+					telephone.hide( );
+					resume.hide(  );
+					orgname.hide(  );
+					title.hide(  );
+					city.hide( );
+					area.hide( );
+					chart.setValue( "normal" );
+				}
+			}
+		} );
+		
+		setFields(new FormItem[] {username, emailItem, sex,password,confirmpassword,isteacher,chart,city,area,telephone,resume,orgname,title});
 		setDataSource( MemberDataSource.getInstance( ).getDataSource( Member.class ) );
 	
 	}

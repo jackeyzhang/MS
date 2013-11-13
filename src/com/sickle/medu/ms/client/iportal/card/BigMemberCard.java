@@ -78,9 +78,15 @@ public class BigMemberCard extends AbstractCard
 		title.setHeight( 15 );
 		title.setStyleName( "bigmembercardtitle" );
 		
+		//地址
+		Label address = new Label( member.getCity( ) + "." + member.getArea( ) );
+		address.setHeight( 15 );
+		address.setStyleName( "bigmembercardtitle" );
+		
 		baseinformation.addMember( name );
 		baseinformation.addMember( orgname );
 		baseinformation.addMember( title );
+		baseinformation.addMember( address );
 		
 		//简历版面
 		VLayout resumeinformation = new VLayout();
