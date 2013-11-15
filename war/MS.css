@@ -224,3 +224,8 @@ body {
 	color: #d71345;
 	text-decoration:underline;
 }
+
+.vtitle {
+	margin: 0px 0px 0px 0px;
+	background-image: url(./images/gauze.png);
+}

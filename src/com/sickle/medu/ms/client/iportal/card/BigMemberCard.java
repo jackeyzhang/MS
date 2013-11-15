@@ -3,10 +3,13 @@
  */
 package com.sickle.medu.ms.client.iportal.card;
 
+import com.sickle.medu.ms.client.ui.widget.LinkLabel;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 
@@ -35,7 +38,6 @@ public class BigMemberCard extends AbstractCard
 		this.setHeight( height );
 		init();
 		addMember(information);
-		addMember(operate);
 	}
 	
 	private void init()
@@ -49,19 +51,14 @@ public class BigMemberCard extends AbstractCard
 	{
 		this.setMargin( 2 );
 		this.setStyleName( "bigmembercardborder" );
-		information.setHeight( "90%" );
+		information.setHeight100( );
 		information.setWidth100( );
 	}
 	
 	private void initInformation()
 	{
 		//个人信息
-		VLayout baseinformation = new VLayout();
-		baseinformation.setMargin( 20 );
-		baseinformation.setAlign( Alignment.CENTER );
-		baseinformation.setWidth( 500 );
-		baseinformation.setHeight( 200 );
-		baseinformation.setBorder( "2px solid #fffffb" );
+		Layout baseinformation = getDescPanel("基本信息");
 		
 		//名字
 		Label name = new Label(member.getName( ));
@@ -89,12 +86,7 @@ public class BigMemberCard extends AbstractCard
 		baseinformation.addMember( address );
 		
 		//简历版面
-		VLayout resumeinformation = new VLayout();
-		resumeinformation.setMargin( 20 );
-		resumeinformation.setAlign( Alignment.CENTER );
-		resumeinformation.setWidth( 500 );
-		resumeinformation.setHeight( 200 );
-		resumeinformation.setBorder( "2px solid #fffffb" );
+		Layout resumeinformation = getDescPanel("个人简历");
 		//简历
 		Label resume = new Label(member.getResume( ));
 		resume.setHeight( 15 );
@@ -131,5 +123,37 @@ public class BigMemberCard extends AbstractCard
 		kecheng.setSize( "16px", "16px" );
 		kecheng.setTooltip( "查看开设课程" );
 		operate.addMember( kecheng );*/
+	}
+	
+	/**
+	 * 获取带标题的panel
+	 * 
+	 * @param title
+	 * @return
+	 */
+	private Layout getDescPanel(String title)
+	{
+		VLayout panel = new VLayout();
+		panel.setMargin( 20 );
+		panel.setAlign( Alignment.CENTER );
+		panel.setAlign( VerticalAlignment.TOP );
+		panel.setWidth( 500 );
+		panel.setHeight( 200 );
+		panel.setBorder( "2px solid #fffffb" );
+		
+		//titlepanel
+		HLayout titlepanel = new HLayout();
+		titlepanel.setStyleName( "vtitle" );
+		titlepanel.setWidth( 500 );
+		titlepanel.setHeight( 20 );
+		titlepanel.setAlign( Alignment.CENTER );
+		//title
+		LinkLabel bstitle = new LinkLabel( title,false );
+		titlepanel.addMember( bstitle );
+		
+		
+		panel.addMember( titlepanel );
+		
+		return panel;
 	}
 }
