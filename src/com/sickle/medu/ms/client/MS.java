@@ -79,7 +79,7 @@ public class MS implements EntryPoint
 					MemberPage.getInstance( ).loadingMember( id );
 					
 				}
-				if (event.getValue().startsWith(IPageConst.PAGE_ORG)) {
+				else if (event.getValue().startsWith(IPageConst.PAGE_ORG)) {
 					MeduIndexPage.getInstance().clear();
 					LoginPage.getInstance().clear();
 					RegisterPage.getInstance().clear();
