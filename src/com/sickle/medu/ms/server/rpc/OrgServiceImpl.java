@@ -77,4 +77,11 @@ public class OrgServiceImpl extends RemoteServiceServlet implements OrgService {
 		return null;
 	}
 
+
+
+	@Override
+	public Org getOrgById(int orgId) throws Exception {
+		return service.getOrgById(orgId);
+	}
+
 }

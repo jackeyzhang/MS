@@ -50,4 +50,5 @@ public interface IPageConst
 	public static final String PAGE_REGISTER = "register";
 	public static final String PAGE_MEMBER = "mid";
 	public static final String PAGE_EQ = "=";
+	public static final String PAGE_ORG = "org";
 }

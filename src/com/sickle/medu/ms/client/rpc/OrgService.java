@@ -41,4 +41,6 @@ public interface OrgService extends RemoteService {
 	public Org addOrg(Org org) throws Exception;
 	
 	public Org deleteOrg(Org org)throws Exception;
+	
+	public Org getOrgById(int orgId) throws Exception;
 }

@@ -8,6 +8,7 @@ import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.LoginPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.iportal.MemberPage;
+import com.sickle.medu.ms.client.iportal.OrgPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
 
@@ -40,6 +41,7 @@ public class MS implements EntryPoint
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
+					OrgPage.getInstance().clear();
 					MeduIndexPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_LOGIN ))
@@ -49,6 +51,7 @@ public class MS implements EntryPoint
 						MeduIndexPage.getInstance( ).clear( );
 						RegisterPage.getInstance( ).clear( );
 						MemberPage.getInstance( ).clear( );
+						OrgPage.getInstance().clear();
 					}
 					LoginPage.getInstance( ).draw( );
 				}
@@ -59,6 +62,7 @@ public class MS implements EntryPoint
 						MeduIndexPage.getInstance( ).clear( );
 						LoginPage.getInstance( ).clear( );
 						MemberPage.getInstance( ).clear( );
+						OrgPage.getInstance().clear();
 					}
 					RegisterPage.getInstance( ).draw( );
 				}
@@ -68,11 +72,22 @@ public class MS implements EntryPoint
 					MeduIndexPage.getInstance( ).clear( );
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
+					OrgPage.getInstance().clear();
 					
 					MemberPage.getInstance( ).draw( );
 					int id = Integer.parseInt( event.getValue( ).substring( 4 ) ) ;
 					MemberPage.getInstance( ).loadingMember( id );
 					
+				}
+				if (event.getValue().startsWith(IPageConst.PAGE_ORG)) {
+					MeduIndexPage.getInstance().clear();
+					LoginPage.getInstance().clear();
+					RegisterPage.getInstance().clear();
+					MemberPage.getInstance().clear();
+
+					OrgPage.getInstance().draw();
+					int id = Integer.parseInt(event.getValue().substring(4));
+					OrgPage.getInstance().loadingOrg(id);
 				}
 				else
 				{

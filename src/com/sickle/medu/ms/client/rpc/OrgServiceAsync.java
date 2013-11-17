@@ -23,4 +23,6 @@ public interface OrgServiceAsync
 
 	void deleteOrg( Org org, AsyncCallback<Org> callback );
 
+	void getOrgById(int orgId, AsyncCallback<Org> callback);
+
 }

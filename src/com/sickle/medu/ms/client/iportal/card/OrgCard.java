@@ -91,7 +91,7 @@ public class OrgCard extends AbstractCard
 		
 		Label name = new Label(org.getName( ));
 		name.setHeight( "15px" );
-		Label description = new Label( "" + org.getAddress( ));
+		Label description = new Label( "" + org.getProvinceCity());
 		description.setHeight( "15px" );
 		baseinformation.addMember( name );
 		baseinformation.addMember( description );
