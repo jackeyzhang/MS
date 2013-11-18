@@ -95,7 +95,6 @@ public class RegisterDform extends DynamicForm
 		isteacher = new CheckboxItem( "forhelp" );
 		isteacher.setTitleStyle( "h2" );
 		isteacher.setTitle("填写老师信息？");
-		isteacher.setRequired(true);
 		
 		chart = new TextItem( "character" );
 		chart.setRequired(true);

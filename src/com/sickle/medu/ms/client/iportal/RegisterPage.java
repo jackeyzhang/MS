@@ -93,7 +93,7 @@ public class RegisterPage extends AbstractPage
 					@Override
 					public void execute( Boolean value )
 					{
-						History.newItem( IPageConst.PAGE_MEDU );
+						History.newItem( IPageConst.PAGE_LOGIN );
 					}
 				} );
 				

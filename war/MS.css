@@ -17,12 +17,12 @@ h1 {
 }
 
 .sgwtTitle{
-	font-size: 2em;
+	font-size: 1.5em;
 	color: #7fb80e;
 }
 
 .sgwtTitle-in{
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: bold;
 	text-decoration:underline;
 	color: #7fb80e;
@@ -228,4 +228,12 @@ body {
 .vtitle {
 	margin: 0px 0px 0px 0px;
 	background-image: url(./images/gauze.png);
+}
+
+.controlpanel{
+	background-color: #d9d6c3;
+}
+
+.controlpanel-mousein{
+	background-color: #e0861a;
 }

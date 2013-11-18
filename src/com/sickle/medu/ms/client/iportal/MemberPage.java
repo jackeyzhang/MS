@@ -82,7 +82,7 @@ public class MemberPage extends AbstractPage
 		VLayout memberpage = new VLayout();
 		memberpage.setStyleName( "memberpage" );
 		
-		LinkLabel returnpage = new LinkLabel(">>返回首页");
+		LinkLabel returnpage = new LinkLabel("返回首页");
 		returnpage.setHeight( ScreenUtil.getHeight( 0.05 ) );
 		returnpage.addClickHandler( new ClickHandler( ) {
 			@Override
