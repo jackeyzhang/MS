@@ -14,8 +14,10 @@ import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.AnimationEffect;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Img;
-import com.smartgwt.client.widgets.events.ClickEvent;
-import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.events.MouseOutEvent;
+import com.smartgwt.client.widgets.events.MouseOutHandler;
+import com.smartgwt.client.widgets.events.MouseOverEvent;
+import com.smartgwt.client.widgets.events.MouseOverHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -39,6 +41,8 @@ public class AdvertBanner extends VLayout
 	private HLayout controlPanel = new HLayout( );
 	
 	private Canvas control1,control2,control3;
+	
+	private boolean started = true;
 	
 	public  AdvertBanner(double width,double height)
 	{
@@ -81,30 +85,64 @@ public class AdvertBanner extends VLayout
 		imgs.add( img2 );
 		imgs.add( img3 );
 		
-		control1.addClickHandler( new ClickHandler( ) {
+		
+		control1.addMouseOverHandler( new MouseOverHandler( ) {
+			
 			@Override
-			public void onClick( ClickEvent event )
+			public void onMouseOver( MouseOverEvent event )
 			{
 				count = 0;
+				started = false;
 				animateShow();
 			}
 		} );
 		
-		control2.addClickHandler( new ClickHandler( ) {
+		control1.addMouseOutHandler( new MouseOutHandler( ) {
+			
 			@Override
-			public void onClick( ClickEvent event )
+			public void onMouseOut( MouseOutEvent event )
+			{
+				started = true;				
+			}
+		} );
+		
+		control2.addMouseOverHandler( new MouseOverHandler( ) {
+				
+			@Override
+			public void onMouseOver( MouseOverEvent event )
 			{
 				count = 1;
+				started = false;
 				animateShow();
 			}
 		} );
 		
-		control3.addClickHandler( new ClickHandler( ) {
+		control2.addMouseOutHandler( new MouseOutHandler( ) {
+			
 			@Override
-			public void onClick( ClickEvent event )
+			public void onMouseOut( MouseOutEvent event )
+			{
+				started = true;				
+			}
+		} );
+
+		control3.addMouseOverHandler( new MouseOverHandler( ) {
+			
+			@Override
+			public void onMouseOver( MouseOverEvent event )
 			{
 				count = 2;
+				started = false;
 				animateShow();
+			}
+		} );
+		
+		control3.addMouseOutHandler( new MouseOutHandler( ) {
+			
+			@Override
+			public void onMouseOut( MouseOutEvent event )
+			{
+				started = true;				
 			}
 		} );
 
@@ -112,6 +150,7 @@ public class AdvertBanner extends VLayout
 			@Override
 			public void run( )
 			{
+				if( started )
 				animateShow();
 			}
 		}.scheduleRepeating( 4000 );

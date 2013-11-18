@@ -60,7 +60,7 @@ public class WithRightLittleControlPanel extends HLayout
 			}
 		} );
 		addMember( h );
-		return label;
+		return h;
 	}
 
 }
