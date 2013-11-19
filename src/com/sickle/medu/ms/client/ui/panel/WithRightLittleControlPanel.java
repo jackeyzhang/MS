@@ -40,7 +40,7 @@ public class WithRightLittleControlPanel extends HLayout
 		h.setStyleName( "controlpanel" );
 		h.setWidth( width );
 		h.setAlign( Alignment.CENTER  );
-		BluelittleLabel label = new BluelittleLabel(title,true);
+		BluelittleLabel label = new BluelittleLabel(title,false);
 		label.setWidth( width/3 );
 		h.addMember( label );
 		h.addMouseOverHandler( new MouseOverHandler( ) {

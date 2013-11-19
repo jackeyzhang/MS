@@ -32,15 +32,14 @@ public class MainPageTopBar extends RibbonBar
 	        sgwtHomeButton.setSrc("pieces/24/cube_green.png");
 	        sgwtHomeButton.setWidth(24);
 	        sgwtHomeButton.setHeight(24);
-	        sgwtHomeButton.setPrompt("MS");
+	        sgwtHomeButton.setPrompt("欢迎登陆爱师网");
 	        sgwtHomeButton.setHoverStyle("interactImageHover");
 	        sgwtHomeButton.setShowRollOver(false);
 	        sgwtHomeButton.setShowDownIcon(false);
 	        sgwtHomeButton.setShowDown(false);
 	        sgwtHomeButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
 	            public void onClick(ClickEvent event) {
-	                com.google.gwt.user.client.Window.open("http://code.google.com/p/smartgwt/",
-	                                                       "sgwt", null);
+	            	History.newItem( IPageConst.PAGE_MEDU );
 	            }
 	        });
 	        addMember(sgwtHomeButton);
@@ -71,7 +70,6 @@ public class MainPageTopBar extends RibbonBar
 	        });
 
 	        addMember(logoutButton);
-	        addMember(indexButton);
 	}
 
 	

@@ -1,14 +1,17 @@
 /**
  * 
  */
+
 package com.sickle.medu.ms.client.iportal.card;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.ui.widget.BluelittleLabel;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
-import com.smartgwt.client.widgets.Img;
+import com.smartgwt.client.util.SC;
+import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
@@ -19,50 +22,49 @@ import com.smartgwt.client.widgets.events.MouseOverHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-
 /**
  * 老师名片
  * 
  * @author chenhao
- *
+ * 
  */
 public class MemberCard extends AbstractCard
 {
 
-	private HLayout information = new HLayout();
-	
-	private HLayout operate = new HLayout();
-	
+	private HLayout information = new HLayout( );
+
+	private HLayout operate = new HLayout( );
+
 	private Member member;
-	
-	
-	public MemberCard(Member member,String width,String height)
+
+	public MemberCard( Member member, String width, String height )
 	{
-		super();
+		super( );
 		this.setTooltip( "单击查看该老师更多信息" );
 		this.member = member;
 		this.setWidth( width );
 		this.setHeight( height );
-		init();
+		init( );
 		information.setCursor( Cursor.POINTER );
 		operate.setCursor( Cursor.POINTER );
-		addMember(information);
-		addMember(operate);
+		addMember( information );
+		addMember( operate );
 	}
-	
-	private void init()
+
+	private void init( )
 	{
-		initLayout();
-		initInformation();
-		initOperate();
+		initLayout( );
+		initInformation( );
+		initOperate( );
 	}
-	
-	private void initLayout()
+
+	private void initLayout( )
 	{
 		this.setMargin( 2 );
 		this.setStyleName( "membercardborder" );
 		this.setCursor( Cursor.POINTER );
 		this.addMouseOverHandler( new MouseOverHandler( ) {
+
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
@@ -71,6 +73,7 @@ public class MemberCard extends AbstractCard
 			}
 		} );
 		this.addMouseOutHandler( new MouseOutHandler( ) {
+
 			@Override
 			public void onMouseOut( MouseOutEvent event )
 			{
@@ -78,98 +81,154 @@ public class MemberCard extends AbstractCard
 				operate.setVisible( false );
 			}
 		} );
-		this.addClickHandler( new ClickHandler( ) {
-			
-			@Override
-			public void onClick( ClickEvent event )
-			{
-				boolean validok = valid();
-				if( validok )
-				{
-					History.newItem( IPageConst.PAGE_MEMBER + IPageConst.PAGE_EQ + member.getId( ) );
-				}
-			}
-		} );
 		information.setHeight( "90%" );
 		information.setWidth100( );
 	}
-	
-	private void initInformation()
+
+	private void initInformation( )
 	{
-		//个人信息
-		VLayout baseinformation = new VLayout();
+		// 个人信息
+		VLayout baseinformation = new VLayout( );
 		baseinformation.setWidth( "35%" );
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
 		baseinformation.setCursor( Cursor.POINTER );
-		
-		Label name = new Label(member.getName( ));
+
+		Label name = new Label( member.getName( ) );
 		name.setHeight( 15 );
 		name.setStyleName( "membercardname" );
 		name.setCursor( Cursor.POINTER );
-		
-		Label orgname = new Label(member.getOrgname( ));
+
+		name.addClickHandler( new ClickHandler( ) {
+
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				boolean validok = valid( );
+				if ( validok )
+				{
+					History.newItem( IPageConst.PAGE_MEMBER
+							+ IPageConst.PAGE_EQ + member.getId( ) );
+				}
+			}
+		} );
+
+		Label address = new Label( member.getCity( ) + "." + member.getArea( ) );
+		address.setHeight( 15 );
+		address.setStyleName( "membercardorgname" );
+
+		Label orgname = new Label( member.getOrgname( ) );
 		orgname.setHeight( 15 );
 		orgname.setStyleName( "membercardorgname" );
-		orgname.setCursor( Cursor.POINTER );
-		
-		Label title = new Label( member.getTitle( ));
+
+		Label title = new Label( member.getTitle( ) );
 		title.setHeight( 15 );
 		title.setStyleName( "membercardtitle" );
-		title.setCursor( Cursor.POINTER );
-		
+
 		baseinformation.addMember( name );
+		baseinformation.addMember( address );
 		baseinformation.addMember( orgname );
 		baseinformation.addMember( title );
-		
-		//简历
+
+		// 简历
 		VLayout extendinformation = new VLayout( );
 		extendinformation.setWidth( "65%" );
 		extendinformation.setHeight( "100%" );
 		extendinformation.setAlign( Alignment.CENTER );
-		extendinformation.setCursor( Cursor.POINTER );
-		
-		Label resume = new Label(member.getResume( ));
+
+		Label resume = new Label( member.getResume( ) );
 		resume.setHeight( 15 );
 		resume.setStyleName( "membercardresume" );
-		resume.setCursor( Cursor.POINTER );
-		
+
 		extendinformation.addMember( resume );
 
-		
-		//分base和extends左右两部分
+		// 分base和extends左右两部分
 		information.addMember( baseinformation );
 		information.addMember( extendinformation );
 	}
-	
-	private void initOperate()
+
+	private void initOperate( )
 	{
-		//操作
+		// 操作
 		operate.setAlign( Alignment.RIGHT );
 		operate.setWidth100( );
 		operate.setHeight( 16 );
 		operate.setStyleName( "membercardoppanel" );
 		operate.setVisible( false );
-		
-		Img message = new Img("icons/16/message.png");
-		message.setPadding( 5 );
-		message.setSize( "16px", "16px" );
-		message.setTooltip( "留言" );
-		message.setCursor( Cursor.POINTER );
+		ClickHandler msgcl = new ClickHandler( ) {
+
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				SC.askforValue( "请填写留言信息", "请输入信息内容", null );
+			}
+		};
+		ClickHandler reportcl = new ClickHandler( ) {
+
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				boolean validok = valid( );
+				if ( validok )
+				{
+					History.newItem( IPageConst.PAGE_MEMBER
+							+ IPageConst.PAGE_EQ + member.getId( ) );
+				}
+			}
+		};
+		ClickHandler detailcl = new ClickHandler( ) {
+
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				boolean validok = valid( );
+				if ( validok )
+				{
+					History.newItem( IPageConst.PAGE_MEMBER
+							+ IPageConst.PAGE_EQ + member.getId( ) );
+				}
+			}
+		};
+		Canvas message = getControlWidget( "留言", msgcl, 40, "#ffce7b" );
+		Canvas detail = getControlWidget( "查看", detailcl, 40, "#d9d6c3" );
+		Canvas report = getControlWidget( "开设课程", reportcl, 60, "#c7a252" );
+
+		operate.addMember( detail );
 		operate.addMember( message );
-		
-		Img telephone = new Img("crystal/16/actions/irc_online.png");
-		telephone.setPadding( 5 );
-		telephone.setSize( "16px", "16px" );
-		telephone.setTooltip( "查看联系方式" );
-		telephone.setCursor( Cursor.POINTER );
-		operate.addMember( telephone );
-		
-		Img kecheng = new Img("demoApp/icon_view.png");
-		kecheng.setPadding( 5 );
-		kecheng.setSize( "16px", "16px" );
-		kecheng.setTooltip( "查看开设课程" );
-		kecheng.setCursor( Cursor.POINTER );
-		operate.addMember( kecheng );
+		operate.addMember( report );
+	}
+
+	private Canvas getControlWidget( String controlname, ClickHandler cl,
+			int width, final String backgroundColor )
+	{
+		final HLayout operate = new HLayout( );
+		operate.setWidth( width );
+		operate.setAlign( Alignment.CENTER );
+		operate.setStyleName( "membercard-operate" );
+		operate.setBackgroundColor( backgroundColor );
+		BluelittleLabel operatelabel = new BluelittleLabel( controlname );
+		operatelabel.setAlign( Alignment.CENTER );
+		operatelabel.addClickHandler( cl );
+		operatelabel.setWidth( width );
+		operate.addMember( operatelabel );
+		operate.addMouseOverHandler( new MouseOverHandler( ) {
+
+			@Override
+			public void onMouseOver( MouseOverEvent event )
+			{
+				operate.setStyleName( "membercard-operate-mousein" );
+				operate.setBackgroundColor( "#e0861a" );
+			}
+		} );
+		operate.addMouseOutHandler( new MouseOutHandler( ) {
+
+			@Override
+			public void onMouseOut( MouseOutEvent event )
+			{
+				operate.setStyleName( "membercard-operate" );
+				operate.setBackgroundColor( backgroundColor );
+			}
+		} );
+		return operate;
 	}
 }

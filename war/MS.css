@@ -116,6 +116,14 @@ body {
 	padding-left: 18px;
 }
 
+.membercard-operate{
+	background-color: #d9d6c3;
+}
+
+.membercard-operate-mousein{
+	background-color: #e0861a;
+}
+
 /* bigmembercardborder card style */
 .bigmembercardborder {
 	border-width: thin;

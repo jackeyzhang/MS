@@ -137,6 +137,7 @@ public class AdvertBanner extends VLayout
 			}
 		} );
 		
+		
 		control3.addMouseOutHandler( new MouseOutHandler( ) {
 			
 			@Override
@@ -166,6 +167,24 @@ public class AdvertBanner extends VLayout
 		for( Canvas cas : imagePanel.getMembers( ) )
 		{
 			imagePanel.removeMember( cas );
+		}
+		if( count == 0 )
+		{
+			control1.setStyleName( "controlpanel-mousein" );
+			control2.setStyleName( "controlpanel" );
+			control3.setStyleName( "controlpanel" );
+		}
+		else if( count == 1 )
+		{
+			control2.setStyleName( "controlpanel-mousein" );
+			control1.setStyleName( "controlpanel" );
+			control3.setStyleName( "controlpanel" );
+		}
+		else if( count == 2 )
+		{
+			control3.setStyleName( "controlpanel-mousein" );
+			control2.setStyleName( "controlpanel" );
+			control1.setStyleName( "controlpanel" );
 		}
 		imagePanel.setVisible( false );
 		imagePanel.addMember( imgs.get( count ) );
