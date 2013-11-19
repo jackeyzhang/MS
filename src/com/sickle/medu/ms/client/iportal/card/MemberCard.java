@@ -12,6 +12,7 @@ import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
@@ -89,14 +90,18 @@ public class MemberCard extends AbstractCard
 		baseinformation.setWidth( "35%" );
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
+		
+		HLayout headiconandname = new HLayout();
+		headiconandname.setHeight( 45 );
+		headiconandname.setAlign( Alignment.CENTER );
+		Img img = new Img("headicon/b1.png",35,45);
 
 		Label name = new Label( member.getName( ) );
 		name.setHeight( 15 );
 		name.setStyleName( "membercardname" );
 		name.setCursor( Cursor.POINTER );
-
+		
 		name.addClickHandler( new ClickHandler( ) {
-
 			@Override
 			public void onClick( ClickEvent event )
 			{
@@ -109,7 +114,7 @@ public class MemberCard extends AbstractCard
 			}
 		} );
 
-		Label address = new Label( member.getCity( ) + "." + member.getArea( ) );
+		Label address = new Label( member.getCity( ) + "-" + member.getArea( ) );
 		address.setHeight( 15 );
 		address.setStyleName( "membercardorgname" );
 
@@ -121,6 +126,8 @@ public class MemberCard extends AbstractCard
 		title.setHeight( 15 );
 		title.setStyleName( "membercardtitle" );
 
+		headiconandname.addMember( img );
+		baseinformation.addMember( headiconandname );
 		baseinformation.addMember( name );
 		baseinformation.addMember( address );
 		baseinformation.addMember( orgname );
