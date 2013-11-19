@@ -40,13 +40,11 @@ public class MemberCard extends AbstractCard
 	public MemberCard( Member member, String width, String height )
 	{
 		super( );
-		this.setTooltip( "单击查看该老师更多信息" );
+		this.setTooltip( "单击名字查看该老师更多信息" );
 		this.member = member;
 		this.setWidth( width );
 		this.setHeight( height );
 		init( );
-		information.setCursor( Cursor.POINTER );
-		operate.setCursor( Cursor.POINTER );
 		addMember( information );
 		addMember( operate );
 	}
@@ -62,7 +60,6 @@ public class MemberCard extends AbstractCard
 	{
 		this.setMargin( 2 );
 		this.setStyleName( "membercardborder" );
-		this.setCursor( Cursor.POINTER );
 		this.addMouseOverHandler( new MouseOverHandler( ) {
 
 			@Override
@@ -92,7 +89,6 @@ public class MemberCard extends AbstractCard
 		baseinformation.setWidth( "35%" );
 		baseinformation.setHeight( "100%" );
 		baseinformation.setAlign( Alignment.CENTER );
-		baseinformation.setCursor( Cursor.POINTER );
 
 		Label name = new Label( member.getName( ) );
 		name.setHeight( 15 );
