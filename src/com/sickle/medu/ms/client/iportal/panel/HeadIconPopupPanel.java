@@ -7,6 +7,7 @@ import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.ui.widget.HighlightImg;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -73,6 +74,7 @@ public class HeadIconPopupPanel extends AbstractDialog
 		String iconurl = ICONPATH + iconarray[index];
 		final HighlightImg img = new HighlightImg(iconurl);
 		img.setSize( "50px", "50px" );
+		img.setCursor( Cursor.POINTER );
 		img.addClickHandler( new ClickHandler( ) {
 			@Override
 			public void onClick( ClickEvent event )

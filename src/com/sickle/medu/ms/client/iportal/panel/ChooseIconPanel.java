@@ -7,6 +7,7 @@ package com.sickle.medu.ms.client.iportal.panel;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.widget.MagicShow;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
@@ -41,7 +42,8 @@ public class ChooseIconPanel extends HLayout
 		this.setAlign( Alignment.RIGHT );
 		
 		MagicShow.addHighlightWhenMouseOver( defaultIcon );
-		defaultIcon.setSize("40px", "40px");
+		defaultIcon.setSize("50px", "50px");
+		defaultIcon.setCursor( Cursor.POINTER );
 		defaultIcon.addClickHandler( new ClickHandler( ) {
 			@Override
 			public void onClick( ClickEvent event )
