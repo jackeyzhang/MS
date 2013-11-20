@@ -3,10 +3,12 @@
  */
 package com.sickle.medu.ms.client.iportal.card;
 
+import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.widget.LinkLabel;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
+import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
@@ -60,6 +62,14 @@ public class BigMemberCard extends AbstractCard
 		//个人信息
 		Layout baseinformation = getDescPanel("基本信息");
 		
+		String icon = member.getIcon( );
+		if( icon == null || icon.length( ) == 0 )
+		{
+			icon = IPageConst.DEFAULT_HEAD_ICON;
+		}
+		
+		Img img = new Img(icon,60,60);
+		
 		//名字
 		Label name = new Label(member.getName( ));
 		name.setHeight( 15 );
@@ -80,6 +90,7 @@ public class BigMemberCard extends AbstractCard
 		address.setHeight( 15 );
 		address.setStyleName( "bigmembercardtitle" );
 		
+		baseinformation.addMember( img );
 		baseinformation.addMember( name );
 		baseinformation.addMember( orgname );
 		baseinformation.addMember( title );

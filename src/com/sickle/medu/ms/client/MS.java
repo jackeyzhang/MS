@@ -49,10 +49,10 @@ public class MS implements EntryPoint
 					if( isFirstVisit == false)
 					{
 						MeduIndexPage.getInstance( ).clear( );
-						RegisterPage.getInstance( ).clear( );
-						MemberPage.getInstance( ).clear( );
-						OrgPage.getInstance().clear();
 					}
+					RegisterPage.getInstance( ).clear( );
+					MemberPage.getInstance( ).clear( );
+					OrgPage.getInstance().clear();
 					LoginPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_REGISTER ))
@@ -60,10 +60,10 @@ public class MS implements EntryPoint
 					if( isFirstVisit == false)
 					{
 						MeduIndexPage.getInstance( ).clear( );
-						LoginPage.getInstance( ).clear( );
-						MemberPage.getInstance( ).clear( );
-						OrgPage.getInstance().clear();
 					}
+					LoginPage.getInstance( ).clear( );
+					MemberPage.getInstance( ).clear( );
+					OrgPage.getInstance().clear();
 					RegisterPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).startsWith( IPageConst.PAGE_MEMBER ))

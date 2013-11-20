@@ -62,7 +62,6 @@ public class MemberCard extends AbstractCard
 		this.setMargin( 2 );
 		this.setStyleName( "membercardborder" );
 		this.addMouseOverHandler( new MouseOverHandler( ) {
-
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
@@ -94,13 +93,19 @@ public class MemberCard extends AbstractCard
 		HLayout headiconandname = new HLayout();
 		headiconandname.setHeight( 45 );
 		headiconandname.setAlign( Alignment.CENTER );
-		Img img = new Img("headicon/b1.png",35,45);
+		
+		String icon = member.getIcon( );
+		if( icon == null || icon.length( ) == 0 )
+		{
+			icon = IPageConst.DEFAULT_HEAD_ICON;
+		}
+		
+		Img img = new Img(icon,40,40);
 
 		Label name = new Label( member.getName( ) );
 		name.setHeight( 15 );
 		name.setStyleName( "membercardname" );
 		name.setCursor( Cursor.POINTER );
-		
 		name.addClickHandler( new ClickHandler( ) {
 			@Override
 			public void onClick( ClickEvent event )

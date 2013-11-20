@@ -26,6 +26,7 @@ public class RegisterDform extends DynamicForm
 {
 
 	private TextItem username;
+	private TextItem icon;
 	private TextItem emailItem;
 	private PasswordItem password;
 	private PasswordItem confirmpassword;
@@ -43,12 +44,12 @@ public class RegisterDform extends DynamicForm
 	
 	public RegisterDform( int width)
 	{
-		this( width, width/4, width - width/2 );
+		this( width, width/5, width - width/5 );
 	}
 	
 	public RegisterDform()
 	{
-		this( 500, 200, 300 );
+		this( 500, 100, 300 );
 	}
 	
 	public RegisterDform(int width,int... columnwidth)
@@ -63,6 +64,11 @@ public class RegisterDform extends DynamicForm
 		username.setTitleStyle( "h2" );
 		username.setTitle("用户名");
 		username.setRequired(true);
+		
+		icon = new TextItem("icon");
+		icon.setWidth( columnwidth[1] );
+		icon.setTitleStyle( "h2" );
+		icon.setVisible( false );
 		
         emailItem = new TextItem("email");
         emailItem.setWidth( columnwidth[1] );
@@ -172,7 +178,7 @@ public class RegisterDform extends DynamicForm
 			}
 		} );
 		
-		setFields(new FormItem[] {username, emailItem, sex,password,confirmpassword,isteacher,chart,city,area,telephone,resume,orgname,title});
+		setFields(new FormItem[] {username, icon,emailItem, sex,password,confirmpassword,isteacher,chart,city,area,telephone,resume,orgname,title});
 		setDataSource( MemberDataSource.getInstance( ).getDataSource( Member.class ) );
 	
 	}
@@ -214,4 +220,22 @@ public class RegisterDform extends DynamicForm
 		return confirmpassword;
 	}
 
+	
+	/**
+	 * @return the icon
+	 */
+	public TextItem getIcon( )
+	{
+		return icon;
+	}
+
+	
+	/**
+	 * @param icon the icon to set
+	 */
+	public void setIcon( String icon )
+	{
+		this.icon.setValue( icon );
+	}
+	
 }

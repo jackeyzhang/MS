@@ -5,6 +5,7 @@ package com.sickle.medu.ms.client.iportal;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.form.RegisterDform;
+import com.sickle.medu.ms.client.iportal.panel.ChooseIconPanel;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.util.ScreenUtil;
@@ -64,13 +65,19 @@ public class RegisterPage extends AbstractPage
 		registerpage.setAlign( Alignment.CENTER );
 		registerpage.setStyleName( "registerpage" );
 		
+		
+		
 		VLayout contentpage = new VLayout();
 		contentpage.setWidth( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
 		contentpage.setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER )  );
 		contentpage.setStyleName( "registerpage-content" );
 		
+		HLayout registerpanel = new HLayout();
 		final RegisterDform registerform = new RegisterDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
-		contentpage.addMember( registerform );
+		final ChooseIconPanel chooseiconpanel = new ChooseIconPanel();
+		registerpanel.addMember( chooseiconpanel );
+		registerpanel.addMember( registerform );
+		
 		
 		HLayout buttonpanel = new HLayout();
 		buttonpanel.setPadding( 10 );
@@ -83,6 +90,7 @@ public class RegisterPage extends AbstractPage
 			@Override
 			public void onClick( ClickEvent event )
 			{
+				registerform.setIcon( chooseiconpanel.getChooseIcon( ) );
 				boolean isValidate = registerform.validate( );
 				if( isValidate == false)
 				{
@@ -113,7 +121,10 @@ public class RegisterPage extends AbstractPage
 		
 		buttonpanel.addMember( okbutton );
 		buttonpanel.addMember( cancelbutton );
+		
+		contentpage.addMember( registerpanel );
 		contentpage.addMember( buttonpanel );
+		
 		
 		registerpage.addMember( contentpage );
 		

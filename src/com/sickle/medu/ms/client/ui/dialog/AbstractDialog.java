@@ -60,6 +60,7 @@ public abstract class AbstractDialog extends Window
 			this.draw( );
 			this.centerInPage( );
 		}else{
+			this.setVisible( true );
 			this.centerInPage( );
 		}
 	}

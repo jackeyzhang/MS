@@ -41,7 +41,7 @@ public interface IPageConst
 	
 	//注册界面高度百分比
 	public static final double REGISTER_HEIGHT_PER = 0.5;
-	public static final double REGISTER_WIDTH_PER = 0.4;
+	public static final double REGISTER_WIDTH_PER = 0.3;
 	
 	
 	//history manage
@@ -51,4 +51,8 @@ public interface IPageConst
 	public static final String PAGE_MEMBER = "mid";
 	public static final String PAGE_EQ = "=";
 	public static final String PAGE_ORG = "org";
+	
+	//icon url
+	public static final String DEFAULT_HEAD_ICON = "icons/header/user_male1.png";
+	public static final String CHOOSE_ICON = "icons/header/plus.png";
 }
