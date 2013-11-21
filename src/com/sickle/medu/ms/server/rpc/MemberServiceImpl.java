@@ -99,4 +99,13 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 		return new MemberDTO().to( oMember );
 	}
 
+
+
+	@Override
+	public Member modifyMember( Member member ) throws Exception
+	{
+		Member m = service.modifyMember( member );
+		return new MemberDTO().to( m );
+	}
+
 }

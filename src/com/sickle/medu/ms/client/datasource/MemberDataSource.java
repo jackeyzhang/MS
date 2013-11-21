@@ -107,7 +107,7 @@ public class MemberDataSource extends GwtRpcDataSource
 		JavaScriptObject data = request.getData( );
 		ListGridRecord rec = new ListGridRecord( data );
 		Member userRec = new Member( );
-		copyValues( rec, userRec );
+		recopyValues( rec, userRec );
 		MemberServiceAsync service = MemberService.Util.getInstance( );
 		service.addMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
 
@@ -128,7 +128,24 @@ public class MemberDataSource extends GwtRpcDataSource
 	protected void executeUpdate( final String requestId, DSRequest request,
 			final DSResponse response )
 	{
-		executeAdd( requestId, request, response );
+		JavaScriptObject data = request.getData( );
+		ListGridRecord rec = new ListGridRecord( data );
+		Member userRec = new Member( );
+		recopyValues( rec, userRec );
+		MemberServiceAsync service = MemberService.Util.getInstance( );
+		service.modifyMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
+
+			public void call( Member result )
+			{
+				ListGridRecord[] list = new ListGridRecord[1];
+				ListGridRecord newRec = new ListGridRecord( );
+				copyValues( (Member) result, newRec );
+				list[0] = newRec;
+				response.setData( list );
+				getDataSource( Member.class )
+						.processResponse( requestId, response );
+			}
+		} );
 	}
 
 	@Override
@@ -138,7 +155,7 @@ public class MemberDataSource extends GwtRpcDataSource
 		JavaScriptObject data = request.getData( );
 		final ListGridRecord rec = new ListGridRecord( data );
 		Member userRec = new Member( );
-		copyValues( rec, userRec );
+		recopyValues( rec, userRec );
 		MemberServiceAsync service = MemberService.Util.getInstance( );
 		service.deleteMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
 

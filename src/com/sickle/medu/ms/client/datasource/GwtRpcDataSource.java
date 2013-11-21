@@ -175,7 +175,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		}
 	}
 
-	public <T> void copyValues( ListGridRecord from, T to )
+	public <T> void recopyValues( ListGridRecord from, T to )
 	{
 		@SuppressWarnings("unchecked")
 		ClassType<T> classType = TypeOracle.Instance.getClassType( to

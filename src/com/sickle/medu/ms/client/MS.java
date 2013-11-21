@@ -102,8 +102,7 @@ public class MS implements EntryPoint
 					ForgetPasswordPage.getInstance( ).clear( );
 					
 					ManageSelfPage.getInstance( ).draw( );
-					int id = Integer.parseInt( event.getValue( ).substring( IPageConst.PAGE_MANAGESELF.length( ) + 1 ) ) ;
-					ManageSelfPage.getInstance( ).loadingMember( id );
+					ManageSelfPage.getInstance( ).loadingMember(MeduIndexPage.getInstance( ).getTopbar( ).getMember( ) );
 				}
 				else if (event.getValue().startsWith(IPageConst.PAGE_ORG)) {
 					MeduIndexPage.getInstance().clear();

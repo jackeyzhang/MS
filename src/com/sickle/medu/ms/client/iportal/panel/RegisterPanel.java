@@ -33,6 +33,7 @@ public class RegisterPanel extends HLayout
 	
 	public RegisterPanel(int op)
 	{
+		this.op = op;
 		setWidth100( );
 		setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER ) );
 		setAlign( Alignment.CENTER );
@@ -64,7 +65,7 @@ public class RegisterPanel extends HLayout
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				registerform.setIcon( chooseiconpanel.getChooseIcon( ) );
+				precommit();
 				boolean isValidate = registerform.validate( );
 				if( isValidate == false)
 				{
@@ -97,7 +98,7 @@ public class RegisterPanel extends HLayout
 		buttonpanel.addMember( cancelbutton );
 		
 		contentpage.addMember( registerpanel );
-		if(  op != 0 )
+		if(  op == 0 )
 		{
 			contentpage.addMember( buttonpanel );
 		}
@@ -109,7 +110,7 @@ public class RegisterPanel extends HLayout
 	{
 		ListGridRecord recode = new ListGridRecord();
 		MemberDataSource.getInstance( ).copyValues( member, recode );
-		registerform.editNewRecord( recode );
+		registerform.editRecord( recode );
 		boolean isteacher = member.getCharacter( ).equalsIgnoreCase( "teacher" );
 		if(isteacher )
 		{
@@ -137,5 +138,10 @@ public class RegisterPanel extends HLayout
 		this.registerform = registerform;
 	}
 	
+	
+	public void precommit()
+	{
+		registerform.setIcon( chooseiconpanel.getChooseIcon( ) );
+	}
 	
 }

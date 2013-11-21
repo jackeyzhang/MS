@@ -107,7 +107,7 @@ public class MessageDataSource extends GwtRpcDataSource
 		JavaScriptObject data = request.getData( );
 		ListGridRecord rec = new ListGridRecord( data );
 		Message userRec = new Message( );
-		copyValues( rec, userRec );
+		recopyValues( rec, userRec );
 		MessageServiceAsync service = MessageService.Util.getInstance( );
 		service.addMessage( userRec, new AsyncCallbackWithStatus<Message>( ) {
 
@@ -138,7 +138,7 @@ public class MessageDataSource extends GwtRpcDataSource
 		JavaScriptObject data = request.getData( );
 		final ListGridRecord rec = new ListGridRecord( data );
 		Message userRec = new Message( );
-		copyValues( rec, userRec );
+		recopyValues( rec, userRec );
 		MessageServiceAsync service = MessageService.Util.getInstance( );
 		service.deleteMessage( userRec, new AsyncCallbackWithStatus<Message>( ) {
 

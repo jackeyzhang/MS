@@ -107,7 +107,7 @@ public class OrgDataSource extends GwtRpcDataSource
 		JavaScriptObject data = request.getData( );
 		ListGridRecord rec = new ListGridRecord( data );
 		Org userRec = new Org( );
-		copyValues( rec, userRec );
+		recopyValues( rec, userRec );
 		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.addOrg( userRec, new AsyncCallbackWithStatus<Org>( ) {
 
@@ -138,7 +138,7 @@ public class OrgDataSource extends GwtRpcDataSource
 		JavaScriptObject data = request.getData( );
 		final ListGridRecord rec = new ListGridRecord( data );
 		Org userRec = new Org( );
-		copyValues( rec, userRec );
+		recopyValues( rec, userRec );
 		OrgServiceAsync service = OrgService.Util.getInstance( );
 		service.deleteOrg( userRec, new AsyncCallbackWithStatus<Org>( ) {
 

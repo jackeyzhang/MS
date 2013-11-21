@@ -68,7 +68,7 @@ public class MainPageTopBar extends RibbonBar
 				@Override
 				public void onClick( ClickEvent event )
 				{
-					 History.newItem( IPageConst.PAGE_MANAGESELF +"=" + member.getId( ));
+					 History.newItem( IPageConst.PAGE_MANAGESELF);
 				}
 			} );
 	        modifyButton.setVisible( false );
@@ -98,4 +98,15 @@ public class MainPageTopBar extends RibbonBar
 			modifyButton.setTooltip( "修改个人信息" );
 		}
 	}
+
+	
+	/**
+	 * @return the member
+	 */
+	public Member getMember( )
+	{
+		return member;
+	}
+	
+	
 }

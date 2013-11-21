@@ -5,14 +5,11 @@ package com.sickle.medu.ms.client.iportal;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.card.BigMemberCard;
-import com.sickle.medu.ms.client.rpc.MemberService;
-import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
-import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
@@ -70,23 +67,16 @@ public class ManageSelfPage extends AbstractPage
 		this.addMember( getDefaultVersionPanel() ) ;
 	}
 	
-	public void loadingMember( int memberid )
+	public void loadingMember( Member _member )
 	{
-		if(member != null && memberid !=  member.getId( ))
+		if( _member == null )
 		{
 			History.newItem( IPageConst.PAGE_MEDU );
 			return;
 		}
-		final MemberServiceAsync service = MemberService.Util.getInstance( );
-		service.findMember( memberid ,new AsyncCallbackWithStatus<Member>( "加载教师名片" ) {
-			@Override
-			public void call( Member _member )
-			{
-				member = _member;
-				memberpanel.setTitle( member.getName( ) + "的资料" );
-				memberpanel.fillpanel( member );
-			}
-		});
+		member = _member;
+		memberpanel.setTitle( member.getName( ) + "的资料" );
+		memberpanel.fillpanel( member );
 	}
 	
 	private Canvas getMemberPanel()

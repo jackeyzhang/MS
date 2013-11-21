@@ -1,16 +1,23 @@
 package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Random;
+import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.iportal.panel.RegisterPanel;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.pojo.edu.Member;
+import com.smartgwt.client.data.DSCallback;
+import com.smartgwt.client.data.DSRequest;
+import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.grid.ListGridRecord;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -37,7 +44,7 @@ public class ModifyMemberDialog extends AbstractDialog
 		VLayout mainpanel = new VLayout();
 		mainpanel.setWidth100( );
 		
-	    registerpanel = new RegisterPanel();
+	    registerpanel = new RegisterPanel( 1 );
 		mainpanel.addMember( registerpanel );
 		
 		HLayout buttonpanel = new HLayout();
@@ -52,15 +59,27 @@ public class ModifyMemberDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
+				registerpanel.precommit( );
 				boolean isValidate = registerpanel.getRegisterform().validate( );
 				if( isValidate == false)
 				{
 					return;
 				}
-				registerpanel.getRegisterform().submit( );
-				History.newItem( IPageConst.PAGE_MANAGESELF + "=" + mem.getId( ) );
-				SC.say( "修改成功" );
-				hide();
+				registerpanel.getRegisterform().submit( new DSCallback(){
+					@Override
+					public void execute( DSResponse dsResponse, Object data,
+							DSRequest dsRequest )
+					{
+						SC.say( "修改成功" );
+						Member returnmember =  new Member();
+						ListGridRecord rec = new ListGridRecord( dsRequest.getData( ) );
+						MemberDataSource.getInstance( ).recopyValues( rec  , returnmember);
+						MeduIndexPage.getInstance( ).getTopbar( ).setMember( returnmember );
+						History.newItem( IPageConst.PAGE_MANAGESELF + Random.nextDouble( ) );
+						hide();
+					}
+				} );
+			
 			}
 		} );
 		

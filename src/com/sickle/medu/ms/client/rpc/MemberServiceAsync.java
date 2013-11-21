@@ -17,4 +17,6 @@ public interface MemberServiceAsync
 
 	void findMember( int id, AsyncCallback<Member> callback );
 
+	void modifyMember( Member Member, AsyncCallback<Member> callback );
+
 }
