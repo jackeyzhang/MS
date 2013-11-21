@@ -108,14 +108,14 @@ public class RegisterPage extends AbstractPage
 			}
 		} );
 		
-		Button cancelbutton = new Button("返回首页");
+		Button cancelbutton = new Button("返回登陆");
 		cancelbutton.setWidth( 50 );
 		cancelbutton.addClickHandler( new ClickHandler( ) {
 			@Override
 			public void onClick( ClickEvent event )
 			{
 				registerform.cancel( );
-				History.newItem( IPageConst.PAGE_MEDU );
+				History.newItem( IPageConst.PAGE_LOGIN);
 			}
 		} );
 		

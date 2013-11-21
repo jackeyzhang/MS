@@ -10,7 +10,7 @@ import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
-import com.sickle.medu.ms.client.ui.widget.LinkLabel;
+import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Org;
@@ -80,7 +80,7 @@ public class OrgPage extends AbstractPage
 		VLayout orgrpage = new VLayout();
 		orgrpage.setStyleName( "orgpage" );
 		
-		LinkLabel returnpage = new LinkLabel(">>返回首页");
+		LabelWithYellow returnpage = new LabelWithYellow(">>返回首页");
 		returnpage.setHeight( ScreenUtil.getHeight( 0.05 ) );
 		returnpage.addClickHandler( new ClickHandler( ) {
 			@Override

@@ -43,12 +43,18 @@ public interface IPageConst
 	public static final double REGISTER_HEIGHT_PER = 0.5;
 	public static final double REGISTER_WIDTH_PER = 0.3;
 	
+	//找回密碼界面高度百分比
+	public static final double FP_HEIGHT_PER = 0.2;
+	public static final double FP_WIDTH_PER = 0.25;
+	
 	
 	//history manage
 	public static final String PAGE_MEDU = "medu";
 	public static final String PAGE_LOGIN = "login";
 	public static final String PAGE_REGISTER = "register";
 	public static final String PAGE_MEMBER = "mid";
+	public static final String PAGE_MANAGESELF = "manageself";
+	public static final String PAGE_FORGETPASSWORD = "forgetpassword";
 	public static final String PAGE_EQ = "=";
 	public static final String PAGE_ORG = "org";
 	

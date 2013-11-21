@@ -14,6 +14,7 @@ import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.IButton;
@@ -90,7 +91,7 @@ public class LoginPage extends AbstractPage
 		welcome.setStyleName( "sgwtTitle" );
 		welcome.setWidth(  ScreenUtil.getWidth( 0.1 ) );
 		welcomepanel.setPadding( 20 );
-		welcomepanel.setWidth(  ScreenUtil.getWidth( 0.29 ) );
+		welcomepanel.setWidth(  ScreenUtil.getWidth( 0.3 ) );
 		welcomepanel.setAlign( Alignment.CENTER );
 		welcomepanel.addMember( welcome );
 		loginpanel.addMember( welcomepanel );
@@ -100,7 +101,7 @@ public class LoginPage extends AbstractPage
 
 		// 登陆对话框的登陆按钮
 		HLayout formlayout = new HLayout( );
-		formlayout.setWidth( ScreenUtil.getWidth( 0.29 ) );
+		formlayout.setWidth( ScreenUtil.getWidth( 0.3 ) );
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
 		IButton loginButton = new IButton( "登录" );
@@ -121,6 +122,7 @@ public class LoginPage extends AbstractPage
 		} );
 
 		Anchor register = new Anchor( "新用户注册" );
+		register.setWidth( "70px" );
 		register.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
 
 			@Override
@@ -130,9 +132,22 @@ public class LoginPage extends AbstractPage
 				History.newItem( IPageConst.PAGE_REGISTER );
 			}
 		} );
+		
+		Anchor forgetpassword = new Anchor( "忘记密码" );
+		forgetpassword.setWidth( "60px" );
+		forgetpassword.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
+
+			@Override
+			public void onClick(
+					com.google.gwt.event.dom.client.ClickEvent event )
+			{
+				History.newItem( IPageConst.PAGE_FORGETPASSWORD );
+			}
+		} );
 
 		formlayout.addMember( loginButton );
 		formlayout.addMember( register );
+		formlayout.addMember( forgetpassword );
 		loginpanel.addMember( formlayout );
 
 		
@@ -162,7 +177,7 @@ public class LoginPage extends AbstractPage
 		UserManageServiceAsync service = (UserManageServiceAsync) UserManageService.Util
 				.getInstance( );
 		service.login( username, password,
-				new AsyncCallbackWithStatus<Boolean>( loginResult ) {
+				new AsyncCallbackWithStatus<Member>( loginResult ) {
 			
 					@Override
 					protected void callingshow( )
@@ -172,11 +187,11 @@ public class LoginPage extends AbstractPage
 					}
 
 					@Override
-					public void call( Boolean result )
+					public void call( Member member )
 					{
-						if ( result )
+						if ( member != null )
 						{
-							freshpage( );
+							freshpage( member );
 							//登录完毕 清空密码
 							loginform.getUsername( ).clearValue( );
 							loginform.getPassword( ).clearValue( );
@@ -193,11 +208,10 @@ public class LoginPage extends AbstractPage
 
 	}
 
-	private void freshpage( )
+	private void freshpage( Member member )
 	{
 		History.newItem( IPageConst.PAGE_MEDU );
-		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( )
-				.setContents( "用户:" + loginform.getUsername( ).getValue( ).toString( ) );
+		MeduIndexPage.getInstance( ).getTopbar( ).setMember( member );
 		callback( );
 	}
 

@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.panel;
 
-import com.sickle.medu.ms.client.ui.widget.BluelittleLabel;
+import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.events.MouseOutEvent;
@@ -40,8 +40,8 @@ public class WithRightLittleControlPanel extends HLayout
 		h.setStyleName( "controlpanel" );
 		h.setWidth( width );
 		h.setAlign( Alignment.CENTER  );
-		BluelittleLabel label = new BluelittleLabel(title,false);
-		label.setWidth( width/3 );
+		
+		LabelWithBlue label = new LabelWithBlue(title);
 		h.addMember( label );
 		h.addMouseOverHandler( new MouseOverHandler( ) {
 			

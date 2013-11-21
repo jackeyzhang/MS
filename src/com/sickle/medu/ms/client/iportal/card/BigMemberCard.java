@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.iportal.card;
 
 import com.sickle.medu.ms.client.ui.IPageConst;
-import com.sickle.medu.ms.client.ui.widget.LinkLabel;
+import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -159,7 +159,7 @@ public class BigMemberCard extends AbstractCard
 		titlepanel.setHeight( 20 );
 		titlepanel.setAlign( Alignment.CENTER );
 		//title
-		LinkLabel bstitle = new LinkLabel( title,false );
+		LabelWithYellow bstitle = new LabelWithYellow( title );
 		titlepanel.addMember( bstitle );
 		
 		

@@ -227,6 +227,17 @@ body {
 	color: #2a5caa;
 }
 
+.whitelittlelabel-mousein{
+	font-size: 1.3em;
+	color: #aa2116;
+	text-decoration:underline;
+}
+
+.whitelittlelabel{
+	font-size: 1.3em;
+	color: #fffffb;
+}
+
 .greenlittlelabel-mousein{
 	font-size: 1.3em;
 	color: #d71345;

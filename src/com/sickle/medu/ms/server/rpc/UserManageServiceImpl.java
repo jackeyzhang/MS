@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sickle.dao.DaoServiceFactory;
+import com.sickle.dto.MemberDTO;
 import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.sickle.pojo.edu.Member;
@@ -40,12 +41,12 @@ public class UserManageServiceImpl extends RemoteServiceServlet implements UserM
 	}
 
 	@Override
-	public boolean login( String name, String password ) throws Exception
+	public Member login( String name, String password ) throws Exception
 	{
 		Member member = service.getMemberByLoginName( name );
 		if( member == null )
 		{
-			return false;
+			return null;
 		}
 		boolean loginok =  member.getPassword( ).equals( password );
 		if( loginok )
@@ -53,7 +54,7 @@ public class UserManageServiceImpl extends RemoteServiceServlet implements UserM
 			getThreadLocalRequest().getSession( ).setMaxInactiveInterval( 30*60 );
 			getThreadLocalRequest().getSession( ).setAttribute( "loginname", name );
 		}
-		return loginok;
+		return new MemberDTO().to( member );
 	}
 
 	@Override

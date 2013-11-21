@@ -4,7 +4,8 @@
 package com.sickle.medu.ms.client.ui;
 
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.ui.widget.BluelittleLabel;
+import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -20,7 +21,11 @@ import com.smartgwt.client.widgets.toolbar.RibbonBar;
 public class MainPageTopBar extends RibbonBar
 {
 
-	private BluelittleLabel welcome = new BluelittleLabel("请先登录",false);
+	private LabelWithBlue welcome = new LabelWithBlue("请先登录");
+	
+	private LabelWithBlue modifyButton;
+	
+	private Member member;
 	
 	public MainPageTopBar()
 	{
@@ -52,42 +57,45 @@ public class MainPageTopBar extends RibbonBar
 
 	        addFill();
 	        
+	        welcome.setWidth( 200 );
+	        welcome.setTooltip( "请先登录" );
 	        addMember(welcome);
-
-	        BluelittleLabel logoutButton = new BluelittleLabel("退出");
-	        logoutButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
-	            public void onClick(ClickEvent event) {
-	                History.newItem( IPageConst.PAGE_LOGIN );
-	            }
-	        });
 	        
-	        BluelittleLabel indexButton = new BluelittleLabel("首页");
-	        indexButton.setTitle("首页");
-	        indexButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
-	            public void onClick(ClickEvent event) {
-	            	History.newItem( IPageConst.PAGE_MEDU );
-	            }
-	        });
+	        
+	        modifyButton = new LabelWithBlue("修改个人信息",true);
+	        modifyButton.addClickHandler( new com.smartgwt.client.widgets.events.ClickHandler( ) {
+				
+				@Override
+				public void onClick( ClickEvent event )
+				{
+					 History.newItem( IPageConst.PAGE_MANAGESELF +"=" + member.getId( ));
+				}
+			} );
+	        modifyButton.setVisible( false );
+	        addMember(modifyButton);
+
+	        LabelWithBlue logoutButton = new LabelWithBlue("退出",true);
+	        logoutButton.addClickHandler( new com.smartgwt.client.widgets.events.ClickHandler( ) {
+				
+				@Override
+				public void onClick( ClickEvent event )
+				{
+					History.newItem( IPageConst.PAGE_LOGIN);
+				}
+			} );
 
 	        addMember(logoutButton);
 	}
 
 	
-	/**
-	 * @return the welcome
-	 */
-	public Label getWelcome( )
+	public void setMember( Member member )
 	{
-		return welcome;
+		this.member = member;
+		welcome.setContents( "欢迎你," + member.getName( ) );
+		if ( modifyButton != null )
+		{
+			modifyButton.setVisible( true );
+			modifyButton.setTooltip( "修改个人信息" );
+		}
 	}
-
-	
-	/**
-	 * @param welcome the welcome to set
-	 */
-	public void setWelcome( BluelittleLabel welcome )
-	{
-		this.welcome = welcome;
-	}
-	
 }

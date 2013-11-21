@@ -46,6 +46,13 @@ public class AdvertBanner extends VLayout
 	
 	public  AdvertBanner(double width,double height)
 	{
+		Img img1 = new Img("slideshow/sliderimage1.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.33 ));
+		Img img2 = new Img("slideshow/sliderimage2.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.33 ));
+		Img img3 = new Img("slideshow/sliderimage3.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.33 ));
+		imgs.add( img1 );
+		imgs.add( img2 );
+		imgs.add( img3 );
+		
         setWidth100( );
         setHeight( ScreenUtil.getHeight( height ) );
         loadPanel(width);
@@ -53,9 +60,7 @@ public class AdvertBanner extends VLayout
 	
 	public  AdvertBanner()
 	{
-        setWidth100( );
-        setHeight( ScreenUtil.getHeight( 0.36 ) );
-        loadPanel(IPageConst.PAGE_WIDTH);
+        this(IPageConst.PAGE_WIDTH,0.33);
 	}
 	
 	private void loadPanel(double width)
@@ -75,16 +80,6 @@ public class AdvertBanner extends VLayout
 		
 		addMember( imagePanel );
 		addMember( controlPanel );
-		
-		
-		Img img1 = new Img("slideshow/sliderimage1.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.35 ));
-		Img img2 = new Img("slideshow/sliderimage2.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.35 ));
-		Img img3 = new Img("slideshow/sliderimage3.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.35 ));
-		
-		imgs.add( img1 );
-		imgs.add( img2 );
-		imgs.add( img3 );
-		
 		
 		control1.addMouseOverHandler( new MouseOverHandler( ) {
 			

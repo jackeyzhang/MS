@@ -11,6 +11,7 @@ import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
@@ -104,13 +105,13 @@ public class LoginDialog extends AbstractDialog
 		String username = loginform.getUsername( ).getValue( ).toString( );
 		String password = loginform.getPassword( ).getValue( ).toString( );
 		UserManageServiceAsync service = (UserManageServiceAsync)UserManageService.Util.getInstance( );
-		service.login( username, password, new AsyncCallbackWithStatus<Boolean>( "登录中..." ) {
+		service.login( username, password, new AsyncCallbackWithStatus<Member>( "登录中..." ) {
 			@Override
-			public void call( Boolean result )
+			public void call( Member result )
 			{
-				if( result )
+				if( result != null )
 				{
-					freshpage();
+					freshpage(result);
 				}
 				else
 				{
@@ -123,9 +124,9 @@ public class LoginDialog extends AbstractDialog
 	}
 	
 	
-	private void freshpage()
+	private void freshpage( Member member )
 	{
-		MeduIndexPage.getInstance( ).getTopbar( ).getWelcome( ).setContents( loginform.getUsername( ).getValue( ).toString( ) );
+		MeduIndexPage.getInstance( ).getTopbar( ).setMember( member );
 		callback();
 	}
 

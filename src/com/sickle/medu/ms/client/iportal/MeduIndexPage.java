@@ -22,7 +22,7 @@ import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
-import com.sickle.medu.ms.client.ui.widget.LinkLabel;
+import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Member;
@@ -30,7 +30,6 @@ import com.sickle.pojo.edu.Notice;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -141,7 +140,7 @@ public class MeduIndexPage extends AbstractPage
 	
 	private void loadingMemberCardPanel(Layout widget)
 	{
-		LinkLabel more = new LinkLabel("换一批");
+		LabelWithYellow more = new LabelWithYellow("换一批");
 		more.setHeight( "30px" );
 		widget.addMember( more );
 		
@@ -226,7 +225,7 @@ public class MeduIndexPage extends AbstractPage
 	private void loadingSchoolCardPanel( Layout widget )
 	{
 		
-		LinkLabel more = new LinkLabel("换一批");
+		LabelWithYellow more = new LabelWithYellow("换一批");
 		more.setHeight( "30px" );
 		widget.addMember( more );
 		
@@ -309,7 +308,7 @@ public class MeduIndexPage extends AbstractPage
 	
 	private void loadingNoticeCardPanel(  Layout widget  )
 	{
-		LinkLabel more = new LinkLabel("换一批");
+		LabelWithYellow more = new LabelWithYellow("换一批");
 		more.setHeight( "30px" );
 		widget.addMember( more );
 		
@@ -409,8 +408,9 @@ public class MeduIndexPage extends AbstractPage
 		cardPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH )  );
 		cardPanel.setStyleName( "splitter" );
 		cardPanel.setAlign( Alignment.CENTER );
-		Label label = new Label( spiterwords );
-		label.setStyleName( "splitterlabel" );
+		
+		LabelWithYellow label = new LabelWithYellow( spiterwords,false );
+		label.setAlign( Alignment.LEFT );
 		label.setHeight( "30px" );
 		label.setWidth( "98%" );
 		cardPanel.addMember( label );

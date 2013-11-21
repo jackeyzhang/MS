@@ -5,7 +5,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.iportal.ForgetPasswordPage;
 import com.sickle.medu.ms.client.iportal.LoginPage;
+import com.sickle.medu.ms.client.iportal.ManageSelfPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.iportal.MemberPage;
 import com.sickle.medu.ms.client.iportal.OrgPage;
@@ -42,6 +44,9 @@ public class MS implements EntryPoint
 					RegisterPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
 					OrgPage.getInstance().clear();
+					ManageSelfPage.getInstance( ).clear( );
+					ForgetPasswordPage.getInstance( ).clear( );
+					
 					MeduIndexPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_LOGIN ))
@@ -53,6 +58,9 @@ public class MS implements EntryPoint
 					RegisterPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
 					OrgPage.getInstance().clear();
+					ManageSelfPage.getInstance( ).clear( );
+					ForgetPasswordPage.getInstance( ).clear( );
+					
 					LoginPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).equalsIgnoreCase( IPageConst.PAGE_REGISTER ))
@@ -64,6 +72,9 @@ public class MS implements EntryPoint
 					LoginPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
 					OrgPage.getInstance().clear();
+					ManageSelfPage.getInstance( ).clear( );
+					ForgetPasswordPage.getInstance( ).clear( );
+					
 					RegisterPage.getInstance( ).draw( );
 				}
 				else if(event.getValue( ).startsWith( IPageConst.PAGE_MEMBER ))
@@ -73,21 +84,51 @@ public class MS implements EntryPoint
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
 					OrgPage.getInstance().clear();
+					ManageSelfPage.getInstance( ).clear( );
+					ForgetPasswordPage.getInstance( ).clear( );
 					
 					MemberPage.getInstance( ).draw( );
-					int id = Integer.parseInt( event.getValue( ).substring( 4 ) ) ;
+					int id = Integer.parseInt( event.getValue( ).substring(  IPageConst.PAGE_MEMBER.length( ) + 1  ) ) ;
 					MemberPage.getInstance( ).loadingMember( id );
 					
+				}
+				else if(event.getValue( ).startsWith( IPageConst.PAGE_MANAGESELF ))
+				{
+					MeduIndexPage.getInstance( ).clear( );
+					LoginPage.getInstance( ).clear( );
+					RegisterPage.getInstance( ).clear( );
+					OrgPage.getInstance().clear();
+					MemberPage.getInstance( ).clear( );
+					ForgetPasswordPage.getInstance( ).clear( );
+					
+					ManageSelfPage.getInstance( ).draw( );
+					int id = Integer.parseInt( event.getValue( ).substring( IPageConst.PAGE_MANAGESELF.length( ) + 1 ) ) ;
+					ManageSelfPage.getInstance( ).loadingMember( id );
 				}
 				else if (event.getValue().startsWith(IPageConst.PAGE_ORG)) {
 					MeduIndexPage.getInstance().clear();
 					LoginPage.getInstance().clear();
 					RegisterPage.getInstance().clear();
 					MemberPage.getInstance().clear();
-
+					ManageSelfPage.getInstance( ).clear( );
+					ForgetPasswordPage.getInstance( ).clear( );
+					
 					OrgPage.getInstance().draw();
 					int id = Integer.parseInt(event.getValue().substring(4));
 					OrgPage.getInstance().loadingOrg(id);
+				}
+				else if (  event.getValue().equals(IPageConst.PAGE_FORGETPASSWORD)){
+					if( isFirstVisit == false)
+					{
+						MeduIndexPage.getInstance( ).clear( );
+					}
+					LoginPage.getInstance().clear();
+					RegisterPage.getInstance().clear();
+					MemberPage.getInstance().clear();
+					ManageSelfPage.getInstance( ).clear( );
+					OrgPage.getInstance().clear();
+					
+					ForgetPasswordPage.getInstance( ).draw( );
 				}
 				else
 				{

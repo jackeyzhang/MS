@@ -27,29 +27,32 @@ import com.smartgwt.client.widgets.tab.TabSet;
 
 
 /**
- * 用户查看界面
+ * 用户修改个人信息界面
  * 
  * @author chenhao
  *
  */
-public class MemberPage extends AbstractPage
+public class ManageSelfPage extends AbstractPage
 {
 
-	private static MemberPage instance = new MemberPage();
+	private static ManageSelfPage instance = new ManageSelfPage();
 	
 	private MemberPanel memberpanel;
 	
 	private MessagePanel messagepanel;
 	
+	private AdvertPanel advertpanel;
 	
-	public static MemberPage getInstance()
+	private Member member;
+	
+	public static ManageSelfPage getInstance()
 	{
 		return instance;
 	}
 	
-	private MemberPage()
+	private ManageSelfPage()
 	{
-		super( IPageConst.PAGE_MEMBER );
+		super( IPageConst.PAGE_MANAGESELF );
 		init();
 	}
 	
@@ -69,11 +72,17 @@ public class MemberPage extends AbstractPage
 	
 	public void loadingMember( int memberid )
 	{
+		if(member != null && memberid !=  member.getId( ))
+		{
+			History.newItem( IPageConst.PAGE_MEDU );
+			return;
+		}
 		final MemberServiceAsync service = MemberService.Util.getInstance( );
 		service.findMember( memberid ,new AsyncCallbackWithStatus<Member>( "加载教师名片" ) {
 			@Override
-			public void call( Member member )
+			public void call( Member _member )
 			{
+				member = _member;
 				memberpanel.setTitle( member.getName( ) + "的资料" );
 				memberpanel.fillpanel( member );
 			}
@@ -99,7 +108,7 @@ public class MemberPage extends AbstractPage
 			}
 		} );
 		
-		LabelWithWhite title = new LabelWithWhite("查看名片");
+		LabelWithWhite title = new LabelWithWhite("修改个人信息");
 		title.setAlign( Alignment.CENTER );
 		title.setWidth( ScreenUtil.getWidth( 0.9 ) );
 		title.setHeight( ScreenUtil.getHeight( 0.05 ) );
@@ -117,9 +126,11 @@ public class MemberPage extends AbstractPage
 		
 		memberpanel = new MemberPanel();
 		messagepanel = new MessagePanel();
+		advertpanel = new AdvertPanel();
 		
 		ts.addTab( memberpanel );
 		ts.addTab( messagepanel );
+		ts.addTab( advertpanel );
 		
 		memberpage.addMember( ts );
 		return memberpage;
@@ -158,13 +169,28 @@ public class MemberPage extends AbstractPage
 	{
 		public MessagePanel()
 		{
-			super("已发布课程","",false);
+			super("已发布课程信息","",false);
 		}
 		
 		@Override
 		public Canvas getPanel( )
 		{
 			return new Label("message page" + this.getTitleStyle( ));
+		}
+		
+	}
+	
+	class AdvertPanel extends AbstractTab
+	{
+		public AdvertPanel()
+		{
+			super("已发布学校信息","",false);
+		}
+		
+		@Override
+		public Canvas getPanel( )
+		{
+			return new Label("advert" + this.getTitleStyle( ));
 		}
 		
 	}

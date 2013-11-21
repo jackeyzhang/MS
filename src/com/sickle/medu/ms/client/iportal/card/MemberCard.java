@@ -6,7 +6,7 @@ package com.sickle.medu.ms.client.iportal.card;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.ui.IPageConst;
-import com.sickle.medu.ms.client.ui.widget.BluelittleLabel;
+import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
@@ -197,9 +197,9 @@ public class MemberCard extends AbstractCard
 				}
 			}
 		};
-		Canvas message = getControlWidget( "留言", msgcl, 40, "#ffce7b" );
-		Canvas detail = getControlWidget( "查看", detailcl, 40, "#d9d6c3" );
-		Canvas report = getControlWidget( "开设课程", reportcl, 60, "#c7a252" );
+		Canvas message = getControlWidget( "留言", msgcl, 40, "#1d953f" );
+		Canvas detail = getControlWidget( "查看", detailcl, 40, "#694d9f" );
+		Canvas report = getControlWidget( "开设课程", reportcl, 60, "#6d5826" );
 
 		operate.addMember( detail );
 		operate.addMember( message );
@@ -214,8 +214,8 @@ public class MemberCard extends AbstractCard
 		operate.setAlign( Alignment.CENTER );
 		operate.setStyleName( "membercard-operate" );
 		operate.setBackgroundColor( backgroundColor );
-		BluelittleLabel operatelabel = new BluelittleLabel( controlname );
-		operatelabel.setAlign( Alignment.CENTER );
+		
+		LabelWithWhite operatelabel = new LabelWithWhite( controlname , true );
 		operatelabel.addClickHandler( cl );
 		operatelabel.setWidth( width );
 		operate.addMember( operatelabel );
