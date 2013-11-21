@@ -157,23 +157,11 @@ public class RegisterDform extends DynamicForm
 			{
 				if(isteacher.getValueAsBoolean( ) )
 				{
-					telephone.show( );
-					resume.show(  );
-					orgname.show(  );
-					title.show(  );
-					city.show( );
-					area.show( );
-					chart.setValue( "teacher" );
+					showTeacherField();
 				}
 				else
 				{
-					telephone.hide( );
-					resume.hide(  );
-					orgname.hide(  );
-					title.hide(  );
-					city.hide( );
-					area.hide( );
-					chart.setValue( "normal" );
+					hideTeacherField();
 				}
 			}
 		} );
@@ -183,7 +171,27 @@ public class RegisterDform extends DynamicForm
 	
 	}
 
+	public void hideTeacherField()
+	{
+		telephone.hide( );
+		resume.hide(  );
+		orgname.hide(  );
+		title.hide(  );
+		city.hide( );
+		area.hide( );
+		chart.setValue( "normal" );
+	}
 
+	public void showTeacherField()
+	{
+		telephone.show( );
+		resume.show(  );
+		orgname.show(  );
+		title.show(  );
+		city.show( );
+		area.show( );
+		chart.setValue( "teacher" );
+	}
 	
 	/**
 	 * @return the username

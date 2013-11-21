@@ -156,11 +156,9 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		}else{
 			field.setCanEdit( false );
 		}
-		
-	
 	}
 
-	protected <T> void copyValues( T from, ListGridRecord to )
+	public <T> void copyValues( T from, ListGridRecord to )
 	{
 		@SuppressWarnings("unchecked")
 		ClassType<T> classType = TypeOracle.Instance.getClassType( from
@@ -177,7 +175,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		}
 	}
 
-	protected <T> void copyValues( ListGridRecord from, T to )
+	public <T> void copyValues( ListGridRecord from, T to )
 	{
 		@SuppressWarnings("unchecked")
 		ClassType<T> classType = TypeOracle.Instance.getClassType( to

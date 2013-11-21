@@ -152,7 +152,7 @@ public class ManageSelfPage extends AbstractPage
 			return wholepanel;
 		}
 		
-		public void fillpanel(Member member)
+		public void fillpanel(final Member member)
 		{
 			wholepanel.setWidth100( );
 			wholepanel.setHeight100( );
@@ -160,7 +160,8 @@ public class ManageSelfPage extends AbstractPage
 			{
 				wholepanel.removeMember( mem );
 			}
-			wholepanel.addMember( new BigMemberCard( member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) );
+			BigMemberCard card = new BigMemberCard( member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) ;
+			wholepanel.addMember( card );
 		}
 		
 	}
@@ -175,7 +176,9 @@ public class ManageSelfPage extends AbstractPage
 		@Override
 		public Canvas getPanel( )
 		{
-			return new Label("message page" + this.getTitleStyle( ));
+			//TODO 没发布的给出发布按钮 不是老师的建议填写完整老师信息
+			
+			return new Label("你尚未发布任何课程信息");
 		}
 		
 	}
@@ -190,7 +193,9 @@ public class ManageSelfPage extends AbstractPage
 		@Override
 		public Canvas getPanel( )
 		{
-			return new Label("advert" + this.getTitleStyle( ));
+			//TODO 提示发布信息去MS中发布 提供发布链接
+			
+			return new Label("你尚未发布任何学校信息");
 		}
 		
 	}

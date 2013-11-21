@@ -75,4 +75,8 @@ public class ChooseIconPanel extends HLayout
 	{
 		return iconpanel.getHeadIcon( );
 	}
+	
+	public void setIcon(String iconsrc){
+		defaultIcon.setSrc( iconsrc );
+	}
 }
