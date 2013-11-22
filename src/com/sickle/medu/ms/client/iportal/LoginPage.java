@@ -21,6 +21,8 @@ import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.form.fields.CheckboxItem;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -95,15 +97,47 @@ public class LoginPage extends AbstractPage
 		welcomepanel.setAlign( Alignment.CENTER );
 		welcomepanel.addMember( welcome );
 		loginpanel.addMember( welcomepanel );
+		
 		// 登陆对话框的表单
 		loginform = new LoginDform( );
 		loginpanel.addMember( loginform );
 
+		
+		//记住用户名 忘记密码
+		HLayout forgetpasswordPanel = new HLayout();
+		forgetpasswordPanel.setWidth( ScreenUtil.getWidth( 0.3 ) );
+		forgetpasswordPanel.setAlign( Alignment.CENTER );
+		forgetpasswordPanel.setMembersMargin( 10 );
+		
+		
+		DynamicForm remform = new DynamicForm();
+		CheckboxItem remembername = new CheckboxItem( "remeber" );
+		remembername.setTitle( "记住用户名" );
+		remform.setFields( remembername );
+		
+		Anchor forgetpassword = new Anchor( "忘记密码" );
+		forgetpassword.setWidth( "60px" );
+		forgetpassword.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
+
+			@Override
+			public void onClick(
+					com.google.gwt.event.dom.client.ClickEvent event )
+			{
+				History.newItem( IPageConst.PAGE_FORGETPASSWORD );
+			}
+		} );
+
+		forgetpasswordPanel.addMember( remform );
+		forgetpasswordPanel.addMember( forgetpassword );
+		
+		loginpanel.addMember( forgetpasswordPanel );
+		
 		// 登陆对话框的登陆按钮
 		HLayout formlayout = new HLayout( );
 		formlayout.setWidth( ScreenUtil.getWidth( 0.3 ) );
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
+		
 		IButton loginButton = new IButton( "登录" );
 		loginButton.setWidth( 60 );
 		loginButton.setShowRollOver(true);  
@@ -121,46 +155,30 @@ public class LoginPage extends AbstractPage
 			}
 		} );
 
-		Anchor register = new Anchor( "新用户注册" );
+		IButton register = new IButton( "新用户注册" );
 		register.setWidth( "70px" );
-		register.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
-
+		register.addClickHandler( new ClickHandler( ) {
+			
 			@Override
-			public void onClick(
-					com.google.gwt.event.dom.client.ClickEvent event )
+			public void onClick( ClickEvent event )
 			{
 				History.newItem( IPageConst.PAGE_REGISTER );
 			}
 		} );
 		
-		Anchor forgetpassword = new Anchor( "忘记密码" );
-		forgetpassword.setWidth( "60px" );
-		forgetpassword.addClickHandler( new com.google.gwt.event.dom.client.ClickHandler( ) {
-
-			@Override
-			public void onClick(
-					com.google.gwt.event.dom.client.ClickEvent event )
-			{
-				History.newItem( IPageConst.PAGE_FORGETPASSWORD );
-			}
-		} );
-
 		formlayout.addMember( loginButton );
 		formlayout.addMember( register );
-		formlayout.addMember( forgetpassword );
-		loginpanel.addMember( formlayout );
-
-		
-		loginResult = new Label("");
-		loginResult.setWidth( 200 );
 		
 		loginpanel.addMember( formlayout );
+		
 		
 		HLayout loginresultpanel = new HLayout();
 		loginresultpanel.setWidth100( );
 		loginresultpanel.setAlign( Alignment.CENTER );
-		loginresultpanel.addMember( loginResult );
 		
+		loginResult = new Label("");
+		loginResult.setWidth( 200 );
+		loginresultpanel.addMember( loginResult );
 		
 		loginpanel.addMember( loginresultpanel );
 				
