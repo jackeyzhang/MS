@@ -33,9 +33,11 @@ public class BigMemberCard extends AbstractCard
 	
 	private Member member;
 	
+	private boolean showModify = false;;
 	
-	public BigMemberCard(Member member,String width,String height)
+	public BigMemberCard(boolean showModify,Member member,String width,String height)
 	{
+		this.showModify = showModify;
 		this.member = member;
 		this.setWidth( width );
 		this.setHeight( height );
@@ -118,7 +120,10 @@ public class BigMemberCard extends AbstractCard
 		
 		information.addMember( baseinformation );
 		information.addMember( resumeinformation );
-		information.addMember( modify );
+		if( showModify )
+		{
+			information.addMember( modify );
+		}
 	}
 	
 	

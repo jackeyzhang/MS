@@ -10,6 +10,7 @@ import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
+import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
@@ -18,7 +19,6 @@ import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Side;
 import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -76,6 +76,7 @@ public class MemberPage extends AbstractPage
 			{
 				memberpanel.setTitle( member.getName( ) + "的资料" );
 				memberpanel.fillpanel( member );
+				messagepanel.fillpanel( member );
 			}
 		});
 	}
@@ -145,17 +146,17 @@ public class MemberPage extends AbstractPage
 		{
 			wholepanel.setWidth100( );
 			wholepanel.setHeight100( );
-			for( Canvas mem : wholepanel.getMembers( ))
-			{
-				wholepanel.removeMember( mem );
-			}
-			wholepanel.addMember( new BigMemberCard( member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) );
+			wholepanel.setStyleName( "bigmembercardborder" );
+			ScreenUtil.clearLayout( wholepanel );
+			wholepanel.addMember( new BigMemberCard( false, member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) );
 		}
 		
 	}
 	
 	class MessagePanel extends AbstractTab
 	{
+		private VLayout wholepanel ;
+		
 		public MessagePanel()
 		{
 			super("已发布课程","",false);
@@ -164,9 +165,19 @@ public class MemberPage extends AbstractPage
 		@Override
 		public Canvas getPanel( )
 		{
-			return new Label("message page" + this.getTitleStyle( ));
+			wholepanel = new VLayout();
+			return wholepanel;
 		}
 		
+		public void fillpanel(Member member)
+		{
+			wholepanel.setWidth100( );
+			wholepanel.setHeight100( );
+			wholepanel.setStyleName( "bigmembercardborder" );
+			ScreenUtil.clearLayout( wholepanel );
+			LabelWithBlue message = new LabelWithBlue( "无发布课程" );
+			wholepanel.addMember(message);
+		}
 	}
 
 }

@@ -4,6 +4,8 @@
 package com.sickle.medu.ms.client.util;
 
 import com.google.gwt.user.client.Window;
+import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.layout.Layout;
 
 
 /**
@@ -36,4 +38,10 @@ public class ScreenUtil {
 		return (Window.getClientHeight() * percent)+ "px";
 	}
 
+	public static void clearLayout(Layout layout){
+		for( Canvas mem : layout.getMembers( ))
+		{
+			layout.removeMember( mem );
+		}
+	}
 }

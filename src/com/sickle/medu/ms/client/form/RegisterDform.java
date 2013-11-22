@@ -49,14 +49,13 @@ public class RegisterDform extends DynamicForm
 	
 	public RegisterDform()
 	{
-		this( 500, 100, 300 );
+		this( 400, 120, 280 );
 	}
 	
 	public RegisterDform(int width,int... columnwidth)
 	{
 		this.setWidth( width );
-		this.setFixedColWidths( true );
-		this.setColWidths( columnwidth );
+		this.setColWidths( "*" );
 		this.setPadding( 20 );
 		
 		username = new TextItem("name");
@@ -160,8 +159,14 @@ public class RegisterDform extends DynamicForm
 					showTeacherField();
 				}
 				else
-				{
+				{//not teacher ,hide and remove
 					hideTeacherField();
+					telephone.clearValue( );
+					resume.clearValue( );
+					orgname.clearValue(  );
+					title.clearValue(  );
+					city.clearValue( );
+					area.clearValue( );
 				}
 			}
 		} );

@@ -89,7 +89,7 @@ public class ModifyMemberDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				registerpanel.getRegisterform().cancel( );
+				registerpanel.getRegisterform().reset( );
 				hide();
 			}
 		} );

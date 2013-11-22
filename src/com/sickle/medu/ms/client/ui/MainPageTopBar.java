@@ -58,7 +58,6 @@ public class MainPageTopBar extends RibbonBar
 	        addFill();
 	        
 	        welcome.setWidth( 200 );
-	        welcome.setTooltip( "请先登录" );
 	        addMember(welcome);
 	        
 	        

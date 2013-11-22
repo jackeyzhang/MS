@@ -217,7 +217,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			else
 			{
-				f.setFieldValue( to, value == null ? "null" : value );
+				f.setFieldValue( to, value == null ? "" : value );
 			}
 			
 		}

@@ -8,6 +8,7 @@ import com.sickle.medu.ms.client.iportal.card.BigMemberCard;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
+import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.sickle.medu.ms.client.util.ScreenUtil;
@@ -33,6 +34,8 @@ public class ManageSelfPage extends AbstractPage
 {
 
 	private static ManageSelfPage instance = new ManageSelfPage();
+	
+	private TabSet ts;
 	
 	private MemberPanel memberpanel;
 	
@@ -77,6 +80,8 @@ public class ManageSelfPage extends AbstractPage
 		member = _member;
 		memberpanel.setTitle( member.getName( ) + "的资料" );
 		memberpanel.fillpanel( member );
+		messagepanel.fillpanel( member );
+		advertpanel.fillpanel( member );
 	}
 	
 	private Canvas getMemberPanel()
@@ -108,7 +113,7 @@ public class ManageSelfPage extends AbstractPage
 		
 		memberpage.addMember( titlepanel );
 		
-		TabSet ts = new TabSet();
+		ts = new TabSet();
 		ts.setUseSimpleTabs( true );
 		ts.setSmoothFade( true );
 		ts.setTabBarPosition( Side.LEFT );
@@ -146,11 +151,9 @@ public class ManageSelfPage extends AbstractPage
 		{
 			wholepanel.setWidth100( );
 			wholepanel.setHeight100( );
-			for( Canvas mem : wholepanel.getMembers( ))
-			{
-				wholepanel.removeMember( mem );
-			}
-			BigMemberCard card = new BigMemberCard( member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) ;
+			wholepanel.setStyleName( "bigmembercardborder" );
+			ScreenUtil.clearLayout( wholepanel );
+			BigMemberCard card = new BigMemberCard( true , member, ScreenUtil.getWidth( 0.89 ), ScreenUtil.getHeight( 0.78 ) ) ;
 			wholepanel.addMember( card );
 		}
 		
@@ -158,6 +161,8 @@ public class ManageSelfPage extends AbstractPage
 	
 	class MessagePanel extends AbstractTab
 	{
+		private VLayout wholepanel ;
+		
 		public MessagePanel()
 		{
 			super("已发布课程信息","",false);
@@ -166,15 +171,41 @@ public class ManageSelfPage extends AbstractPage
 		@Override
 		public Canvas getPanel( )
 		{
-			//TODO 没发布的给出发布按钮 不是老师的建议填写完整老师信息
-			
-			return new Label("你尚未发布任何课程信息");
+			wholepanel = new VLayout();
+			return wholepanel;
 		}
 		
+		public void fillpanel(final Member member)
+		{
+			wholepanel.setWidth100( );
+			wholepanel.setHeight100( );
+			wholepanel.setStyleName( "bigmembercardborder" );
+			ScreenUtil.clearLayout( wholepanel );
+			//TODO 没发布的给出发布按钮 不是老师的建议填写完整老师信息
+			boolean isteacher = member.isTeacher( );
+			if( isteacher )
+			{
+				wholepanel.addMember( new Label("你尚未发布任何课程信息") );
+			}
+			else
+			{
+				LabelWithBlue modify = new LabelWithBlue( "你还不是本网站注册教师,只有教师才可以发布课程信息,请在个人信息里填写教师信息.",true );
+				modify.addClickHandler( new ClickHandler( ) {
+					@Override
+					public void onClick( ClickEvent event )
+					{
+						ts.selectTab( 0 );
+					}
+				} );
+				wholepanel.addMember( modify );
+			}
+		}
 	}
 	
 	class AdvertPanel extends AbstractTab
 	{
+		private VLayout wholepanel ;
+		
 		public AdvertPanel()
 		{
 			super("已发布学校信息","",false);
@@ -183,9 +214,34 @@ public class ManageSelfPage extends AbstractPage
 		@Override
 		public Canvas getPanel( )
 		{
-			//TODO 提示发布信息去MS中发布 提供发布链接
-			
-			return new Label("你尚未发布任何学校信息");
+			wholepanel = new VLayout();
+			return wholepanel;
+		}
+		
+		public void fillpanel(final Member member)
+		{
+			wholepanel.setWidth100( );
+			wholepanel.setHeight100( );
+			wholepanel.setStyleName( "bigmembercardborder" );
+			ScreenUtil.clearLayout( wholepanel );
+			//TODO 没发布的给出发布按钮 不是老师的建议填写完整老师信息
+			boolean isteacher = member.isTeacher( );
+			if( isteacher )
+			{
+				wholepanel.addMember( new Label("你尚未发布任何学校信息") );
+			}
+			else
+			{
+				LabelWithBlue modify = new LabelWithBlue( "你还不是本网站注册教师,只有教师才可以发布学校信息,请在个人信息里填写教师信息.",true );
+				modify.addClickHandler( new ClickHandler( ) {
+					@Override
+					public void onClick( ClickEvent event )
+					{
+						ts.selectTab( 0 );
+					}
+				} );
+				wholepanel.addMember( modify );
+			}
 		}
 		
 	}
