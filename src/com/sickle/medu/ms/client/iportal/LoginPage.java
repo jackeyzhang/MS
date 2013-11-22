@@ -4,6 +4,7 @@
 
 package com.sickle.medu.ms.client.iportal;
 
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.form.LoginDform;
@@ -23,6 +24,8 @@ import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;
+import com.smartgwt.client.widgets.form.fields.events.ChangedEvent;
+import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -100,6 +103,11 @@ public class LoginPage extends AbstractPage
 		
 		// 登陆对话框的表单
 		loginform = new LoginDform( );
+		String cachename = Cookies.getCookie( "medu-remeber-name");
+		if( cachename != null )
+		{
+			loginform.setValue( "name", cachename );
+		}
 		loginpanel.addMember( loginform );
 
 		
@@ -109,11 +117,30 @@ public class LoginPage extends AbstractPage
 		forgetpasswordPanel.setAlign( Alignment.CENTER );
 		forgetpasswordPanel.setMembersMargin( 10 );
 		
-		
 		DynamicForm remform = new DynamicForm();
-		CheckboxItem remembername = new CheckboxItem( "remeber" );
+		final CheckboxItem remembername = new CheckboxItem( "remeber" );
 		remembername.setTitle( "记住用户名" );
+		if( cachename != null )
+		{
+			remembername.setValue( true );
+		}
 		remform.setFields( remembername );
+		
+		remembername.addChangedHandler( new ChangedHandler( ) {
+			@Override
+			public void onChanged( ChangedEvent event )
+			{
+				boolean ischeck = remembername.getValueAsBoolean( );
+				if( ischeck )
+				{
+					Cookies.setCookie( "medu-remeber", "yes" );
+				}
+				else
+				{
+					Cookies.removeCookie( "medu-remeber" );
+				}
+			}
+		} );
 		
 		Anchor forgetpassword = new Anchor( "忘记密码" );
 		forgetpassword.setWidth( "60px" );
@@ -209,9 +236,14 @@ public class LoginPage extends AbstractPage
 					{
 						if ( member != null )
 						{
+							//登陆成功 保存用户名
+							Cookies.removeCookie( "medu-remeber-name" );
+							if( Cookies.getCookie( "medu-remeber" ).equalsIgnoreCase( "yes" ))
+							{
+								Cookies.setCookie( "medu-remeber-name", loginform.getValueAsString( "name" ) );
+							}
 							freshpage( member );
 							//登录完毕 清空密码
-							loginform.getUsername( ).clearValue( );
 							loginform.getPassword( ).clearValue( );
 							loginResult.setContents( "" );
 						}
