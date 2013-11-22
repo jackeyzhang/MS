@@ -55,7 +55,7 @@ public class RegisterDform extends DynamicForm
 	public RegisterDform(int width,int... columnwidth)
 	{
 		this.setWidth( width );
-		this.setColWidths( "*" );
+		this.setColWidths( columnwidth );
 		this.setPadding( 20 );
 		
 		username = new TextItem("name");
@@ -82,7 +82,7 @@ public class RegisterDform extends DynamicForm
 		password.setTitle("密码");
 		password.setRequired(true);	
 		
-		confirmpassword = new PasswordItem();
+		confirmpassword = new PasswordItem("password");
 		confirmpassword.setWidth( columnwidth[1] );
 		confirmpassword.setTitleStyle( "h2" );
 		confirmpassword.setTitle("确认密码");

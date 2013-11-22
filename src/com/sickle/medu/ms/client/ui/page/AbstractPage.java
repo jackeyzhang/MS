@@ -5,16 +5,13 @@ package com.sickle.medu.ms.client.ui.page;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
-import com.smartgwt.client.widgets.events.MouseOutEvent;
-import com.smartgwt.client.widgets.events.MouseOutHandler;
-import com.smartgwt.client.widgets.events.MouseOverEvent;
-import com.smartgwt.client.widgets.events.MouseOverHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -63,8 +60,11 @@ public abstract class AbstractPage extends VLayout
 	public Layout getDefaultTopPanel()
 	{
 		HLayout toppanel = new HLayout( );
+		
 		toppanel.setWidth100( );
 		toppanel.setHeight( ScreenUtil.getHeight( 0.1 ) );
+		toppanel.setStyleName( "defaulttoppanel" );
+		
 		ImgButton sgwtHomeButton = new ImgButton( );
 		sgwtHomeButton.setSrc( "pieces/24/cube_green.png" );
 		sgwtHomeButton.setWidth( 24 );
@@ -83,11 +83,11 @@ public abstract class AbstractPage extends VLayout
 					}
 				} );
 		toppanel.addMember( sgwtHomeButton );
-		final Label title = new Label( "爱师网" );
-		title.setStyleName( "sgwtTitle" );
+		
+		LabelWithBlue title = new LabelWithBlue( "爱师网",true );
 		title.setWidth( 300 );
 		title.setHeight( 20 );
-		title.setCursor( com.smartgwt.client.types.Cursor.HAND );
+		title.setAlign( Alignment.LEFT );
 		title.addClickHandler( new ClickHandler(){
 			@Override
 			public void onClick( ClickEvent event )
@@ -95,23 +95,8 @@ public abstract class AbstractPage extends VLayout
 				History.newItem( IPageConst.PAGE_MEDU );
 			}
 		} );
-		title.addMouseOutHandler( new MouseOutHandler( ) {
-			
-			@Override
-			public void onMouseOut( MouseOutEvent event )
-			{
-				title.setStyleName( "sgwtTitle" );
-			}
-		} );
-		title.addMouseOverHandler( new MouseOverHandler( ) {
-			
-			@Override
-			public void onMouseOver( MouseOverEvent event )
-			{
-				title.setStyleName( "sgwtTitle-in" );
-			}
-		} );
 		toppanel.addMember( title );
+		
 		return toppanel;
 	}
 	

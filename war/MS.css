@@ -46,6 +46,12 @@ h1 {
 	color: red;
 }
 
+.defaulttoppanel{
+	border:3px solid #deab8a;
+	border-top-style:outset;
+	border-style:solid none none none; 
+}
+
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
 	margin: 15px 6px 6px;
