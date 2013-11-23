@@ -103,7 +103,7 @@ public class ManageSelfPage extends AbstractPage
 			}
 		} );
 		
-		LabelWithWhite title = new LabelWithWhite("修改个人信息");
+		LabelWithWhite title = new LabelWithWhite("个人信息管理");
 		title.setAlign( Alignment.CENTER );
 		title.setWidth( ScreenUtil.getWidth( 0.9 ) );
 		title.setHeight( ScreenUtil.getHeight( 0.05 ) );
