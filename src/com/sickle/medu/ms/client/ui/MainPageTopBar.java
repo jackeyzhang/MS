@@ -61,7 +61,7 @@ public class MainPageTopBar extends RibbonBar
 	        addMember(welcome);
 	        
 	        
-	        modifyButton = new LabelWithBlue("修改个人信息",true);
+	        modifyButton = new LabelWithBlue("个人信息管理",true);
 	        modifyButton.addClickHandler( new com.smartgwt.client.widgets.events.ClickHandler( ) {
 				
 				@Override
@@ -94,7 +94,7 @@ public class MainPageTopBar extends RibbonBar
 		if ( modifyButton != null )
 		{
 			modifyButton.setVisible( true );
-			modifyButton.setTooltip( "修改个人信息" );
+			modifyButton.setTooltip( "点击进入个人信息管理界面" );
 		}
 	}
 
