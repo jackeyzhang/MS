@@ -44,7 +44,7 @@ public class RegisterDform extends DynamicForm
 	
 	public RegisterDform( int width)
 	{
-		this( width, width/5, width - width/5 );
+		this( width, width/3, width - width/3 );
 	}
 	
 	public RegisterDform()

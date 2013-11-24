@@ -81,7 +81,7 @@ public class LoginPage extends AbstractPage
 		VLayout banner = new VLayout( );
 		banner.setStyleName( "loginpage_bannerpanel" );
 		banner.setHeight100( );
-		banner.addMember( new AdvertBanner( 0.7, 0.3 ) );
+		banner.addMember( new AdvertBanner( 0.65, 0.3 ) );
 		middlepanel.addMember( banner );
 		
 		// 登陆panel
