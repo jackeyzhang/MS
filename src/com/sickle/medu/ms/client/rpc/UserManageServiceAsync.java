@@ -19,4 +19,6 @@ public interface UserManageServiceAsync
 
 	void login( String name, String password, AsyncCallback<Member> callback );
 
+	void sendMail(String to, AsyncCallback<Boolean> callback);
+
 }

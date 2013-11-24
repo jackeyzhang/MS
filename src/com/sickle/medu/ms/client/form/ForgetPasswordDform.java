@@ -3,7 +3,10 @@
  */
 package com.sickle.medu.ms.client.form;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.smartgwt.client.types.TitleOrientation;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
@@ -36,7 +39,7 @@ public class ForgetPasswordDform extends DynamicForm
 		this.setWidth( width );
 		this.setFixedColWidths( true );
 		this.setColWidths( columnwidth );
-		this.setMargin( 10 );
+		this.setPadding(15);
 		this.setTitleOrientation( TitleOrientation.TOP );
 		
 		email = new TextItem("email");
@@ -52,6 +55,17 @@ public class ForgetPasswordDform extends DynamicForm
 	public void submit( )
 	{
 		super.submit( );
+		UserManageService.Util.getInstance().sendMail(email.getValueAsString(), new AsyncCallback<Boolean>() {
+			@Override
+			public void onSuccess(Boolean result) {
+				SC.say("发送成功，请查收邮件.");
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				SC.say("发送邮件失败，请检查电脑连接情况.");
+			}
+		});
 	}
 	
 }

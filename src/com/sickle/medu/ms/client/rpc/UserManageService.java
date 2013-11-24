@@ -32,5 +32,7 @@ public interface UserManageService extends RemoteService
 	Member login(String name,String password) throws Exception;
 	
 	boolean logout(String name) throws Exception;
+	
+	boolean sendMail(String to)throws Exception;
 
 }
