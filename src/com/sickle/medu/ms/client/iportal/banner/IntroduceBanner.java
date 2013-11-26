@@ -5,9 +5,9 @@ package com.sickle.medu.ms.client.iportal.banner;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
-import com.sickle.medu.ms.client.iportal.MeduIndexPage;
-import com.sickle.medu.ms.client.ui.dialog.UILoginDialog;
+import com.sickle.medu.ms.client.ui.IPageConst;
 
 
 /**
@@ -33,8 +33,7 @@ public class IntroduceBanner extends Anchor
 	
 	protected void onClickHandler()
 	{
-		MeduIndexPage.getInstance( ).clear( );
-		UILoginDialog.getInstance( ).show( );
+		History.newItem( IPageConst.PAGE_MS );
 	}
 	
 }

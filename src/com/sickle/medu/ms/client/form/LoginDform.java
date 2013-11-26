@@ -31,14 +31,12 @@ public class LoginDform extends DynamicForm
 		username.setTitleStyle( "h2" );
 		username.setTitle("用户名");
 		username.setRequired(true);
-//		username.setDefaultValue("jackey");
 		username.setWidth( 200 );
 
 		password = new PasswordItem("password");
 		password.setTitleStyle( "h2" );
 		password.setTitle("密码");
 		password.setRequired(true);	
-//		password.setDefaultValue( "123" );
 		password.setWidth( 200 );
 		
 		setFields(new FormItem[] {username, password});

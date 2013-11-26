@@ -1,23 +1,23 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.form;
+package com.sickle.medu.ms.client.form.auto;
 
-import com.sickle.medu.ms.client.datasource.OrgDataSource;
-import com.sickle.pojo.edu.Org;
+import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DataSource;
 
 
 /**
- * 公司表单
+ * 教师表单
  * 
  * @author chenhao
  *
  */
-public class OrgDForm extends AbstractListDForm 
+public class TeacherDForm extends AbstractListDForm 
 {
 
-	public OrgDForm()
+	public TeacherDForm()
 	{
 		super();
 	}
@@ -31,31 +31,31 @@ public class OrgDForm extends AbstractListDForm
 	@Override
 	public DataSource getDataSource( )
 	{
-		return OrgDataSource.getInstance( ).getDataSource( Org.class );
+		return MemberDataSource.getInstance( ).getDataSource( Member.class );
 	}
 
 	@Override
 	public String getQueryName( )
 	{
-		return OrgDataSource.getInstance( ).getQueryName( );
+		return MemberDataSource.getInstance( ).getQueryName( );
 	}
 
 	@Override
 	public String getAddButtonTitle( )
 	{
-		return "增加新公司";
+		return "增加新教师";
 	}
 
 	@Override
 	public String getModifyButtonTitle( )
 	{
-		return "修改公司";
+		return "修改教师";
 	}
 
 	@Override
 	public String getRemoveButtonTitle( )
 	{
-		return "删除公司";
+		return "删除教师";
 	}
 
 	@Override

@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.tabpanel;
 
-import com.sickle.medu.ms.client.form.MessageDForm;
+import com.sickle.medu.ms.client.form.auto.MessageDForm;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Window;

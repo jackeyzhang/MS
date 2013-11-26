@@ -110,7 +110,6 @@ public class MessageDataSource extends GwtRpcDataSource
 		recopyValues( rec, userRec );
 		MessageServiceAsync service = MessageService.Util.getInstance( );
 		service.addMessage( userRec, new AsyncCallbackWithStatus<Message>( ) {
-
 			public void call( Message result )
 			{
 				ListGridRecord[] list = new ListGridRecord[1];

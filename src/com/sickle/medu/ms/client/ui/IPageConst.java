@@ -55,6 +55,8 @@ public interface IPageConst
 	public static final String PAGE_MEMBER = "mid";
 	public static final String PAGE_MANAGESELF = "manageself";
 	public static final String PAGE_FORGETPASSWORD = "forgetpassword";
+	
+	public static final String PAGE_MS = "ms";
 	public static final String PAGE_EQ = "=";
 	public static final String PAGE_ORG = "org";
 	

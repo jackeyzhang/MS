@@ -101,7 +101,7 @@ public class UILoginDialog extends AbstractDialog
 	
 	private void initMainPage()
 	{
-		MainPagePanel mainpage = new MainPagePanel( );
+		MainPagePanel mainpage = MainPagePanel.getInstance( );
 		mainpage.getTabset( ).addTab( new MainPageTab() );
 		mainpage.getTabset( ).addTab( new WebSiteEditTab() );
 		mainpage.draw( );

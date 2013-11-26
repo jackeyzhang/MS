@@ -20,7 +20,18 @@ public class MainPagePanel extends VLayout
 	
 	private MainPageTabSet tabset;
 
-	public MainPagePanel()
+	private static MainPagePanel instance;
+	
+	public static MainPagePanel getInstance()
+	{
+		if( instance == null )
+		{
+			instance = new MainPagePanel( );
+		}
+		return instance;
+	}
+	
+	private MainPagePanel()
 	{
 		setWidth100( );
 		setHeight100( );

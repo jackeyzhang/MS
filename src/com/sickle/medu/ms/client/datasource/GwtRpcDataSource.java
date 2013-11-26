@@ -4,6 +4,7 @@
 
 package com.sickle.medu.ms.client.datasource;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourcePasswordField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.types.DSDataFormat;
+import com.smartgwt.client.types.DSOperationType;
 import com.smartgwt.client.types.DSProtocol;
 import com.smartgwt.client.util.JSOHelper;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
@@ -40,6 +42,8 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 	private static Map<Class, DataSource> cache = new HashMap<Class, DataSource>( );
 
 	private DataSource datasource;
+	
+	private DSOperationType op;
 
 	public GwtRpcDataSource( )
 	{
@@ -54,6 +58,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 						request.getAttributeAsObject( "clientContext" ) );
 				// Asume success
 				response.setStatus( 0 );
+				op = request.getOperationType( );
 				switch ( request.getOperationType( ) )
 				{
 					case FETCH :
@@ -104,7 +109,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		for ( Field f : fs )
 		{
 			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
-			if ( field == null || field.isshow( ) == false)
+			if ( field == null )
 			{
 				continue;
 			}
@@ -129,12 +134,22 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
 				newfield.setValidators( emailValidator );
 			}
+			else if ( field.type( ).equals( FieldType.TextArea ) )
+			{
+				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
+				newfield.setValidators( emailValidator );
+			}
 			
-			formatField(newfield,field.mask( ));
+			formatField(op,newfield,field.mask( ));
 			
 			if ( field.isId( ) )
 			{
 				newfield.setPrimaryKey( true );
+				newfield.setHidden( true );
+			}
+			
+			if( field.mask( ) == Mask.nevershow.getValue( ) )
+			{
 				newfield.setHidden( true );
 			}
 			
@@ -149,12 +164,29 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		return datasource;
 	}
 	
-	private void formatField(DataSourceField field,Integer mask){
-		if( (mask.byteValue( ) & Mask.showInAdd.getValue( ).byteValue( )) == 0)
+	private void formatField(DSOperationType op,DataSourceField field,Integer mask){
+		if( op == null )
 		{
-			field.setCanEdit( true );
-		}else{
-			field.setCanEdit( false );
+			return;
+		}
+		if( op == DSOperationType.UPDATE )
+		{
+			if( (mask.byteValue( ) & Mask.enInEdit.getValue( ).byteValue( )) == 0)
+			{
+				field.setCanEdit( false );
+			}else{
+				field.setCanEdit( true );
+			}
+		}
+		
+		if( op == DSOperationType.ADD )
+		{
+			if( (mask.byteValue( ) & Mask.enInAdd.getValue( ).byteValue( )) == 0)
+			{
+				field.setCanEdit( false );
+			}else{
+				field.setCanEdit( true );
+			}
 		}
 	}
 
@@ -192,7 +224,18 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			if( field.isId( )){
 				if( value == null || value.isEmpty( ))
 				{
-					f.setFieldValue( to, 12345 );
+					if(  field.type( ).equals( FieldType.Integer )  )
+					{
+						f.setFieldValue( to, 12345 );
+					}
+					else if( field.type( ).equals( FieldType.Long ) )
+					{
+						f.setFieldValue( to, 12345l );
+					}
+					else
+					{
+						f.setFieldValue( to, "12345" );
+					}
 				}
 				else
 				{
@@ -214,6 +257,14 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			else if ( field.type( ).equals( FieldType.Float ) )
 			{
 				f.setFieldValue( to, Float.parseFloat( value == null ? "-1" : value ) );
+			}
+			else if ( field.type( ).equals( FieldType.DateTime ) )
+			{
+				f.setFieldValue( to, new Date() );
+			}
+			else if ( field.type( ).equals( FieldType.Date ) )
+			{
+				f.setFieldValue( to, new Date() );
 			}
 			else
 			{
