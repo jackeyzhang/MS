@@ -3,29 +3,27 @@
  */
 package com.sickle.medu.ms.client.form;
 
-import java.util.List;
-
 import com.sickle.medu.ms.client.datasource.MessageDataSource;
-import com.sickle.medu.ms.client.form.withwidget.FormWidgetFactory;
+import com.sickle.medu.ms.client.form.withwidget.AbstractForm;
 import com.sickle.pojo.website.Message;
 import com.smartgwt.client.data.DataSource;
-import com.smartgwt.client.widgets.form.DynamicForm;
-import com.smartgwt.client.widgets.form.fields.FormItem;
 
 
 /**
+ * 
+ * Message form
+ * 
  * @author chenhao
  *
  */
-public class MessageForm extends DynamicForm
+public class MessageForm extends AbstractForm
 {
 
-	private DataSource ds = MessageDataSource.getInstance( ).getDataSource( Message.class );
-	
-	public MessageForm()
+
+	@Override
+	public DataSource getDS( )
 	{
-		List<FormItem> items = FormWidgetFactory.getWidgets( ds );
-		setDataSource( ds,  items.toArray( new FormItem[items.size( )] )  );
+		return MessageDataSource.getInstance( ).getDataSource( Message.class );
 	}
 	
 }

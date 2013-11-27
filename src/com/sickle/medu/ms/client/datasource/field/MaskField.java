@@ -9,7 +9,7 @@ public class MaskField extends DataSourceSimpleTypeField
 
 	private int mask;
 	
-	public static final String STYPE = "stype", MASK = "mask";
+	public static final String STYPE = "stype", MASK = "smask";
 	
 	/**
 	 * @param name
@@ -54,11 +54,6 @@ public class MaskField extends DataSourceSimpleTypeField
 	{
 		this.mask = mask;
 		this.setAttribute( MASK, mask );
-	}
-	
-	public String getStype()
-	{
-		return this.getAttribute( "stype" );
 	}
 	
 }
