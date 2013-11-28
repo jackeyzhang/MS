@@ -149,7 +149,7 @@ public class MS implements EntryPoint
 
 					ForgetPasswordPage.getInstance( ).draw( );
 				}
-				else if ( event.getValue( ).equals(
+				else if ( event.getValue( ).startsWith(
 						IPageConst.PAGE_MS ) )
 				{
 					clearIportal();

@@ -75,7 +75,7 @@ public class ModifyMemberDialog extends AbstractDialog
 						ListGridRecord rec = new ListGridRecord( dsRequest.getData( ) );
 						MemberDataSource.getInstance( ).recopyValues( rec  , returnmember);
 						MeduIndexPage.getInstance( ).getTopbar( ).setMember( returnmember );
-						History.newItem( IPageConst.PAGE_MANAGESELF + Random.nextDouble( ) );
+						History.newItem( IPageConst.PAGE_MS + Random.nextDouble( ) );
 						hide();
 					}
 				} );
