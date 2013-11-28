@@ -131,7 +131,7 @@ public class MS implements EntryPoint
 
 					OrgPage.getInstance( ).draw( );
 					int id = Integer
-							.parseInt( event.getValue( ).substring( 4 ) );
+							.parseInt( event.getValue( ).substring(IPageConst.PAGE_ORG.length() +1) );
 					OrgPage.getInstance( ).loadingOrg( id );
 				}
 				else if ( event.getValue( ).equals(

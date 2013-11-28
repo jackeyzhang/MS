@@ -10,15 +10,18 @@ import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
+import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Org;
+import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Side;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.smartgwt.client.widgets.tab.TabSet;
 
@@ -80,6 +83,8 @@ public class OrgPage extends AbstractPage
 		VLayout orgrpage = new VLayout();
 		orgrpage.setStyleName( "orgpage" );
 		
+		HLayout titlepanel = new HLayout();
+		titlepanel.setHeight( ScreenUtil.getHeight( 0.05 ) );
 		LabelWithYellow returnpage = new LabelWithYellow(">>返回首页");
 		returnpage.setHeight( ScreenUtil.getHeight( 0.05 ) );
 		returnpage.addClickHandler( new ClickHandler( ) {
@@ -89,7 +94,15 @@ public class OrgPage extends AbstractPage
 				History.newItem( IPageConst.PAGE_MEDU );
 			}
 		} );
-		orgrpage.addMember( returnpage );
+		
+		LabelWithWhite title = new LabelWithWhite("查看学校详细信息");
+		title.setAlign( Alignment.CENTER );
+		title.setWidth( ScreenUtil.getWidth( 0.9 ) );
+		title.setHeight( ScreenUtil.getHeight( 0.05 ) );
+
+		titlepanel.addMember( returnpage );
+		titlepanel.addMember(title);
+		orgrpage.addMember(titlepanel);
 		
 		TabSet ts = new TabSet();
 		ts.setUseSimpleTabs( true );
