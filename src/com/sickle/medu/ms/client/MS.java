@@ -14,6 +14,7 @@ import com.sickle.medu.ms.client.iportal.MemberPage;
 import com.sickle.medu.ms.client.iportal.OrgPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.pojo.edu.Member;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -152,7 +153,16 @@ public class MS implements EntryPoint
 						IPageConst.PAGE_MS ) )
 				{
 					clearIportal();
+					
+					/*Member _member = MeduIndexPage.getInstance( ).getTopbar( )
+							.getMember( );*/
+					Member _member = new Member("王小二","zhangchenhao@139.com","username","password");
+					_member.setIcon( "icons/header/user_male1.png" );
+					_member.setTitle( "title" );
+					_member.setResume( "resume" );
+					MSPage.getInstance( ).getMemberpanel( ).fillpanel( _member );
 					MSPage.getInstance( ).draw( );
+					
 				}
 				else
 				{

@@ -11,6 +11,7 @@ import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.medu.ms.client.ui.widget.MouseChangePanel;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -86,6 +87,7 @@ public class MenuPanel extends VLayout
 	public void addMenu(String menu,final Layout showpanel)
 	{
 		LabelWithWhite menuitem = new LabelWithWhite( menu );
+		menuitem.setCursor( Cursor.POINTER );
 		final MouseChangePanel p = new MouseChangePanel();
 		p.setWidth( 30 );
 		p.addMember( menuitem );
@@ -103,12 +105,18 @@ public class MenuPanel extends VLayout
 			}
 		} );
 		mcpanels.add( p );
+		if( mcpanels.size( ) == 1 )
+		{
+			p.fixMouseinStyle( );
+			contentPanel.addMember( showpanel );
+		}
 		menuBarPanel.addMember( p );
 	}
 	
 	public void addMenu(String menu,final Callback<?, ?> callback)
 	{
 		LabelWithWhite menuitem = new LabelWithWhite( menu );
+		menuitem.setCursor( Cursor.POINTER );
 		final MouseChangePanel p = new MouseChangePanel();
 		p.setWidth( 30 );
 		p.addMember( menuitem );
