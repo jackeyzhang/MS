@@ -3,11 +3,11 @@
  */
 package com.sickle.medu.ms.client.ui.tabpanel;
 
-import com.sickle.medu.ms.client.form.auto.MessageDForm;
+import com.sickle.medu.ms.client.form.MessageForm;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Window;
-import com.smartgwt.client.widgets.layout.VLayout;
+import com.smartgwt.client.widgets.layout.HLayout;
 
 
 /**
@@ -37,10 +37,12 @@ public class MainPageTab extends AbstractTab
 			@Override
 			public Canvas getView( )
 			{
-				VLayout layout = new VLayout( );
+				HLayout layout = new HLayout( );
 				layout.setWidth100( );
 				layout.setHeight( 500 );
-				layout.addMember( new MessageDForm( ).getDefaultLayout( ) );
+				layout.addMember( new MessageForm().getLookForm( ) );
+				layout.addMember( new MessageForm().getAddForm( ) );
+				layout.addMember( new MessageForm().getModifyForm( ) );
 				return layout;
 			}
 			

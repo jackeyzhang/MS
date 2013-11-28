@@ -12,25 +12,20 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.gwtent.reflection.client.ClassType;
 import com.gwtent.reflection.client.Field;
 import com.gwtent.reflection.client.TypeOracle;
+import com.sickle.medu.ms.client.datasource.field.MaskField;
 import com.sickle.uireflect.FieldType;
 import com.sickle.uireflect.Mask;
 import com.sickle.uireflect.Reflect_Field;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.data.DataSource;
-import com.smartgwt.client.data.DataSourceField;
-import com.smartgwt.client.data.fields.DataSourceDateField;
-import com.smartgwt.client.data.fields.DataSourceIntegerField;
-import com.smartgwt.client.data.fields.DataSourcePasswordField;
-import com.smartgwt.client.data.fields.DataSourceTextField;
 import com.smartgwt.client.types.DSDataFormat;
-import com.smartgwt.client.types.DSOperationType;
 import com.smartgwt.client.types.DSProtocol;
 import com.smartgwt.client.util.JSOHelper;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 /**
- * GWt异步返回datasource
+ * GWT异步返回datasource
  * 
  * @author chenhao
  * 
@@ -43,8 +38,6 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 
 	private DataSource datasource;
 	
-	private DSOperationType op;
-
 	public GwtRpcDataSource( )
 	{
 		datasource = new DataSource( ) {
@@ -58,7 +51,6 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 						request.getAttributeAsObject( "clientContext" ) );
 				// Asume success
 				response.setStatus( 0 );
-				op = request.getOperationType( );
 				switch ( request.getOperationType( ) )
 				{
 					case FETCH :
@@ -113,34 +105,12 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			{
 				continue;
 			}
-			DataSourceField newfield = new DataSourceTextField( f.getName( ),
-					field.title( ) );
+			MaskField newfield = new MaskField( f.getName( ),field.type( ).toString( ),field.title( ) );
 			
-			if ( field.type( ).equals( FieldType.Integer ) )
+			 if ( field.type( ).equals( FieldType.Email ) )
 			{
-				newfield = new DataSourceIntegerField( f.getName( ),
-						field.title( ) );
-			}
-			else if ( field.type( ).equals( FieldType.Password ) )
-			{
-				newfield = new DataSourcePasswordField( f.getName( ), field.title( ) );
-			}
-			else if ( field.type( ).equals( FieldType.Date ) )
-			{
-				newfield = new DataSourceDateField( f.getName( ), field.title( ) );
-			}
-			else if ( field.type( ).equals( FieldType.Email ) )
-			{
-				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
 				newfield.setValidators( emailValidator );
 			}
-			else if ( field.type( ).equals( FieldType.TextArea ) )
-			{
-				newfield = new DataSourceTextField( f.getName( ), field.title( ) );
-				newfield.setValidators( emailValidator );
-			}
-			
-			formatField(op,newfield,field.mask( ));
 			
 			if ( field.isId( ) )
 			{
@@ -158,37 +128,13 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 				newfield.setRequired( true );
 			}
 			
+			newfield.setMask( field.mask( ) );
 			datasource.addField( newfield );
 		}
 		cache.put( cls, datasource );
 		return datasource;
 	}
 	
-	private void formatField(DSOperationType op,DataSourceField field,Integer mask){
-		if( op == null )
-		{
-			return;
-		}
-		if( op == DSOperationType.UPDATE )
-		{
-			if( (mask.byteValue( ) & Mask.enInEdit.getValue( ).byteValue( )) == 0)
-			{
-				field.setCanEdit( false );
-			}else{
-				field.setCanEdit( true );
-			}
-		}
-		
-		if( op == DSOperationType.ADD )
-		{
-			if( (mask.byteValue( ) & Mask.enInAdd.getValue( ).byteValue( )) == 0)
-			{
-				field.setCanEdit( false );
-			}else{
-				field.setCanEdit( true );
-			}
-		}
-	}
 
 	public <T> void copyValues( T from, ListGridRecord to )
 	{
@@ -239,7 +185,18 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 				}
 				else
 				{
-					f.setFieldValue( to, Integer.decode( value ) );
+					if(  field.type( ).equals( FieldType.Integer )  )
+					{
+						f.setFieldValue( to, Integer.decode( value ) );
+					}
+					else if( field.type( ).equals( FieldType.Long ) )
+					{
+						f.setFieldValue( to, Long.decode( value ) );
+					}
+					else
+					{
+						f.setFieldValue( to, value );
+					}
 				}
 			}
 			else if ( field.type( ).equals( FieldType.Integer ) )

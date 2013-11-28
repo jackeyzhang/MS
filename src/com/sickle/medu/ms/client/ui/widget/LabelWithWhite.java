@@ -13,4 +13,18 @@ public class LabelWithWhite extends MouseChangeLabel
 	{
 		super(title , change ,"whitelittlelabel","whitelittlelabel-mousein");
 	}
+
+	/**
+	 * @param title
+	 * @param withmousechange
+	 * @param outstylename
+	 * @param instylename
+	 */
+	public LabelWithWhite( String title, boolean withmousechange,
+			String outstylename, String instylename )
+	{
+		super( title, withmousechange, outstylename, instylename );
+	}
+	
+	
 }

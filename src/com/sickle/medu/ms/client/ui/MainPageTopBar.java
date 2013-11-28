@@ -67,7 +67,7 @@ public class MainPageTopBar extends RibbonBar
 				@Override
 				public void onClick( ClickEvent event )
 				{
-					 History.newItem( IPageConst.PAGE_MANAGESELF);
+					 History.newItem( IPageConst.PAGE_MS);
 				}
 			} );
 	        modifyButton.setVisible( false );

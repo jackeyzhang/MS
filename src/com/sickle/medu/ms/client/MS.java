@@ -7,15 +7,14 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.ForgetPasswordPage;
 import com.sickle.medu.ms.client.iportal.LoginPage;
+import com.sickle.medu.ms.client.iportal.MSPage;
 import com.sickle.medu.ms.client.iportal.ManageSelfPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.iportal.MemberPage;
 import com.sickle.medu.ms.client.iportal.OrgPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
-import com.sickle.medu.ms.client.ui.MainPagePanel;
-import com.sickle.medu.ms.client.ui.tabpanel.MainPageTab;
-import com.sickle.medu.ms.client.ui.tabpanel.WebSiteEditTab;
+import com.sickle.pojo.edu.Member;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -50,7 +49,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					MeduIndexPage.getInstance( ).draw( );
 				}
@@ -66,7 +65,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					LoginPage.getInstance( ).draw( );
 				}
@@ -82,7 +81,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					RegisterPage.getInstance( ).draw( );
 				}
@@ -95,7 +94,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					MemberPage.getInstance( ).draw( );
 					int id = Integer.parseInt( event.getValue( ).substring(
@@ -112,7 +111,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					ManageSelfPage.getInstance( ).draw( );
 					ManageSelfPage.getInstance( ).loadingMember(
@@ -127,7 +126,7 @@ public class MS implements EntryPoint
 					MemberPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					OrgPage.getInstance( ).draw( );
 					int id = Integer
@@ -146,19 +145,23 @@ public class MS implements EntryPoint
 					MemberPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					OrgPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					ForgetPasswordPage.getInstance( ).draw( );
 				}
-				else if ( event.getValue( ).equals(
+				else if ( event.getValue( ).startsWith(
 						IPageConst.PAGE_MS ) )
 				{
 					clearIportal();
-					//
-					MainPagePanel mainpage = MainPagePanel.getInstance( );
-					mainpage.getTabset( ).addTab( new MainPageTab() );
-					mainpage.getTabset( ).addTab( new WebSiteEditTab() );
-					mainpage.draw( );
+					
+					/*Member _member = MeduIndexPage.getInstance( ).getTopbar( )
+							.getMember( );*/
+					Member _member = new Member("王小二","zhangchenhao@139.com","username","password");
+					_member.setIcon( "icons/header/user_male1.png" );
+					_member.setTitle( "title" );
+					_member.setResume( "resume" );
+					MSPage.getInstance( ).getMemberpanel( ).fillpanel( _member );
+					MSPage.getInstance( ).draw( );
 					
 				}
 				else
