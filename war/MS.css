@@ -274,3 +274,17 @@ body {
 	-moz-opacity:1; /*Firefox私有，透明度50%*/
 	opacity:1;/*其他，透明度50%*/
 }
+
+.mousechangepanel{
+	font-size: 1.3em;
+	background-color: #e0861a;
+}
+
+.mousechangepanel_mousein{
+	font-size: 1.3em;
+	background-color: #aa2116;
+}
+
+.messagepanel{
+	padding-top:20px;
+}

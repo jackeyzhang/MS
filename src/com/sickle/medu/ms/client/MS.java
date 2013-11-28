@@ -7,6 +7,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.ForgetPasswordPage;
 import com.sickle.medu.ms.client.iportal.LoginPage;
+import com.sickle.medu.ms.client.iportal.MSPage;
 import com.sickle.medu.ms.client.iportal.ManageSelfPage;
 import com.sickle.medu.ms.client.iportal.MeduIndexPage;
 import com.sickle.medu.ms.client.iportal.MemberPage;
@@ -14,8 +15,6 @@ import com.sickle.medu.ms.client.iportal.OrgPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.MainPagePanel;
-import com.sickle.medu.ms.client.ui.tabpanel.MainPageTab;
-import com.sickle.medu.ms.client.ui.tabpanel.WebSiteEditTab;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -154,12 +153,7 @@ public class MS implements EntryPoint
 						IPageConst.PAGE_MS ) )
 				{
 					clearIportal();
-					//
-					MainPagePanel mainpage = MainPagePanel.getInstance( );
-					mainpage.getTabset( ).addTab( new MainPageTab() );
-					mainpage.getTabset( ).addTab( new WebSiteEditTab() );
-					mainpage.draw( );
-					
+					MSPage.getInstance( ).draw( );
 				}
 				else
 				{

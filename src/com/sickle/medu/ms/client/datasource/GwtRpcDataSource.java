@@ -185,7 +185,18 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 				}
 				else
 				{
-					f.setFieldValue( to, Integer.decode( value ) );
+					if(  field.type( ).equals( FieldType.Integer )  )
+					{
+						f.setFieldValue( to, Integer.decode( value ) );
+					}
+					else if( field.type( ).equals( FieldType.Long ) )
+					{
+						f.setFieldValue( to, Long.decode( value ) );
+					}
+					else
+					{
+						f.setFieldValue( to, value );
+					}
 				}
 			}
 			else if ( field.type( ).equals( FieldType.Integer ) )
