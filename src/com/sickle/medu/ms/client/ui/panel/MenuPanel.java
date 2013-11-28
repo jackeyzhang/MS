@@ -6,6 +6,7 @@ package com.sickle.medu.ms.client.ui.panel;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.client.Callback;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.medu.ms.client.ui.widget.MouseChangePanel;
 import com.sickle.medu.ms.client.util.ScreenUtil;
@@ -99,6 +100,29 @@ public class MenuPanel extends VLayout
 					anp.removeFixMouseinStyle( );
 				}
 				p.fixMouseinStyle( );
+			}
+		} );
+		mcpanels.add( p );
+		menuBarPanel.addMember( p );
+	}
+	
+	public void addMenu(String menu,final Callback<?, ?> callback)
+	{
+		LabelWithWhite menuitem = new LabelWithWhite( menu );
+		final MouseChangePanel p = new MouseChangePanel();
+		p.setWidth( 30 );
+		p.addMember( menuitem );
+		p.addClickHandler( new ClickHandler( ) {
+			@Override
+			public void onClick( ClickEvent event )
+			{
+				ScreenUtil.clearLayout( contentPanel );
+				for(MouseChangePanel anp : mcpanels)
+				{
+					anp.removeFixMouseinStyle( );
+				}
+				p.fixMouseinStyle( );
+				callback.onSuccess( null );
 			}
 		} );
 		mcpanels.add( p );

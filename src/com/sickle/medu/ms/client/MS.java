@@ -14,7 +14,6 @@ import com.sickle.medu.ms.client.iportal.MemberPage;
 import com.sickle.medu.ms.client.iportal.OrgPage;
 import com.sickle.medu.ms.client.iportal.RegisterPage;
 import com.sickle.medu.ms.client.ui.IPageConst;
-import com.sickle.medu.ms.client.ui.MainPagePanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -49,7 +48,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					MeduIndexPage.getInstance( ).draw( );
 				}
@@ -65,7 +64,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					LoginPage.getInstance( ).draw( );
 				}
@@ -81,7 +80,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					RegisterPage.getInstance( ).draw( );
 				}
@@ -94,7 +93,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					MemberPage.getInstance( ).draw( );
 					int id = Integer.parseInt( event.getValue( ).substring(
@@ -111,7 +110,7 @@ public class MS implements EntryPoint
 					OrgPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					ManageSelfPage.getInstance( ).draw( );
 					ManageSelfPage.getInstance( ).loadingMember(
@@ -126,7 +125,7 @@ public class MS implements EntryPoint
 					MemberPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					ForgetPasswordPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					OrgPage.getInstance( ).draw( );
 					int id = Integer
@@ -145,7 +144,7 @@ public class MS implements EntryPoint
 					MemberPage.getInstance( ).clear( );
 					ManageSelfPage.getInstance( ).clear( );
 					OrgPage.getInstance( ).clear( );
-					MainPagePanel.getInstance( ).clear( );
+					MSPage.getInstance( ).clear( );
 
 					ForgetPasswordPage.getInstance( ).draw( );
 				}

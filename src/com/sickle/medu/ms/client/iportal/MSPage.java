@@ -4,7 +4,10 @@
 
 package com.sickle.medu.ms.client.iportal;
 
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.panel.MessagePanel;
+import com.sickle.medu.ms.client.iportal.panel.RegisterPanel;
 import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.panel.MenuPanel;
@@ -62,11 +65,23 @@ public class MSPage extends AbstractPage
 				ScreenUtil.getWidthInt( IPageConst.PAGE_WIDTH ),
 				ScreenUtil.getHeightInt( 0.8 ) );
 		
-		wholepanel.addMenu( "个人信息", new VLayout() );
+		wholepanel.addMenu( "个人信息", new RegisterPanel() );
 		wholepanel.addMenu( "班级管理", new VLayout() );
 		wholepanel.addMenu( "报名管理", new VLayout() );
 		wholepanel.addMenu( "留言管理", new MessagePanel() );
 		wholepanel.addMenu( "评论管理", new VLayout() );
+		Callback<Object, Object> call = new Callback<Object, Object>( ) {
+			@Override
+			public void onFailure( Object reason )
+			{
+			}
+			@Override
+			public void onSuccess( Object result )
+			{
+				History.newItem( IPageConst.PAGE_MEDU );
+			}
+		};
+		wholepanel.addMenu( "回到主页", call );
 		
 		fprpage.addMember( wholepanel );
 		return fprpage;
