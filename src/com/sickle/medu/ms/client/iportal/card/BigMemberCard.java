@@ -6,13 +6,12 @@ package com.sickle.medu.ms.client.iportal.card;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.dialog.ModifyMemberDialog;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
+import com.sickle.medu.ms.client.ui.widget.MButton;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
-import com.smartgwt.client.widgets.events.ClickEvent;
-import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -107,22 +106,23 @@ public class BigMemberCard extends AbstractCard
 		resumeinformation.addMember( resume );
 		
 		//修改信息
-		LabelWithYellow modify = new LabelWithYellow( "修改个人信息" );
-		modify.setWidth( 500 );
-		modify.setHeight( 25 );
-		modify.addClickHandler( new ClickHandler( ) {
+		HLayout buttonpanel = new HLayout();
+		buttonpanel.setAlign( Alignment.CENTER );
+		buttonpanel.setWidth( 500 );
+		MButton modify = new MButton( "修改个人信息", "150px" ){
 			@Override
-			public void onClick( ClickEvent event )
+			public void handleClick( )
 			{
 				new ModifyMemberDialog(member).show();
 			}
-		} );
+		};
+		buttonpanel.addMember( modify );
 		
 		information.addMember( baseinformation );
 		information.addMember( resumeinformation );
 		if( showModify )
 		{
-			information.addMember( modify );
+			information.addMember( buttonpanel );
 		}
 	}
 	

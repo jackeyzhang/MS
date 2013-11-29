@@ -53,16 +53,16 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 	@Override
 	public List<Cls> listAllClasses(int startIndex, int length)
 	{
-		List<Cls> Clss = new ArrayList<Cls>();
+		List<Cls> cls = new ArrayList<Cls>();
 		try
 		{
-			Clss = service.listCls( startIndex, length );
+			cls = service.listCls( startIndex, length );
 		}
 		catch ( Exception e )
 		{
 			e.printStackTrace();
 		}
-		return new ClsDTO().to( Clss );
+		return new ClsDTO().to( cls );
 	}
 
 

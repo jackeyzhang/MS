@@ -72,6 +72,14 @@ public class FormWidgetFactory
 		{
 			item = new DateTimeItem();
 		}
+		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
+		{
+			item = new TextItem();
+		}
+		else
+		{
+			item = new TextItem();
+		}
 		
 		int mask = mfield.getAttributeAsInt( MaskField.MASK );
 		if( op.equals( FormConst.OP_LOOK ))
@@ -148,6 +156,14 @@ public class FormWidgetFactory
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.DateTime.toString( ) ) )
 		{
 			item = new DateTimeItem();
+		}
+		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
+		{
+			item = new TextItem();
+		}
+		else
+		{
+			item = new TextItem();
 		}
 		item.setName( mfield.getName( ) );
 		return item;

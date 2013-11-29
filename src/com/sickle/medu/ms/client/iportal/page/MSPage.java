@@ -7,6 +7,8 @@ package com.sickle.medu.ms.client.iportal.page;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
+import com.sickle.medu.ms.client.iportal.panel.ClassPanel;
+import com.sickle.medu.ms.client.iportal.panel.FreeProductPanel;
 import com.sickle.medu.ms.client.iportal.panel.MemberPanel;
 import com.sickle.medu.ms.client.iportal.panel.MessagePanel;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
@@ -29,6 +31,8 @@ public class MSPage extends AbstractPage
 	private static MSPage instance = new MSPage( );
 
 	private MenuPanel wholepanel = null;
+	
+	private ClassPanel classpanel = null;
 	
 	private MemberPanel memberpanel = null;
 	
@@ -70,15 +74,16 @@ public class MSPage extends AbstractPage
 				ScreenUtil.getHeightInt( 0.8 ) );
 		
 		memberpanel = new MemberPanel();
+		classpanel = new ClassPanel();
 		messagepanel = new MessagePanel();
 		
 		wholepanel.addMenu( "个人信息", memberpanel );
-		wholepanel.addMenu( "班级管理", new VLayout() );
+		wholepanel.addMenu( "班级管理", classpanel );
 		wholepanel.addMenu( "学员管理", new VLayout() );
 		wholepanel.addMenu( "报名管理", new VLayout() );
 		wholepanel.addMenu( "留言管理", messagepanel );
 		wholepanel.addMenu( "评论管理", new VLayout() );
-		wholepanel.addMenu( "免费定制", new VLayout() );
+		wholepanel.addMenu( "免费定制", new FreeProductPanel() );
 		
 		Callback<Object, Object> call = new Callback<Object, Object>( ) {
 			@Override

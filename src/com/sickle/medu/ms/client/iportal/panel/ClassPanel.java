@@ -3,8 +3,8 @@
  */
 package com.sickle.medu.ms.client.iportal.panel;
 
-import com.sickle.medu.ms.client.form.MessageForm;
-import com.sickle.medu.ms.client.iportal.list.MessageList;
+import com.sickle.medu.ms.client.form.ClassesForm;
+import com.sickle.medu.ms.client.iportal.list.ClassList;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.ui.widget.MButton;
 import com.smartgwt.client.data.DSCallback;
@@ -22,19 +22,19 @@ import com.smartgwt.client.widgets.layout.VLayout;
 
 
 /**
- * message panel
+ * 班级面板
  * 
  * @author chenhao
  *
  */
-public class MessagePanel extends HLayout
+public class ClassPanel extends HLayout
 {
-
-	private MessageList list = new MessageList();
+	
+	private ClassList list = new ClassList();
 	
 	private VLayout buttonpanel = new VLayout();
 	
-	public MessagePanel()
+	public ClassPanel()
 	{
 		setWidth100( );
 		setHeight100( );
@@ -42,20 +42,22 @@ public class MessagePanel extends HLayout
 		
 		addMember( list );
 		addMember( buttonpanel );
+		
 		init();
 	}
+
 	
 	private void init()
 	{
 		buttonpanel.setPadding( 10 );
 		buttonpanel.setMembersMargin( 10 );
-		buttonpanel.addMember( new MButton("发送消息"){
+		buttonpanel.addMember( new MButton("创建班级"){
 			@Override
 			public void handleClick( )
 			{
-				new SendMessageDialog().show( );
+				new CreateClassDialog().show( );
 			}} );
-		buttonpanel.addMember( new MButton("删除消息"){
+		buttonpanel.addMember( new MButton("删除班级"){
 			@Override
 			public void handleClick( )
 			{
@@ -66,7 +68,7 @@ public class MessagePanel extends HLayout
 				}
 				list.getDataSource( ).removeData( list.getSelectedRecord( ) );
 			}} );
-		buttonpanel.addMember( new MButton("修改消息"){
+		buttonpanel.addMember( new MButton("修改班级"){
 			@Override
 			public void handleClick( )
 			{
@@ -78,9 +80,10 @@ public class MessagePanel extends HLayout
 			}} );
 	}
 	
-	class SendMessageDialog extends AbstractDialog
+	
+	class CreateClassDialog extends AbstractDialog
 	{
-		public SendMessageDialog( )
+		public CreateClassDialog( )
 		{
 			super( "发送消息" );
 		}
@@ -89,7 +92,7 @@ public class MessagePanel extends HLayout
 		public Canvas getView( )
 		{
 			VLayout wholepanel = new VLayout( );
-			final DynamicForm form = new MessageForm().getAddForm( );
+			final DynamicForm form = new ClassesForm().getAddForm( );
 			wholepanel.addMember( form );
 			
 			HLayout buttonpanel = new HLayout();
@@ -116,7 +119,7 @@ public class MessagePanel extends HLayout
 							}else{
 								SC.say( "失败！" );
 							}
-							destroy();
+							CreateClassDialog.this.destroy();
 						}
 					} );					
 				}
@@ -126,7 +129,7 @@ public class MessagePanel extends HLayout
 				@Override
 				public void onClick( ClickEvent event )
 				{
-					destroy();
+					CreateClassDialog.this.destroy();
 				}
 			} );
 			buttonpanel.addMember( confirm );
@@ -136,61 +139,4 @@ public class MessagePanel extends HLayout
 		}
 	}
 	
-	class ModifyMessageDialog extends AbstractDialog
-	{
-		public ModifyMessageDialog( )
-		{
-			super( "修改消息" );
-		}
-
-		@Override
-		public Canvas getView( )
-		{
-			VLayout wholepanel = new VLayout( );
-			final DynamicForm form = new MessageForm().getModifyForm( );
-			wholepanel.addMember( form );
-			
-			HLayout buttonpanel = new HLayout();
-			buttonpanel.setWidth( 500 );
-			buttonpanel.setMargin( 5 );
-			buttonpanel.setMembersMargin( 10 );
-			buttonpanel.setAlign( Alignment.CENTER );
-			IButton confirm = new IButton("确认" );
-			confirm.addClickHandler( new ClickHandler( ) {
-				@Override
-				public void onClick( ClickEvent event )
-				{
-					boolean validate = form.validate( );
-					if( !validate )
-					{
-						return;
-					}
-					form.submit( new DSCallback( ) {
-						@Override
-						public void execute( DSResponse dsResponse, Object data, DSRequest dsRequest )
-						{
-							if( dsResponse.getErrors( )== null || dsResponse.getErrors( ).isEmpty( )){
-								SC.say( "成功！" );
-							}else{
-								SC.say( "失败！" );
-							}
-							ModifyMessageDialog.this.hide();
-						}
-					} );					
-				}
-			} );
-			IButton cancel = new IButton("取消" );
-			cancel.addClickHandler( new ClickHandler( ) {
-				@Override
-				public void onClick( ClickEvent event )
-				{
-					ModifyMessageDialog.this.hide();
-				}
-			} );
-			buttonpanel.addMember( confirm );
-			buttonpanel.addMember( cancel );
-			wholepanel.addMember( buttonpanel );
-			return wholepanel;
-		}
-	}
 }

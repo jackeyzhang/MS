@@ -23,20 +23,14 @@ public abstract class MButton extends MouseChangePanel
 
 	private LabelWithWhite label = null;
 	
-	public MButton( String title)
+	
+	public MButton( String title,String width)
 	{
-		this.setWidth( 50 );
+		this.setWidth( width );
 		this.setHeight( 25 );
 		label = new LabelWithWhite(title,true,"whitelittlelabel","whitelittlelabel");
+		label.setWidth( width );
 		this.addMember( label );
-		this.addClickHandler( new ClickHandler( ) {
-			
-			@Override
-			public void onClick( ClickEvent event )
-			{
-				handleClick();				
-			}
-		} );
 		
 		label.addClickHandler( new ClickHandler( ) {
 			
@@ -46,6 +40,11 @@ public abstract class MButton extends MouseChangePanel
 				handleClick();				
 			}
 		} );
+	}
+	
+	public MButton( String title)
+	{
+		this(title,"100px");
 	}
 	
 	public abstract void handleClick();
