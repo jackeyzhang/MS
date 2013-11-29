@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.iportal.card;
 
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Img;
