@@ -7,6 +7,7 @@ import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;
+import com.smartgwt.client.widgets.form.fields.ComboBoxItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.RadioGroupItem;
@@ -22,7 +23,7 @@ import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
  * @author chenhao
  *
  */
-public class RegisterDform extends DynamicForm
+public class MemberDform extends DynamicForm
 {
 
 	private TextItem username;
@@ -38,21 +39,21 @@ public class RegisterDform extends DynamicForm
 	private TextAreaItem resume;
 	private TextItem orgname;
 	private TextItem title;
-	private TextItem city;
-	private TextItem area;
+	private ComboBoxItem city;
+	private ComboBoxItem area;
 	
 	
-	public RegisterDform( int width)
+	public MemberDform( int width)
 	{
 		this( width, width/3, width - width/3 );
 	}
 	
-	public RegisterDform()
+	public MemberDform()
 	{
 		this( 400, 120, 280 );
 	}
 	
-	public RegisterDform(int width,int... columnwidth)
+	public MemberDform(int width,int... columnwidth)
 	{
 		this.setWidth( width );
 		this.setColWidths( columnwidth );
@@ -134,20 +135,37 @@ public class RegisterDform extends DynamicForm
 		title.setVisible( false );
 		
 		
-		city = new TextItem("city");
+		city = new ComboBoxItem("city");
 		city.setWidth( columnwidth[1] );
 		city.setTitleStyle( "h2" );
 		city.setTitle("城市");
 		city.setRequired(true);
 		city.setVisible( false );
+		city.setValueMap( FormConst.CITY );
 		
 		
-		area = new TextItem("area");
+		area = new ComboBoxItem("area");
 		area.setWidth( columnwidth[1] );
 		area.setTitleStyle( "h2" );
 		area.setTitle("区县");
 		area.setRequired(true);
 		area.setVisible( false );
+		
+		city.addChangedHandler( new ChangedHandler( ) {
+			@Override
+			public void onChanged( ChangedEvent event )
+			{
+				if(city.getValueAsString( ).equals( "上海" ))
+				{
+					area.setValueMap( FormConst.AREA_SH );
+				}
+				else if(city.getValueAsString( ).equals( "北京" ))
+				{
+					area.setValueMap( FormConst.AREA_BJ );
+				}
+				area.clearValue( );
+			}
+		} );
 		
 		
 		isteacher.addChangedHandler( new ChangedHandler( ) {

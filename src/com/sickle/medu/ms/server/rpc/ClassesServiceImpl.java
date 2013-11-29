@@ -4,7 +4,7 @@
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.Classes/legal/epl-v10.html
+ * http://www.eclipse.Cls/legal/epl-v10.html
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,17 +21,17 @@ import javax.servlet.ServletException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sickle.dao.DaoServiceFactory;
-import com.sickle.dto.ClassesDTO;
+import com.sickle.dto.ClsDTO;
 import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.ClassesService;
-import com.sickle.pojo.edu.Classes;
-import com.sickle.service.itf.IClassesService;
+import com.sickle.pojo.edu.Cls;
+import com.sickle.service.itf.IClsService;
 
-public class ClassesServiceImpl extends RemoteServiceServlet implements ClassesService {
+public class ClassesServiceImpl extends RemoteServiceServlet implements  ClassesService {
 
 	private static final long serialVersionUID = -3779445533342577760L;
 	
-	private static IClassesService service = null;
+	private static IClsService service = null;
 	
 
 	@Override
@@ -40,7 +40,7 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements ClassesS
 		super.init( );
 		try
 		{
-			service = DaoServiceFactory.getService( IClassesService.class );
+			service = DaoServiceFactory.getService( IClsService.class );
 		}
 		catch ( CodeException e )
 		{
@@ -51,37 +51,37 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements ClassesS
 
 
 	@Override
-	public List<Classes> listAllClasses(int startIndex, int length)
+	public List<Cls> listAllClasses(int startIndex, int length)
 	{
-		List<Classes> Classess = new ArrayList<Classes>();
+		List<Cls> Clss = new ArrayList<Cls>();
 		try
 		{
-			Classess = service.listClasses( startIndex, length );
+			Clss = service.listCls( startIndex, length );
 		}
 		catch ( Exception e )
 		{
 			e.printStackTrace();
 		}
-		return new ClassesDTO().to( Classess );
+		return new ClsDTO().to( Clss );
 	}
 
 
 
 	@Override
-	public Classes addClasses( Classes Classes ) throws Exception
+	public Cls addClasses( Cls Cls ) throws Exception
 	{
-		Classes oClasses = service.addClasses( Classes );
-		return new ClassesDTO().to( oClasses );
+		Cls oCls = service.addCls( Cls );
+		return new ClsDTO().to( oCls );
 	}
 
 
 
 	@Override
-	public Classes deleteClasses( Classes Classes ) throws Exception
+	public Cls deleteClasses( Cls Cls ) throws Exception
 	{
-		if( service.removeClassesById( Classes.getId( ) ))
+		if( service.removeClsById( Cls.getId( ) ))
 		{
-			return new ClassesDTO().to( Classes );
+			return new ClsDTO().to( Cls );
 		}
 		return null;
 	}

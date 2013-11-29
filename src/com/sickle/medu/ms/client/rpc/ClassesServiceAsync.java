@@ -3,17 +3,17 @@ package com.sickle.medu.ms.client.rpc;
 import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.sickle.pojo.edu.Classes;
+import com.sickle.pojo.edu.Cls;
 
 
 public interface ClassesServiceAsync
 {
 
-	void addClasses( Classes Classes, AsyncCallback<Classes> callback );
+	void addClasses( Cls Classes, AsyncCallback<Cls> callback );
 
-	void deleteClasses( Classes Classes, AsyncCallback<Classes> callback );
+	void deleteClasses( Cls Classes, AsyncCallback<Cls> callback );
 
 	void listAllClasses( int startIndex, int length,
-			AsyncCallback<List<Classes>> callback );
+			AsyncCallback<List<Cls>> callback );
 
 }

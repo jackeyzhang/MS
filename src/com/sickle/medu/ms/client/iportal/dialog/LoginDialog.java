@@ -5,10 +5,10 @@
 package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.sickle.medu.ms.client.form.LoginDform;
-import com.sickle.medu.ms.client.iportal.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.IPageConst;
+import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
 import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
-import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.edu.Member;

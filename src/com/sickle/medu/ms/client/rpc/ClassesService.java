@@ -4,7 +4,7 @@
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.Classes/legal/epl-v10.html
+ * http://www.eclipse.Cls/legal/epl-v10.html
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,7 +19,7 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.sickle.pojo.edu.Classes;
+import com.sickle.pojo.edu.Cls;
 
 @RemoteServiceRelativePath("ClassesService")
 public interface ClassesService extends RemoteService {
@@ -36,9 +36,9 @@ public interface ClassesService extends RemoteService {
 		}
 	}
 	
-	public List<Classes> listAllClasses(int startIndex,int length );
+	public List<Cls> listAllClasses(int startIndex,int length );
 	
-	public Classes addClasses(Classes Classes) throws Exception;
+	public Cls addClasses(Cls Cls) throws Exception;
 	
-	public Classes deleteClasses(Classes Classes)throws Exception;
+	public Cls deleteClasses(Cls Cls)throws Exception;
 }

@@ -2,16 +2,16 @@
  * 
  */
 
-package com.sickle.medu.ms.client.iportal;
+package com.sickle.medu.ms.client.iportal.page;
 
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
 import com.sickle.medu.ms.client.form.LoginDform;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.banner.AdvertBanner;
 import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
-import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.util.ScreenUtil;

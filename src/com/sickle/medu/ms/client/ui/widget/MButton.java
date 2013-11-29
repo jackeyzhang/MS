@@ -12,7 +12,8 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 /**
  * MEDU Button
  * 
- * default width: 50px
+ * default width: 50px height:25px
+ * default style: 黄底白字 over时变褐色
  * 
  * @author chenhao
  *

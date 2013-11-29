@@ -5,15 +5,15 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.iportal.ForgetPasswordPage;
-import com.sickle.medu.ms.client.iportal.LoginPage;
-import com.sickle.medu.ms.client.iportal.MSPage;
-import com.sickle.medu.ms.client.iportal.ManageSelfPage;
-import com.sickle.medu.ms.client.iportal.MeduIndexPage;
-import com.sickle.medu.ms.client.iportal.MemberPage;
-import com.sickle.medu.ms.client.iportal.OrgPage;
-import com.sickle.medu.ms.client.iportal.RegisterPage;
-import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.iportal.IPageConst;
+import com.sickle.medu.ms.client.iportal.page.ForgetPasswordPage;
+import com.sickle.medu.ms.client.iportal.page.LoginPage;
+import com.sickle.medu.ms.client.iportal.page.MSPage;
+import com.sickle.medu.ms.client.iportal.page.ManageSelfPage;
+import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.page.MemberPage;
+import com.sickle.medu.ms.client.iportal.page.OrgPage;
+import com.sickle.medu.ms.client.iportal.page.RegisterPage;
 import com.sickle.pojo.edu.Member;
 
 /**
@@ -156,7 +156,7 @@ public class MS implements EntryPoint
 					
 					/*Member _member = MeduIndexPage.getInstance( ).getTopbar( )
 							.getMember( );*/
-					Member _member = new Member("王小二","zhangchenhao@139.com","username","password");
+					Member _member = new Member("王小二","zhangchenhao@139.com","password");
 					_member.setIcon( "icons/header/user_male1.png" );
 					_member.setTitle( "title" );
 					_member.setResume( "resume" );

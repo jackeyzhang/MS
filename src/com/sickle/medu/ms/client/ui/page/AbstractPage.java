@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.ui.page;
 
 import com.google.gwt.user.client.History;
-import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;

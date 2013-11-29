@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.iportal.panel;
 
-import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.ui.widget.HighlightImg;
 import com.smartgwt.client.types.Alignment;

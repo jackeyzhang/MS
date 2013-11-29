@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.iportal;
+package com.sickle.medu.ms.client.iportal.page;
 
 import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.card.BigOrgCard;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
-import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.tabpanel.AbstractTab;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;

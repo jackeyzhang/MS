@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.iportal.dialog;
 
-import com.sickle.medu.ms.client.form.RegisterDform;
+import com.sickle.medu.ms.client.form.MemberDform;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
@@ -36,7 +36,7 @@ public class RegisterDialog extends AbstractDialog
 	{
 		VLayout mainpanel = new VLayout();
 		mainpanel.setWidth100( );
-		final RegisterDform registerform = new RegisterDform();
+		final MemberDform registerform = new MemberDform();
 		mainpanel.addMember( registerform );
 		
 		HLayout buttonpanel = new HLayout();

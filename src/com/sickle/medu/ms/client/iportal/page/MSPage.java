@@ -2,13 +2,13 @@
  * 
  */
 
-package com.sickle.medu.ms.client.iportal;
+package com.sickle.medu.ms.client.iportal.page;
 
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.panel.MemberPanel;
 import com.sickle.medu.ms.client.iportal.panel.MessagePanel;
-import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.panel.MenuPanel;
 import com.sickle.medu.ms.client.util.ScreenUtil;
@@ -31,6 +31,8 @@ public class MSPage extends AbstractPage
 	private MenuPanel wholepanel = null;
 	
 	private MemberPanel memberpanel = null;
+	
+	private MessagePanel messagepanel = null;
 
 	public static MSPage getInstance( )
 	{
@@ -68,11 +70,15 @@ public class MSPage extends AbstractPage
 				ScreenUtil.getHeightInt( 0.8 ) );
 		
 		memberpanel = new MemberPanel();
+		messagepanel = new MessagePanel();
+		
 		wholepanel.addMenu( "个人信息", memberpanel );
 		wholepanel.addMenu( "班级管理", new VLayout() );
+		wholepanel.addMenu( "学员管理", new VLayout() );
 		wholepanel.addMenu( "报名管理", new VLayout() );
-		wholepanel.addMenu( "留言管理", new MessagePanel() );
+		wholepanel.addMenu( "留言管理", messagepanel );
 		wholepanel.addMenu( "评论管理", new VLayout() );
+		wholepanel.addMenu( "免费定制", new VLayout() );
 		
 		Callback<Object, Object> call = new Callback<Object, Object>( ) {
 			@Override
@@ -107,6 +113,15 @@ public class MSPage extends AbstractPage
 	public MemberPanel getMemberpanel( )
 	{
 		return memberpanel;
+	}
+
+	
+	/**
+	 * @return the messagepanel
+	 */
+	public MessagePanel getMessagepanel( )
+	{
+		return messagepanel;
 	}
 
 }

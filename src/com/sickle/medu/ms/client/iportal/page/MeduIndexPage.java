@@ -2,12 +2,13 @@
  * 
  */
 
-package com.sickle.medu.ms.client.iportal;
+package com.sickle.medu.ms.client.iportal.page;
 
 import java.util.List;
 
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.banner.AdvertBanner;
 import com.sickle.medu.ms.client.iportal.banner.IntroduceBanner;
 import com.sickle.medu.ms.client.iportal.card.MemberCard;
@@ -19,7 +20,6 @@ import com.sickle.medu.ms.client.rpc.NoticeService;
 import com.sickle.medu.ms.client.rpc.NoticeServiceAsync;
 import com.sickle.medu.ms.client.rpc.OrgService;
 import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
-import com.sickle.medu.ms.client.ui.IPageConst;
 import com.sickle.medu.ms.client.ui.MainPageTopBar;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;

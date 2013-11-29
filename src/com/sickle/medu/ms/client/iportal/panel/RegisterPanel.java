@@ -2,8 +2,8 @@ package com.sickle.medu.ms.client.iportal.panel;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
-import com.sickle.medu.ms.client.form.RegisterDform;
-import com.sickle.medu.ms.client.ui.IPageConst;
+import com.sickle.medu.ms.client.form.MemberDform;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
@@ -22,7 +22,7 @@ public class RegisterPanel extends HLayout
 
 	private int op = 0;// 0 regiser;1 modify;2 look
 	
-	private RegisterDform registerform;
+	private MemberDform registerform;
 	
 	private ChooseIconPanel chooseiconpanel;
 	
@@ -49,7 +49,7 @@ public class RegisterPanel extends HLayout
 		contentpage.setStyleName( "registerpage-content" );
 		
 		HLayout registerpanel = new HLayout();
-		registerform = new RegisterDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
+		registerform = new MemberDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
 		chooseiconpanel = new ChooseIconPanel();
 		registerpanel.addMember( chooseiconpanel );
 		registerpanel.addMember( registerform );
@@ -124,7 +124,7 @@ public class RegisterPanel extends HLayout
 	/**
 	 * @return the registerform
 	 */
-	public RegisterDform getRegisterform( )
+	public MemberDform getRegisterform( )
 	{
 		return registerform;
 	}
@@ -133,7 +133,7 @@ public class RegisterPanel extends HLayout
 	/**
 	 * @param registerform the registerform to set
 	 */
-	public void setRegisterform( RegisterDform registerform )
+	public void setRegisterform( MemberDform registerform )
 	{
 		this.registerform = registerform;
 	}

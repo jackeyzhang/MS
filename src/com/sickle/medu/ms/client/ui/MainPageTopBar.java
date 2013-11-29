@@ -4,6 +4,7 @@
 package com.sickle.medu.ms.client.ui;
 
 import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.ImgButton;

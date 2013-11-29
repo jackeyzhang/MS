@@ -1,5 +1,5 @@
 
-package com.sickle.medu.ms.client.ui;
+package com.sickle.medu.ms.client.iportal;
 
 public interface IPageConst
 {
