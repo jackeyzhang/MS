@@ -31,11 +31,12 @@ public class MessageForm extends AbstractForm
 	public void preGetAddForm( List<FormItem> items )
 	{
 		super.preGetAddForm( items );
-		this.setWidth( 400 );
-		this.setColWidths( 150,250 );
+		this.setWidth( 500 );
+		this.setColWidths( 100,400 );
 		for ( FormItem item : items )
 		{
 			item.setTitleStyle( "h2" );
+			item.setWidth( 350 );
 		}
 	}
 
@@ -43,11 +44,12 @@ public class MessageForm extends AbstractForm
 	public void preGetModifyForm( List<FormItem> items )
 	{
 		super.preGetModifyForm( items );
-		this.setWidth( 350 );
-		this.setColWidths( 100,250 );
+		this.setWidth( 500 );
+		this.setColWidths( 100,400 );
 		for ( FormItem item : items )
 		{
 			item.setTitleStyle( "h2" );
+			item.setWidth( 350 );
 		}
 	}
 
@@ -55,11 +57,12 @@ public class MessageForm extends AbstractForm
 	public void preGetLookForm( List<FormItem> items )
 	{
 		super.preGetLookForm( items );
-		this.setWidth( 400 );
-		this.setColWidths( 150,250 );
+		this.setWidth( 500 );
+		this.setColWidths( 100,400 );
 		for ( FormItem item : items )
 		{
 			item.setTitleStyle( "h2" );
+			item.setWidth( 350 );
 		}
 	}
 

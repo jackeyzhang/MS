@@ -6,6 +6,7 @@ package com.sickle.medu.ms.client.ui.dialog;
 
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Window;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
  * 抽象的dialog实现
@@ -32,6 +33,7 @@ public abstract class AbstractDialog extends Window
 		this.setShowCloseButton( closeable );
 		this.setShowMinimizeButton( isMinable );
 		this.addItem( getView( ) );
+		getView( ).setStyleName( "abstractdialog-content" );
 		if ( getTitleView( ) != null )
 		{
 			this.addMember( getTitleView( ) );
@@ -47,6 +49,12 @@ public abstract class AbstractDialog extends Window
 	 * @return
 	 */
 	public abstract Canvas getView( );
+	
+	public VLayout getDefaultVLayout(){
+		VLayout wholepanel = new VLayout( );
+		wholepanel.setStyleName( "abstractdialog-content" );
+		return wholepanel;
+	}
 
 	public Canvas getTitleView( )
 	{

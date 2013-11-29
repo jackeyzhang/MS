@@ -46,7 +46,7 @@ public class RegisterPanel extends HLayout
 		VLayout contentpage = new VLayout();
 		contentpage.setWidth( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
 		contentpage.setHeight( ScreenUtil.getHeightInt( IPageConst.REGISTER_HEIGHT_PER )  );
-		contentpage.setStyleName( "registerpage-content" );
+		contentpage.setStyleName( "abstractdialog-content" );
 		
 		HLayout registerpanel = new HLayout();
 		registerform = new MemberDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );

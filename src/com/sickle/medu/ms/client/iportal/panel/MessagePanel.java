@@ -88,7 +88,7 @@ public class MessagePanel extends HLayout
 		@Override
 		public Canvas getView( )
 		{
-			VLayout wholepanel = new VLayout( );
+			VLayout wholepanel = getDefaultVLayout();
 			final DynamicForm form = new MessageForm().getAddForm( );
 			wholepanel.addMember( form );
 			
@@ -146,7 +146,7 @@ public class MessagePanel extends HLayout
 		@Override
 		public Canvas getView( )
 		{
-			VLayout wholepanel = new VLayout( );
+			VLayout wholepanel = getDefaultVLayout();
 			final DynamicForm form = new MessageForm().getModifyForm( );
 			wholepanel.addMember( form );
 			

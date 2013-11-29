@@ -4,8 +4,11 @@
 
 package com.sickle.medu.ms.client.datasource;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -98,6 +101,8 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		}
 		ClassType<T> classType = TypeOracle.Instance.getClassType( cls );
 		Field[] fs = classType.getFields( );
+		
+		List<MaskField> fields = new ArrayList<MaskField>();
 		for ( Field f : fs )
 		{
 			Reflect_Field field = f.getAnnotation( Reflect_Field.class );
@@ -105,7 +110,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			{
 				continue;
 			}
-			MaskField newfield = new MaskField( f.getName( ),field.type( ).toString( ),field.title( ) );
+			MaskField newfield = new MaskField( f.getName( ),field.type( ).toString( ),field.title( ),field.index( ) );
 			
 			 if ( field.type( ).equals( FieldType.Email ) )
 			{
@@ -129,8 +134,16 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			
 			newfield.setMask( field.mask( ) );
-			datasource.addField( newfield );
+			fields.add( newfield );
 		}
+		
+		Collections.sort( fields );
+		
+		for(MaskField f :  fields)
+		{
+			datasource.addField( f );
+		}
+		
 		cache.put( cls, datasource );
 		return datasource;
 	}

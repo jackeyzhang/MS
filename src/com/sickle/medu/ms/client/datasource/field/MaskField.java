@@ -4,10 +4,10 @@ import com.smartgwt.client.data.SimpleType;
 import com.smartgwt.client.data.fields.DataSourceSimpleTypeField;
 
 
-public class MaskField extends DataSourceSimpleTypeField
+public class MaskField extends DataSourceSimpleTypeField implements Comparable<MaskField>
 {
 
-	private int mask;
+	private int mask,index = -1;
 	
 	public static final String STYPE = "stype", MASK = "smask";
 	
@@ -16,9 +16,9 @@ public class MaskField extends DataSourceSimpleTypeField
 	 * @param simpleType
 	 * @param title
 	 */
-	public MaskField( String name, String simpleType, String title)
+	public MaskField( String name, String simpleType, String title, int index)
 	{
-		this(name,simpleType,title,-1);
+		this(name,simpleType,title,-1,index);
 	}
 	
 	
@@ -28,10 +28,11 @@ public class MaskField extends DataSourceSimpleTypeField
 	 * @param simpleType
 	 * @param title
 	 */
-	public MaskField( String name, String simpleType, String title, int mask )
+	public MaskField( String name, String simpleType, String title, int mask,int index )
 	{
 		super( name, new SimpleType(), title );
 		this.mask = mask;
+		this.index = index;
 		this.setAttribute( STYPE, simpleType );
 		this.setAttribute( MASK, mask );
 	}
@@ -55,5 +56,15 @@ public class MaskField extends DataSourceSimpleTypeField
 		this.mask = mask;
 		this.setAttribute( MASK, mask );
 	}
+
+
+
+	@Override
+	public int compareTo( MaskField o )
+	{
+		return this.index - o.index ;
+	}
+	
+	
 	
 }

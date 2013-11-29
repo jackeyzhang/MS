@@ -51,6 +51,17 @@ public class ClassPanel extends HLayout
 	{
 		buttonpanel.setPadding( 10 );
 		buttonpanel.setMembersMargin( 10 );
+		buttonpanel.addMember( new MButton("查看班级"){
+			@Override
+			public void handleClick( )
+			{
+				if ( list.getSelectedRecords( ).length == 0 )
+				{
+					SC.say( "请先选中一条要删除的记录" );
+					return;
+				}
+				//TODO show class
+			}} );
 		buttonpanel.addMember( new MButton("创建班级"){
 			@Override
 			public void handleClick( )
@@ -85,13 +96,14 @@ public class ClassPanel extends HLayout
 	{
 		public CreateClassDialog( )
 		{
-			super( "发送消息" );
+			super( "创建班级" );
 		}
 
 		@Override
 		public Canvas getView( )
 		{
-			VLayout wholepanel = new VLayout( );
+			VLayout wholepanel = getDefaultVLayout();
+			
 			final DynamicForm form = new ClassesForm().getAddForm( );
 			wholepanel.addMember( form );
 			
