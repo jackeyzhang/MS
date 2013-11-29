@@ -63,4 +63,5 @@ public interface IPageConst
 	//icon url
 	public static final String DEFAULT_HEAD_ICON = "icons/header/user_male1.png";
 	public static final String CHOOSE_ICON = "icons/header/plus.png";
+	public static final String DEFAULT_ORG_ICON = "icons/header/user_male1.png";
 }
