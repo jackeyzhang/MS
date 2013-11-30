@@ -131,7 +131,7 @@ public class ClassPanel extends HLayout
 							}else{
 								SC.say( "失败！" );
 							}
-							CreateClassDialog.this.destroy();
+							CreateClassDialog.this.hide( );
 						}
 					} );					
 				}
@@ -141,7 +141,7 @@ public class ClassPanel extends HLayout
 				@Override
 				public void onClick( ClickEvent event )
 				{
-					CreateClassDialog.this.destroy();
+					CreateClassDialog.this.hide();
 				}
 			} );
 			buttonpanel.addMember( confirm );

@@ -28,11 +28,11 @@ public class MaskField extends DataSourceSimpleTypeField implements Comparable<M
 	 * @param simpleType
 	 * @param title
 	 */
-	public MaskField( String name, String simpleType, String title, int mask,int index )
+	public MaskField( String name, String simpleType, String title, int mask,int _index )
 	{
 		super( name, new SimpleType(), title );
 		this.mask = mask;
-		this.index = index;
+		this.index = _index;
 		this.setAttribute( STYPE, simpleType );
 		this.setAttribute( MASK, mask );
 	}

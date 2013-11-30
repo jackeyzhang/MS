@@ -134,6 +134,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			
 			newfield.setMask( field.mask( ) );
+
 			fields.add( newfield );
 		}
 		

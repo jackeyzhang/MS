@@ -41,7 +41,7 @@ public class ModifyMemberDialog extends AbstractDialog
 	@Override
 	public Canvas getView( )
 	{
-		VLayout mainpanel = new VLayout();
+		VLayout mainpanel = getDefaultVLayout();
 		mainpanel.setWidth100( );
 		
 	    registerpanel = new RegisterPanel( 1 );
@@ -100,5 +100,15 @@ public class ModifyMemberDialog extends AbstractDialog
 		mainpanel.addMember( buttonpanel );
 		return mainpanel;
 	}
+
+	
+	/**
+	 * @return the registerpanel
+	 */
+	public RegisterPanel getRegisterpanel( )
+	{
+		return registerpanel;
+	}
+	
 
 }

@@ -33,7 +33,7 @@ public abstract class AbstractDialog extends Window
 		this.setShowCloseButton( closeable );
 		this.setShowMinimizeButton( isMinable );
 		this.addItem( getView( ) );
-		getView( ).setStyleName( "abstractdialog-content" );
+//		getView( ).setStyleName( "abstractdialog-content" );
 		if ( getTitleView( ) != null )
 		{
 			this.addMember( getTitleView( ) );

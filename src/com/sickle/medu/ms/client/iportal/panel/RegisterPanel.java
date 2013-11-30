@@ -128,15 +128,7 @@ public class RegisterPanel extends HLayout
 	{
 		return registerform;
 	}
-
 	
-	/**
-	 * @param registerform the registerform to set
-	 */
-	public void setRegisterform( MemberDform registerform )
-	{
-		this.registerform = registerform;
-	}
 	
 	
 	public void precommit()

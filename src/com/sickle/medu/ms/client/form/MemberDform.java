@@ -75,7 +75,6 @@ public class MemberDform extends DynamicForm
         emailItem.setTitleStyle( "h2" );
         emailItem.setTitle("邮箱");
         emailItem.setRequired(true);
-        emailItem.setDefaultValue("zhangsan@XXX.com");
 
 		password = new PasswordItem("password");
 		password.setWidth( columnwidth[1] );
