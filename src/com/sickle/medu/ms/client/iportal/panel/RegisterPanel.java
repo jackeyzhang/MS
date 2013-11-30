@@ -116,6 +116,7 @@ public class RegisterPanel extends HLayout
 		{
 			registerform.setValue( "forhelp", isteacher);
 			registerform.showTeacherField( );
+			registerform.updateArea();
 		}
 		chooseiconpanel.setIcon( member.getIcon( ) );
 	}

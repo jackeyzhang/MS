@@ -17,6 +17,8 @@ import com.smartgwt.client.widgets.layout.VLayout;
 public abstract class AbstractDialog extends Window
 {
 
+	private Canvas content;
+	
 	public AbstractDialog( String title )
 	{
 		this( title, false, true, true );
@@ -32,8 +34,9 @@ public abstract class AbstractDialog extends Window
 		this.setIsModal( isModal );
 		this.setShowCloseButton( closeable );
 		this.setShowMinimizeButton( isMinable );
-		this.addItem( getView( ) );
-//		getView( ).setStyleName( "abstractdialog-content" );
+		this.content = getView( );
+		this.addItem( content );
+		this.content.setStyleName( "abstractdialog-content" );
 		if ( getTitleView( ) != null )
 		{
 			this.addMember( getTitleView( ) );

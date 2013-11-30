@@ -154,14 +154,7 @@ public class MemberDform extends DynamicForm
 			@Override
 			public void onChanged( ChangedEvent event )
 			{
-				if(city.getValueAsString( ).equals( "上海" ))
-				{
-					area.setValueMap( FormConst.AREA_SH );
-				}
-				else if(city.getValueAsString( ).equals( "北京" ))
-				{
-					area.setValueMap( FormConst.AREA_BJ );
-				}
+				updateArea();
 				area.clearValue( );
 			}
 		} );
@@ -266,6 +259,18 @@ public class MemberDform extends DynamicForm
 	public void setIcon( String icon )
 	{
 		this.icon.setValue( icon );
+	}
+	
+	public void updateArea()
+	{
+		if(city.getValueAsString( ).equals( "上海" ))
+		{
+			area.setValueMap( FormConst.AREA_SH );
+		}
+		else if(city.getValueAsString( ).equals( "北京" ))
+		{
+			area.setValueMap( FormConst.AREA_BJ );
+		}
 	}
 	
 }
