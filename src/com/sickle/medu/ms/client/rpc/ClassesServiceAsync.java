@@ -16,4 +16,6 @@ public interface ClassesServiceAsync
 	void listAllClasses( int startIndex, int length,
 			AsyncCallback<List<Cls>> callback );
 
+	void modifyClasses( Cls Cls, AsyncCallback<Cls> callback );
+
 }

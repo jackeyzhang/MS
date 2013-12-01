@@ -127,7 +127,23 @@ public class ClassDataSource extends GwtRpcDataSource
 	protected void executeUpdate( final String requestId, DSRequest request,
 			final DSResponse response )
 	{
-		executeAdd( requestId, request, response );
+		JavaScriptObject data = request.getData( );
+		ListGridRecord rec = new ListGridRecord( data );
+		Cls userRec = new Cls( );
+		recopyValues( rec, userRec );
+		ClassesServiceAsync service = ClassesService.Util.getInstance( );
+		service.modifyClasses( userRec, new AsyncCallbackWithStatus<Cls>( ) {
+			public void call( Cls result )
+			{
+				ListGridRecord[] list = new ListGridRecord[1];
+				ListGridRecord newRec = new ListGridRecord( );
+				copyValues( (Cls) result, newRec );
+				list[0] = newRec;
+				response.setData( list );
+				getDataSource( Cls.class )
+						.processResponse( requestId, response );
+			}
+		} );
 	}
 
 	@Override

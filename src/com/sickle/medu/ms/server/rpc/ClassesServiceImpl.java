@@ -86,4 +86,13 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 		return null;
 	}
 
+
+
+	@Override
+	public Cls modifyClasses( Cls Cls ) throws Exception
+	{
+		Cls oCls = service.modifyCls( Cls );
+		return new ClsDTO().to( oCls );
+	}
+
 }

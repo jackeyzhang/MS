@@ -17,6 +17,7 @@ import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -88,6 +89,7 @@ public class ClassPanel extends HLayout
 					SC.say( "请先选中一条要修改的记录" );
 					return;
 				}
+				new ModifyClassDialog( list ).show( );
 			}} );
 	}
 	
@@ -149,6 +151,82 @@ public class ClassPanel extends HLayout
 			wholepanel.addMember( buttonpanel );
 			return wholepanel;
 		}
+	}
+	
+	class ModifyClassDialog extends AbstractDialog
+	{
+		
+		private ListGrid gird;
+		
+		private DynamicForm form ;
+		
+		public ModifyClassDialog(ListGrid gird )
+		{
+			super( "修改班级" );
+			this.gird = gird;
+			form.editSelectedData( gird );
+		}
+
+		@Override
+		public Canvas getView( )
+		{
+			VLayout wholepanel = getDefaultVLayout();
+			
+			form = new ClassesForm().getModifyForm( );
+			
+			wholepanel.addMember( form );
+			HLayout buttonpanel = new HLayout();
+			buttonpanel.setWidth( 500 );
+			buttonpanel.setMargin( 5 );
+			buttonpanel.setMembersMargin( 10 );
+			buttonpanel.setAlign( Alignment.CENTER );
+			IButton confirm = new IButton("确认" );
+			confirm.addClickHandler( new ClickHandler( ) {
+				@Override
+				public void onClick( ClickEvent event )
+				{
+					boolean validate = form.validate( );
+					if( !validate )
+					{
+						return;
+					}
+					form.submit( new DSCallback( ) {
+						@Override
+						public void execute( DSResponse dsResponse, Object data, DSRequest dsRequest )
+						{
+							if( dsResponse.getErrors( )== null || dsResponse.getErrors( ).isEmpty( )){
+								SC.say( "成功！" );
+							}else{
+								SC.say( "失败！" );
+							}
+							hide( );
+						}
+					} );					
+				}
+			} );
+			IButton cancel = new IButton("取消" );
+			cancel.addClickHandler( new ClickHandler( ) {
+				@Override
+				public void onClick( ClickEvent event )
+				{
+					hide();
+				}
+			} );
+			buttonpanel.addMember( confirm );
+			buttonpanel.addMember( cancel );
+			wholepanel.addMember( buttonpanel );
+			return wholepanel;
+		}
+
+		
+		/**
+		 * @return the gird
+		 */
+		public ListGrid getGird( )
+		{
+			return gird;
+		}
+		
 	}
 	
 }
