@@ -21,4 +21,6 @@ public interface MemberServiceAsync
 
 	void listMember( int[] ids, AsyncCallback<List<Member>> callback );
 
+	void addMember( Member Member, int classid, AsyncCallback<Member> callback );
+
 }

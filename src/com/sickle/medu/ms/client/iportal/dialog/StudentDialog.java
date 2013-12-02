@@ -5,6 +5,9 @@ package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.sickle.medu.ms.client.form.StudentDform;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
+import com.smartgwt.client.data.DSCallback;
+import com.smartgwt.client.data.DSRequest;
+import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
@@ -16,7 +19,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
 
 
 /**
- * 注册对话框
+ * 学生信息编辑对话框
  * 
  * @author chenhao
  *
@@ -25,7 +28,9 @@ public class StudentDialog extends AbstractDialog
 {
 	
 	private static final String TITLE = "学生信息";
-
+	
+	private StudentDform studentform ;
+	
 	public StudentDialog()
 	{
 		super( TITLE, true,true,true );
@@ -36,8 +41,9 @@ public class StudentDialog extends AbstractDialog
 	{
 		VLayout mainpanel = new VLayout();
 		mainpanel.setWidth100( );
-		final StudentDform registerform = new StudentDform();
-		mainpanel.addMember( registerform );
+		
+		studentform = new StudentDform();
+		mainpanel.addMember( studentform );
 		
 		HLayout buttonpanel = new HLayout();
 		buttonpanel.setPadding( 10 );
@@ -51,13 +57,21 @@ public class StudentDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				boolean isValidate = registerform.validate( );
+				boolean isValidate = studentform.validate( );
 				if( isValidate == false)
 				{
 					return;
 				}
-				registerform.submit( );
-				SC.say( "添加学生成功" );
+				studentform.submit( new DSCallback(){
+					@Override
+					public void execute( DSResponse dsResponse, Object data,
+							DSRequest dsRequest )
+					{
+						submitcallback();
+						SC.say( "添加学生成功" );	
+					}
+					
+				} );
 				hide();
 			}
 		} );
@@ -68,7 +82,7 @@ public class StudentDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				registerform.cancel( );
+				studentform.cancel( );
 				hide();
 			}
 		} );
@@ -80,4 +94,15 @@ public class StudentDialog extends AbstractDialog
 		return mainpanel;
 	}
 
+	
+	/**
+	 * @return the studentform
+	 */
+	public StudentDform getStudentform( )
+	{
+		return studentform;
+	}
+
+
+	public void submitcallback(){}
 }

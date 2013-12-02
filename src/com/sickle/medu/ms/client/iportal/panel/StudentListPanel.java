@@ -15,8 +15,11 @@ public class StudentListPanel extends HLayout
 	
 	private StudentList studentlist;
 	
-	public StudentListPanel()
+	private int classid;
+	
+	public StudentListPanel(int _classid)
 	{
+		this.classid = _classid;
 		setHeight( 300 );
 		
 		studentlist = new StudentList();
@@ -25,7 +28,15 @@ public class StudentListPanel extends HLayout
 			@Override
 			public void handleClick( )
 			{
-				new StudentDialog( ).show( );
+				StudentDialog dialog = new StudentDialog( ){
+					@Override
+					public void submitcallback( )
+					{
+						studentlist.fetchStudentByClassid( classid );
+					}
+				};
+				dialog.getStudentform( ).setValue( "classid", classid );
+				dialog.show( );
 			}
 		};
 		
@@ -38,20 +49,7 @@ public class StudentListPanel extends HLayout
 					SC.say( "请先选中一条要删除的记录" );
 					return;
 				}
-				new StudentDialog( ).show( );
-			}
-		};
-		
-		MButton remove = new MButton("移除学生"){
-			@Override
-			public void handleClick( )
-			{
-				if ( studentlist.getSelectedRecords( ).length == 0 )
-				{
-					SC.say( "请先选中一条要删除的记录" );
-					return;
-				}
-				new StudentDialog( ).show( );
+				studentlist.removeSelectedData( );
 			}
 		};
 		
@@ -61,10 +59,19 @@ public class StudentListPanel extends HLayout
 			{
 				if ( studentlist.getSelectedRecords( ).length == 0 )
 				{
-					SC.say( "请先选中一条要删除的记录" );
+					SC.say( "请先选中一条要修改的记录" );
 					return;
 				}
-				new StudentDialog( ).show( );
+				StudentDialog dialog = new StudentDialog( ){
+					@Override
+					public void submitcallback( )
+					{
+						studentlist.fetchStudentByClassid( classid );
+					}
+				};
+				dialog.getStudentform( ).editSelectedData( studentlist );
+				dialog.getStudentform( ).updateArea();
+				dialog.show( );
 			}
 		};
 		
@@ -72,7 +79,6 @@ public class StudentListPanel extends HLayout
 		
 		buttonlayout.addMember( add );
 		buttonlayout.addMember( modify );
-		buttonlayout.addMember( remove );
 		buttonlayout.addMember( del );
 		
 		addMember( studentlist );
@@ -80,12 +86,35 @@ public class StudentListPanel extends HLayout
 	}
 
 	
+	
 	/**
 	 * @return the studentlist
 	 */
 	public StudentList getStudentlist( )
 	{
 		return studentlist;
+	}
+
+
+
+	
+	/**
+	 * @return the classid
+	 */
+	public int getClassid( )
+	{
+		return classid;
+	}
+
+
+
+	
+	/**
+	 * @param classid the classid to set
+	 */
+	public void setClassid( int classid )
+	{
+		this.classid = classid;
 	}
 	
 	

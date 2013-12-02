@@ -10,6 +10,7 @@ import com.sickle.medu.ms.client.rpc.ClassesServiceAsync;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.Criteria;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.types.SelectionStyle;
 import com.smartgwt.client.util.SC;
 
 /**
@@ -26,7 +27,12 @@ public class StudentList extends AbstractListGrid
 		setWidth( "90%" );
 		setHeight( "90%" );
 		setAutoFetchData( false );
-		maskAndSetFields( getDataSource() );
+		setSelectionType( SelectionStyle.SINGLE );
+		DataSource ds = getDataSource();
+		maskAndSetFields( ds );
+		
+		ds.getField( "name" ).setTitle( "学生名字" );
+		ds.getField( "resume" ).setTitle( "情况简述" );
 	}
 	
 	public DataSource getDataSource( )
@@ -49,6 +55,10 @@ public class StudentList extends AbstractListGrid
 					stuids[i++] = member.getId( );
 				}
 				Criteria criteria = new Criteria();
+				if(stuids.length == 0)
+				{
+					stuids = new Integer[]{ -1 };
+				}
 				criteria.addCriteria( "id", stuids );
 				fetchData( criteria );
 			}

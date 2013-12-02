@@ -24,7 +24,9 @@ import com.sickle.dao.DaoServiceFactory;
 import com.sickle.dto.MemberDTO;
 import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.MemberService;
+import com.sickle.pojo.edu.Cls;
 import com.sickle.pojo.edu.Member;
+import com.sickle.service.itf.IClsService;
 import com.sickle.service.itf.IMemberService;
 
 public class MemberServiceImpl extends RemoteServiceServlet implements MemberService {
@@ -81,11 +83,11 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 
 
 	@Override
-	public Member deleteMember( Member Member ) throws Exception
+	public Member deleteMember( Member member ) throws Exception
 	{
-		if( service.removeMemberById( Member.getId( ) ))
+		if( service.removeMemberById( member.getId( ) ))
 		{
-			return new MemberDTO().to( Member );
+			return new MemberDTO().to( member );
 		}
 		return null;
 	}
@@ -104,6 +106,8 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 	@Override
 	public Member modifyMember( Member member ) throws Exception
 	{
+		Member oldm = findMember( member.getId( ) );
+		member.setClasseses( oldm.getClasseses( ) );
 		Member m = service.modifyMember( member );
 		return new MemberDTO().to( m );
 	}
@@ -126,6 +130,22 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 			}
 		}
 		return new MemberDTO().to( members );
+	}
+
+
+
+	@Override
+	public Member addMember( Member member, int classid ) throws Exception
+	{
+		Member mem = addMember(member);
+		IClsService csservice = DaoServiceFactory.getService( IClsService.class );
+		Cls cls = csservice.getClassById( classid );
+		if( !cls.getStudents( ).contains( mem ) )
+		{
+			cls.getStudents( ).add( mem );
+			csservice.modifyCls( cls );
+		}
+		return mem;
 	}
 
 }

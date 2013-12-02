@@ -41,7 +41,7 @@ public class ClassList extends ListGrid
 	{
 		//TODO 根据选择的学校信息展现student list
 		int classid = record.getAttributeAsInt( "id" );
-		StudentListPanel panel = new StudentListPanel();
+		StudentListPanel panel = new StudentListPanel(classid);
 		panel.getStudentlist( ).fetchStudentByClassid( classid );
 		return panel;
 	}

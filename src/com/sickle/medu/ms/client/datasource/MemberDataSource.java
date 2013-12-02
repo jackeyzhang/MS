@@ -135,19 +135,39 @@ public class MemberDataSource extends GwtRpcDataSource
 		Member userRec = new Member( );
 		recopyValues( rec, userRec );
 		MemberServiceAsync service = MemberService.Util.getInstance( );
-		service.addMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
-
-			public void call( Member result )
-			{
-				ListGridRecord[] list = new ListGridRecord[1];
-				ListGridRecord newRec = new ListGridRecord( );
-				copyValues( (Member) result, newRec );
-				list[0] = newRec;
-				response.setData( list );
-				getDataSource( Member.class )
-						.processResponse( requestId, response );
-			}
-		} );
+		Integer classid = rec.getAttributeAsInt( "classid" );
+		if( classid == null )
+		{
+			service.addMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
+	
+				public void call( Member result )
+				{
+					ListGridRecord[] list = new ListGridRecord[1];
+					ListGridRecord newRec = new ListGridRecord( );
+					copyValues( (Member) result, newRec );
+					list[0] = newRec;
+					response.setData( list );
+					getDataSource( Member.class )
+							.processResponse( requestId, response );
+				}
+			} );
+		}
+		else
+		{
+			service.addMember( userRec,classid, new AsyncCallbackWithStatus<Member>( ) {
+				
+				public void call( Member result )
+				{
+					ListGridRecord[] list = new ListGridRecord[1];
+					ListGridRecord newRec = new ListGridRecord( );
+					copyValues( (Member) result, newRec );
+					list[0] = newRec;
+					response.setData( list );
+					getDataSource( Member.class )
+							.processResponse( requestId, response );
+				}
+			} );
+		}
 	}
 
 	@Override
