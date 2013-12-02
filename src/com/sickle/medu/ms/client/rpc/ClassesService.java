@@ -20,6 +20,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.sickle.pojo.edu.Cls;
+import com.sickle.pojo.edu.Member;
 
 @RemoteServiceRelativePath("ClassesService")
 public interface ClassesService extends RemoteService {
@@ -38,9 +39,13 @@ public interface ClassesService extends RemoteService {
 	
 	public List<Cls> listAllClasses(int startIndex,int length );
 	
+	public Cls findClass(int classid);
+	
 	public Cls addClasses(Cls Cls) throws Exception;
 	
 	public Cls modifyClasses(Cls Cls) throws Exception;
 	
 	public Cls deleteClasses(Cls Cls)throws Exception;
+	
+	public List<Member> findStudents(int classid)throws Exception;
 }

@@ -1,11 +1,11 @@
 package com.sickle.medu.ms.client.iportal.list;
 
-import java.lang.reflect.Member;
 
 import com.sickle.medu.ms.client.datasource.ClassDataSource;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
-import com.sickle.medu.ms.client.iportal.panel.StudentPanel;
+import com.sickle.medu.ms.client.iportal.panel.StudentListPanel;
 import com.sickle.pojo.edu.Cls;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.grid.ListGrid;
@@ -39,7 +39,11 @@ public class ClassList extends ListGrid
 	@Override
 	protected Canvas getExpansionComponent( ListGridRecord record )
 	{
-		return new StudentPanel();
+		//TODO 根据选择的学校信息展现student list
+		int classid = record.getAttributeAsInt( "id" );
+		StudentListPanel panel = new StudentListPanel();
+		panel.getStudentlist( ).fetchStudentByClassid( classid );
+		return panel;
 	}
 	
 	

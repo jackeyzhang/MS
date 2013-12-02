@@ -22,9 +22,11 @@ import javax.servlet.ServletException;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sickle.dao.DaoServiceFactory;
 import com.sickle.dto.ClsDTO;
+import com.sickle.dto.MemberDTO;
 import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.ClassesService;
 import com.sickle.pojo.edu.Cls;
+import com.sickle.pojo.edu.Member;
 import com.sickle.service.itf.IClsService;
 
 public class ClassesServiceImpl extends RemoteServiceServlet implements  ClassesService {
@@ -93,6 +95,30 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 	{
 		Cls oCls = service.modifyCls( Cls );
 		return new ClsDTO().to( oCls );
+	}
+
+
+
+	@Override
+	public Cls findClass( int classid )
+	{
+		Cls cls = service.getClassById( classid );
+		return new ClsDTO().to( cls );
+	}
+
+
+
+	@Override
+	public List<Member> findStudents( int classid ) throws Exception
+	{
+		Cls cls = findClass(classid);
+		List<Member> stus = new ArrayList<Member>();
+		MemberDTO dto = new MemberDTO();
+		for(Member stu : cls.getStudents( ))
+		{
+			stus.add(dto.to(stu));
+		}
+		return stus;
 	}
 
 }

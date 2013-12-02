@@ -1,25 +1,25 @@
 package com.sickle.medu.ms.client.iportal.panel;
 
 import com.sickle.medu.ms.client.iportal.dialog.StudentDialog;
-import com.sickle.medu.ms.client.iportal.list.MemberList;
+import com.sickle.medu.ms.client.iportal.list.StudentList;
 import com.sickle.medu.ms.client.ui.widget.MButton;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 
-public class StudentPanel extends HLayout
+public class StudentListPanel extends HLayout
 {
 
 	private VLayout buttonlayout = new VLayout();
 	
-	private MemberList memberlist;
+	private StudentList studentlist;
 	
-	public StudentPanel()
+	public StudentListPanel()
 	{
 		setHeight( 300 );
 		
-		memberlist = new MemberList();
+		studentlist = new StudentList();
 		
 		MButton add = new MButton("增加学生"){
 			@Override
@@ -33,7 +33,7 @@ public class StudentPanel extends HLayout
 			@Override
 			public void handleClick( )
 			{
-				if ( memberlist.getSelectedRecords( ).length == 0 )
+				if ( studentlist.getSelectedRecords( ).length == 0 )
 				{
 					SC.say( "请先选中一条要删除的记录" );
 					return;
@@ -46,7 +46,7 @@ public class StudentPanel extends HLayout
 			@Override
 			public void handleClick( )
 			{
-				if ( memberlist.getSelectedRecords( ).length == 0 )
+				if ( studentlist.getSelectedRecords( ).length == 0 )
 				{
 					SC.say( "请先选中一条要删除的记录" );
 					return;
@@ -59,7 +59,7 @@ public class StudentPanel extends HLayout
 			@Override
 			public void handleClick( )
 			{
-				if ( memberlist.getSelectedRecords( ).length == 0 )
+				if ( studentlist.getSelectedRecords( ).length == 0 )
 				{
 					SC.say( "请先选中一条要删除的记录" );
 					return;
@@ -75,8 +75,17 @@ public class StudentPanel extends HLayout
 		buttonlayout.addMember( remove );
 		buttonlayout.addMember( del );
 		
-		addMember( memberlist );
+		addMember( studentlist );
 		addMember( buttonlayout );
+	}
+
+	
+	/**
+	 * @return the studentlist
+	 */
+	public StudentList getStudentlist( )
+	{
+		return studentlist;
 	}
 	
 	

@@ -19,4 +19,6 @@ public interface MemberServiceAsync
 
 	void modifyMember( Member Member, AsyncCallback<Member> callback );
 
+	void listMember( int[] ids, AsyncCallback<List<Member>> callback );
+
 }

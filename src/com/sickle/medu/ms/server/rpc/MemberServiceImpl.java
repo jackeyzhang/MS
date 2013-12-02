@@ -108,4 +108,24 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 		return new MemberDTO().to( m );
 	}
 
+
+
+	@Override
+	public List<Member> listMember( int[] ids )
+	{
+		List<Member>  members = new ArrayList<Member>();
+		for(int id : ids )
+		{
+			try
+			{
+				members.add(findMember( id ));
+			}
+			catch ( Exception e )
+			{
+				e.printStackTrace();
+			}
+		}
+		return new MemberDTO().to( members );
+	}
+
 }

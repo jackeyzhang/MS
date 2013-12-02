@@ -38,6 +38,8 @@ public interface MemberService extends RemoteService {
 	
 	public List<Member> listAllMember(int startIndex,int length );
 	
+	public List<Member> listMember(int[] ids);
+	
 	public Member addMember(Member Member) throws Exception;
 	
 	public Member modifyMember(Member Member) throws Exception;

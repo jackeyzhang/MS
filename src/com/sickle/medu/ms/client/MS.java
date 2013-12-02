@@ -30,7 +30,7 @@ public class MS implements EntryPoint
 	public void onModuleLoad( )
 	{
 		initHistoryMange( );
-		History.newItem( IPageConst.PAGE_LOGIN );
+		History.newItem( IPageConst.PAGE_MS );
 	}
 
 	public void initHistoryMange( )
@@ -153,16 +153,16 @@ public class MS implements EntryPoint
 						IPageConst.PAGE_MS ) )
 				{
 					clearIportal();
-					
+					/*
 					Member _member = MeduIndexPage.getInstance( ).getTopbar( )
-							.getMember( );
-					/*Member _member = new Member("王小二","zhangchenhao@139.com","password");
+							.getMember( );*/
+					Member _member = new Member("王小二","zhangchenhao@139.com","password");
 					_member.setId( 12345 );
 					_member.setSex( "男" );
 					_member.setIcon( "icons/header/user_male1.png" );
 					_member.setTitle( "title" );
 					_member.setResume( "resume" );
-					_member.setCharacter( "teacher" );*/
+					_member.setCharacter( "teacher" );
 					
 					MSPage.getInstance( ).getMemberpanel( ).fillpanel( _member );
 					MSPage.getInstance( ).draw( );

@@ -11,6 +11,10 @@ import com.smartgwt.client.widgets.grid.ListGrid;
 
 
 /**
+ * 抽象的list 
+ * 
+ * feature1:实现了mask对list的遮蔽功能
+ *
  * @author chenhao
  *
  */
