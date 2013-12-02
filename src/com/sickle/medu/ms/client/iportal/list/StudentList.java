@@ -12,6 +12,7 @@ import com.smartgwt.client.data.Criteria;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.types.SelectionStyle;
 import com.smartgwt.client.util.SC;
+import com.smartgwt.client.widgets.grid.HeaderSpan;
 
 /**
  * 学生list
@@ -26,6 +27,7 @@ public class StudentList extends AbstractListGrid
 	{
 		setWidth( "90%" );
 		setHeight( "90%" );
+		setHeaderHeight(40); 
 		setAutoFetchData( false );
 		setSelectionType( SelectionStyle.SINGLE );
 		DataSource ds = getDataSource();
@@ -33,6 +35,7 @@ public class StudentList extends AbstractListGrid
 		
 		ds.getField( "name" ).setTitle( "学生名字" );
 		ds.getField( "resume" ).setTitle( "情况简述" );
+		setHeaderSpans(new HeaderSpan("学生列表", ds.getFieldNames( )));
 	}
 	
 	public DataSource getDataSource( )
