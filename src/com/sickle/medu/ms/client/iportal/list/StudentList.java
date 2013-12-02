@@ -64,6 +64,15 @@ public class StudentList extends AbstractListGrid
 				}
 				criteria.addCriteria( "id", stuids );
 				fetchData( criteria );
+				
+				/*List<Record> records = new ArrayList<Record>();
+				for( Member m : result )
+				{
+					ListGridRecord record = new ListGridRecord();
+					MemberDataSource.getInstance( ).copyValues( m, record );
+					records.add( record );
+				}
+				setData( records.toArray( new Record[records.size( )]) );*/
 			}
 			
 			@Override

@@ -68,9 +68,8 @@ public class StudentDialog extends AbstractDialog
 							DSRequest dsRequest )
 					{
 						submitcallback();
-						SC.say( "添加学生成功" );	
+						SC.say( "操作成功" );	
 					}
-					
 				} );
 				hide();
 			}
