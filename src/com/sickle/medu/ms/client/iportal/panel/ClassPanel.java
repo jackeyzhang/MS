@@ -58,10 +58,10 @@ public class ClassPanel extends HLayout
 			{
 				if ( list.getSelectedRecords( ).length == 0 )
 				{
-					SC.say( "请先选中一条要删除的记录" );
+					SC.say( "请先选中一条要查看的班级" );
 					return;
 				}
-				//TODO show class
+				list.expandRecord( list.getSelectedRecord( ) );
 			}} );
 		buttonpanel.addMember( new MButton("创建班级"){
 			@Override
