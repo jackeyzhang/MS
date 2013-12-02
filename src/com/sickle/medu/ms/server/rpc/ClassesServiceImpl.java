@@ -91,10 +91,12 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 
 
 	@Override
-	public Cls modifyClasses( Cls Cls ) throws Exception
+	public Cls modifyClasses( Cls cls ) throws Exception
 	{
-		Cls oCls = service.modifyCls( Cls );
-		return new ClsDTO().to( oCls );
+		Cls oldcls = findClass( cls.getId( ) );
+		cls.setStudents( oldcls.getStudents( ) );
+		Cls newCls = service.modifyCls( cls );
+		return new ClsDTO().to( newCls );
 	}
 
 

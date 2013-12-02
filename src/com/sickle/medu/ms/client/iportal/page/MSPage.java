@@ -79,10 +79,11 @@ public class MSPage extends AbstractPage
 		
 		wholepanel.addMenu( "个人信息", memberpanel );
 		wholepanel.addMenu( "班级管理", classpanel );
-		wholepanel.addMenu( "学员管理", new VLayout() );
+		
 		wholepanel.addMenu( "报名管理", new VLayout() );
 		wholepanel.addMenu( "留言管理", messagepanel );
 		wholepanel.addMenu( "评论管理", new VLayout() );
+		
 		wholepanel.addMenu( "免费定制", new FreeProductPanel() );
 		
 		Callback<Object, Object> call = new Callback<Object, Object>( ) {
