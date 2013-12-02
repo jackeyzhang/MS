@@ -60,16 +60,31 @@ public class BigOrgCard extends AbstractCard
 		Layout baseinformation = getDescPanel("基本信息");
 		
 		//名字
-		Label name = new Label(org.getName( ));
+		Label name = new Label("学校名称：" + org.getName( ));
 		name.setHeight( 15 );
 		name.setStyleName( "bigmembercardname" );
 
 		baseinformation.addMember( name );
-
+		
+		Label tel= new Label("联系电话："+org.getTelephone());
+		tel.setHeight(15);
+		tel.setStyleName("bigmembercardname");
+		baseinformation.addMember(tel);
+		
+		Label city = new Label("学校省市：" + org.getProvinceCity());
+		city.setHeight(15);
+		city.setStyleName("bigmembercardname");
+		baseinformation.addMember(city);
+		
+		Label addr = new Label("学校地址：" + org.getAddress());
+		addr.setHeight(15);
+		addr.setStyleName("bigmembercardname");
+		baseinformation.addMember(addr);
 		
 		//分校信息
-		Layout schoolLayout = getDescPanel("分校信息");
-
+		Layout schoolLayout = getDescPanel("学校简介");
+		Label introduction = new Label(org.getIntroduction());
+		schoolLayout.addMember(introduction);
 		
 		information.addMember( baseinformation );
 		information.addMember( schoolLayout );
