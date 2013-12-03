@@ -4,13 +4,16 @@
 
 package com.sickle.medu.ms.client.iportal.card;
 
+import java.util.Date;
+
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
+import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
+import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
-import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
@@ -168,7 +171,18 @@ public class MemberCard extends AbstractCard
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				SC.askforValue( "请填写留言信息", "请输入信息内容", null );
+				SendMessageDialog messagedialog = new SendMessageDialog(){
+					@Override
+					public void preSubmit( )
+					{
+						//设置发送者 接收者 发送时间
+						Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+						getForm( ).setValue( "send", send.getId( ) );
+						getForm( ).setValue( "receiver", member.getId( ) );
+						getForm( ).setValue( "receivetime", new Date() );
+					}
+				};
+				messagedialog.show();
 			}
 		};
 		ClickHandler reportcl = new ClickHandler( ) {
@@ -197,8 +211,8 @@ public class MemberCard extends AbstractCard
 				}
 			}
 		};
-		Canvas message = getControlWidget( "留言", msgcl, 40, "#1d953f" );
 		Canvas detail = getControlWidget( "查看", detailcl, 40, "#694d9f" );
+		Canvas message = getControlWidget( "留言", msgcl, 40, "#1d953f" );
 		Canvas report = getControlWidget( "开设课程", reportcl, 60, "#6d5826" );
 
 		operate.addMember( detail );
