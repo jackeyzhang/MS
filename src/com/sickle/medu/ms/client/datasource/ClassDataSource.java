@@ -42,6 +42,32 @@ public class ClassDataSource extends GwtRpcDataSource
 	protected void executeFetch( final String requestId,final DSRequest request,
 			final DSResponse response )
 	{
+		if( request.getCriteria( ).getAttributeAsInt( "memberid" ) != null )
+		{
+			int memberid = request.getCriteria( ).getAttributeAsInt( "memberid" );
+			ClassesServiceAsync service = ClassesService.Util.getInstance( );
+			service.listClasses( memberid , new AsyncCallbackWithStatus<List<Cls>>( "" ) {
+				@Override
+				public void call( List<Cls> result )
+				{
+					List<ListGridRecord> list = new ArrayList<ListGridRecord>();
+					if (result.size() > 0 )
+					{
+						for ( int i = 0; i < result.size( ); i++ )
+						{
+							ListGridRecord record = new ListGridRecord( );
+							copyValues( result.get( i ), record );
+							list.add(record);
+						}
+					}
+					response.setData( list.toArray( new ListGridRecord[list.size( )] ) );
+					response.setTotalRows( result.size( ) );
+					getDataSource( Cls.class ).processResponse( requestId,
+							response );
+				}
+			} );
+			return ;
+		}
 		final Integer startIndex = ( request.getStartRow( ) < 0 ) ? 0 : request
 				.getStartRow( );
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request

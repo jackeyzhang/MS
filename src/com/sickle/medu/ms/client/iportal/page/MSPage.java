@@ -130,4 +130,14 @@ public class MSPage extends AbstractPage
 		return messagepanel;
 	}
 
+	
+	/**
+	 * @return the classpanel
+	 */
+	public ClassPanel getClasspanel( )
+	{
+		return classpanel;
+	}
+	
+
 }

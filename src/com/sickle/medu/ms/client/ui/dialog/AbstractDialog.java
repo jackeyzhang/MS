@@ -44,6 +44,7 @@ public abstract class AbstractDialog extends Window
 
 	}
 
+	
 	/**
 	 * 获取到对话框的页面内容
 	 * 

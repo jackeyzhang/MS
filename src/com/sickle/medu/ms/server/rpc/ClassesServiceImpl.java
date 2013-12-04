@@ -28,6 +28,7 @@ import com.sickle.medu.ms.client.rpc.ClassesService;
 import com.sickle.pojo.edu.Cls;
 import com.sickle.pojo.edu.Member;
 import com.sickle.service.itf.IClsService;
+import com.sickle.service.itf.IMemberService;
 
 public class ClassesServiceImpl extends RemoteServiceServlet implements  ClassesService {
 
@@ -121,6 +122,21 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 			stus.add(dto.to(stu));
 		}
 		return stus;
+	}
+
+
+
+	@Override
+	public List<Cls> listClasses( int memberid ) throws Exception
+	{
+		IMemberService mservice = DaoServiceFactory.getService( IMemberService.class );
+		Member member = mservice.getMemberById( memberid );
+		List<Cls> classes = new ArrayList<Cls>();
+		for( Cls cls : member.getOpenclasseses( ))
+		{
+			classes.add( new ClsDTO().to( cls ) );
+		}
+		return classes;
 	}
 
 }

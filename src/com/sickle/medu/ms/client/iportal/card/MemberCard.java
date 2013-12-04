@@ -12,6 +12,7 @@ import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
 import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.pojo.edu.Member;
+import com.sickle.pojo.website.Message;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.widgets.Canvas;
@@ -23,6 +24,7 @@ import com.smartgwt.client.widgets.events.MouseOutEvent;
 import com.smartgwt.client.widgets.events.MouseOutHandler;
 import com.smartgwt.client.widgets.events.MouseOverEvent;
 import com.smartgwt.client.widgets.events.MouseOverHandler;
+import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -171,17 +173,22 @@ public class MemberCard extends AbstractCard
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				SendMessageDialog messagedialog = new SendMessageDialog(){
-					@Override
-					public void preSubmit( )
-					{
-						//设置发送者 接收者 发送时间
-						Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
-						getForm( ).setValue( "send", send.getId( ) );
-						getForm( ).setValue( "receiver", member.getId( ) );
-						getForm( ).setValue( "receivetime", new Date() );
-					}
-				};
+				Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+				Message msg = new Message();
+				msg.setReceiver(  member.getId( ) );
+				msg.setSend( send.getId( ) );
+				msg.setReceivetime( new Date() );
+				
+				SendMessageDialog messagedialog = new SendMessageDialog( ){
+				@Override
+				public void preSubmit( DynamicForm form )
+				{
+					Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+					form.setValue( "send", send.getId( ) );
+					form.setValue( "receiver", member.getId( ) );
+					form.setValue( "receivetime", new Date() );
+				}};
+				
 				messagedialog.show();
 			}
 		};

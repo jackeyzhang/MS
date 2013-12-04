@@ -19,13 +19,13 @@ import com.smartgwt.client.widgets.layout.VLayout;
 public class SendMessageDialog extends AbstractDialog
 {
 	
-	private DynamicForm form = null;
+	private static DynamicForm form = null ;
 	
 	public SendMessageDialog( )
 	{
 		super( "发送消息" );
 	}
-
+	
 	@Override
 	public Canvas getView( )
 	{
@@ -44,7 +44,7 @@ public class SendMessageDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				preSubmit();
+				preSubmit(form);
 				boolean validate = form.validate( );
 				if( !validate )
 				{
@@ -59,7 +59,7 @@ public class SendMessageDialog extends AbstractDialog
 						}else{
 							SC.say( "失败！" );
 						}
-						destroy();
+						hide();
 					}
 				} );					
 			}
@@ -69,7 +69,7 @@ public class SendMessageDialog extends AbstractDialog
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				destroy();
+				hide();
 			}
 		} );
 		buttonpanel.addMember( confirm );
@@ -87,6 +87,6 @@ public class SendMessageDialog extends AbstractDialog
 		return form;
 	}
 	
-	public void preSubmit(){}
+	public void preSubmit(DynamicForm form){}
 	
 }

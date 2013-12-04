@@ -228,5 +228,14 @@ public class ClassPanel extends HLayout
 		}
 		
 	}
+
+	
+	/**
+	 * @return the list
+	 */
+	public ClassList getList( )
+	{
+		return list;
+	}
 	
 }

@@ -3,10 +3,15 @@
  */
 package com.sickle.medu.ms.client.iportal.panel;
 
+import java.util.Date;
+
 import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
 import com.sickle.medu.ms.client.iportal.list.MessageList;
+import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
 import com.sickle.medu.ms.client.ui.widget.MButton;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.util.SC;
+import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -44,10 +49,21 @@ public class MessagePanel extends HLayout
 			@Override
 			public void handleClick( )
 			{
-				new SendMessageDialog().show( );
+				SendMessageDialog messagedialog = new SendMessageDialog( ){
+					@Override
+					public void preSubmit( DynamicForm form )
+					{
+						Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+						form.setValue( "send", send == null ? 97 : send.getId( ) );
+						form.setValue( "receiver", 97 );
+						form.setValue( "receivetime", new Date() );
+					}
+				};
+				messagedialog.getForm( );
+				messagedialog.show();
 			}} );
 		
-		buttonpanel.addMember( new MButton("删除消息及回复"){
+		buttonpanel.addMember( new MButton("删除消息"){
 			@Override
 			public void handleClick( )
 			{

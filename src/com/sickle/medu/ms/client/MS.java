@@ -157,14 +157,17 @@ public class MS implements EntryPoint
 					Member _member = MeduIndexPage.getInstance( ).getTopbar( )
 							.getMember( );*/
 					Member _member = new Member("王小二","zhangchenhao@139.com","password");
-					_member.setId( 12345 );
+					_member.setId( 94 );
 					_member.setSex( "男" );
 					_member.setIcon( "icons/header/user_male1.png" );
 					_member.setTitle( "title" );
 					_member.setResume( "resume" );
 					_member.setCharacter( "teacher" );
+					_member.setCity( "上海" );
+					_member.setArea( "浦东新区" );
 					
 					MSPage.getInstance( ).getMemberpanel( ).fillpanel( _member );
+					MSPage.getInstance( ).getClasspanel( ).getList( ).fetchClassByMemberid( _member.getId( ) );
 					MSPage.getInstance( ).draw( );
 					
 				}

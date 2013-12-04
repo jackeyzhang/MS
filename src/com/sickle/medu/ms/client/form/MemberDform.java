@@ -263,6 +263,10 @@ public class MemberDform extends DynamicForm
 	
 	public void updateArea()
 	{
+		if( city.getValueAsString( ) == null )
+		{
+			return;
+		}
 		if(city.getValueAsString( ).equals( "上海" ))
 		{
 			area.setValueMap( FormConst.AREA_SH );

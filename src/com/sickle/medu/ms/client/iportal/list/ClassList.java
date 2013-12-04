@@ -1,12 +1,20 @@
 package com.sickle.medu.ms.client.iportal.list;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sickle.medu.ms.client.datasource.ClassDataSource;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.medu.ms.client.iportal.panel.StudentListPanel;
+import com.sickle.medu.ms.client.rpc.ClassesService;
+import com.sickle.medu.ms.client.rpc.ClassesServiceAsync;
 import com.sickle.pojo.edu.Cls;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.Record;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
@@ -19,7 +27,7 @@ public class ClassList extends ListGrid
 	{
 		setWidth( "90%" );
 		setHeight( "90%" );
-		setAutoFetchData( true );
+		setAutoFetchData( false );
 		setDrawAheadRatio(4); 
 		setCanExpandRecords(true);
 		setDataSource( getDataSource( ) );
@@ -46,5 +54,29 @@ public class ClassList extends ListGrid
 		return panel;
 	}
 	
-	
+	public void fetchClassByMemberid(final int memberid )
+	{
+		ClassesServiceAsync service = ClassesService.Util.getInstance( );
+		service.listClasses( memberid, new AsyncCallback<List<Cls>>( ) {
+			
+			@Override
+			public void onSuccess( List<Cls> classes )
+			{
+				List<Record> records = new ArrayList<Record>();
+				for( Cls cls : classes )
+				{
+					ListGridRecord record = new ListGridRecord();
+					ClassDataSource.getInstance( ).copyValues( cls, record );
+					records.add( record );
+				}
+				setData( records.toArray( new Record[records.size( )]) );
+			}
+			
+			@Override
+			public void onFailure( Throwable caught )
+			{
+				SC.say( "loading error" + caught.getMessage( ));
+			}
+		} );
+	}
 }

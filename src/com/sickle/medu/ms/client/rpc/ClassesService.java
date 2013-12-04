@@ -37,6 +37,8 @@ public interface ClassesService extends RemoteService {
 		}
 	}
 	
+	public List<Cls> listClasses(int memberid ) throws Exception;
+	
 	public List<Cls> listAllClasses(int startIndex,int length );
 	
 	public Cls findClass(int classid);

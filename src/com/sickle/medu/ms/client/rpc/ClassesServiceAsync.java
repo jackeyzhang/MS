@@ -23,4 +23,6 @@ public interface ClassesServiceAsync
 
 	void findStudents( int classsid, AsyncCallback<List<Member>> callback );
 
+	void listClasses( int memberid, AsyncCallback<List<Cls>> callback );
+
 }
