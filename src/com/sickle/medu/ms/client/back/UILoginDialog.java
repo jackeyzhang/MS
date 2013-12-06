@@ -2,10 +2,11 @@
  * 
  */
 
-package com.sickle.medu.ms.client.ui.dialog;
+package com.sickle.medu.ms.client.back;
 
 import com.sickle.medu.ms.client.form.LoginDform;
 import com.sickle.medu.ms.client.ui.MainPagePanel;
+import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.ui.tabpanel.MainPageTab;
 import com.sickle.medu.ms.client.ui.tabpanel.WebSiteEditTab;
 import com.smartgwt.client.types.Alignment;
@@ -23,21 +24,21 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  * 
  */
-public class RegisterDialog extends AbstractDialog
+public class UILoginDialog extends AbstractDialog
 {
 
 	private LoginDform loginform;
 	
-	private static RegisterDialog instance = new RegisterDialog();
+	private static UILoginDialog instance = new UILoginDialog();
 	
-	public static RegisterDialog getInstance()
+	public static UILoginDialog getInstance()
 	{
 		return instance;
 	}
 
-	private RegisterDialog( )
+	private UILoginDialog( )
 	{
-		super( "medu welcome-中国最好的教育办公系统", false, false, false );
+		super( "medu welcome-打造中国最好的教育办公系统", false, false, false );
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class RegisterDialog extends AbstractDialog
 		formlayout.setWidth100( );
 		formlayout.setHeight100( );
 		formlayout.setAlign( Alignment.CENTER );
-		IButton loginButton = new IButton( "注册" );
+		IButton loginButton = new IButton( "登陆" );
 		loginButton.addClickHandler( new ClickHandler( ) {
 
 			@Override

@@ -43,6 +43,8 @@ public interface ClassesService extends RemoteService {
 	
 	public Cls findClass(int classid);
 	
+	public Cls addClass(int memberid,Cls Cls) throws Exception;
+	
 	public Cls addClasses(Cls Cls) throws Exception;
 	
 	public Cls modifyClasses(Cls Cls) throws Exception;

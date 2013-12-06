@@ -7,6 +7,7 @@ import com.sickle.medu.ms.client.form.ClassesForm;
 import com.sickle.medu.ms.client.iportal.list.ClassList;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.ui.widget.MButton;
+import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DSCallback;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
@@ -33,6 +34,8 @@ public class ClassPanel extends HLayout
 	
 	private ClassList list = new ClassList();
 	
+	private static DynamicForm form = new ClassesForm().getAddForm( );
+	
 	private VLayout buttonpanel = new VLayout();
 	
 	public ClassPanel()
@@ -47,7 +50,6 @@ public class ClassPanel extends HLayout
 		init();
 	}
 
-	
 	private void init()
 	{
 		buttonpanel.setPadding( 10 );
@@ -67,7 +69,13 @@ public class ClassPanel extends HLayout
 			@Override
 			public void handleClick( )
 			{
-				new CreateClassDialog().show( );
+				new CreateClassDialog(){
+					@Override
+					public void callback( int memberid)
+					{
+						list.fetchClassByMemberid( memberid );
+					}
+				}.show( );
 			}} );
 		buttonpanel.addMember( new MButton("删除班级"){
 			@Override
@@ -93,6 +101,11 @@ public class ClassPanel extends HLayout
 			}} );
 	}
 	
+	public void fillPanel(Member member )
+	{
+		list.fetchClassByMemberid( member.getId( ) );
+		form.setValue( "memberid", member.getId( ) );
+	}
 	
 	class CreateClassDialog extends AbstractDialog
 	{
@@ -106,7 +119,6 @@ public class ClassPanel extends HLayout
 		{
 			VLayout wholepanel = getDefaultVLayout();
 			
-			final DynamicForm form = new ClassesForm().getAddForm( );
 			wholepanel.addMember( form );
 			
 			HLayout buttonpanel = new HLayout();
@@ -124,10 +136,16 @@ public class ClassPanel extends HLayout
 					{
 						return;
 					}
+					final String memberid = form.getValueAsString( "memberid" );
 					form.submit( new DSCallback( ) {
 						@Override
 						public void execute( DSResponse dsResponse, Object data, DSRequest dsRequest )
 						{
+							if(memberid != null )
+							{
+								int mid = Integer.parseInt( memberid );
+								callback( mid );
+							}
 							if( dsResponse.getErrors( )== null || dsResponse.getErrors( ).isEmpty( )){
 								SC.say( "成功！" );
 							}else{
@@ -151,14 +169,14 @@ public class ClassPanel extends HLayout
 			wholepanel.addMember( buttonpanel );
 			return wholepanel;
 		}
+		
+		public void callback(int memberid){}
 	}
 	
 	class ModifyClassDialog extends AbstractDialog
 	{
 		
 		private ListGrid gird;
-		
-		private DynamicForm form ;
 		
 		public ModifyClassDialog(ListGrid gird )
 		{
@@ -171,8 +189,6 @@ public class ClassPanel extends HLayout
 		public Canvas getView( )
 		{
 			VLayout wholepanel = getDefaultVLayout();
-			
-			form = new ClassesForm().getModifyForm( );
 			
 			wholepanel.addMember( form );
 			HLayout buttonpanel = new HLayout();

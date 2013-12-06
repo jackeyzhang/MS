@@ -167,7 +167,7 @@ public class MS implements EntryPoint
 					_member.setArea( "浦东新区" );
 					
 					MSPage.getInstance( ).getMemberpanel( ).fillpanel( _member );
-					MSPage.getInstance( ).getClasspanel( ).getList( ).fetchClassByMemberid( _member.getId( ) );
+					MSPage.getInstance( ).getClasspanel( ).fillPanel( _member);
 					MSPage.getInstance( ).draw( );
 					
 				}

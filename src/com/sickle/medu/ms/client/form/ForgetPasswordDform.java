@@ -5,6 +5,7 @@ package com.sickle.medu.ms.client.form;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sickle.medu.ms.client.rpc.UserManageService;
+import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.form.DynamicForm;
@@ -42,9 +43,8 @@ public class ForgetPasswordDform extends DynamicForm
 		this.setPadding(15);
 		this.setTitleOrientation( TitleOrientation.TOP );
 		
-		email = new TextItem("email");
+		email = new DefaultTextItem("email");
 		email.setWidth( columnwidth[1] );
-		email.setTitleStyle( "h2" );
 		email.setTitle("请输入你注册时的邮箱,我们将向该邮箱发送您的密码");
 		email.setRequired(true);
 		

@@ -4,6 +4,8 @@
 package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
+import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.ComboBoxItem;
@@ -55,32 +57,27 @@ public class StudentDform extends DynamicForm
 		this.setColWidths( columnwidth );
 		this.setPadding( 20 );
 		
-		username = new TextItem("name");
+		username = new DefaultTextItem("name");
 		username.setWidth( columnwidth[1] );
-		username.setTitleStyle( "h2" );
 		username.setTitle("学生名字");
 		username.setRequired(true);
 		
-		icon = new TextItem("icon");
+		icon = new DefaultTextItem("icon");
 		icon.setWidth( columnwidth[1] );
-		icon.setTitleStyle( "h2" );
 		icon.setVisible( false );
 		
-        emailItem = new TextItem("email");
+        emailItem = new DefaultTextItem("email");
         emailItem.setWidth( columnwidth[1] );
-        emailItem.setTitleStyle( "h2" );
         emailItem.setTitle("邮箱");
         emailItem.setRequired(true);
 
-		password = new PasswordItem("password");
+		password = new DefaultPasswordItem("password");
 		password.setWidth( columnwidth[1] );
-		password.setTitleStyle( "h2" );
 		password.setTitle("密码");
 		password.setRequired(true);	
 		
-		confirmpassword = new PasswordItem("password");
+		confirmpassword = new DefaultPasswordItem("password");
 		confirmpassword.setWidth( columnwidth[1] );
-		confirmpassword.setTitleStyle( "h2" );
 		confirmpassword.setTitle("确认密码");
 		confirmpassword.setRequired(true);
 		confirmpassword.setType("password");
@@ -93,23 +90,20 @@ public class StudentDform extends DynamicForm
 		sex.setTitle("性别");
 		sex.setRequired(true);
 		
-		chart = new TextItem( "character" );
+		chart = new DefaultTextItem( "character" );
 		chart.setVisible( false );
 		chart.setValue( "student" );
 		
-		telephone = new TextItem("contact");
+		telephone = new DefaultTextItem("contact");
 		telephone.setWidth( columnwidth[1] );
-		telephone.setTitleStyle( "h2" );
 		telephone.setTitle("电话");
 		
 		resume = new TextAreaItem("resume");
 		resume.setWidth( columnwidth[1] );
-		resume.setTitleStyle( "h2" );
 		resume.setTitle("备注");
 		
 		city = new ComboBoxItem("city");
 		city.setWidth( columnwidth[1] );
-		city.setTitleStyle( "h2" );
 		city.setTitle("城市");
 		city.setValueMap( FormConst.CITY );
 		

@@ -25,4 +25,6 @@ public interface ClassesServiceAsync
 
 	void listClasses( int memberid, AsyncCallback<List<Cls>> callback );
 
+	void addClass( int memberid, Cls Cls, AsyncCallback<Cls> callback );
+
 }

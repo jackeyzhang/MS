@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.sickle.medu.ms.client.datasource.field.MaskField;
 import com.sickle.medu.ms.client.form.FormConst;
+import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
+import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.sickle.uireflect.FieldType;
 import com.sickle.uireflect.Mask;
 import com.smartgwt.client.data.DataSource;
@@ -16,9 +18,7 @@ import com.smartgwt.client.widgets.form.fields.DateItem;
 import com.smartgwt.client.widgets.form.fields.DateTimeItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.IntegerItem;
-import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.TextAreaItem;
-import com.smartgwt.client.widgets.form.fields.TextItem;
 
 
 /**
@@ -54,7 +54,7 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Password.toString( ) ) )
 		{
-			item = new PasswordItem();
+			item = new DefaultPasswordItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.TextArea.toString( ) ) )
 		{
@@ -62,7 +62,7 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.String.toString( ) ) )
 		{
-			item = new TextItem();
+			item = new DefaultTextItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Date.toString( ) ) )
 		{
@@ -74,11 +74,11 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
 		{
-			item = new TextItem();
+			item = new DefaultTextItem();
 		}
 		else
 		{
-			item = new TextItem();
+			item = new DefaultTextItem();
 		}
 		
 		int mask = mfield.getAttributeAsInt( MaskField.MASK );
@@ -139,7 +139,7 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Password.toString( ) ) )
 		{
-			item = new PasswordItem();
+			item = new DefaultPasswordItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.TextArea.toString( ) ) )
 		{
@@ -147,7 +147,7 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.String.toString( ) ) )
 		{
-			item = new TextItem();
+			item = new DefaultTextItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Date.toString( ) ) )
 		{
@@ -159,11 +159,11 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
 		{
-			item = new TextItem();
+			item = new DefaultTextItem();
 		}
 		else
 		{
-			item = new TextItem();
+			item = new DefaultTextItem();
 		}
 		item.setName( mfield.getName( ) );
 		return item;

@@ -62,8 +62,30 @@ body {
 	background-color: #f9f9f9;
 }
 
-
 .abstractdialog-content{
 	padding-top:30px;
 	background-image: url(./images/backgroundtexture.png);
+}
+
+.form_textbox{
+	padding : 5px;
+	border-radius:3px;
+}
+
+.controlpanel{
+	background-color: #d9d6c3;
+}
+
+.controlpanel-mousein{
+	background-color: #e0861a;
+}
+
+.mousechangepanel{
+	font-size: 1.3em;
+	background-color: #e0861a;
+}
+
+.mousechangepanel_mousein{
+	font-size: 1.3em;
+	background-color: #aa2116;
 }

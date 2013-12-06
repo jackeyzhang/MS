@@ -139,4 +139,13 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 		return classes;
 	}
 
+
+
+	@Override
+	public Cls addClass( int memberid, Cls cls ) throws Exception
+	{
+		Cls newcls = service.addCls(memberid, cls );
+		return new ClsDTO().to( newcls );
+	}
+
 }

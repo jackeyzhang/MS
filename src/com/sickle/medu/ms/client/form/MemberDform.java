@@ -4,6 +4,8 @@
 package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
+import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;
@@ -59,32 +61,27 @@ public class MemberDform extends DynamicForm
 		this.setColWidths( columnwidth );
 		this.setPadding( 20 );
 		
-		username = new TextItem("name");
+		username = new DefaultTextItem("name");
 		username.setWidth( columnwidth[1] );
-		username.setTitleStyle( "h2" );
 		username.setTitle("用户名");
 		username.setRequired(true);
 		
-		icon = new TextItem("icon");
+		icon = new DefaultTextItem("icon");
 		icon.setWidth( columnwidth[1] );
-		icon.setTitleStyle( "h2" );
 		icon.setVisible( false );
 		
-        emailItem = new TextItem("email");
+        emailItem = new DefaultTextItem("email");
         emailItem.setWidth( columnwidth[1] );
-        emailItem.setTitleStyle( "h2" );
         emailItem.setTitle("邮箱");
         emailItem.setRequired(true);
 
-		password = new PasswordItem("password");
+		password = new DefaultPasswordItem("password");
 		password.setWidth( columnwidth[1] );
-		password.setTitleStyle( "h2" );
 		password.setTitle("密码");
 		password.setRequired(true);	
 		
-		confirmpassword = new PasswordItem("password");
+		confirmpassword = new DefaultPasswordItem("password");
 		confirmpassword.setWidth( columnwidth[1] );
-		confirmpassword.setTitleStyle( "h2" );
 		confirmpassword.setTitle("确认密码");
 		confirmpassword.setRequired(true);
 		confirmpassword.setType("password");
@@ -101,34 +98,30 @@ public class MemberDform extends DynamicForm
 		isteacher.setTitleStyle( "h2" );
 		isteacher.setTitle("填写老师信息？");
 		
-		chart = new TextItem( "character" );
+		chart = new DefaultTextItem( "character" );
 		chart.setRequired(true);
 		chart.setVisible( false );
 		
-		telephone = new TextItem("contact");
+		telephone = new DefaultTextItem("contact");
 		telephone.setWidth( columnwidth[1] );
-		telephone.setTitleStyle( "h2" );
 		telephone.setTitle("电话");
 		telephone.setRequired(true);
 		telephone.setVisible( false );
 		
 		resume = new TextAreaItem("resume");
 		resume.setWidth( columnwidth[1] );
-		resume.setTitleStyle( "h2" );
 		resume.setTitle("简介");
 		resume.setRequired(true);
 		resume.setVisible( false );
 		
-		orgname = new TextItem("orgname");
+		orgname = new DefaultTextItem("orgname");
 		orgname.setWidth( columnwidth[1] );
-		orgname.setTitleStyle( "h2" );
 		orgname.setTitle("工作单位");
 		orgname.setRequired(true);
 		orgname.setVisible( false );
 		
-		title = new TextItem("title");
+		title = new DefaultTextItem("title");
 		title.setWidth( columnwidth[1] );
-		title.setTitleStyle( "h2" );
 		title.setTitle("职位");
 		title.setRequired(true);
 		title.setVisible( false );
