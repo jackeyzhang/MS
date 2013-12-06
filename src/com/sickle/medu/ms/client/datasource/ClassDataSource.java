@@ -203,7 +203,6 @@ public class ClassDataSource extends GwtRpcDataSource
 		recopyValues( rec, userRec );
 		ClassesServiceAsync service = ClassesService.Util.getInstance( );
 		service.deleteClasses( userRec, new AsyncCallbackWithStatus<Cls>( ) {
-
 			public void call( Cls result )
 			{
 				ListGridRecord[] list = new ListGridRecord[1];

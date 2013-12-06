@@ -106,6 +106,10 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 	public Cls findClass( int classid )
 	{
 		Cls cls = service.getClassById( classid );
+		if( cls == null )
+		{
+			return null;
+		}
 		return new ClsDTO().to( cls );
 	}
 
@@ -115,7 +119,11 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 	public List<Member> findStudents( int classid ) throws Exception
 	{
 		Cls cls = findClass(classid);
-		List<Member> stus = new ArrayList<Member>();
+		List<Member> stus = new ArrayList<Member>(0);
+		if(cls == null)
+		{
+			return stus;
+		}
 		MemberDTO dto = new MemberDTO();
 		for(Member stu : cls.getStudents( ))
 		{

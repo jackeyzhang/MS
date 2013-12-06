@@ -86,7 +86,8 @@ public class ClassPanel extends HLayout
 					SC.say( "请先选中一条要删除的记录" );
 					return;
 				}
-				list.getDataSource( ).removeData( list.getSelectedRecord( ) );
+				list.removeSelectedData();
+				list.fetchData();
 			}} );
 		buttonpanel.addMember( new MButton("修改班级"){
 			@Override

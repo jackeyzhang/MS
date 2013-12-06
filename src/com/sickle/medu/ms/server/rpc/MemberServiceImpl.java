@@ -98,6 +98,10 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 	public Member findMember( int id ) throws Exception
 	{
 		Member oMember = service.getMemberById( id );
+		if(oMember == null)
+		{
+			return null;
+		}
 		return new MemberDTO().to( oMember );
 	}
 
@@ -107,7 +111,7 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 	public Member modifyMember( Member member ) throws Exception
 	{
 		Member oldm = findMember( member.getId( ) );
-		member.setClasseses( oldm.getClasseses( ) );
+		member.setInclasseses( oldm.getInclasseses( ) );
 		Member m = service.modifyMember( member );
 		return new MemberDTO().to( m );
 	}
@@ -122,7 +126,11 @@ public class MemberServiceImpl extends RemoteServiceServlet implements MemberSer
 		{
 			try
 			{
-				members.add(findMember( id ));
+				Member m = findMember( id );
+				if( m != null)
+				{
+					members.add( m );
+				}
 			}
 			catch ( Exception e )
 			{
