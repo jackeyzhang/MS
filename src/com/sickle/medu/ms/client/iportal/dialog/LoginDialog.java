@@ -10,7 +10,7 @@ import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
 import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
-import com.sickle.medu.ms.client.util.AsyncCallbackWithStatus;
+import com.sickle.medu.ms.client.ui.util.AsyncCallbackWithStatus;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.SC;

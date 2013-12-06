@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.ui;
+package com.sickle.medu.ms.client.back;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;

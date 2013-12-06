@@ -1,9 +1,8 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.ui;
+package com.sickle.medu.ms.client.back;
 
-import com.sickle.medu.ms.client.back.UILoginDialog;
 import com.sickle.medu.ms.client.ui.help.AboutAuthorDialog;
 import com.sickle.medu.ms.client.ui.help.VersionDialog;
 import com.smartgwt.client.types.Alignment;

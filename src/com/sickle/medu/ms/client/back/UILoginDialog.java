@@ -5,7 +5,6 @@
 package com.sickle.medu.ms.client.back;
 
 import com.sickle.medu.ms.client.form.LoginDform;
-import com.sickle.medu.ms.client.ui.MainPagePanel;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.medu.ms.client.ui.tabpanel.MainPageTab;
 import com.sickle.medu.ms.client.ui.tabpanel.WebSiteEditTab;

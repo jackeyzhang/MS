@@ -1,4 +1,4 @@
-package com.sickle.medu.ms.client.ui.widget;
+package com.sickle.medu.ms.client.ui.panel;
 
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;

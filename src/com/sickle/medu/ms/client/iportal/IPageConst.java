@@ -38,6 +38,7 @@ public interface IPageConst
 	public static final int NOTICE_CARD_ROW_MAX_NUM = 8;
 	
 	public static final String SITE_NAME = "爱师网";
+	public static final String SITE_COPYRIGHT = "Copyright ©2013 sickle";
 	
 	//注册界面高度百分比
 	public static final double REGISTER_HEIGHT_PER = 0.5;

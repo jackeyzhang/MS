@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.ui.widget;
+package com.sickle.medu.ms.client.ui.util;
 
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.events.MouseOutEvent;

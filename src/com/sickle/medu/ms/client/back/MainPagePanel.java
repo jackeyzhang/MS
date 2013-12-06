@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.ui;
+package com.sickle.medu.ms.client.back;
 
 import com.smartgwt.client.widgets.layout.VLayout;
 

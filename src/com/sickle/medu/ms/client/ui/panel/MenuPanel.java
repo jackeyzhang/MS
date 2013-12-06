@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.Callback;
+import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
-import com.sickle.medu.ms.client.ui.widget.MouseChangePanel;
-import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.widgets.events.ClickEvent;

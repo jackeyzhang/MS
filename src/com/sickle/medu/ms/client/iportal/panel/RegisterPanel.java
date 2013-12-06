@@ -4,7 +4,7 @@ import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.medu.ms.client.form.MemberDform;
 import com.sickle.medu.ms.client.iportal.IPageConst;
-import com.sickle.medu.ms.client.util.ScreenUtil;
+import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.util.BooleanCallback;

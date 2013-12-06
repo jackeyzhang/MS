@@ -9,7 +9,7 @@ import java.util.List;
 import com.google.gwt.user.client.Timer;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.panel.WithRightLittleControlPanel;
-import com.sickle.medu.ms.client.util.ScreenUtil;
+import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.AnimationEffect;
 import com.smartgwt.client.widgets.Canvas;

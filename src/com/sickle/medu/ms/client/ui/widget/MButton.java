@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.widget;
 
+import com.sickle.medu.ms.client.ui.panel.MouseChangePanel;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 

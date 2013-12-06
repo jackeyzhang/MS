@@ -5,8 +5,8 @@ package com.sickle.medu.ms.client.ui.page;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
+import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
-import com.sickle.medu.ms.client.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
@@ -84,7 +84,7 @@ public abstract class AbstractPage extends VLayout
 				} );
 		toppanel.addMember( sgwtHomeButton );
 		
-		LabelWithBlue title = new LabelWithBlue( "爱师网",true );
+		LabelWithBlue title = new LabelWithBlue( IPageConst.SITE_NAME,true );
 		title.setWidth( 300 );
 		title.setHeight( 20 );
 		title.setAlign( Alignment.LEFT );

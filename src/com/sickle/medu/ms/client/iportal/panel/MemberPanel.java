@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.iportal.panel;
 
 import com.sickle.medu.ms.client.iportal.card.BigMemberCard;
-import com.sickle.medu.ms.client.util.ScreenUtil;
+import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.layout.VLayout;
 

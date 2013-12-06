@@ -5,7 +5,7 @@
 package com.sickle.medu.ms.client.iportal.panel;
 
 import com.sickle.medu.ms.client.iportal.IPageConst;
-import com.sickle.medu.ms.client.ui.widget.MagicShow;
+import com.sickle.medu.ms.client.ui.util.MagicShow;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.Cursor;
 import com.smartgwt.client.types.VerticalAlignment;
