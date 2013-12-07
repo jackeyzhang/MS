@@ -6,7 +6,7 @@ package com.sickle.medu.ms.client.ui.page;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.util.ScreenUtil;
-import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
+import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.ImgButton;
@@ -63,7 +63,7 @@ public abstract class AbstractPage extends VLayout
 		HLayout toppanel = new HLayout( );
 		
 		toppanel.setWidth100( );
-		toppanel.setHeight( ScreenUtil.getHeight( 0.1 ) );
+		toppanel.setHeight( ScreenUtil.getHeight( 0.05 ) );
 		toppanel.setStyleName( "defaulttoppanel" );
 		
 		ImgButton sgwtHomeButton = new ImgButton( );
@@ -85,7 +85,7 @@ public abstract class AbstractPage extends VLayout
 				} );
 		toppanel.addMember( sgwtHomeButton );
 		
-		LabelWithWhite title = new LabelWithWhite( IPageConst.SITE_NAME,true );
+		LabelWithYellow title = new LabelWithYellow( IPageConst.SITE_NAME,true );
 		title.setWidth( 300 );
 		title.setHeight( 50 );
 		title.setAlign( Alignment.LEFT );
@@ -106,7 +106,7 @@ public abstract class AbstractPage extends VLayout
 	{
 		HLayout versionpanel = new HLayout( );
 		versionpanel.setWidth100( );
-		versionpanel.setHeight(  ScreenUtil.getHeight( 0.1 )  );
+		versionpanel.setHeight(  ScreenUtil.getHeightInt( 0.9 ) - 450  );
 		versionpanel.setAlign( Alignment.CENTER );
 		versionpanel.setStyleName("versionpanel");
 		

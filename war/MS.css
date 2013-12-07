@@ -1,11 +1,6 @@
-body {
-	background-image: url(./images/backgroundtexture.png);
-	background-color: #f9f9f9;
-}
-
 .loginpage_middlepanel{
-	background-image: url(./images/backgroundtexture.png);
-	background-color: #f9f9f9;
+	background-image: url(./images/backgrounds/bg-x.png);
+	background-color: #aa2116;
 }
 
 .loginpage_bannerpanel{

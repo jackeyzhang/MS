@@ -124,5 +124,6 @@ body {
 	border:3px solid #deab8a;
 	border-top-style:outset;
 	border-style:solid none none none; 
-	background-image: url(./images/backgrounds/bg.png);
+	/*background-image: url(./images/backgrounds/bg.png);*/
+	background-color : #f2eada;
 }

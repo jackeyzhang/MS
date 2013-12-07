@@ -77,19 +77,19 @@ public class LoginPage extends AbstractPage
 		// 中间部分
 		HLayout middlepanel = new HLayout( );
 		middlepanel.setStyleName( "loginpage_middlepanel" );
-		middlepanel.setHeight( ScreenUtil.getHeight( 0.8 ) );
+		middlepanel.setHeight( 450 );
 
 		// banner
 		VLayout banner = new VLayout( );
 		banner.setStyleName( "loginpage_bannerpanel" );
 		banner.setHeight100( );
-		banner.addMember( new AdvertBanner( 0.65, 0.5 ) );
+		banner.addMember( new AdvertBanner( 0.65, 0.33 ) );
 		middlepanel.addMember( banner );
 		
 		// 登陆panel
 		VLayout loginpanel = new VLayout( );
 		loginpanel.setWidth( ScreenUtil.getWidth( 0.29 ) );
-		loginpanel.setHeight( ScreenUtil.getHeight( 0.8 ) );
+		loginpanel.setHeight( 450 );
 		middlepanel.addMember( loginpanel );
 
 		// 欢迎词
