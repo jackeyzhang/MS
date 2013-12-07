@@ -47,7 +47,5 @@ public class DefaultTextItem extends TextItem
 		setTextBoxStyle( "form_textbox" );
 		setShowFocused( false );
 	}
-	
-	
 
 }

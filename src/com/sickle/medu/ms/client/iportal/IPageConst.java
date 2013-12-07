@@ -41,11 +41,11 @@ public interface IPageConst
 	public static final String SITE_COPYRIGHT = "Copyright ©2013 sickle";
 	
 	//注册界面高度百分比
-	public static final double REGISTER_HEIGHT_PER = 0.5;
+	public static final double REGISTER_HEIGHT_PER = 0.8;
 	public static final double REGISTER_WIDTH_PER = 0.3;
 	
 	//找回密碼界面高度百分比
-	public static final double FP_HEIGHT_PER = 0.2;
+	public static final double FP_HEIGHT_PER = 0.8;
 	public static final double FP_WIDTH_PER = 0.25;
 	
 	

@@ -46,9 +46,9 @@ public class AdvertBanner extends VLayout
 	
 	public  AdvertBanner(double width,double height)
 	{
-		Img img1 = new Img("slideshow/sliderimage1.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.33 ));
-		Img img2 = new Img("slideshow/sliderimage2.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.33 ));
-		Img img3 = new Img("slideshow/sliderimage3.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( 0.33 ));
+		Img img1 = new Img("slideshow/sliderimage1.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( height ));
+		Img img2 = new Img("slideshow/sliderimage2.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( height ));
+		Img img3 = new Img("slideshow/sliderimage3.jpg",ScreenUtil.getWidthInt( width ),ScreenUtil.getHeightInt( height ));
 		imgs.add( img1 );
 		imgs.add( img2 );
 		imgs.add( img3 );

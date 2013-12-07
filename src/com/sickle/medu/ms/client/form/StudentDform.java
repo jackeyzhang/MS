@@ -5,6 +5,7 @@ package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
+import com.sickle.medu.ms.client.ui.form.DefaultTextAreaItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
@@ -83,6 +84,7 @@ public class StudentDform extends DynamicForm
 		confirmpassword.setType("password");
 		
 		sex = new RadioGroupItem( "sex" );
+		sex.setTitleStyle( "h2" );
 		sex.setVertical( false );
 		sex.setValueMap( "男","女" );
 		sex.setValue( "男" );
@@ -98,16 +100,18 @@ public class StudentDform extends DynamicForm
 		telephone.setWidth( columnwidth[1] );
 		telephone.setTitle("电话");
 		
-		resume = new TextAreaItem("resume");
+		resume = new DefaultTextAreaItem("resume");
 		resume.setWidth( columnwidth[1] );
 		resume.setTitle("备注");
 		
 		city = new ComboBoxItem("city");
+		city.setTitleStyle( "h2" );
 		city.setWidth( columnwidth[1] );
 		city.setTitle("城市");
 		city.setValueMap( FormConst.CITY );
 		
 		area = new ComboBoxItem("area");
+		area.setTitleStyle( "h2" );
 		area.setWidth( columnwidth[1] );
 		area.setTitleStyle( "h2" );
 		area.setTitle("区县");

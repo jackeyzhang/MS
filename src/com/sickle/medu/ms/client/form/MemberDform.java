@@ -5,6 +5,7 @@ package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
+import com.sickle.medu.ms.client.ui.form.DefaultTextAreaItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.widgets.form.DynamicForm;
@@ -108,7 +109,7 @@ public class MemberDform extends DynamicForm
 		telephone.setRequired(true);
 		telephone.setVisible( false );
 		
-		resume = new TextAreaItem("resume");
+		resume = new DefaultTextAreaItem("resume");
 		resume.setWidth( columnwidth[1] );
 		resume.setTitle("简介");
 		resume.setRequired(true);

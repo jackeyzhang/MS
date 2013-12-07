@@ -8,11 +8,10 @@ h2 {
 	text-align: center;
 }
 
-h1 {
-	font-size: 2em;
+.h1black {
+	font-size: 1.5em;
 	font-weight: bold;
-	color: #777777;
-	margin: 40px 0px 70px;
+	color: black;
 	text-align: center;
 }
 
@@ -44,13 +43,15 @@ body {
 	background-color: #f9f9f9;
 }
 
+
 .abstractdialog-content{
 	padding-top:30px;
 	background-image: url(./images/backgroundtexture.png);
 }
 
 .form_textbox{
-	padding : 5px;
+	padding : 1px;
+	height : 20px;
 	border-radius:3px;
 }
 
@@ -119,8 +120,9 @@ body {
 	opacity:1;/*其他，透明度50%*/
 }
 
-.defaulttoppanel{
+.defaulttoppanel,.versionpanel{
 	border:3px solid #deab8a;
 	border-top-style:outset;
 	border-style:solid none none none; 
+	background-image: url(./images/backgrounds/bg.png);
 }

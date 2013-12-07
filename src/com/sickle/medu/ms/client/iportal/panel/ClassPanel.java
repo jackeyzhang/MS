@@ -34,9 +34,11 @@ public class ClassPanel extends HLayout
 	
 	private ClassList list = new ClassList();
 	
-	private static DynamicForm form = new ClassesForm().getAddForm( );
+	private DynamicForm form = new ClassesForm().getAddForm( );
 	
 	private VLayout buttonpanel = new VLayout();
+	
+	private int memberid;
 	
 	public ClassPanel()
 	{
@@ -104,6 +106,7 @@ public class ClassPanel extends HLayout
 	
 	public void fillPanel(Member member )
 	{
+		memberid = member.getId();
 		list.fetchClassByMemberid( member.getId( ) );
 		form.setValue( "memberid", member.getId( ) );
 	}
@@ -120,6 +123,8 @@ public class ClassPanel extends HLayout
 		{
 			VLayout wholepanel = getDefaultVLayout();
 			
+			form = new ClassesForm().getAddForm( );
+			form.setValue( "memberid", memberid );
 			wholepanel.addMember( form );
 			
 			HLayout buttonpanel = new HLayout();
@@ -190,7 +195,7 @@ public class ClassPanel extends HLayout
 		public Canvas getView( )
 		{
 			VLayout wholepanel = getDefaultVLayout();
-			
+			form.reset();
 			wholepanel.addMember( form );
 			HLayout buttonpanel = new HLayout();
 			buttonpanel.setWidth( 500 );

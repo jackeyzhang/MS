@@ -6,8 +6,9 @@ package com.sickle.medu.ms.client.ui.page;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.util.ScreenUtil;
-import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
+import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
@@ -66,10 +67,10 @@ public abstract class AbstractPage extends VLayout
 		toppanel.setStyleName( "defaulttoppanel" );
 		
 		ImgButton sgwtHomeButton = new ImgButton( );
-		sgwtHomeButton.setSrc( "pieces/24/cube_green.png" );
-		sgwtHomeButton.setWidth( 24 );
-		sgwtHomeButton.setHeight( 24 );
-		sgwtHomeButton.setPrompt( "MS" );
+		sgwtHomeButton.setSrc( "icons/toppanel/teachers512.png" );
+		sgwtHomeButton.setWidth( 50 );
+		sgwtHomeButton.setHeight( 50 );
+		sgwtHomeButton.setPrompt( IPageConst.SITE_NAME );
 		sgwtHomeButton.setHoverStyle( "interactImageHover" );
 		sgwtHomeButton.setShowRollOver( false );
 		sgwtHomeButton.setShowDownIcon( false );
@@ -84,10 +85,11 @@ public abstract class AbstractPage extends VLayout
 				} );
 		toppanel.addMember( sgwtHomeButton );
 		
-		LabelWithBlue title = new LabelWithBlue( IPageConst.SITE_NAME,true );
+		LabelWithWhite title = new LabelWithWhite( IPageConst.SITE_NAME,true );
 		title.setWidth( 300 );
-		title.setHeight( 20 );
+		title.setHeight( 50 );
 		title.setAlign( Alignment.LEFT );
+		title.setValign(VerticalAlignment.CENTER);
 		title.addClickHandler( new ClickHandler(){
 			@Override
 			public void onClick( ClickEvent event )
@@ -104,8 +106,9 @@ public abstract class AbstractPage extends VLayout
 	{
 		HLayout versionpanel = new HLayout( );
 		versionpanel.setWidth100( );
-		versionpanel.setHeight( 50 );
+		versionpanel.setHeight(  ScreenUtil.getHeight( 0.1 )  );
 		versionpanel.setAlign( Alignment.CENTER );
+		versionpanel.setStyleName("versionpanel");
 		
 		Label version = new Label("Copyright ©2013 sickle");
 		version.setWidth( 200 );
