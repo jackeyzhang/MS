@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
 import com.sickle.medu.ms.client.iportal.list.MessageList;
-import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.ui.widget.MButton;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.util.SC;
@@ -53,7 +53,7 @@ public class MessagePanel extends HLayout
 					@Override
 					public void preSubmit( DynamicForm form )
 					{
-						Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+						Member send = IndexPage.getInstance( ).getTopbar( ).getMember( );
 						form.setValue( "send", send == null ? 97 : send.getId( ) );
 						form.setValue( "receiver", 97 );
 						form.setValue( "receivetime", new Date() );

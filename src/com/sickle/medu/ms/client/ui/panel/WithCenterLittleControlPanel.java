@@ -17,27 +17,29 @@ import com.smartgwt.client.widgets.layout.HLayout;
  * @author chenhao
  *
  */
-public class WithRightLittleControlPanel extends HLayout
+public class WithCenterLittleControlPanel extends HLayout
 {
 	
 	
-	public WithRightLittleControlPanel(int height,int width){
+	public WithCenterLittleControlPanel(int height,int width){
 		super();
 		this.setWidth( width );
 		this.setHeight( height );
-		this.setAlign( Alignment.RIGHT );
+		this.setPadding( 5 );
+		this.setMembersMargin( 15 );
+		this.setAlign( Alignment.CENTER );
 	}
 	
-	public WithRightLittleControlPanel(int height){
+	public WithCenterLittleControlPanel(int height){
 		super();
 		this.setWidth100( );
 		this.setHeight( height );
-		this.setAlign( Alignment.RIGHT );
+		this.setAlign( Alignment.CENTER );
 	}
 	
 	public Canvas addControl(String title,int width){
 		final HLayout h = new HLayout();
-		h.setStyleName( "controlpanel" );
+		h.setStyleName( "centercontrolpanel" );
 		h.setWidth( width );
 		h.setAlign( Alignment.CENTER  );
 		
@@ -48,7 +50,7 @@ public class WithRightLittleControlPanel extends HLayout
 			@Override
 			public void onMouseOver( MouseOverEvent event )
 			{
-				h.setStyleName( "controlpanel-mousein" );
+				h.setStyleName( "centercontrolpanel-mousein" );
 			}
 		} );
 		
@@ -56,7 +58,7 @@ public class WithRightLittleControlPanel extends HLayout
 			@Override
 			public void onMouseOut( MouseOutEvent event )
 			{
-				h.setStyleName( "controlpanel" );
+				h.setStyleName( "centercontrolpanel" );
 			}
 		} );
 		addMember( h );
@@ -65,9 +67,9 @@ public class WithRightLittleControlPanel extends HLayout
 	
 	public Canvas addNoTextControl( ){
 		HLayout h = new HLayout();
-		h.setStyleName( "controlpanel" );
-		h.setWidth( 15 );
-		h.setHeight( 15 );
+		h.setStyleName( "centercontrolpanel" );
+		h.setWidth( 10 );
+		h.setHeight( 10 );
 		h.setAlign( Alignment.CENTER  );
 		addMember( h );
 		return h;

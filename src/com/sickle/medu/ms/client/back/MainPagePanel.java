@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.back;
 
+import com.sickle.medu.ms.client.iportal.panel.IndexPageTopPanel;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 
@@ -14,7 +15,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
  */
 public class MainPagePanel extends VLayout
 {
-	private MainPageTopBar topbar;
+	private IndexPageTopPanel topbar;
 	
 	private MainPageToolBar toolbar;
 	
@@ -36,7 +37,7 @@ public class MainPagePanel extends VLayout
 		setWidth100( );
 		setHeight100( );
 		
-		topbar = new MainPageTopBar();
+		topbar = new IndexPageTopPanel();
 		toolbar = new MainPageToolBar();
 		tabset = new MainPageTabSet();
 		
@@ -49,7 +50,7 @@ public class MainPagePanel extends VLayout
 	/**
 	 * @return the topbar
 	 */
-	public MainPageTopBar getTopbar( )
+	public IndexPageTopPanel getTopbar( )
 	{
 		return topbar;
 	}

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sickle.medu.ms.client.back;
+package com.sickle.medu.ms.client.iportal.panel;
 
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
@@ -19,7 +19,7 @@ import com.smartgwt.client.widgets.toolbar.RibbonBar;
  * @author chenhao
  *
  */
-public class MainPageTopBar extends RibbonBar
+public class IndexPageTopPanel extends RibbonBar
 {
 
 	private LabelWithBlue welcome = new LabelWithBlue("请先登录");
@@ -28,17 +28,17 @@ public class MainPageTopBar extends RibbonBar
 	
 	private Member member;
 	
-	public MainPageTopBar()
+	public IndexPageTopPanel()
 	{
-	        setHeight(33);
+	        setHeight(50);
 	        setWidth100();
 
 	        addSpacer(6);
 	        ImgButton sgwtHomeButton = new ImgButton();
-	        sgwtHomeButton.setSrc("pieces/24/cube_green.png");
-	        sgwtHomeButton.setWidth(24);
-	        sgwtHomeButton.setHeight(24);
-	        sgwtHomeButton.setPrompt("欢迎登陆爱师网");
+	        sgwtHomeButton.setSrc("icons/toppanel/teachers512.png");
+	        sgwtHomeButton.setWidth( 50 );
+	        sgwtHomeButton.setHeight(50);
+	        sgwtHomeButton.setPrompt("欢迎登陆" + IPageConst.SITE_NAME);
 	        sgwtHomeButton.setHoverStyle("interactImageHover");
 	        sgwtHomeButton.setShowRollOver(false);
 	        sgwtHomeButton.setShowDownIcon(false);
@@ -52,7 +52,7 @@ public class MainPageTopBar extends RibbonBar
 	        addSpacer(6);
 
 	        Label title = new Label(IPageConst.SITE_NAME);
-	        title.setStyleName("sgwtTitle");
+	        title.setStyleName("welcomelabel");
 	        title.setWidth(300);
 	        addMember(title);
 
@@ -62,7 +62,7 @@ public class MainPageTopBar extends RibbonBar
 	        addMember(welcome);
 	        
 	        
-	        modifyButton = new LabelWithBlue("个人信息管理",true);
+	        modifyButton = new LabelWithBlue("【个人中心】",true);
 	        modifyButton.addClickHandler( new com.smartgwt.client.widgets.events.ClickHandler( ) {
 				
 				@Override

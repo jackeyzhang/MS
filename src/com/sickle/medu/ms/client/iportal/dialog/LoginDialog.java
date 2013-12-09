@@ -6,7 +6,7 @@ package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.sickle.medu.ms.client.form.LoginDform;
 import com.sickle.medu.ms.client.iportal.IPageConst;
-import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.rpc.UserManageService;
 import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
@@ -126,7 +126,7 @@ public class LoginDialog extends AbstractDialog
 	
 	private void freshpage( Member member )
 	{
-		MeduIndexPage.getInstance( ).getTopbar( ).setMember( member );
+		IndexPage.getInstance( ).getTopbar( ).setMember( member );
 		callback();
 	}
 

@@ -17,6 +17,7 @@ import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.Layout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
@@ -58,8 +59,12 @@ public class MSPage extends AbstractPage
 		this.addMember( getDefaultTopPanel( ) );
 		// 中间部分
 		this.addMember( getMSPanel( ) );
+		
+		
+		Layout versionpanel = getDefaultVersionPanel( );
+		versionpanel.setHeight( ScreenUtil.getHeight( 0.13 ) );
 		// 下部分
-		this.addMember( getDefaultVersionPanel( ) );
+		this.addMember( versionpanel  );
 	}
 
 	private Canvas getMSPanel( )

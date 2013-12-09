@@ -9,7 +9,7 @@ import java.util.Date;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
-import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
 import com.sickle.pojo.edu.Member;
 import com.sickle.pojo.website.Message;
@@ -173,7 +173,7 @@ public class MemberCard extends AbstractCard
 			@Override
 			public void onClick( ClickEvent event )
 			{
-				Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+				Member send = IndexPage.getInstance( ).getTopbar( ).getMember( );
 				Message msg = new Message();
 				msg.setReceiver(  member.getId( ) );
 				msg.setSend( send.getId( ) );
@@ -183,7 +183,7 @@ public class MemberCard extends AbstractCard
 				@Override
 				public void preSubmit( DynamicForm form )
 				{
-					Member send = MeduIndexPage.getInstance( ).getTopbar( ).getMember( );
+					Member send = IndexPage.getInstance( ).getTopbar( ).getMember( );
 					form.setValue( "send", send.getId( ) );
 					form.setValue( "receiver", member.getId( ) );
 					form.setValue( "receivetime", new Date() );

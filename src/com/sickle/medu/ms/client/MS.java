@@ -10,7 +10,7 @@ import com.sickle.medu.ms.client.iportal.page.ForgetPasswordPage;
 import com.sickle.medu.ms.client.iportal.page.LoginPage;
 import com.sickle.medu.ms.client.iportal.page.MSPage;
 import com.sickle.medu.ms.client.iportal.page.ManageSelfPage;
-import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.iportal.page.MemberPage;
 import com.sickle.medu.ms.client.iportal.page.OrgPage;
 import com.sickle.medu.ms.client.iportal.page.RegisterPage;
@@ -51,14 +51,14 @@ public class MS implements EntryPoint
 					ForgetPasswordPage.getInstance( ).clear( );
 					MSPage.getInstance( ).clear( );
 
-					MeduIndexPage.getInstance( ).draw( );
+					IndexPage.getInstance( ).draw( );
 				}
 				else if ( event.getValue( ).equalsIgnoreCase(
 						IPageConst.PAGE_LOGIN ) )
 				{
 					if ( isFirstVisit == false )
 					{
-						MeduIndexPage.getInstance( ).clear( );
+						IndexPage.getInstance( ).clear( );
 					}
 					RegisterPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
@@ -74,7 +74,7 @@ public class MS implements EntryPoint
 				{
 					if ( isFirstVisit == false )
 					{
-						MeduIndexPage.getInstance( ).clear( );
+						IndexPage.getInstance( ).clear( );
 					}
 					LoginPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
@@ -88,7 +88,7 @@ public class MS implements EntryPoint
 				else if ( event.getValue( ).startsWith( IPageConst.PAGE_MEMBER ) )
 				{
 					// TODO 提供memberid 显示对应member界面或提示先注册或登录
-					MeduIndexPage.getInstance( ).clear( );
+					IndexPage.getInstance( ).clear( );
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
 					OrgPage.getInstance( ).clear( );
@@ -105,7 +105,7 @@ public class MS implements EntryPoint
 				else if ( event.getValue( ).startsWith(
 						IPageConst.PAGE_MANAGESELF ) )
 				{
-					MeduIndexPage.getInstance( ).clear( );
+					IndexPage.getInstance( ).clear( );
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
 					OrgPage.getInstance( ).clear( );
@@ -115,12 +115,12 @@ public class MS implements EntryPoint
 
 					ManageSelfPage.getInstance( ).draw( );
 					ManageSelfPage.getInstance( ).loadingMember(
-							MeduIndexPage.getInstance( ).getTopbar( )
+							IndexPage.getInstance( ).getTopbar( )
 									.getMember( ) );
 				}
 				else if ( event.getValue( ).startsWith( IPageConst.PAGE_ORG ) )
 				{
-					MeduIndexPage.getInstance( ).clear( );
+					IndexPage.getInstance( ).clear( );
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
 					MemberPage.getInstance( ).clear( );
@@ -138,7 +138,7 @@ public class MS implements EntryPoint
 				{
 					if ( isFirstVisit == false )
 					{
-						MeduIndexPage.getInstance( ).clear( );
+						IndexPage.getInstance( ).clear( );
 					}
 					LoginPage.getInstance( ).clear( );
 					RegisterPage.getInstance( ).clear( );
@@ -182,7 +182,7 @@ public class MS implements EntryPoint
 
 	private void clearIportal( )
 	{
-		MeduIndexPage.getInstance( ).clear( );
+		IndexPage.getInstance( ).clear( );
 		LoginPage.getInstance( ).clear( );
 		RegisterPage.getInstance( ).clear( );
 		MemberPage.getInstance( ).clear( );

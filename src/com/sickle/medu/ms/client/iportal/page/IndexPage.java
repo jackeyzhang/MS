@@ -8,13 +8,13 @@ import java.util.List;
 
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Anchor;
-import com.sickle.medu.ms.client.back.MainPageTopBar;
 import com.sickle.medu.ms.client.iportal.IPageConst;
-import com.sickle.medu.ms.client.iportal.banner.AdvertBanner;
+import com.sickle.medu.ms.client.iportal.banner.Banner;
 import com.sickle.medu.ms.client.iportal.banner.IntroduceBanner;
 import com.sickle.medu.ms.client.iportal.card.MemberCard;
 import com.sickle.medu.ms.client.iportal.card.NoticeCard;
 import com.sickle.medu.ms.client.iportal.card.OrgCard;
+import com.sickle.medu.ms.client.iportal.panel.IndexPageTopPanel;
 import com.sickle.medu.ms.client.rpc.MemberService;
 import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
 import com.sickle.medu.ms.client.rpc.NoticeService;
@@ -41,21 +41,21 @@ import com.smartgwt.client.widgets.layout.VLayout;
  * @author chenhao
  * 
  */
-public class MeduIndexPage extends AbstractPage
+public class IndexPage extends AbstractPage
 {
 
-	private static MeduIndexPage instance = new MeduIndexPage();
+	private static IndexPage instance = new IndexPage();
 	
-	private MainPageTopBar topbar;
+	private IndexPageTopPanel topbar;
 	
 	private int membercount,noticecount,schoolcount = 0;
 	
-	public static MeduIndexPage getInstance()
+	public static IndexPage getInstance()
 	{
 		return instance;
 	}
 	
-	private MeduIndexPage( )
+	private IndexPage( )
 	{
 		super(IPageConst.PAGE_MEDU);
 		
@@ -64,10 +64,12 @@ public class MeduIndexPage extends AbstractPage
 		
 		//#1 add topbar
 		addTopBar();
-		//#2 添加大广告图片
+		
+		//#2  添加网站介绍
+		//addIntroducepanel();
+		
+		//#3 添加大广告图片
 		addAdvertpanel();
-		//#3 添加网站介绍
-		addIntroducepanel();
 		
 		//#4 添加老师名片区域
 		Layout memberspitter = insertSpiter("名师推荐");
@@ -87,15 +89,25 @@ public class MeduIndexPage extends AbstractPage
 	
 	private void addTopBar()
 	{
-		topbar = new MainPageTopBar( );
+		topbar = new IndexPageTopPanel( );
 		addMember( topbar );
 	}
 	
 	private void addAdvertpanel()
 	{
-		addMember(new AdvertBanner());
+		HLayout whole = new HLayout( );
+		whole.setWidth100( );
+		whole.setAlign( Alignment.CENTER );
+		
+		HLayout banner = new HLayout( );
+		banner.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
+		banner.addMember( new Banner( IPageConst.PAGE_WIDTH ,0.33) );
+		
+		whole.addMember( banner );
+		addMember(whole);
 	}
 	
+	@SuppressWarnings("unused")
 	private void addIntroducepanel()
 	{
 		HLayout productPanel = new HLayout();
@@ -429,7 +441,7 @@ public class MeduIndexPage extends AbstractPage
 	/**
 	 * @return the topbar
 	 */
-	public MainPageTopBar getTopbar( )
+	public IndexPageTopPanel getTopbar( )
 	{
 		return topbar;
 	}
@@ -438,7 +450,7 @@ public class MeduIndexPage extends AbstractPage
 	/**
 	 * @param topbar the topbar to set
 	 */
-	public void setTopbar( MainPageTopBar topbar )
+	public void setTopbar( IndexPageTopPanel topbar )
 	{
 		this.topbar = topbar;
 	}

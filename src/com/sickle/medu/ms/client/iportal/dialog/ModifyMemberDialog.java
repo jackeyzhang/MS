@@ -4,7 +4,7 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Random;
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
 import com.sickle.medu.ms.client.iportal.IPageConst;
-import com.sickle.medu.ms.client.iportal.page.MeduIndexPage;
+import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.iportal.panel.RegisterPanel;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
 import com.sickle.pojo.edu.Member;
@@ -74,7 +74,7 @@ public class ModifyMemberDialog extends AbstractDialog
 						Member returnmember =  new Member();
 						ListGridRecord rec = new ListGridRecord( dsRequest.getData( ) );
 						MemberDataSource.getInstance( ).recopyValues( rec  , returnmember);
-						MeduIndexPage.getInstance( ).getTopbar( ).setMember( returnmember );
+						IndexPage.getInstance( ).getTopbar( ).setMember( returnmember );
 						History.newItem( IPageConst.PAGE_MS + Random.nextDouble( ) );
 						hide();
 					}

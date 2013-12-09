@@ -15,17 +15,6 @@ h2 {
 	text-align: center;
 }
 
-.sgwtTitle{
-	font-size: 1.5em;
-	color: #7fb80e;
-}
-
-.sgwtTitle-in{
-	font-size: 1.5em;
-	font-weight: bold;
-	text-decoration:underline;
-	color: #7fb80e;
-}
 
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
@@ -58,6 +47,16 @@ body {
 
 .controlpanel-mousein{
 	background-color: #e0861a;
+}
+
+.centercontrolpanel{
+	background-color: #d9d6c3;
+	border-radius: 50%;
+}
+
+.centercontrolpanel-mousein{
+	background-color: #e0861a;
+	border-radius: 50%;
 }
 
 .linklabel{
@@ -112,14 +111,15 @@ body {
 	border-top-style:outset;
 	border-style:solid none none none; 
 	background-color : #fffffb;
+	background-image: url(./images/backgroundtexture.png);
 }
 
 .versionpanel{
 	border:2px solid #009ad6;
 	border-top-style:outset;
 	border-style:none none solid none; 
-	/*background-image: url(./images/backgrounds/bg.png);*/
 	background-color : #fffffb;
+	background-image: url(./images/backgroundtexture.png);
 }
 
 
@@ -135,4 +135,23 @@ body {
 
 .menupanel{
 	background-color : #00a6ac;
+}
+
+.descpanel{
+	padding-top: 20px;
+}
+
+.searchpanel{
+	padding-top: 20px;
+	border-radius: 50%;
+	background-color: #33a3dc;
+}
+
+.descpanel-toppanel{
+	background-color : #121a2a;
+	text-align: center;
+}
+
+.descpanel-middlepanel{
+	background-color: #33a3dc;
 }

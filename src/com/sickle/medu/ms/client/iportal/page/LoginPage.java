@@ -273,7 +273,7 @@ public class LoginPage extends AbstractPage
 	private void freshpage( Member member )
 	{
 		History.newItem( IPageConst.PAGE_MEDU );
-		MeduIndexPage.getInstance( ).getTopbar( ).setMember( member );
+		IndexPage.getInstance( ).getTopbar( ).setMember( member );
 		callback( );
 	}
 
