@@ -1,3 +1,8 @@
+
+/*
+* loginpage all compent
+*/
+
 .loginpage_middlepanel{
 	background-image: url(./images/backgrounds/bg-x.png);
 	background-color: #aa2116;
@@ -8,19 +13,21 @@
 }
 
 .loginpage_logininglabel{
-	font-size: 1.5em;
+	font-size: 1em;
 	font-weight: bold;
 	color: #181d4b;
 	text-align: center;
 }
 
 .loginpage_loginfailedlabel{
-	font-size: 1.5em;
+	font-size: 1em;
 	font-weight: bold;
 	color: #d71345;
 	text-align: center;
 }
 
+
+/**/
 .registerpage{
 	background-color: #fedcbd;
 }

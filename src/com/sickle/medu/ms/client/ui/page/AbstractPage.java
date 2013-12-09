@@ -106,7 +106,7 @@ public abstract class AbstractPage extends VLayout
 	{
 		HLayout versionpanel = new HLayout( );
 		versionpanel.setWidth100( );
-		versionpanel.setHeight(  ScreenUtil.getHeightInt( 0.9 ) - 450  );
+		versionpanel.setHeight(  ScreenUtil.getHeightInt( 0.98) - ScreenUtil.getHeightInt( 0.05 ) - 450  );
 		versionpanel.setAlign( Alignment.CENTER );
 		versionpanel.setStyleName("versionpanel");
 		

@@ -29,6 +29,7 @@ import com.sickle.pojo.edu.Member;
 import com.sickle.pojo.edu.Notice;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.Layout;
@@ -98,7 +99,7 @@ public class MeduIndexPage extends AbstractPage
 	private void addIntroducepanel()
 	{
 		HLayout productPanel = new HLayout();
-		productPanel.setBorder( "2px solid gold" );
+		productPanel.setAlign( VerticalAlignment.CENTER );
 		productPanel.setStyleName( "introducepanel" );
 		productPanel.setWidth( ScreenUtil.getWidth( IPageConst.PAGE_WIDTH ) );
 		productPanel.setAlign( Alignment.CENTER );

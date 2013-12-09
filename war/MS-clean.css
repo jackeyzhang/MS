@@ -1,0 +1,174 @@
+
+/*
+* loginpage all compent
+*/
+
+.loginpage_middlepanel{
+	background-image: url(./images/backgrounds/bg-x.png);
+}
+
+.loginpage_bannerpanel{
+	padding-left: 20px;	
+}
+
+.loginpage_logininglabel{
+	font-size: 1em;
+	font-weight: bold;
+	color: #181d4b;
+	text-align: center;
+}
+
+.loginpage_loginfailedlabel{
+	font-size: 1em;
+	font-weight: bold;
+	color: #d71345;
+	text-align: center;
+}
+
+
+/*×¢²á½çÃæ*/
+.registerpage{
+	background-color: #7bbfea;
+}
+
+.registerpage-content{
+	background-image: url(./images/backgroundtexture.png);
+	border-radius:5px;
+}
+
+
+/* member page style */
+.memberpage{
+	background-color: #deab8a;
+}
+
+/* member card style*/
+.membercardborder {
+	border-width: thin;
+	background-color: #7bbfea;
+}
+
+.membercardborder-mousein{
+	border-width: thin;
+	background-color: #33a3dc;
+}
+
+.membercardname {
+	color: #fff;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.membercardtitle,.membercardresume,.membercardorgname,.membercarddescription{
+	color: #fff;
+	font-size: 1.2em;
+	padding-left: 18px;
+}
+
+.membercard-operate{
+	background-color: #7bbfea;
+}
+
+.membercard-operate-mousein{
+	background-color: #e0861a;
+}
+
+/* bigmembercardborder card style */
+.bigmembercardborder {
+	border-width: thin;
+	background-color: #7bbfea;
+}
+
+.bigmembercardname {
+	font-size: 1.5em;
+	padding-left: 15px;
+	color: #fffffb;
+}
+
+.bigmembercardtitle,.bigmembercardresume,.bigmembercardorgname,.bigmembercarddescription{
+	font-size: 1.2em;
+	padding-left: 18px;
+	color: #fffffb;
+}
+
+
+/* school card style */
+.orgcardborder {
+	border-width: thin;
+	background-color: #b7ba6b;
+}
+
+.orgcardborder-mousein{
+	border-style: solid;
+	border-width: thin;
+	background-color: #b2d235;
+}
+
+/* class card style*/
+.noticecardborder {
+	border-width: thin;
+	background-color: #ffce7b;
+}
+
+
+.noticecardborder-mousein{
+	border-style: solid;
+	border-width: thin;
+	background-color: #e0861a;
+}
+
+.noticecardborder-datedesc,.noticecardborder-address,.noticecardborder-content{
+	font-size: 1.3em;
+	padding-left: 0px;
+}
+
+.noticecardborder-orgname{
+	font-size: 1.6em;
+	font-weight: bold;
+	padding-left: 8px;
+}
+
+/* introduce page style */
+.introducepage {
+	font-size: 2em;
+	font-weight: bold;
+	color:  #777777;
+}
+
+.introducepanel{
+	background-color: #7bbfea;
+}
+
+/* splitter style */
+.splitter {
+	margin: 5px 0px 5px 0px;
+	background-image: url(./images/gauze.png);
+}
+
+.splitterlabel{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #7f7522;
+}
+
+/* footer style  */
+.footer {
+	padding-top:20px;
+	height: 150px;
+	background-color: #d9d6c3;
+}
+
+.vtitle {
+	margin: 0px 0px 0px 0px;
+	background-image: url(./images/gauze.png);
+}
+
+
+.messagepanel{
+	padding-top:20px;
+}
+
+.freeproductpanel{
+	background-color: #fedcbd;
+}

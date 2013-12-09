@@ -73,7 +73,7 @@ public class MenuPanel extends VLayout
 	{
 		menuSplitterPanel.setWidth( getWidth( ) );
 		menuSplitterPanel.setHeight( "1%" );
-		menuSplitterPanel.setBackgroundColor( "#aa2116" );
+		menuSplitterPanel.setStyleName( "menupanel" );
 		
 		menuBarPanel.setWidth( getWidth( ) );
 		menuBarPanel.setAlign( Alignment.LEFT );

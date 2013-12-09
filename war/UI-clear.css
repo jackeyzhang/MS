@@ -1,0 +1,138 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+
+h2 {
+	font-size: 3.5em;
+	font-weight: bold;
+	color: #444693;
+	text-align: center;
+}
+
+.h1black {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+}
+
+.sgwtTitle{
+	font-size: 1.5em;
+	color: #7fb80e;
+}
+
+.sgwtTitle-in{
+	font-size: 1.5em;
+	font-weight: bold;
+	text-decoration:underline;
+	color: #7fb80e;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+	margin: 15px 6px 6px;
+}
+
+body {
+	background-image: url(./images/backgroundtexture.png);
+	background-color: #f9f9f9;
+}
+
+
+.abstractdialog-content{
+	padding-top:30px;
+	/*background-image: url(./images/backgroundtexture.png);*/
+}
+
+.form_textbox{
+	padding : 1px;
+	height : 20px;
+	border-radius:3px;
+	font-size: 1.1em;
+	font-weight: bold;
+	font-family: Arial,Verdana,Sans-serif;
+}
+
+.controlpanel{
+	background-color: #d9d6c3;
+}
+
+.controlpanel-mousein{
+	background-color: #e0861a;
+}
+
+.linklabel{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #7f7522;
+}
+
+.linklabel-mousein{
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #817936;
+	text-decoration:underline;
+}
+
+.greenlittlelabel{
+	font-size: 1.3em;
+	color: #2a5caa;
+}
+
+.whitelittlelabel-mousein{
+	font-size: 1.3em;
+	color: #aa2116;
+	text-decoration:underline;
+}
+
+.whitelittlelabel{
+	font-size: 1.3em;
+	color: #fffffb;
+}
+
+.greenlittlelabel-mousein{
+	font-size: 1.3em;
+	color: #d71345;
+	text-decoration:underline;
+}
+
+.choosepanel{
+	filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+	-moz-opacity:0.5; /*Firefox私有，透明度50%*/
+	opacity:0.5;/*其他，透明度50%*/
+}
+
+.choosepanel-mousein{
+	filter:alpha(opacity=100); /*IE滤镜，透明度50%*/
+	-moz-opacity:1; /*Firefox私有，透明度50%*/
+	opacity:1;/*其他，透明度50%*/
+}
+
+.defaulttoppanel{
+	border:5px solid #009ad6;
+	border-top-style:outset;
+	border-style:solid none none none; 
+	background-color : #fffffb;
+}
+
+.versionpanel{
+	border:2px solid #009ad6;
+	border-top-style:outset;
+	border-style:none none solid none; 
+	/*background-image: url(./images/backgrounds/bg.png);*/
+	background-color : #fffffb;
+}
+
+
+.mousechangepanel{
+	font-size: 1.3em;
+	background-color: #50b7c1;
+}
+
+.mousechangepanel_mousein{
+	font-size: 1.3em;
+	background-color: #00a6ac;
+}
+
+.menupanel{
+	background-color : #00a6ac;
+}

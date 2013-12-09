@@ -67,7 +67,6 @@ public class MSPage extends AbstractPage
 		HLayout fprpage = new HLayout( );
 		fprpage.setWidth100( );
 		fprpage.setAlign( Alignment.CENTER );
-		fprpage.setStyleName( "registerpage" );
 
 		wholepanel = new MenuPanel(
 				ScreenUtil.getWidthInt( IPageConst.PAGE_WIDTH ),
