@@ -1,5 +1,6 @@
 package com.sickle.medu.ms.client.ui.dialog;
 
+import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.Img;
 import com.smartgwt.client.widgets.Label;
@@ -24,6 +25,7 @@ public class LoadingHintDialog extends AbstractDialog{
 	public Canvas getView( )
 	{
 		HLayout v = new HLayout( );
+		v.setAlign( Alignment.CENTER );
 		hintlabel = new Label();
 		hintlabel.setHeight( 30 );
 		

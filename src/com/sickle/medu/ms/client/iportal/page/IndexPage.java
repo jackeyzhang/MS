@@ -171,7 +171,7 @@ public class IndexPage extends AbstractPage
 		final double width = ScreenUtil.getWidthNum( IPageConst.PAGE_WIDTH );
 		final int columnnum = (int) ( (width/IPageConst.CARD_WIDTH) );
 		final int num = columnnum * IPageConst.CARD_ROW_MAX_NUM;
-		final double increment = (width - columnnum * IPageConst.CARD_WIDTH)/columnnum;
+		final double increment = (width - columnnum * IPageConst.CARD_WIDTH)/columnnum + 1;
 		
 		final MemberServiceAsync service = MemberService.Util.getInstance( );
 		service.listAllMember( 0, num ,new AsyncCallbackWithStatus<List<Member>>( "加载教师名片" ) {
