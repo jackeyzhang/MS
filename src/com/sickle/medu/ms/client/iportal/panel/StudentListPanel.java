@@ -2,7 +2,7 @@ package com.sickle.medu.ms.client.iportal.panel;
 
 import com.sickle.medu.ms.client.iportal.dialog.StudentDialog;
 import com.sickle.medu.ms.client.iportal.list.StudentList;
-import com.sickle.medu.ms.client.ui.widget.MButton;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;

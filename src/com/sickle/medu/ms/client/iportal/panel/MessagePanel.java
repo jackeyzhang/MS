@@ -8,7 +8,7 @@ import java.util.Date;
 import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
 import com.sickle.medu.ms.client.iportal.list.MessageList;
 import com.sickle.medu.ms.client.iportal.page.IndexPage;
-import com.sickle.medu.ms.client.ui.widget.MButton;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.form.DynamicForm;

@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package com.sickle.medu.ms.client.form;
 
 import com.smartgwt.client.widgets.form.DynamicForm;
@@ -11,48 +12,48 @@ import com.smartgwt.client.widgets.form.fields.events.BlurHandler;
 import com.smartgwt.client.widgets.form.fields.events.FocusEvent;
 import com.smartgwt.client.widgets.form.fields.events.FocusHandler;
 
-
 /**
  * 查找表单
  * 
  * @author chenhao
- *
+ * 
  */
 public class SearchDform extends DynamicForm
 {
 
 	private TextItem username;
-	
-	public SearchDform()
+
+	public SearchDform( )
 	{
-		this.setWidth100( );
-		this.setPadding( 10 );
-		username = new TextItem("name");
+		username = new TextItem( "name" );
 		username.setTextBoxStyle( "searchform" );
+		username.setTitleStyle( "searchformtitle" );
+		username.setShowFocused( false );
 		username.setTitle( "搜人/课程" );
-		username.setShowFocused( false );	
 		username.setWidth( 200 );
-		
+		username.setShowTitle( false );
+
 		username.addFocusHandler( new FocusHandler( ) {
+
 			@Override
 			public void onFocus( FocusEvent event )
 			{
 				username.setTextBoxStyle( "searchform-focus" );
 			}
 		} );
-		
+
 		username.addBlurHandler( new BlurHandler( ) {
+
 			@Override
 			public void onBlur( BlurEvent event )
 			{
 				username.setTextBoxStyle( "searchform" );
 			}
 		} );
-		
-		setFields(new FormItem[] {username});
+
+		setFields( new FormItem[]{username} );
 	}
 
-	
 	/**
 	 * @return the username
 	 */
@@ -60,6 +61,5 @@ public class SearchDform extends DynamicForm
 	{
 		return username;
 	}
-
 
 }

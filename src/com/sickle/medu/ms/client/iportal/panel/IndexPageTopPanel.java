@@ -7,10 +7,17 @@ import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.form.SearchDform;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
 import com.sickle.pojo.edu.Member;
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.ImgButton;
 import com.smartgwt.client.widgets.Label;
 import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.Layout;
+import com.smartgwt.client.widgets.layout.VLayout;
 import com.smartgwt.client.widgets.toolbar.RibbonBar;
 
 
@@ -57,8 +64,8 @@ public class IndexPageTopPanel extends RibbonBar
 	        title.setWidth(300);
 	        addMember(title);
 	        
-	        addMember( new SearchDform());
-
+	        addMember( getSearchpanel() );
+	     
 	        addFill();
 	        
 	        welcome.setWidth( 200 );
@@ -111,5 +118,30 @@ public class IndexPageTopPanel extends RibbonBar
 		return member;
 	}
 	
+	
+	private Layout getSearchpanel()
+	{
+        VLayout wrappanel = new VLayout();
+        wrappanel.setHeight100( );
+        wrappanel.setAlign( VerticalAlignment.CENTER );
+        
+        final  SearchDform searchform = new SearchDform();
+        searchform.setAlign( Alignment.CENTER );
+        
+        HLayout searchpanel = new HLayout();
+        searchpanel.setAlign( Alignment.RIGHT );
+        searchpanel.setMembersMargin( 5 );
+        searchpanel.addMember( searchform );
+        searchpanel.setHeight( 25 );
+        searchpanel.addMember( new MButton("搜人/课程"){
+			@Override
+			public void handleClick( )
+			{
+				SC.say( "找到了" + searchform.getUsername( ).getValueAsString( ) );
+			}
+        });
+        wrappanel.addMember( searchpanel );
+        return wrappanel;
+	}
 	
 }

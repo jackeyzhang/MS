@@ -6,7 +6,7 @@ package com.sickle.medu.ms.client.iportal.panel;
 import com.sickle.medu.ms.client.form.ClassesForm;
 import com.sickle.medu.ms.client.iportal.list.ClassList;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
-import com.sickle.medu.ms.client.ui.widget.MButton;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.data.DSCallback;
 import com.smartgwt.client.data.DSRequest;

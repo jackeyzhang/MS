@@ -6,7 +6,7 @@ package com.sickle.medu.ms.client.iportal.card;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.dialog.ModifyMemberDialog;
 import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
-import com.sickle.medu.ms.client.ui.widget.MButton;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;

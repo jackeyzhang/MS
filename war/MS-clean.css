@@ -201,16 +201,18 @@
 
 .searchform{
 	background-color: #f6f5ec;
-	font-size: 1.2em;
-	border-radius: 6px;
+	font-size: 1.5em;
 	border:1px solid #f6f5ec;
 }
 
 .searchform-focus{
 	background-color: #f6f5ec;
-	font-size: 1.2em;
-	border-radius: 6px;
+	font-size: 1.5em;
 	border:1px solid #33a3dc;
+}
+
+.searchformtitle{
+	font-size: 1.2em;
 }
 
 
