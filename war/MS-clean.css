@@ -200,19 +200,22 @@
 }
 
 .searchform{
+	padding:0px;
 	background-color: #f6f5ec;
 	font-size: 1.5em;
-	border:1px solid #f6f5ec;
+	border:2px solid #33a3dc;
 }
 
 .searchform-focus{
+	padding:0px;
 	background-color: #f6f5ec;
 	font-size: 1.5em;
-	border:1px solid #33a3dc;
+	border:2px solid #b2d235;
 }
 
 .searchformtitle{
 	font-size: 1.2em;
+	padding: 0px;
 }
 
 

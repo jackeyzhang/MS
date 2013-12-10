@@ -25,11 +25,13 @@ public class SearchDform extends DynamicForm
 
 	public SearchDform( )
 	{
+		setPadding( 0 );
+		setMargin( 0 );
 		username = new TextItem( "name" );
 		username.setTextBoxStyle( "searchform" );
 		username.setTitleStyle( "searchformtitle" );
 		username.setShowFocused( false );
-		username.setTitle( "搜人/课程" );
+		username.setTitle( "搜老师/课程" );
 		username.setWidth( 200 );
 		username.setShowTitle( false );
 

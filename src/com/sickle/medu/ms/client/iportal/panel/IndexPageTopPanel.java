@@ -130,16 +130,17 @@ public class IndexPageTopPanel extends RibbonBar
         
         HLayout searchpanel = new HLayout();
         searchpanel.setAlign( Alignment.RIGHT );
-        searchpanel.setMembersMargin( 5 );
         searchpanel.addMember( searchform );
         searchpanel.setHeight( 25 );
-        searchpanel.addMember( new MButton("搜人/课程"){
+        
+        MButton button =  new MButton("搜人/课程"){
 			@Override
 			public void handleClick( )
 			{
 				SC.say( "找到了" + searchform.getUsername( ).getValueAsString( ) );
 			}
-        });
+        };
+        searchpanel.addMember( button );
         wrappanel.addMember( searchpanel );
         return wrappanel;
 	}
