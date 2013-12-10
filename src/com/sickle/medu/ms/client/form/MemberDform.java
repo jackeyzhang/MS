@@ -91,12 +91,12 @@ public class MemberDform extends DynamicForm
 		sex.setVertical( false );
 		sex.setValueMap( "男","女" );
 		sex.setValue( "男" );
-		sex.setTitleStyle( "h2" );
+		sex.setTitleStyle( "form_texttitle" );
 		sex.setTitle("性别");
 		sex.setRequired(true);
 		
 		isteacher = new CheckboxItem( "forhelp" );
-		isteacher.setTitleStyle( "h2" );
+		isteacher.setTitleStyle( "form_texttitle" );
 		isteacher.setTitle("填写老师信息？");
 		
 		chart = new DefaultTextItem( "character" );
@@ -130,7 +130,7 @@ public class MemberDform extends DynamicForm
 		
 		city = new ComboBoxItem("city");
 		city.setWidth( columnwidth[1] );
-		city.setTitleStyle( "h2" );
+		city.setTitleStyle( "form_texttitle" );
 		city.setTitle("城市");
 		city.setRequired(true);
 		city.setVisible( false );
@@ -139,7 +139,7 @@ public class MemberDform extends DynamicForm
 		
 		area = new ComboBoxItem("area");
 		area.setWidth( columnwidth[1] );
-		area.setTitleStyle( "h2" );
+		area.setTitleStyle( "form_texttitle" );
 		area.setTitle("区县");
 		area.setRequired(true);
 		area.setVisible( false );

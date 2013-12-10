@@ -35,7 +35,7 @@ public class ClassesForm extends AbstractForm
 		this.setColWidths( 150,250 );
 		for ( FormItem item : items )
 		{
-			item.setTitleStyle( "h2" );
+			item.setTitleStyle( "form_texttitle" );
 			item.setWidth( 240 );
 		}
 	}
@@ -48,7 +48,7 @@ public class ClassesForm extends AbstractForm
 		this.setColWidths( 150,250 );
 		for ( FormItem item : items )
 		{
-			item.setTitleStyle( "h2" );
+			item.setTitleStyle( "form_texttitle" );
 			item.setWidth( 240 );
 		}
 	}
@@ -61,7 +61,7 @@ public class ClassesForm extends AbstractForm
 		this.setColWidths( 150,250 );
 		for ( FormItem item : items )
 		{
-			item.setTitleStyle( "h2" );
+			item.setTitleStyle( "form_texttitle" );
 			item.setWidth( 240 );
 		}
 	}

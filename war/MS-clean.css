@@ -198,3 +198,19 @@
 	background-color: #33a3dc;
 	border-style:none none solid none; 
 }
+
+.searchform{
+	background-color: #f6f5ec;
+	font-size: 1.2em;
+	border-radius: 6px;
+	border:1px solid #f6f5ec;
+}
+
+.searchform-focus{
+	background-color: #f6f5ec;
+	font-size: 1.2em;
+	border-radius: 6px;
+	border:1px solid #33a3dc;
+}
+
+

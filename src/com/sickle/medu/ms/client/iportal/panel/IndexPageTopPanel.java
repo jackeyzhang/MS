@@ -4,6 +4,7 @@
 package com.sickle.medu.ms.client.iportal.panel;
 
 import com.google.gwt.user.client.History;
+import com.sickle.medu.ms.client.form.SearchDform;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
 import com.sickle.pojo.edu.Member;
@@ -55,6 +56,8 @@ public class IndexPageTopPanel extends RibbonBar
 	        title.setStyleName("welcomelabel");
 	        title.setWidth(300);
 	        addMember(title);
+	        
+	        addMember( new SearchDform());
 
 	        addFill();
 	        

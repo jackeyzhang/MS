@@ -19,6 +19,8 @@ public class LoadingHintDialog extends AbstractDialog{
 	
 	public LoadingHintDialog(){
 		super("提示");
+		this.setHeaderStyle( "display-none" );
+		this.setHeight( 35 );
 	}
 
 	@Override

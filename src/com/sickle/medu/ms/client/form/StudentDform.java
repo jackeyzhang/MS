@@ -84,11 +84,11 @@ public class StudentDform extends DynamicForm
 		confirmpassword.setType("password");
 		
 		sex = new RadioGroupItem( "sex" );
-		sex.setTitleStyle( "h2" );
+		sex.setTitleStyle( "form_texttitle" );
 		sex.setVertical( false );
 		sex.setValueMap( "男","女" );
 		sex.setValue( "男" );
-		sex.setTitleStyle( "h2" );
+		sex.setTitleStyle( "form_texttitle" );
 		sex.setTitle("性别");
 		sex.setRequired(true);
 		
@@ -105,15 +105,15 @@ public class StudentDform extends DynamicForm
 		resume.setTitle("备注");
 		
 		city = new ComboBoxItem("city");
-		city.setTitleStyle( "h2" );
+		city.setTitleStyle( "form_texttitle" );
 		city.setWidth( columnwidth[1] );
 		city.setTitle("城市");
 		city.setValueMap( FormConst.CITY );
 		
 		area = new ComboBoxItem("area");
-		area.setTitleStyle( "h2" );
+		area.setTitleStyle( "form_texttitle" );
 		area.setWidth( columnwidth[1] );
-		area.setTitleStyle( "h2" );
+		area.setTitleStyle( "form_texttitle" );
 		area.setTitle("区县");
 		
 		city.addChangedHandler( new ChangedHandler( ) {

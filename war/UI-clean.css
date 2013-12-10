@@ -33,12 +33,30 @@ body {
 }
 
 .form_textbox{
-	padding : 1px;
-	height : 20px;
-	border-radius:3px;
-	font-size: 1.1em;
-	font-weight: bold;
+	padding : 2px;
+	height : 30px;
+	font-size: 1.5em;
 	font-family: Arial,Verdana,Sans-serif;
+	font-weight: bold;
+	border-radius:5px;
+	border:1px solid #f6f5ec;
+}
+
+.form_textbox_focus{
+	padding : 2px;
+	height : 30px;
+	font-size: 1.5em;
+	font-family: Arial,Verdana,Sans-serif;
+	font-weight: bold;
+	border-radius:5px;
+	border:1px solid #5c7a29;
+}
+
+.form_texttitle{
+	font-size: 1.5em;
+	font-family: ËÎÌו;
+	font-weight: bold;
+	color:#464547;
 }
 
 .controlpanel{

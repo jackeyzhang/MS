@@ -18,7 +18,7 @@ public class DefaultTextAreaItem extends TextAreaItem
 	public DefaultTextAreaItem( )
 	{
 		super( );
-		setTitleStyle( "h2" );
+		setTitleStyle( "form_texttitle" );
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class DefaultTextAreaItem extends TextAreaItem
 	public DefaultTextAreaItem( String name, String title )
 	{
 		super( name, title );
-		setTitleStyle( "h2" );
+		setTitleStyle( "form_texttitle" );
 	}
 
 	/**
@@ -37,7 +37,8 @@ public class DefaultTextAreaItem extends TextAreaItem
 	public DefaultTextAreaItem( String name )
 	{
 		super( name );
-		setTitleStyle( "h2" );
+		setTitleStyle( "form_texttitle" );
 	}
 
+	
 }
