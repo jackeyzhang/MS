@@ -183,3 +183,18 @@
 .freeproductpanel{
 	background-color: #fedcbd;
 }
+
+.searchpanel{
+	padding-top:21px;
+	padding-left:1px;
+}
+
+.searchpanel-choosepanel{
+	background-color: #121a2a;
+	border-style:none none solid none; 
+}
+
+.searchpanel-choosepanel-click{
+	background-color: #33a3dc;
+	border-style:none none solid none; 
+}

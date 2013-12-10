@@ -17,7 +17,7 @@ public class BluePanel extends VLayout
 	public BluePanel(String width,String height,String content)
 	{
 		setSize( width, height );
-		setStyleName( "descpanel-middlepanel" );
+		setStyleName( "bluepanel" );
 		addMember( new LabelWithWhite( content ) );
 	}
 	
