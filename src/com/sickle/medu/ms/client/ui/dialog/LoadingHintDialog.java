@@ -19,7 +19,6 @@ public class LoadingHintDialog extends AbstractDialog{
 	
 	public LoadingHintDialog(){
 		super("提示");
-		this.setHeaderStyle( "display-none" );
 		this.setHeight( 35 );
 	}
 
@@ -27,12 +26,16 @@ public class LoadingHintDialog extends AbstractDialog{
 	public Canvas getView( )
 	{
 		HLayout v = new HLayout( );
+		v.setHeight100( );
+		v.setWidth100( );
 		v.setAlign( Alignment.CENTER );
+		
 		hintlabel = new Label();
 		hintlabel.setHeight( 30 );
 		
 		Img img = new Img("loading.gif");
 		img.setSize( "48px", "48px" );
+		
 		v.addMember( img );
 		v.addMember( hintlabel );
 		return v;

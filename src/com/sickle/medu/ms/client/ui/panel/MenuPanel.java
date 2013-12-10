@@ -72,8 +72,8 @@ public class MenuPanel extends VLayout
 	private void initMenuPanel()
 	{
 		menuSplitterPanel.setWidth( getWidth( ) );
-		menuSplitterPanel.setHeight( "1%" );
-		menuSplitterPanel.setStyleName( "menupanel" );
+		menuSplitterPanel.setHeight( "0.5%" );
+		menuSplitterPanel.setStyleName( "menupanel-splitter" );
 		
 		menuBarPanel.setWidth( getWidth( ) );
 		menuBarPanel.setAlign( Alignment.LEFT );
@@ -87,7 +87,7 @@ public class MenuPanel extends VLayout
 	{
 		LabelWithWhite menuitem = new LabelWithWhite( menu );
 		menuitem.setCursor( Cursor.POINTER );
-		final MouseChangePanel p = new MouseChangePanel();
+		final MouseChangePanel p = new MouseChangePanel(true,"menupanel-choosepanel","menupanel-choosepanel-click");
 		p.setWidth( 30 );
 		p.addMember( menuitem );
 		p.addClickHandler( new ClickHandler( ) {
@@ -98,15 +98,15 @@ public class MenuPanel extends VLayout
 				contentPanel.addMember( showpanel );
 				for(MouseChangePanel anp : mcpanels)
 				{
-					anp.removeFixMouseinStyle( );
+					anp.removeFixMouseinStyle("menupanel-choosepanel" );
 				}
-				p.fixMouseinStyle( );
+				p.fixMouseinStyle("menupanel-choosepanel-click" );
 			}
 		} );
 		mcpanels.add( p );
 		if( mcpanels.size( ) == 1 )
 		{
-			p.fixMouseinStyle( );
+			p.fixMouseinStyle("menupanel-choosepanel-click" );
 			contentPanel.addMember( showpanel );
 		}
 		menuBarPanel.addMember( p );

@@ -91,11 +91,29 @@ public class MouseChangePanel extends HLayout
 		}
 	}
 	
+	public void fixMouseinStyle(String instyle)
+	{
+		if(mousechange)
+		{
+			this.setStyleName( instyle );
+			mousechange = false;
+		}
+	}
+	
 	public void removeFixMouseinStyle()
 	{
 		if(!mousechange)
 		{
 			this.setStyleName( "mousechangepanel" );
+			mousechange = true;
+		}
+	}
+	
+	public void removeFixMouseinStyle(String outstyle)
+	{
+		if(!mousechange)
+		{
+			this.setStyleName( outstyle );
 			mousechange = true;
 		}
 	}

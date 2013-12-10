@@ -151,10 +151,17 @@ body {
 	background-color: #33a3dc;
 }
 
-.menupanel{
-	background-color : #00a6ac;
+.menupanel-splitter{
+	background-color : #130c0e;
 }
 
+.menupanel-choosepanel{
+	background-color: #33a3dc;
+}
+
+.menupanel-choosepanel-click{
+	background-color : #130c0e;
+}
 .descpanel{
 	padding-top: 20px;
 }

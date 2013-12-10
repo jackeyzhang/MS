@@ -74,7 +74,7 @@ public class MSPage extends AbstractPage
 		fprpage.setAlign( Alignment.CENTER );
 
 		wholepanel = new MenuPanel(
-				ScreenUtil.getWidthInt( IPageConst.PAGE_WIDTH ),
+				ScreenUtil.getWidthInt( 1 ),
 				ScreenUtil.getHeightInt( 0.8 ) );
 		
 		memberpanel = new MemberPanel();
