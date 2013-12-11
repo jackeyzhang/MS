@@ -39,7 +39,7 @@
 
 /*×¢²á½çÃæ*/
 .registerpage{
-	background-color: #7bbfea;
+	/* background-color: #7bbfea; */
 }
 
 .registerpage-content{
@@ -102,7 +102,6 @@
 	padding-left: 18px;
 	color: #fffffb;
 }
-
 
 /* school card style */
 .orgcardborder {
@@ -178,10 +177,18 @@
 
 .messagepanel{
 	padding-top:20px;
+	padding-left:20px;
+	background-color: #7bbfea;
+}
+
+.classpanel{
+	padding-top:20px;
+	padding-left:20px;
+	background-color: #7bbfea;
 }
 
 .freeproductpanel{
-	background-color: #fedcbd;
+	background-color: #7bbfea;
 }
 
 .searchpanel{

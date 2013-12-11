@@ -44,7 +44,7 @@ public class ClassPanel extends HLayout
 	{
 		setWidth100( );
 		setHeight100( );
-		setStyleName( "messagepanel" );
+		setStyleName( "classpanel" );
 		
 		addMember( list );
 		addMember( buttonpanel );

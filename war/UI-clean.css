@@ -28,7 +28,7 @@ body {
 
 
 .abstractdialog-content{
-	padding-top:30px;
+	padding-top:10px;
 	/*background-image: url(./images/backgroundtexture.png);*/
 }
 
@@ -38,7 +38,7 @@ body {
 	font-size: 1.2em;
 	font-family: Arial,Verdana,Sans-serif;
 	border-radius:5px;
-	border:2px solid #f6f5ec;
+	border:2px solid #d1c7b7;
 }
 
 .form_textbox_focus{

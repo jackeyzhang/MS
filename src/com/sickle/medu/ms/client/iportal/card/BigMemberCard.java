@@ -52,7 +52,6 @@ public class BigMemberCard extends AbstractCard
 	
 	private void initLayout()
 	{
-		this.setMargin( 2 );
 		this.setStyleName( "bigmembercardborder" );
 		information.setHeight100( );
 		information.setWidth100( );

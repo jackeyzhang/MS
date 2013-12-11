@@ -27,7 +27,7 @@ public class DefaultTextItem extends TextItem
 		setTitleStyle( "form_texttitle" );
 		setTextBoxStyle( "form_textbox" );
 		setShowFocused( false );
-		
+		initActions();
 	}
 
 	/**

@@ -19,8 +19,6 @@ import com.smartgwt.client.widgets.form.fields.events.FocusHandler;
 public class DefaultPasswordItem extends PasswordItem
 {
 
-	
-	
 	public DefaultPasswordItem( )
 	{
 		super( );
