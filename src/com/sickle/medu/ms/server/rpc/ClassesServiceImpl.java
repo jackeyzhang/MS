@@ -22,11 +22,12 @@ import javax.servlet.ServletException;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.sickle.dao.DaoServiceFactory;
 import com.sickle.dto.ClsDTO;
-import com.sickle.dto.MemberDTO;
+import com.sickle.dto.StudentDTO;
 import com.sickle.exception.CodeException;
 import com.sickle.medu.ms.client.rpc.ClassesService;
 import com.sickle.pojo.edu.Cls;
 import com.sickle.pojo.edu.Member;
+import com.sickle.pojo.edu.Student;
 import com.sickle.service.itf.IClsService;
 import com.sickle.service.itf.IMemberService;
 
@@ -95,8 +96,14 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 	public Cls modifyClasses( Cls cls ) throws Exception
 	{
 		Cls oldcls = findClass( cls.getId( ) );
-		cls.setStudents( oldcls.getStudents( ) );
-		Cls newCls = service.modifyCls( cls );
+		
+		oldcls.setName( cls.getName( ) );
+		oldcls.setClassaddress( cls.getClassaddress( ) );
+		oldcls.setContact( cls.getContact( ) );
+		oldcls.setTeachername( cls.getTeachername( ) );
+		oldcls.setClasstime( cls.getClasstime( ) );
+		
+		Cls newCls = service.modifyCls( oldcls );
 		return new ClsDTO().to( newCls );
 	}
 
@@ -116,22 +123,21 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 
 
 	@Override
-	public List<Member> findStudents( int classid ) throws Exception
+	public List<Student> findStudents( int classid ) throws Exception
 	{
 		Cls cls = findClass(classid);
-		List<Member> stus = new ArrayList<Member>(0);
+		List<Student> stus = new ArrayList<Student>(0);
 		if(cls == null)
 		{
 			return stus;
 		}
-		MemberDTO dto = new MemberDTO();
-		for(Member stu : cls.getStudents( ))
+		StudentDTO dto = new StudentDTO();
+		for(Student stu : cls.getStudents( ))
 		{
 			stus.add(dto.to(stu));
 		}
 		return stus;
 	}
-
 
 
 	@Override
@@ -146,7 +152,6 @@ public class ClassesServiceImpl extends RemoteServiceServlet implements  Classes
 		}
 		return classes;
 	}
-
 
 
 	@Override

@@ -5,37 +5,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.sickle.medu.ms.client.rpc.MemberService;
-import com.sickle.medu.ms.client.rpc.MemberServiceAsync;
+import com.sickle.medu.ms.client.rpc.StudentService;
+import com.sickle.medu.ms.client.rpc.StudentServiceAsync;
 import com.sickle.medu.ms.client.ui.util.AsyncCallbackWithStatus;
-import com.sickle.pojo.edu.Member;
+import com.sickle.pojo.edu.Student;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 /**
- * 教师datasource
+ * student datasource
  * 
  * @author chenhao
  * 
  */
-public class MemberDataSource extends GwtRpcDataSource
+public class StudentDataSource extends GwtRpcDataSource
 {
 
-	private static MemberDataSource instance = null;
+	private static StudentDataSource instance = null;
 
-	public static MemberDataSource getInstance( )
+	public static StudentDataSource getInstance( )
 	{
 		if ( instance == null )
 		{
-			instance = new MemberDataSource( "MemberDataSource" );
+			instance = new StudentDataSource( "StudentDataSource" );
 		}
 		return instance;
 	}
 
-	public MemberDataSource( String id )
+	public StudentDataSource( String id )
 	{
-		getDataSource( Member.class ).setID( id );
+		getDataSource( Student.class ).setID( id );
 	}
 
 	@Override
@@ -45,10 +45,10 @@ public class MemberDataSource extends GwtRpcDataSource
 		if( request.getCriteria( ).getAttributeAsIntArray( "id" ) != null )
 		{
 			int[] array = request.getCriteria( ).getAttributeAsIntArray( "id" );
-			MemberServiceAsync service = MemberService.Util.getInstance( );
-			service.listMember( array, new AsyncCallbackWithStatus<List<Member>>( "" ) {
+			StudentServiceAsync service = StudentService.Util.getInstance( );
+			service.listStudent( array, new AsyncCallbackWithStatus<List<Student>>( "" ) {
 				@Override
-				public void call( List<Member> result )
+				public void call( List<Student> result )
 				{
 					List<ListGridRecord> list = new ArrayList<ListGridRecord>();
 					if (result.size() > 0 )
@@ -62,7 +62,7 @@ public class MemberDataSource extends GwtRpcDataSource
 					}
 					response.setData( list.toArray( new ListGridRecord[list.size( )] ) );
 					response.setTotalRows( result.size( ) );
-					getDataSource( Member.class ).processResponse( requestId,
+					getDataSource( Student.class ).processResponse( requestId,
 							response );
 				}
 			} );
@@ -73,12 +73,12 @@ public class MemberDataSource extends GwtRpcDataSource
 		final int endIndex = ( request.getEndRow( ) == null ) ? -1 : request
 				.getEndRow( );
 		final String namequery = request.getCriteria( ).getAttributeAsString( getQueryName() );
-		MemberServiceAsync service = MemberService.Util.getInstance( );
-		service.listAllMember( startIndex,endIndex,
-				new AsyncCallbackWithStatus<List<Member>>( ) {
+		StudentServiceAsync service = StudentService.Util.getInstance( );
+		service.listAllStudent( startIndex,endIndex,
+				new AsyncCallbackWithStatus<List<Student>>( ) {
 
 					@Override
-					public void call( List<Member> result )
+					public void call( List<Student> result )
 					{
 						int size = result.size( );
 						if ( endIndex >= 0 )
@@ -120,7 +120,7 @@ public class MemberDataSource extends GwtRpcDataSource
 						}
 						response.setData( list.toArray( new ListGridRecord[list.size( )] ) );
 						response.setTotalRows( result.size( ) );
-						getDataSource( Member.class ).processResponse( requestId,
+						getDataSource( Student.class ).processResponse( requestId,
 								response );
 					}
 				} );
@@ -132,23 +132,32 @@ public class MemberDataSource extends GwtRpcDataSource
 	{
 		JavaScriptObject data = request.getData( );
 		ListGridRecord rec = new ListGridRecord( data );
+		Student student = new Student( );
+		recopyValues( rec, student );
 		
-		Member member = new Member( );
-		recopyValues( rec, member );
+		StudentServiceAsync service = StudentService.Util.getInstance( );
+		Integer classid = rec.getAttributeAsInt( "classid" );
 		
-		MemberServiceAsync service = MemberService.Util.getInstance( );
-		service.addMember( member, new AsyncCallbackWithStatus<Member>( ) {
-			public void call( Member result )
-			{
-				ListGridRecord[] list = new ListGridRecord[1];
-				ListGridRecord newRec = new ListGridRecord( );
-				copyValues( (Member) result, newRec );
-				list[0] = newRec;
-				response.setData( list );
-				getDataSource( Member.class )
-						.processResponse( requestId, response );
-			}
-		} );
+		if( classid == null )
+		{
+			
+		}
+		else
+		{
+			service.addStudent( classid,student, new AsyncCallbackWithStatus<Student>( ) {
+				
+				public void call( Student result )
+				{
+					ListGridRecord[] list = new ListGridRecord[1];
+					ListGridRecord newRec = new ListGridRecord( );
+					copyValues( (Student) result, newRec );
+					list[0] = newRec;
+					response.setData( list );
+					getDataSource( Student.class )
+							.processResponse( requestId, response );
+				}
+			} );
+		}
 	}
 
 	@Override
@@ -157,19 +166,19 @@ public class MemberDataSource extends GwtRpcDataSource
 	{
 		JavaScriptObject data = request.getData( );
 		ListGridRecord rec = new ListGridRecord( data );
-		Member userRec = new Member( );
+		Student userRec = new Student( );
 		recopyValues( rec, userRec );
-		MemberServiceAsync service = MemberService.Util.getInstance( );
-		service.modifyMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
+		StudentServiceAsync service = StudentService.Util.getInstance( );
+		service.modifyStudent( userRec, new AsyncCallbackWithStatus<Student>( ) {
 
-			public void call( Member result )
+			public void call( Student result )
 			{
 				ListGridRecord[] list = new ListGridRecord[1];
 				ListGridRecord newRec = new ListGridRecord( );
-				copyValues( (Member) result, newRec );
+				copyValues( (Student) result, newRec );
 				list[0] = newRec;
 				response.setData( list );
-				getDataSource( Member.class )
+				getDataSource( Student.class )
 						.processResponse( requestId, response );
 			}
 		} );
@@ -181,17 +190,20 @@ public class MemberDataSource extends GwtRpcDataSource
 	{
 		JavaScriptObject data = request.getData( );
 		final ListGridRecord rec = new ListGridRecord( data );
-		Member userRec = new Member( );
+		Student userRec = new Student( );
+		
+		Integer classid = rec.getAttributeAsInt( "classid" );
+		
 		recopyValues( rec, userRec );
-		MemberServiceAsync service = MemberService.Util.getInstance( );
-		service.deleteMember( userRec, new AsyncCallbackWithStatus<Member>( ) {
+		StudentServiceAsync service = StudentService.Util.getInstance( );
+		service.deleteStudent(classid, userRec, new AsyncCallbackWithStatus<Student>( ) {
 
-			public void call( Member result )
+			public void call( Student result )
 			{
 				ListGridRecord[] list = new ListGridRecord[1];
 				list[0] = rec;
 				response.setData( list );
-				getDataSource( Member.class )
+				getDataSource( Student.class )
 						.processResponse( requestId, response );
 			}
 		} );

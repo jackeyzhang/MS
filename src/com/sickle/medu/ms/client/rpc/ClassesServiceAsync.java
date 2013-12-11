@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sickle.pojo.edu.Cls;
-import com.sickle.pojo.edu.Member;
+import com.sickle.pojo.edu.Student;
 
 
 public interface ClassesServiceAsync
@@ -21,7 +21,7 @@ public interface ClassesServiceAsync
 
 	void findClass( int classid, AsyncCallback<Cls> callback );
 
-	void findStudents( int classsid, AsyncCallback<List<Member>> callback );
+	void findStudents( int classsid, AsyncCallback<List<Student>> callback );
 
 	void listClasses( int memberid, AsyncCallback<List<Cls>> callback );
 

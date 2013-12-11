@@ -35,25 +35,23 @@ body {
 .form_textbox{
 	padding : 2px;
 	height : 30px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	font-family: Arial,Verdana,Sans-serif;
-	font-weight: bold;
 	border-radius:5px;
-	border:1px solid #f6f5ec;
+	border:2px solid #f6f5ec;
 }
 
 .form_textbox_focus{
 	padding : 2px;
 	height : 30px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	font-family: Arial,Verdana,Sans-serif;
-	font-weight: bold;
 	border-radius:5px;
-	border:1px solid #f47920;
+	border:2px solid #f47920;
 }
 
 .form_texttitle{
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-family: ËÎÌו;
 	font-weight: bold;
 	color:#464547;

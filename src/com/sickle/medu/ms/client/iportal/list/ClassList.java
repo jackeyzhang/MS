@@ -6,12 +6,12 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.sickle.medu.ms.client.datasource.ClassDataSource;
-import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.medu.ms.client.datasource.StudentDataSource;
 import com.sickle.medu.ms.client.iportal.panel.StudentListPanel;
 import com.sickle.medu.ms.client.rpc.ClassesService;
 import com.sickle.medu.ms.client.rpc.ClassesServiceAsync;
 import com.sickle.pojo.edu.Cls;
-import com.sickle.pojo.edu.Member;
+import com.sickle.pojo.edu.Student;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.Record;
 import com.smartgwt.client.util.SC;
@@ -41,7 +41,7 @@ public class ClassList extends ListGrid
 	@Override
 	public DataSource getRelatedDataSource( ListGridRecord record )
 	{
-		return MemberDataSource.getInstance( ).getDataSource( Member.class );
+		return StudentDataSource.getInstance( ).getDataSource( Student.class );
 	}
 
 	@Override
@@ -69,7 +69,8 @@ public class ClassList extends ListGrid
 					ClassDataSource.getInstance( ).copyValues( cls, record );
 					records.add( record );
 				}
-				setData( records.toArray( new Record[records.size( )]) );
+				Record[] rs = records.toArray( new Record[records.size( )]);
+				setData( rs );
 			}
 			
 			@Override

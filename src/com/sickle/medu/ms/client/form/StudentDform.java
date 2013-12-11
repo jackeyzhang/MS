@@ -3,20 +3,15 @@
  */
 package com.sickle.medu.ms.client.form;
 
-import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.medu.ms.client.datasource.StudentDataSource;
 import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
-import com.sickle.medu.ms.client.ui.form.DefaultTextAreaItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
-import com.sickle.pojo.edu.Member;
+import com.sickle.pojo.edu.Student;
 import com.smartgwt.client.widgets.form.DynamicForm;
-import com.smartgwt.client.widgets.form.fields.ComboBoxItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.RadioGroupItem;
-import com.smartgwt.client.widgets.form.fields.TextAreaItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
-import com.smartgwt.client.widgets.form.fields.events.ChangedEvent;
-import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
 
 
 /**
@@ -33,13 +28,9 @@ public class StudentDform extends DynamicForm
 	private TextItem emailItem;
 	private PasswordItem password;
 	private PasswordItem confirmpassword;
-	private TextItem chart;
 	
 	private TextItem telephone;
 	private RadioGroupItem sex;
-	private TextAreaItem resume;
-	private ComboBoxItem city;
-	private ComboBoxItem area;
 	
 	
 	public StudentDform( int width)
@@ -92,42 +83,14 @@ public class StudentDform extends DynamicForm
 		sex.setTitle("性别");
 		sex.setRequired(true);
 		
-		chart = new DefaultTextItem( "character" );
-		chart.setVisible( false );
-		chart.setValue( "student" );
 		
 		telephone = new DefaultTextItem("contact");
 		telephone.setWidth( columnwidth[1] );
 		telephone.setTitle("电话");
 		
-		resume = new DefaultTextAreaItem("resume");
-		resume.setWidth( columnwidth[1] );
-		resume.setTitle("备注");
 		
-		city = new ComboBoxItem("city");
-		city.setTitleStyle( "form_texttitle" );
-		city.setWidth( columnwidth[1] );
-		city.setTitle("城市");
-		city.setValueMap( FormConst.CITY );
-		
-		area = new ComboBoxItem("area");
-		area.setTitleStyle( "form_texttitle" );
-		area.setWidth( columnwidth[1] );
-		area.setTitleStyle( "form_texttitle" );
-		area.setTitle("区县");
-		
-		city.addChangedHandler( new ChangedHandler( ) {
-			@Override
-			public void onChanged( ChangedEvent event )
-			{
-				updateArea();
-				area.clearValue( );
-			}
-		} );
-		
-		
-		setFields(new FormItem[] {username, icon,emailItem, sex,password,confirmpassword,chart,city,area,telephone,resume});
-		setDataSource( MemberDataSource.getInstance( ).getDataSource( Member.class ) );
+		setFields(new FormItem[] {username, icon,emailItem, sex,password,confirmpassword,telephone});
+		setDataSource( StudentDataSource.getInstance( ).getDataSource( Student.class ) );
 	}
 
 	/**
@@ -181,18 +144,6 @@ public class StudentDform extends DynamicForm
 	public void setIcon( String icon )
 	{
 		this.icon.setValue( icon );
-	}
-	
-	public void updateArea()
-	{
-		if(city.getValueAsString( ).equals( "上海" ))
-		{
-			area.setValueMap( FormConst.AREA_SH );
-		}
-		else if(city.getValueAsString( ).equals( "北京" ))
-		{
-			area.setValueMap( FormConst.AREA_BJ );
-		}
 	}
 	
 }

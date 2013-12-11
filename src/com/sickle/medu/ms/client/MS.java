@@ -7,10 +7,10 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.page.ForgetPasswordPage;
+import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.iportal.page.LoginPage;
 import com.sickle.medu.ms.client.iportal.page.MSPage;
 import com.sickle.medu.ms.client.iportal.page.ManageSelfPage;
-import com.sickle.medu.ms.client.iportal.page.IndexPage;
 import com.sickle.medu.ms.client.iportal.page.MemberPage;
 import com.sickle.medu.ms.client.iportal.page.OrgPage;
 import com.sickle.medu.ms.client.iportal.page.RegisterPage;
@@ -30,7 +30,7 @@ public class MS implements EntryPoint
 	public void onModuleLoad( )
 	{
 		initHistoryMange( );
-		History.newItem( IPageConst.PAGE_LOGIN );
+		History.newItem( IPageConst.PAGE_MS );
 	}
 
 	public void initHistoryMange( )
@@ -153,11 +153,11 @@ public class MS implements EntryPoint
 						IPageConst.PAGE_MS ) )
 				{
 					clearIportal();
-					/*
-					Member _member = MeduIndexPage.getInstance( ).getTopbar( )
+					
+					/*Member _member = IndexPage.getInstance( ).getTopbar( )
 							.getMember( );*/
 					Member _member = new Member("王小二","zhangchenhao@139.com","password");
-					_member.setId( 82 );
+					_member.setId( 81 );
 					_member.setSex( "男" );
 					_member.setIcon( "icons/header/user_male1.png" );
 					_member.setTitle( "title" );

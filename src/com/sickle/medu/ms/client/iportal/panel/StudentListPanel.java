@@ -3,6 +3,9 @@ package com.sickle.medu.ms.client.iportal.panel;
 import com.sickle.medu.ms.client.iportal.dialog.StudentDialog;
 import com.sickle.medu.ms.client.iportal.list.StudentList;
 import com.sickle.medu.ms.client.ui.widget.button.MButton;
+import com.smartgwt.client.data.DSCallback;
+import com.smartgwt.client.data.DSRequest;
+import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -50,7 +53,14 @@ public class StudentListPanel extends HLayout
 					SC.say( "请先选中一条要删除的记录" );
 					return;
 				}
-				studentlist.removeSelectedData( );
+				studentlist.getSelectedRecord( ).setAttribute( "classid", classid );
+				studentlist.removeSelectedData( new DSCallback( ) {
+					@Override
+					public void execute( DSResponse dsResponse, Object data, DSRequest dsRequest )
+					{
+						studentlist.fetchStudentByClassid( classid );
+					}
+				}, null );
 			}
 		};
 		
@@ -71,7 +81,6 @@ public class StudentListPanel extends HLayout
 					}
 				};
 				dialog.getStudentform( ).editSelectedData( studentlist );
-				dialog.getStudentform( ).updateArea();
 				dialog.show( );
 			}
 		};

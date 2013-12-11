@@ -100,7 +100,13 @@ public class ClassPanel extends HLayout
 					SC.say( "请先选中一条要修改的记录" );
 					return;
 				}
-				new ModifyClassDialog( list ).show( );
+				new ModifyClassDialog( list ){
+					@Override
+					public void callback( int memberid )
+					{
+						list.fetchClassByMemberid( memberid );
+					}
+				}.show( );
 			}} );
 	}
 	
@@ -142,18 +148,12 @@ public class ClassPanel extends HLayout
 					{
 						return;
 					}
-					final String memberid = form.getValueAsString( "memberid" );
 					form.submit( new DSCallback( ) {
 						@Override
 						public void execute( DSResponse dsResponse, Object data, DSRequest dsRequest )
 						{
-							if(memberid != null )
-							{
-								int mid = Integer.parseInt( memberid );
-								callback( mid );
-							}
 							if( dsResponse.getErrors( )== null || dsResponse.getErrors( ).isEmpty( )){
-								SC.say( "成功！" );
+								callback( memberid );
 							}else{
 								SC.say( "失败！" );
 							}
@@ -217,7 +217,7 @@ public class ClassPanel extends HLayout
 						public void execute( DSResponse dsResponse, Object data, DSRequest dsRequest )
 						{
 							if( dsResponse.getErrors( )== null || dsResponse.getErrors( ).isEmpty( )){
-								SC.say( "成功！" );
+								callback( memberid );
 							}else{
 								SC.say( "失败！" );
 							}
@@ -249,6 +249,7 @@ public class ClassPanel extends HLayout
 			return gird;
 		}
 		
+		public void callback(int memberid){}
 	}
 
 	
