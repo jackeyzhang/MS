@@ -2,7 +2,7 @@
  * 
  */
 
-package com.sickle.medu.ms.client.ui.widget;
+package com.sickle.medu.ms.client.ui.widget.label;
 
 
 /**

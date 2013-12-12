@@ -31,6 +31,7 @@ public class MS implements EntryPoint
 	{
 		initHistoryMange( );
 		History.newItem( IPageConst.PAGE_MS );
+//		new MessageNode("这是一个消息框").draw( );
 	}
 
 	public void initHistoryMange( )

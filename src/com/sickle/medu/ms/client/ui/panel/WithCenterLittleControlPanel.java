@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.panel;
 
-import com.sickle.medu.ms.client.ui.widget.LabelWithBlue;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithBlue;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.events.MouseOutEvent;

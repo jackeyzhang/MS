@@ -68,6 +68,24 @@ h2 {
 /** ================form style end=========================*/
 
 
+/*-----------------------------message node start-----------------**/
+
+.messagenode-content{
+	border-radius:5px;
+	border: 1px solid green;
+	box-shadow: 1px 2px 3px red;
+}
+
+.messagenode-leftarrow{
+	border-width:10px;
+	border-style:solid solid solid solid;
+	border-color:white green white white;
+
+}
+
+/*-----------------------------message node end-----------------**/
+
+
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
 	margin: 15px 6px 6px;
