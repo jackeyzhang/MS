@@ -37,7 +37,7 @@
 }
 
 
-/*×¢²á½çÃæ*/
+/*×¢ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .registerpage{
 	/* background-color: #7bbfea; */
 }
@@ -101,6 +101,11 @@
 	font-size: 1.2em;
 	padding-left: 18px;
 	color: #fffffb;
+}
+
+/* org page style */
+.orgpage{
+	background-color: #deab8a;
 }
 
 /* school card style */
