@@ -4,7 +4,7 @@
 package com.sickle.medu.ms.client.ui.widget.button;
 
 import com.sickle.medu.ms.client.ui.panel.MouseChangePanel;
-import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithWhite;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 

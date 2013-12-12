@@ -24,7 +24,7 @@ import com.sickle.medu.ms.client.rpc.OrgServiceAsync;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.ui.util.ScreenUtil;
-import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithYellow;
 import com.sickle.pojo.edu.Member;
 import com.sickle.pojo.edu.Notice;
 import com.sickle.pojo.edu.Org;

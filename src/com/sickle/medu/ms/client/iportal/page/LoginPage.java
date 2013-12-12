@@ -15,7 +15,7 @@ import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.ui.util.ScreenUtil;
-import com.sickle.medu.ms.client.ui.widget.H1Black;
+import com.sickle.medu.ms.client.ui.widget.label.H1Black;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;

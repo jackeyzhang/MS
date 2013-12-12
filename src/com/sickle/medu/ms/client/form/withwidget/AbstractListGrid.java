@@ -23,7 +23,7 @@ public class AbstractListGrid extends ListGrid
 	
 	public AbstractListGrid()
 	{
-		
+		setSortField( "id" );
 	}
 	
 	protected void maskAndSetFields(DataSource ds)

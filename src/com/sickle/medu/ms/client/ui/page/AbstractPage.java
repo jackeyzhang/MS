@@ -6,7 +6,7 @@ package com.sickle.medu.ms.client.ui.page;
 import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.util.ScreenUtil;
-import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithYellow;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.ImgButton;

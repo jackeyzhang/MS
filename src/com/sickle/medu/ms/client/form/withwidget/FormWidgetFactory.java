@@ -8,6 +8,9 @@ import java.util.List;
 
 import com.sickle.medu.ms.client.datasource.field.MaskField;
 import com.sickle.medu.ms.client.form.FormConst;
+import com.sickle.medu.ms.client.ui.form.DefaultDateItem;
+import com.sickle.medu.ms.client.ui.form.DefaultDateTimeItem;
+import com.sickle.medu.ms.client.ui.form.DefaultIntegerItem;
 import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextAreaItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
@@ -15,10 +18,8 @@ import com.sickle.uireflect.FieldType;
 import com.sickle.uireflect.Mask;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.DataSourceField;
-import com.smartgwt.client.widgets.form.fields.DateItem;
 import com.smartgwt.client.widgets.form.fields.DateTimeItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
-import com.smartgwt.client.widgets.form.fields.IntegerItem;
 
 
 /**
@@ -50,7 +51,7 @@ public class FormWidgetFactory
 		FormItem item = null;
 		if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Integer.toString( ) ) )
 		{
-			item = new IntegerItem();
+			item = new DefaultIntegerItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Password.toString( ) ) )
 		{
@@ -66,7 +67,7 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Date.toString( ) ) )
 		{
-			item = new DateItem();
+			item = new DefaultDateItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.DateTime.toString( ) ) )
 		{
@@ -135,7 +136,7 @@ public class FormWidgetFactory
 		FormItem item = null;
 		if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Integer.toString( ) ) )
 		{
-			item = new IntegerItem();
+			item = new DefaultIntegerItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Password.toString( ) ) )
 		{
@@ -151,11 +152,11 @@ public class FormWidgetFactory
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Date.toString( ) ) )
 		{
-			item = new DateItem();
+			item = new DefaultDateItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.DateTime.toString( ) ) )
 		{
-			item = new DateTimeItem();
+			item = new DefaultDateTimeItem();
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
 		{

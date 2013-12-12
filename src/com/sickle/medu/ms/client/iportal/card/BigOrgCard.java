@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.iportal.card;
 
-import com.sickle.medu.ms.client.ui.widget.LabelWithYellow;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithYellow;
 import com.sickle.pojo.edu.Org;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;

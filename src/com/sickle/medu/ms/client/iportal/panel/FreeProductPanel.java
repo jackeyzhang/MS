@@ -3,7 +3,7 @@
  */
 package com.sickle.medu.ms.client.iportal.panel;
 
-import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithWhite;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 

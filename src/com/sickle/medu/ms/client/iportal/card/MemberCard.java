@@ -10,7 +10,7 @@ import com.google.gwt.user.client.History;
 import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.iportal.dialog.SendMessageDialog;
 import com.sickle.medu.ms.client.iportal.page.IndexPage;
-import com.sickle.medu.ms.client.ui.widget.LabelWithWhite;
+import com.sickle.medu.ms.client.ui.widget.label.LabelWithWhite;
 import com.sickle.pojo.edu.Member;
 import com.sickle.pojo.website.Message;
 import com.smartgwt.client.types.Alignment;

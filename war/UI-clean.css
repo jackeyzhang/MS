@@ -16,6 +16,76 @@ h2 {
 }
 
 
+/** ===========================form style start===================================*/
+.form_checkbox,.form_radio{
+	height : 30px;
+	font-size: 1em;
+	font-family: Arial,Verdana,Sans-serif;
+}
+
+.form_combobox{
+	padding : 2px;
+	height : 25px;
+	font-size: 1em;
+	font-family: Arial,Verdana,Sans-serif;
+	border-radius:5px;
+	border:2px solid #d1c7b7;
+}
+
+.form_combobox_focus{
+	padding : 2px;
+	height : 25px;
+	font-size: 1em;
+	font-family: Arial,Verdana,Sans-serif;
+	border-radius:5px;
+	border:2px solid #f47920;
+}
+
+.form_textbox{
+	padding : 2px;
+	height : 30px;
+	font-size: 1em;
+	font-family: Arial,Verdana,Sans-serif;
+	border-radius:5px;
+	border:2px solid #d1c7b7;
+}
+
+.form_textbox_focus{
+	padding : 2px;
+	height : 30px;
+	font-size: 1em;
+	font-family: Arial,Verdana,Sans-serif;
+	border-radius:5px;
+	border:2px solid #f47920;
+}
+
+.form_texttitle{
+	font-size: 1.3em;
+	font-family: ËÎÌו;
+	font-weight: bold;
+	color:#464547;
+}
+/** ================form style end=========================*/
+
+
+/*-----------------------------message node start-----------------**/
+
+.messagenode-content{
+	border-radius:5px;
+	border: 1px solid green;
+	box-shadow: 1px 2px 3px red;
+}
+
+.messagenode-leftarrow{
+	border-width:10px;
+	border-style:solid solid solid solid;
+	border-color:white green white white;
+
+}
+
+/*-----------------------------message node end-----------------**/
+
+
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
 	margin: 15px 6px 6px;
@@ -32,30 +102,6 @@ body {
 	/*background-image: url(./images/backgroundtexture.png);*/
 }
 
-.form_textbox{
-	padding : 2px;
-	height : 30px;
-	font-size: 1.2em;
-	font-family: Arial,Verdana,Sans-serif;
-	border-radius:5px;
-	border:2px solid #d1c7b7;
-}
-
-.form_textbox_focus{
-	padding : 2px;
-	height : 30px;
-	font-size: 1.2em;
-	font-family: Arial,Verdana,Sans-serif;
-	border-radius:5px;
-	border:2px solid #f47920;
-}
-
-.form_texttitle{
-	font-size: 1.3em;
-	font-family: ËÎÌו;
-	font-weight: bold;
-	color:#464547;
-}
 
 .controlpanel{
 	background-color: #d9d6c3;

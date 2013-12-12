@@ -26,8 +26,8 @@ public class LoadingHintDialog extends AbstractDialog{
 	public Canvas getView( )
 	{
 		HLayout v = new HLayout( );
-		v.setHeight100( );
-		v.setWidth100( );
+		v.setAutoHeight( );
+		v.setAutoWidth( );
 		v.setAlign( Alignment.CENTER );
 		
 		hintlabel = new Label();

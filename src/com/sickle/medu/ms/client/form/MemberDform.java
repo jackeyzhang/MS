@@ -4,7 +4,10 @@
 package com.sickle.medu.ms.client.form;
 
 import com.sickle.medu.ms.client.datasource.MemberDataSource;
+import com.sickle.medu.ms.client.ui.form.DefaultCheckboxItem;
+import com.sickle.medu.ms.client.ui.form.DefaultComboBoxItem;
 import com.sickle.medu.ms.client.ui.form.DefaultPasswordItem;
+import com.sickle.medu.ms.client.ui.form.DefaultRadioGroupItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextAreaItem;
 import com.sickle.medu.ms.client.ui.form.DefaultTextItem;
 import com.sickle.pojo.edu.Member;
@@ -87,16 +90,14 @@ public class MemberDform extends DynamicForm
 		confirmpassword.setRequired(true);
 		confirmpassword.setType("password");
 		
-		sex = new RadioGroupItem( "sex" );
+		sex = new DefaultRadioGroupItem( "sex" );
 		sex.setVertical( false );
 		sex.setValueMap( "男","女" );
 		sex.setValue( "男" );
-		sex.setTitleStyle( "form_texttitle" );
 		sex.setTitle("性别");
 		sex.setRequired(true);
 		
-		isteacher = new CheckboxItem( "forhelp" );
-		isteacher.setTitleStyle( "form_texttitle" );
+		isteacher = new DefaultCheckboxItem( "forhelp" );
 		isteacher.setTitle("填写老师信息？");
 		
 		chart = new DefaultTextItem( "character" );
@@ -128,18 +129,16 @@ public class MemberDform extends DynamicForm
 		title.setVisible( false );
 		
 		
-		city = new ComboBoxItem("city");
+		city = new DefaultComboBoxItem("city");
 		city.setWidth( columnwidth[1] );
-		city.setTitleStyle( "form_texttitle" );
 		city.setTitle("城市");
 		city.setRequired(true);
 		city.setVisible( false );
 		city.setValueMap( FormConst.CITY );
 		
 		
-		area = new ComboBoxItem("area");
+		area = new DefaultComboBoxItem("area");
 		area.setWidth( columnwidth[1] );
-		area.setTitleStyle( "form_texttitle" );
 		area.setTitle("区县");
 		area.setRequired(true);
 		area.setVisible( false );
