@@ -33,6 +33,7 @@ public class MessageForm extends AbstractForm
 		super.preGetAddForm( items );
 		this.setWidth( 500 );
 		this.setColWidths( 100,400 );
+		this.setNumCols( 3 );
 		for ( FormItem item : items )
 		{
 			item.setTitleStyle( "form_texttitle" );
@@ -46,6 +47,7 @@ public class MessageForm extends AbstractForm
 		super.preGetModifyForm( items );
 		this.setWidth( 500 );
 		this.setColWidths( 100,400 );
+		this.setNumCols( 3 );
 		for ( FormItem item : items )
 		{
 			item.setTitleStyle( "form_texttitle" );
@@ -59,6 +61,7 @@ public class MessageForm extends AbstractForm
 		super.preGetLookForm( items );
 		this.setWidth( 500 );
 		this.setColWidths( 100,400 );
+		this.setNumCols( 3 );
 		for ( FormItem item : items )
 		{
 			item.setTitleStyle( "form_texttitle" );

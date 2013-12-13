@@ -21,6 +21,7 @@ import com.smartgwt.client.widgets.form.fields.TextAreaItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 import com.smartgwt.client.widgets.form.fields.events.ChangedEvent;
 import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
+import com.smartgwt.client.widgets.form.validator.MatchesFieldValidator;
 
 
 /**
@@ -51,7 +52,7 @@ public class MemberDform extends DynamicForm
 	
 	public MemberDform( int width)
 	{
-		this( width, width/3, width - width/3 );
+		this( width, width/4, width - width/3 );
 	}
 	
 	public MemberDform()
@@ -63,7 +64,7 @@ public class MemberDform extends DynamicForm
 	{
 		this.setWidth( width );
 		this.setColWidths( columnwidth );
-		this.setPadding( 20 );
+		this.setNumCols( 3 );
 		
 		username = new DefaultTextItem("name");
 		username.setWidth( columnwidth[1] );
@@ -84,11 +85,16 @@ public class MemberDform extends DynamicForm
 		password.setTitle("密码");
 		password.setRequired(true);	
 		
-		confirmpassword = new DefaultPasswordItem("password");
+		confirmpassword = new DefaultPasswordItem("passwordagian");
 		confirmpassword.setWidth( columnwidth[1] );
 		confirmpassword.setTitle("确认密码");
 		confirmpassword.setRequired(true);
 		confirmpassword.setType("password");
+		
+		MatchesFieldValidator matchesValidator = new MatchesFieldValidator();  
+        matchesValidator.setOtherField("password");  
+        matchesValidator.setErrorMessage("两次密码不一致");          
+        confirmpassword.setValidators(matchesValidator);  
 		
 		sex = new DefaultRadioGroupItem( "sex" );
 		sex.setVertical( false );

@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.form;
 
+import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.widgets.form.fields.RadioGroupItem;
 
 
@@ -18,9 +19,7 @@ public class DefaultRadioGroupItem extends RadioGroupItem
 	public DefaultRadioGroupItem( )
 	{
 		super( );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_radio" );
-		setShowFocused( false );
+		init();
 	}
 
 	/**
@@ -30,9 +29,7 @@ public class DefaultRadioGroupItem extends RadioGroupItem
 	public DefaultRadioGroupItem( String name, String title )
 	{
 		super( name, title );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_radio" );
-		setShowFocused( false );
+		init();
 	}
 
 	/**
@@ -41,10 +38,18 @@ public class DefaultRadioGroupItem extends RadioGroupItem
 	public DefaultRadioGroupItem( String name )
 	{
 		super( name );
+		init();
+	}
+
+	private void init()
+	{
 		setTitleStyle( "form_texttitle" );
 		setTextBoxStyle( "form_radio" );
 		setShowFocused( false );
+		setShowErrorText(true);
+		setShowErrorStyle( false );
+		setErrorOrientation( FormErrorOrientation.RIGHT );
+		setRequiredMessage( "不能为空" );
 	}
-
 	
 }

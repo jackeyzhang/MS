@@ -4,8 +4,11 @@
 package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.sickle.medu.ms.client.form.MemberDform;
+import com.sickle.medu.ms.client.iportal.IPageConst;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
+import com.sickle.medu.ms.client.ui.util.ScreenUtil;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.Canvas;
@@ -41,9 +44,12 @@ public class RegisterDialog extends AbstractDialog
 		
 		HLayout buttonpanel = new HLayout();
 		buttonpanel.setPadding( 10 );
-		buttonpanel.setWidth( 300 );
 		buttonpanel.setMembersMargin( 10 );
 		buttonpanel.setAlign( Alignment.CENTER );
+		
+		VLayout warp = new VLayout();
+		warp.setWidth( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER )  );
+		warp.setAlign( VerticalAlignment.CENTER );
 		
 		Button okbutton = new Button("注册");
 		okbutton.setWidth( 50 );
@@ -58,7 +64,7 @@ public class RegisterDialog extends AbstractDialog
 				}
 				registerform.submit( );
 				SC.say( "注册成功" );
-				hide();
+				RegisterDialog.this.hide();
 			}
 		} );
 		
@@ -69,14 +75,16 @@ public class RegisterDialog extends AbstractDialog
 			public void onClick( ClickEvent event )
 			{
 				registerform.cancel( );
-				hide();
+				RegisterDialog.this.hide();
 			}
 		} );
 		
 		buttonpanel.addMember( okbutton );
 		buttonpanel.addMember( cancelbutton );
 		
-		mainpanel.addMember( buttonpanel );
+		warp.addMember( buttonpanel );
+		
+		mainpanel.addMember( warp );
 		return mainpanel;
 	}
 

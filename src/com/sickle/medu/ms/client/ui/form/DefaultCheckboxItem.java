@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.form;
 
+import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;
 
@@ -19,9 +20,7 @@ public class DefaultCheckboxItem extends CheckboxItem
 	public DefaultCheckboxItem( )
 	{
 		super( );
-		setTextBoxStyle( "form_checkbox" );
-		setVAlign( VerticalAlignment.CENTER );
-		setShowFocused( false );
+		init();
 	}
 
 	/**
@@ -31,9 +30,7 @@ public class DefaultCheckboxItem extends CheckboxItem
 	public DefaultCheckboxItem( String name, String title )
 	{
 		super( name, title );
-		setTextBoxStyle( "form_checkbox" );
-		setVAlign( VerticalAlignment.CENTER );
-		setShowFocused( false );
+		init();
 	}
 
 	/**
@@ -42,9 +39,17 @@ public class DefaultCheckboxItem extends CheckboxItem
 	public DefaultCheckboxItem( String name )
 	{
 		super( name );
+		init();
+	}
+
+	private void init()
+	{
 		setTextBoxStyle( "form_checkbox" );
 		setVAlign( VerticalAlignment.CENTER );
 		setShowFocused( false );
+		setShowErrorText(true);
+		setShowErrorStyle( false );
+		setErrorOrientation( FormErrorOrientation.RIGHT );
+		setRequiredMessage( "不能为空" );
 	}
-
 }

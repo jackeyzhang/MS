@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.form;
 
+import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.widgets.form.fields.IntegerItem;
 import com.smartgwt.client.widgets.form.fields.events.BlurEvent;
 import com.smartgwt.client.widgets.form.fields.events.BlurHandler;
@@ -24,10 +25,7 @@ public class DefaultIntegerItem extends IntegerItem
 	public DefaultIntegerItem( )
 	{
 		super( );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_textbox" );
-		setShowFocused( false );
-		initActions();
+		init();
 	}
 
 	/**
@@ -37,10 +35,7 @@ public class DefaultIntegerItem extends IntegerItem
 	public DefaultIntegerItem( String name, String title )
 	{
 		super( name, title );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_textbox" );
-		setShowFocused( false );
-		initActions();
+		init();
 	}
 
 	/**
@@ -49,15 +44,19 @@ public class DefaultIntegerItem extends IntegerItem
 	public DefaultIntegerItem( String name )
 	{
 		super( name );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_textbox" );
-		setShowFocused( false );
-		initActions();
+		init();
 	}
 
 	
-	private void initActions()
+	private void init()
 	{
+		setTitleStyle( "form_texttitle" );
+		setTextBoxStyle( "form_textbox" );
+		setShowFocused( false );
+		setShowErrorText(true);
+		setShowErrorStyle( false );
+		setErrorOrientation( FormErrorOrientation.RIGHT );
+		setRequiredMessage( "不能为空" );
 		addFocusHandler( new FocusHandler( ) {
 			@Override
 			public void onFocus( FocusEvent event )
@@ -73,5 +72,6 @@ public class DefaultIntegerItem extends IntegerItem
 				setTextBoxStyle( "form_textbox" );				
 			}
 		} );
+	
 	}
 }

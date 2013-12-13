@@ -32,6 +32,7 @@ public class ClassesForm extends AbstractForm
 	{
 		super.preGetAddForm( items );
 		this.setWidth( 400 );
+		this.setNumCols( 3 );
 		this.setColWidths( 150,250 );
 		for ( FormItem item : items )
 		{
@@ -45,6 +46,7 @@ public class ClassesForm extends AbstractForm
 		super.preGetModifyForm( items );
 		this.setWidth( 400 );
 		this.setColWidths( 150,250 );
+		this.setNumCols( 3 );
 		for ( FormItem item : items )
 		{
 			item.setWidth( 240 );
@@ -57,6 +59,7 @@ public class ClassesForm extends AbstractForm
 		super.preGetLookForm( items );
 		this.setWidth( 400 );
 		this.setColWidths( 150,250 );
+		this.setNumCols( 3 );
 		for ( FormItem item : items )
 		{
 			item.setWidth( 240 );

@@ -12,6 +12,7 @@ import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.PasswordItem;
 import com.smartgwt.client.widgets.form.fields.RadioGroupItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import com.smartgwt.client.widgets.form.validator.MatchesFieldValidator;
 
 
 /**
@@ -35,7 +36,7 @@ public class StudentDform extends DynamicForm
 	
 	public StudentDform( int width)
 	{
-		this( width, width/3, width - width/3 );
+		this( width, width/4, width - width/3 );
 	}
 	
 	public StudentDform()
@@ -47,6 +48,7 @@ public class StudentDform extends DynamicForm
 	{
 		this.setWidth( width );
 		this.setColWidths( columnwidth );
+		this.setNumCols( 3 );
 		this.setPadding( 20 );
 		
 		username = new DefaultTextItem("name");
@@ -68,11 +70,15 @@ public class StudentDform extends DynamicForm
 		password.setTitle("密码");
 		password.setRequired(true);	
 		
-		confirmpassword = new DefaultPasswordItem("password");
+		confirmpassword = new DefaultPasswordItem("passwordagian");
 		confirmpassword.setWidth( columnwidth[1] );
 		confirmpassword.setTitle("确认密码");
 		confirmpassword.setRequired(true);
-		confirmpassword.setType("password");
+		
+		MatchesFieldValidator matchesValidator = new MatchesFieldValidator();  
+        matchesValidator.setOtherField("password");  
+        matchesValidator.setErrorMessage("两次密码不一致");          
+        confirmpassword.setValidators(matchesValidator);  
 		
 		sex = new RadioGroupItem( "sex" );
 		sex.setTitleStyle( "form_texttitle" );

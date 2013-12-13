@@ -49,7 +49,7 @@ public class RegisterPanel extends HLayout
 		contentpage.setStyleName( "abstractdialog-content" );
 		
 		HLayout registerpanel = new HLayout();
-		registerform = new MemberDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) );
+		registerform = new MemberDform( ScreenUtil.getWidthInt( IPageConst.REGISTER_WIDTH_PER ) - 120 );
 		chooseiconpanel = new ChooseIconPanel();
 		registerpanel.addMember( chooseiconpanel );
 		registerpanel.addMember( registerform );

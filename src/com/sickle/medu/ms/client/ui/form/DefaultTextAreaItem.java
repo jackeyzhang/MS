@@ -3,6 +3,7 @@
  */
 package com.sickle.medu.ms.client.ui.form;
 
+import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.widgets.form.fields.TextAreaItem;
 import com.smartgwt.client.widgets.form.fields.events.BlurEvent;
 import com.smartgwt.client.widgets.form.fields.events.BlurHandler;
@@ -22,10 +23,7 @@ public class DefaultTextAreaItem extends TextAreaItem
 	public DefaultTextAreaItem( )
 	{
 		super( );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_textbox" );
-		setShowFocused( false );
-		initActions();
+		init();
 	}
 
 	/**
@@ -35,10 +33,7 @@ public class DefaultTextAreaItem extends TextAreaItem
 	public DefaultTextAreaItem( String name, String title )
 	{
 		super( name, title );
-		setTitleStyle( "form_texttitle" );
-		setTextBoxStyle( "form_textbox" );
-		setShowFocused( false );
-		initActions();
+		init();
 	}
 
 	/**
@@ -47,14 +42,19 @@ public class DefaultTextAreaItem extends TextAreaItem
 	public DefaultTextAreaItem( String name )
 	{
 		super( name );
+		init();
+	}
+
+	private void init()
+	{
 		setTitleStyle( "form_texttitle" );
 		setTextBoxStyle( "form_textbox" );
 		setShowFocused( false );
-		initActions();
-	}
-
-	private void initActions()
-	{
+		setShowErrorText(true);
+		setShowErrorStyle( false );
+		setErrorOrientation( FormErrorOrientation.RIGHT );
+		setRequiredMessage( "不能为空" );
+		
 		addFocusHandler( new FocusHandler( ) {
 			@Override
 			public void onFocus( FocusEvent event )

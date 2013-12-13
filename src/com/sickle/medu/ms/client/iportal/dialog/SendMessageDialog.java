@@ -2,15 +2,14 @@ package com.sickle.medu.ms.client.iportal.dialog;
 
 import com.sickle.medu.ms.client.form.MessageForm;
 import com.sickle.medu.ms.client.ui.dialog.AbstractDialog;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
 import com.smartgwt.client.data.DSCallback;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DSResponse;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.IButton;
-import com.smartgwt.client.widgets.events.ClickEvent;
-import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
@@ -35,14 +34,16 @@ public class SendMessageDialog extends AbstractDialog
 		wholepanel.addMember( form );
 		
 		HLayout buttonpanel = new HLayout();
-		buttonpanel.setWidth( 500 );
-		buttonpanel.setMargin( 5 );
 		buttonpanel.setMembersMargin( 10 );
 		buttonpanel.setAlign( Alignment.CENTER );
-		IButton confirm = new IButton("确认" );
-		confirm.addClickHandler( new ClickHandler( ) {
+
+		VLayout warp = new VLayout();
+		warp.setWidth( 500 );
+		warp.setAlign( VerticalAlignment.CENTER );
+		
+		MButton confirm = new MButton("确认" ){
 			@Override
-			public void onClick( ClickEvent event )
+			public void handleClick( )
 			{
 				preSubmit(form);
 				boolean validate = form.validate( );
@@ -59,22 +60,24 @@ public class SendMessageDialog extends AbstractDialog
 						}else{
 							SC.say( "失败！" );
 						}
-						hide();
+						SendMessageDialog.this.hide();
 					}
 				} );					
 			}
-		} );
-		IButton cancel = new IButton("取消" );
-		cancel.addClickHandler( new ClickHandler( ) {
+		};
+		MButton cancel = new MButton("取消" ){
 			@Override
-			public void onClick( ClickEvent event )
+			public void handleClick( )
 			{
-				hide();
+				SendMessageDialog.this.hide();				
 			}
-		} );
+		};
 		buttonpanel.addMember( confirm );
 		buttonpanel.addMember( cancel );
-		wholepanel.addMember( buttonpanel );
+		
+		warp.addMember( buttonpanel );
+		
+		wholepanel.addMember( warp );
 		return wholepanel;
 	}
 
