@@ -9,9 +9,18 @@ h2 {
 }
 
 .h1black {
-	font-size: 1.5em;
+	font-size: 2.5em;
 	font-weight: bold;
+	font-family: 宋体;
 	color: black;
+	text-align: center;
+}
+
+.h1gray {
+	font-size: 2.5em;
+	font-weight: bold;
+	font-family: 宋体;
+	color: gray;
 	text-align: center;
 }
 
@@ -115,12 +124,10 @@ body {
 	background-color: #f9f9f9;
 }
 
-
 .abstractdialog-content{
 	padding-top:10px;
-	/*background-image: url(./images/backgroundtexture.png);*/
+	background-image: url(./images/backgroundtexture.png);
 }
-
 
 .controlpanel{
 	background-color: #d9d6c3;
@@ -154,25 +161,29 @@ body {
 }
 
 .greenlittlelabel{
-	font-size: 1.3em;
+	font-size: 15px;
 	color: #2a5caa;
+	font-family: 宋体;
+}
+
+.greenlittlelabel-mousein{
+	font-size: 15px;
+	color: #d71345;
+	font-family: 宋体;
+	text-decoration:underline;
 }
 
 .whitelittlelabel-mousein{
-	font-size: 1.3em;
+	font-size: 15px;
 	color: #aa2116;
+	font-family: 宋体;
 	text-decoration:underline;
 }
 
 .whitelittlelabel{
-	font-size: 1.3em;
+	font-size: 15px;
+	font-family: 宋体;
 	color: #fffffb;
-}
-
-.greenlittlelabel-mousein{
-	font-size: 1.3em;
-	color: #d71345;
-	text-decoration:underline;
 }
 
 .choosepanel{

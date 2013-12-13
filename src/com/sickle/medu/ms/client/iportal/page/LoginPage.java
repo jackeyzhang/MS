@@ -15,15 +15,13 @@ import com.sickle.medu.ms.client.rpc.UserManageServiceAsync;
 import com.sickle.medu.ms.client.ui.page.AbstractPage;
 import com.sickle.medu.ms.client.ui.util.AsyncCallbackWithStatus;
 import com.sickle.medu.ms.client.ui.util.ScreenUtil;
-import com.sickle.medu.ms.client.ui.widget.label.H1Black;
+import com.sickle.medu.ms.client.ui.widget.button.MButton;
+import com.sickle.medu.ms.client.ui.widget.label.H1Gray;
 import com.sickle.pojo.edu.Member;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.Canvas;
-import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.Label;
-import com.smartgwt.client.widgets.events.ClickEvent;
-import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;
 import com.smartgwt.client.widgets.form.fields.events.ChangedEvent;
@@ -95,8 +93,8 @@ public class LoginPage extends AbstractPage
 		// 欢迎词
 		HLayout welcomepanel = new HLayout();
 		welcomepanel.setHeight( 100);
-		H1Black welcome = new H1Black( "欢迎登录爱师网" );
-		welcome.setWidth(  ScreenUtil.getWidth( 0.1 ) );
+		H1Gray welcome = new H1Gray( "欢迎登录爱师网" );
+		welcome.setWidth(  ScreenUtil.getWidth( 0.3 ) );
 		welcomepanel.setPadding( 20 );
 		welcomepanel.setWidth(  ScreenUtil.getWidth( 0.3 ) );
 		welcomepanel.setAlign( Alignment.CENTER );
@@ -175,33 +173,28 @@ public class LoginPage extends AbstractPage
 		formlayout.setAlign( Alignment.CENTER );
 		formlayout.setMembersMargin( 10 );
 		
-		IButton loginButton = new IButton( "登录" );
-		loginButton.setWidth( 60 );
-		loginButton.setShowRollOver(true);  
-		loginButton.setShowDown(true);  
-		loginButton.addClickHandler( new ClickHandler( ) {
-
+		MButton loginButton = new MButton( "登录" ){
 			@Override
-			public void onClick( ClickEvent event )
+			public void handleClick( )
 			{
 				boolean validate = loginform.validate( );
 				if ( validate )
 				{
 					commitform( );
-				}
+				}				
 			}
-		} );
-
-		IButton register = new IButton( "新用户注册" );
-		register.setWidth( "70px" );
-		register.addClickHandler( new ClickHandler( ) {
 			
+		};
+		loginButton.setWidth( 60 );
+
+		MButton register = new MButton( "新用户注册" ){
 			@Override
-			public void onClick( ClickEvent event )
+			public void handleClick( )
 			{
 				History.newItem( IPageConst.PAGE_REGISTER );
 			}
-		} );
+		};
+		register.setWidth( "70px" );
 		
 		formlayout.addMember( loginButton );
 		formlayout.addMember( register );
