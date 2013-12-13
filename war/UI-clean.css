@@ -237,3 +237,18 @@ body {
 .descpanel-middlepanel,.bluepanel{
 	background-color: #33a3dc;
 }
+
+
+.mbutton{
+	border:1px solid #009ad6;
+	border-radius: 5px;
+	font-size: 1.3em;
+	background-color: #7bbfea;
+}
+
+.mbuttonin{
+	border:1px solid #009ad6;
+	border-radius: 5px;
+	font-size: 1.3em;
+	background-color: #33a3dc;
+}
