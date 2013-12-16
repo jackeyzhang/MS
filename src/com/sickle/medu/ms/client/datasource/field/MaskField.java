@@ -42,6 +42,7 @@ public class MaskField implements Comparable<MaskField>
 		else if( simpleType.equals( com.sickle.uireflect.FieldType.Date.toString( )  ))
 		{
 			field = new DataSourceField( name, FieldType.DATE, title );
+			field.setDateFormatter( DateDisplayFormat.TOJAPANSHORTDATE );
 		}
 		else
 		{
