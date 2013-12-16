@@ -45,7 +45,7 @@ public class MessagePanel extends HLayout
 		buttonpanel.setPadding( 10 );
 		buttonpanel.setMembersMargin( 10 );
 		
-		buttonpanel.addMember( new MButton("回复消息"){
+		/*buttonpanel.addMember( new MButton("发送消息"){
 			@Override
 			public void handleClick( )
 			{
@@ -61,7 +61,32 @@ public class MessagePanel extends HLayout
 				};
 				messagedialog.getForm( );
 				messagedialog.show();
+			}} );*/
+
+		
+		buttonpanel.addMember( new MButton("回复消息"){
+			@Override
+			public void handleClick( )
+			{
+				/*if ( list.getSelectedRecords( ).length == 0 )
+				{
+					SC.say( "请先选中一条要修改的记录" );
+					return;
+				}*/
+				SendMessageDialog messagedialog = new SendMessageDialog( ){
+					@Override
+					public void preSubmit( DynamicForm form )
+					{
+						Member send = IndexPage.getInstance( ).getTopbar( ).getMember( );
+						form.setValue( "send", send == null ? 97 : send.getId( ) );
+						form.setValue( "receiver", 97 );
+						form.setValue( "receivetime", new Date() );
+					}
+				};
+				messagedialog.getForm( );
+				messagedialog.show();
 			}} );
+		
 		
 		buttonpanel.addMember( new MButton("删除消息"){
 			@Override
@@ -73,17 +98,6 @@ public class MessagePanel extends HLayout
 					return;
 				}
 				list.getDataSource( ).removeData( list.getSelectedRecord( ) );
-			}} );
-		
-		buttonpanel.addMember( new MButton("修改消息"){
-			@Override
-			public void handleClick( )
-			{
-				if ( list.getSelectedRecords( ).length == 0 )
-				{
-					SC.say( "请先选中一条要修改的记录" );
-					return;
-				}
 			}} );
 	}
 	

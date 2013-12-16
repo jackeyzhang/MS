@@ -18,6 +18,7 @@ import com.sickle.uireflect.FieldType;
 import com.sickle.uireflect.Mask;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.DataSourceField;
+import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.widgets.form.fields.DateTimeItem;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 
@@ -72,6 +73,7 @@ public class FormWidgetFactory
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.DateTime.toString( ) ) )
 		{
 			item = new DateTimeItem();
+			item.setDateFormatter( DateDisplayFormat.TOSERIALIZEABLEDATE );
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
 		{
@@ -157,6 +159,7 @@ public class FormWidgetFactory
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.DateTime.toString( ) ) )
 		{
 			item = new DefaultDateTimeItem();
+			item.setDateFormatter( DateDisplayFormat.TOSERIALIZEABLEDATE );
 		}
 		else if( mfield.getAttribute( MaskField.STYPE).equals( FieldType.Mobile.toString( ) ) )
 		{

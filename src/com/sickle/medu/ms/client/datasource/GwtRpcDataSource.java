@@ -6,7 +6,6 @@ package com.sickle.medu.ms.client.datasource;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,23 +113,23 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			
 			 if ( field.type( ).equals( FieldType.Email ) )
 			{
-				newfield.setValidators( emailValidator );
+				newfield.getField( ).setValidators( emailValidator );
 			}
 			
 			if ( field.isId( ) )
 			{
-				newfield.setPrimaryKey( true );
-				newfield.setHidden( true );
+				newfield.getField( ).setPrimaryKey( true );
+				newfield.getField( ).setHidden( true );
 			}
 			
 			if( field.mask( ) == Mask.nevershow.getValue( ) )
 			{
-				newfield.setHidden( true );
+				newfield.getField( ).setHidden( true );
 			}
 			
 			if( field.reqiured( ))
 			{
-				newfield.setRequired( true );
+				newfield.getField( ).setRequired( true );
 			}
 			
 			newfield.setMask( field.mask( ) );
@@ -142,7 +141,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 		
 		for(MaskField f :  fields)
 		{
-			datasource.addField( f );
+			datasource.addField( f.getField( ) );
 		}
 		
 		cache.put( cls, datasource );
@@ -231,11 +230,7 @@ public abstract class GwtRpcDataSource extends AbstractDataSource
 			}
 			else if ( field.type( ).equals( FieldType.DateTime ) )
 			{
-				f.setFieldValue( to, new Date() );
-			}
-			else if ( field.type( ).equals( FieldType.Date ) )
-			{
-				f.setFieldValue( to, new Date() );
+				f.setFieldValue( to,  from.getAttributeAsDate( f.getName( ) ) );
 			}
 			else
 			{

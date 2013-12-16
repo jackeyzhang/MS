@@ -1,15 +1,18 @@
 package com.sickle.medu.ms.client.datasource.field;
 
-import com.smartgwt.client.data.SimpleType;
-import com.smartgwt.client.data.fields.DataSourceSimpleTypeField;
+import com.smartgwt.client.data.DataSourceField;
+import com.smartgwt.client.types.DateDisplayFormat;
+import com.smartgwt.client.types.FieldType;
 
 
-public class MaskField extends DataSourceSimpleTypeField implements Comparable<MaskField>
+public class MaskField implements Comparable<MaskField>
 {
 
 	private int mask,index = -1;
 	
 	public static final String STYPE = "stype", MASK = "smask";
+	
+	private DataSourceField field;
 	
 	/**
 	 * @param name
@@ -30,11 +33,24 @@ public class MaskField extends DataSourceSimpleTypeField implements Comparable<M
 	 */
 	public MaskField( String name, String simpleType, String title, int mask,int _index )
 	{
-		super( name, new SimpleType(), title );
+//		super( name, new SimpleType(), title );
+		if( simpleType.equals( com.sickle.uireflect.FieldType.DateTime.toString( )  ))
+		{
+			field = new DataSourceField( name, FieldType.DATETIME, title );
+			field.setDateFormatter( DateDisplayFormat.TOSERIALIZEABLEDATE );
+		}
+		else if( simpleType.equals( com.sickle.uireflect.FieldType.Date.toString( )  ))
+		{
+			field = new DataSourceField( name, FieldType.DATE, title );
+		}
+		else
+		{
+			field = new DataSourceField( name, FieldType.TEXT, title );
+		}
 		this.mask = mask;
 		this.index = _index;
-		this.setAttribute( STYPE, simpleType );
-		this.setAttribute( MASK, mask );
+		field.setAttribute( STYPE, simpleType );
+		field.setAttribute( MASK, mask );
 	}
 
 
@@ -54,7 +70,7 @@ public class MaskField extends DataSourceSimpleTypeField implements Comparable<M
 	public void setMask( int mask )
 	{
 		this.mask = mask;
-		this.setAttribute( MASK, mask );
+		field.setAttribute( MASK, mask );
 	}
 
 
@@ -65,6 +81,9 @@ public class MaskField extends DataSourceSimpleTypeField implements Comparable<M
 		return this.index - o.index ;
 	}
 	
-	
+	public DataSourceField getField()
+	{
+		return field;
+	}
 	
 }

@@ -13,8 +13,14 @@ public class MessageList extends ListGrid
 	{
 		setWidth( "90%" );
 		setHeight( "90%" );
+		setFixedFieldWidths( false );
+		setAutoFitFieldWidths( true );
+		setAutoFitHeaderHeights( true );
 		setAutoFetchData( true );
 		setDataSource( getDataSource( ) );
+		setGroupByField( "send" );
+		setSortField( "receivetime" );
+		
 	}
 	
 	public DataSource getDataSource( )
