@@ -31,6 +31,7 @@ public class ClassList extends ListGrid
 		setDrawAheadRatio(4); 
 		setCanExpandRecords(true);
 		setDataSource( getDataSource( ) );
+		setSortField( "id" );
 	}
 	
 	public DataSource getDataSource( )
