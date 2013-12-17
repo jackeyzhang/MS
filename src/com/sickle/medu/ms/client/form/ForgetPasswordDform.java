@@ -22,7 +22,7 @@ import com.smartgwt.client.widgets.form.fields.TextItem;
 public class ForgetPasswordDform extends DynamicForm
 {
 
-	private TextItem email;
+	private TextItem username;
 	
 	
 	public ForgetPasswordDform( int width)
@@ -43,19 +43,19 @@ public class ForgetPasswordDform extends DynamicForm
 		this.setPadding(15);
 		this.setTitleOrientation( TitleOrientation.TOP );
 		
-		email = new DefaultTextItem("email");
-		email.setWidth( columnwidth[1] );
-		email.setTitle("请输入你注册时的邮箱,我们将向该邮箱发送您的密码");
-		email.setRequired(true);
+		username = new DefaultTextItem();
+		username.setWidth( columnwidth[1] );
+		username.setTitle("请输入您的用户名,我们将向您的注册邮箱发送密码");
+		username.setRequired(true);
 		
-		setFields(new FormItem[] {email});
+		setFields(new FormItem[] {username});
 	}
 
 	@Override
 	public void submit( )
 	{
 		super.submit( );
-		UserManageService.Util.getInstance().sendMail(email.getValueAsString(), new AsyncCallback<Boolean>() {
+		UserManageService.Util.getInstance().sendMail(username.getValueAsString(), new AsyncCallback<Boolean>() {
 			@Override
 			public void onSuccess(Boolean result) {
 				SC.say("发送成功，请查收邮件.");
@@ -63,7 +63,7 @@ public class ForgetPasswordDform extends DynamicForm
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				SC.say("发送邮件失败，请检查电脑连接情况.");
+				SC.say("发送邮件失败，请检查您有信息填写是否正确.");
 			}
 		});
 	}

@@ -68,18 +68,31 @@ public class UserManageServiceImpl extends RemoteServiceServlet implements UserM
 	}
 
 	@Override
-	public boolean sendMail(String to) throws Exception {
-		IMailSenderService mailservice = new SimpleMailSenderService();
-		MailSenderInfo info = new MailSenderInfo();
-		info.setMailServerHost("smtp.139.com");
-		info.setValidate(true);
-		info.setUserName("zhangchenhao@139.com");
-		info.setPassword("majinghua");// 您的邮箱密码
-		info.setFromAddress("zhangchenhao@139.com");
-		info.setToAddress( to );
-		info.setSubject("爱师网重置密码请求");
-		info.setContent("请单击链接重置你的密码");
-		return mailservice.sendTextMail(info);
+	public boolean sendMail(String name) throws Exception {
+		// 查询用户
+		Member member = service.getMemberByLoginName(name);
+		if (member == null) {
+			return false;
+		}
+
+		String mail = member.getEmail();
+
+		// 邮箱的格式，由注册界面统计判断，此处不做判断。只判断是否为空
+		if (mail != null && !mail.isEmpty()) {
+			IMailSenderService mailservice = new SimpleMailSenderService();
+			MailSenderInfo info = new MailSenderInfo();
+			info.setMailServerHost("smtp.139.com");
+			info.setValidate(true);
+			info.setUserName("zhangchenhao@139.com");
+			info.setPassword("majinghua");// 您的邮箱密码
+			info.setFromAddress("zhangchenhao@139.com");
+			info.setToAddress(mail);
+			info.setSubject("爱师网用户找回密码服务");
+			info.setContent("您在爱师网注册的密码为：" + member.getPassword() +"</br>请尽快更改您有密码，以免密码泄露，谢谢配合！");
+			return mailservice.sendHtmlMail(info);
+		}
+		return false;
 	}
+	
 
 }

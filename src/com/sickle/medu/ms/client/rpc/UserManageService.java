@@ -33,6 +33,11 @@ public interface UserManageService extends RemoteService
 	
 	boolean logout(String name) throws Exception;
 	
-	boolean sendMail(String to)throws Exception;
-
+	/**
+	 * 根据用户名，发送用户密码到用户的注册邮箱。如果邮箱为空或信息不对，则返回false
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	boolean sendMail(String name)throws Exception;
 }
