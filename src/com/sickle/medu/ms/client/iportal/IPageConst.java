@@ -14,7 +14,7 @@ public interface IPageConst
 	public static final int SCHOOL_CARD_WIDTH = 600;
 
 	// 学校名片高度
-	public static final int SCHOOL_CARD_HEIGHT = 150;
+	public static final int SCHOOL_CARD_HEIGHT = 165;
 
 	// 课程名片宽度
 	public static final int NOTICE_CARD_WIDTH = 600;

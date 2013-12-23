@@ -120,6 +120,14 @@
 	background-color: #b2d235;
 }
 
+.orgcard-operate{
+	background-color: #7bbfea;
+}
+
+.orgcard-operate-mousein{
+	background-color: #e0861a;
+}
+
 /* class card style*/
 .noticecardborder {
 	border-width: thin;
